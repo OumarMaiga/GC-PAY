@@ -20,7 +20,7 @@
                     <div class="form-group">
                         <!--<x-label for="email" :value="__('Email')" />-->
 
-                        <input id="telephone" class="input-custom" type="text" name="telephone" :value="old('telephone')" placeholder="TELEPHONE" required />
+                        <input id="login" class="input-custom" type="text" name="login" :value="old('login')" placeholder="EMAIL / TELEPHONE" required />
                     </div>
 
                     <!-- Password -->
