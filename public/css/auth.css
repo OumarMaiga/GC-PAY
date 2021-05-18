@@ -1,0 +1,57 @@
+body {
+    background-color: #FFFFFF;
+}
+
+.auth-title {
+    font-size: xx-large;
+    color: #4E4848;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.input-custom {
+    width: 100%;
+    border-radius: 6px;
+    border-width: 0px;
+    box-shadow: 0px 1px 1.7px 1px #00000049;
+}
+.input-custom:focus {
+    box-shadow: 0px 1px 3.5px 1.5px #00000049;
+}
+.password-forgotten {
+    text-decoration: underline;
+    font-size: small;
+    float: right;
+    color: rgba(255, 0, 0, 0.788);
+    margin-top: -5px;
+}
+
+.password-forgotten:hover {
+    color: rgb(255, 0, 0);
+}
+
+.btn-custom {
+    background-color: #1E6BDF;
+    color: #FFFFFF;
+    border-radius: 6px;
+    width: 100%;
+    font-size: 26px;
+    border-color: #1F4ED1;
+}
+
+.btn-custom:hover {
+    background-color: #1B60C8;
+}
+
+.btn-custom:focus {
+    box-shadow: 0px 0px 1.5px 1px #2590D8;
+}
+.autre-lien {
+    color: #5D5A5A;
+    text-align: center;
+}
+
+.autre-lien a {
+    text-decoration: underline;
+}
