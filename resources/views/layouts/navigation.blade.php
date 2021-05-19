@@ -78,11 +78,37 @@
 
             @if (Auth::check())
                 <!-- Settings Dropdown -->
-                <div class="hidden sm:flex sm:items-center sm:ml-6">
+                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ Auth::user()->email }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">
+                            Profil
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">
+                            Parametre
+                        </a>
+                        <div class="dropdown-divider"></div>
+
+                        <!-- Authentication -->
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                            this.closest('form').submit();">
+                                Deconnexion
+                            </a>
+                        </form>
+
+                    </div>
+                </li>
+                <!--<div class="hidden sm:flex sm:items-center sm:ml-6">
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button class="">
-                                <div>{{ Auth::user()->nom }}</div>
+                                <div>{{ Auth::user()->email }}</div>
 
                                 <div class="ml-1">
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -93,7 +119,7 @@
                         </x-slot>
 
                         <x-slot name="content">
-                            <!-- Authentication -->
+
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
 
@@ -105,7 +131,7 @@
                             </form>
                         </x-slot>
                     </x-dropdown>
-                </div>
+                </div>-->
             @else
             <ul class="navbar-nav align-items-center">
                 <li class="nav-item">
