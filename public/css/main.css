@@ -1,0 +1,27 @@
+.navigation {
+    background-color: #1C5EC2;
+    color: #FFFFFF
+}
+
+.logo {
+    font-size: 2rem;
+}
+
+.nav-number {
+    background-color: #4B81D3;
+    padding: 3px 5px;
+}
+
+.img-social-media {
+    width: 25px;
+    height: 25px;
+}
+.nav-link:hover {
+    color:#FFFFFF;
+    font-weight: bold;
+}
+
+.logo:hover {
+    color: #FFFFFF;
+    font-weight: bold;
+}
