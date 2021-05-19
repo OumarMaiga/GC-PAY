@@ -20,7 +20,7 @@
                     <div class="form-group">
                         <!--<x-label for="email" :value="__('Email')" />-->
 
-                        <input id="login" class="input-custom" type="text" name="login" :value="old('login')" placeholder="EMAIL / TELEPHONE" required />
+                        <input id="login" class="input-custom" type="text" name="login" value="{{ old('telephone') ?: old('email') }}" placeholder="EMAIL / TELEPHONE" required />
                     </div>
 
                     <!-- Password -->
@@ -53,7 +53,7 @@
                     </div>
                     <div class="mt-5">
                         <p class="autre-lien">
-                            Vous n'êtes pas inscrit ? <a href="{{ route('register') }}">Inscription</a> 
+                            Vous n'êtes pas inscrit ? <a class="btn-link" href="{{ route('register') }}">Inscription</a> 
                         </p>
                     </div>
                 </form>
