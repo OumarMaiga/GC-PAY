@@ -20,6 +20,64 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
+    <header class="bg-blue-800 shadow colo">
+                
+                
+                <h1>GC-PAY</h1>
+                
+    
+            <div class="droite">
+                 <div classe="top">
+                    <div class="haut2">
+                        <p class="flotte">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Circle-icons-phone.svg/1200px-Circle-icons-phone.svg.png" alt=""/>
+                        </p>
+                        <p>+223 20 55 36 14</p>
+                    </div>
+
+                    <div >
+                        <p class="flotte"><a href="https://www.facebook.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Facebook.pn.png/120px-Facebook.pn.png" alt=""/></p></a>
+                    </div>
+                    <div >
+                        <p class="flotte"><a href="https://www.instagram.com/?hl=fr"><img src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c521.png" alt=""/></p></a>
+                    </div>
+
+                    <div >
+                        <p class="flotte"><a href="https://twitter.com/?lang=fr"><img src="https://upload.wikimedia.org/wikipedia/fr/thumb/c/c8/Twitter_Bird.svg/1200px-Twitter_Bird.svg.png" alt=""/></p><a>
+                    </div>
+
+                </div>
+
+                <div class="bas">
+                    <div>
+                    <a href="{{ route('register') }}"> <h1 class="haut2">INSCRIPTION</h1></a>
+                    </div>
+                    <div>
+                    <a href="{{ route('login') }}"> <h1 class="haut2 bg-blue-800 noborder">CONNEXION</h1></a>
+                    </div>
+                    <div >
+                        <p class="flotte"><a href=""><img src="https://cdn.pixabay.com/photo/2014/04/02/16/17/magnifying-glass-306823_960_720.png" alt=""/></p></a>
+                    </div>
+                    
+                </div>
+            </div>
+
+                <div class="liens">
+                <a class="underline text-white hover:text-gray-900" href="{{ route('login') }}"> 
+                    {{ __('Acceuil') }}
+                </a>
+                </div>
+                <div class="liens">
+                <a class="underline  text-white hover:text-gray-900" href="{{ route('login') }}">
+                    {{ __('A propos') }}
+                </a>
+                </div>
+                <div class="liens">
+                <a class="underline  text-white hover:text-gray-900" href="{{ route('login') }}">
+                    {{ __('Contact') }}
+                </a>
+                </div>
+            </header> 
     <body>
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
