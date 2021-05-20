@@ -18,8 +18,7 @@
 }
 .nav-link:hover {
     color:#FFFFFF;
-    font-weight: bold;
-    
+    text-decoration: underline;
 }
 .nav-link{
     font-size: 22px;
@@ -29,5 +28,5 @@
 
 .logo:hover {
     color: #FFFFFF;
-    font-weight: bold;
+    text-decoration: underline;
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\ProfilController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,3 +23,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+// Profil
+Route::get('/{email}', [ProfilController::class, 'profil'])
+                ->middleware('auth')
+                ->name('profil');

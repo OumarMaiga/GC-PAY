@@ -84,7 +84,7 @@
                         {{ Auth::user()->email }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{ route('profil', Auth::user()->email) }}">
                             Profil
                         </a>
                         <div class="dropdown-divider"></div>
