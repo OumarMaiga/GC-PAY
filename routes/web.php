@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\SettingController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,3 +29,13 @@ require __DIR__.'/auth.php';
 Route::get('/{email}', [ProfilController::class, 'profil'])
                 ->middleware('auth')
                 ->name('profil');
+
+
+// Parametre
+Route::get('/setting/password', [SettingController::class, 'edit_password'])
+->middleware('auth')
+->name('edit_password');
+
+Route::post('/setting/password', [SettingController::class, 'update_password'])
+->middleware('auth')
+->name('update_password');
