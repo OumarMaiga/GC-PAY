@@ -26,11 +26,10 @@ class UpdateProfilRequest extends FormRequest
     public function rules()
     {
         return [
-            'nom'=> 'required|string',
-            'prenom'=> 'required|string',
+            'nom'=> 'string',
+            'prenom'=> 'string',
             'email'=> 'required|string',
             'telephone'=> 'required|string'
-            
         ];
     }
 }

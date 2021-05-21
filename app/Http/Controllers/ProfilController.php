@@ -6,6 +6,7 @@ use App\Http\Requests\UpdateProfilRequest;
 use Illuminate\Http\Requests;
 use App\Providers\RouteServiceProvider;
 use App\Repositories\UserRepository;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Controller;
 
@@ -22,26 +23,17 @@ class ProfilController extends Controller
 
 
     public function profil($email) {
-        $user = $this->userRepository->getByEmail($email);
+        $user = Auth::user();
         return view('pages.profil', compact('user'));
     }
     
-    public function edit($id) {
-
-    }
-    public function update($email,UpdateProfilRequest $request)
+    public function update($email, UpdateProfilRequest $request)
     {
         $user = $this->userRepository->getByEmail($email);
-       
-        $user()->update(
-            $user()->email,
-        [
-            'nom' => $request->nom,
-            'prenom' => $request->prenom,
-            'email' => $request->email,
-            'telephone' => $request->telephone,
-        ]);
-            session()->flash('success','Votre profil a bien été mis à jour');
-            return redirect()->back;
+        
+        $this->userRepository->update($user->id, $request->all());
+
+            return redirect('/{email}')->withStatus("Votre profil a bien été mis à jour");
+
     }
 }
