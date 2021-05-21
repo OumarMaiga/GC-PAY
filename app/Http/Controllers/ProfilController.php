@@ -2,9 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
+use App\Http\Requests\UpdateProfilRequest;
+use Illuminate\Http\Requests;
+use App\Providers\RouteServiceProvider;
 use App\Repositories\UserRepository;
+use Illuminate\Support\Facades\Auth;
+
+use App\Http\Controllers\Controller;
+
+
 
 class ProfilController extends Controller
 {
@@ -17,12 +23,17 @@ class ProfilController extends Controller
 
 
     public function profil($email) {
-        $user = $this->userRepository->getByEmail($email);
+        $user = Auth::user();
         return view('pages.profil', compact('user'));
     }
     
-    public function edit($id) {
+    public function update($email, UpdateProfilRequest $request)
+    {
+        $user = $this->userRepository->getByEmail($email);
+        
+        $this->userRepository->update($user->id, $request->all());
+
+            return redirect('/{email}')->withStatus("Votre profil a bien été mis à jour");
 
     }
-
 }

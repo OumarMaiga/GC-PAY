@@ -31,7 +31,7 @@ Route::get('/{email}', [ProfilController::class, 'profil'])
                 ->name('profil');
 
 
-// Parametre
+// Paramètre
 Route::get('/setting/password', [SettingController::class, 'edit_password'])
 ->middleware('auth')
 ->name('edit_password');
@@ -39,3 +39,7 @@ Route::get('/setting/password', [SettingController::class, 'edit_password'])
 Route::post('/setting/password', [SettingController::class, 'update_password'])
 ->middleware('auth')
 ->name('update_password');
+                
+Route::put('/{email}', [ProfilController::class, 'update'])
+                ->middleware('auth')
+                ->name('update');

@@ -16,6 +16,13 @@ body {
     border-width: 0px;
     box-shadow: 0px 1px 1.7px 1px #00000049;
 }
+.input-custom2 {
+    width: 100%;
+    border-radius: 6px;
+    border-width: 0px;
+    box-shadow: 0px 1px 1.7px 1px #00000049;
+    float:left;
+}
 .input-custom:focus {
     box-shadow: 0px 1px 3.5px 1.5px #00000049;
 }
@@ -39,6 +46,23 @@ body {
     font-size: 26px;
     border-color: #1F4ED1;
 }
+
+.btn-custom2{
+    background-color: #1E6BDF;
+    color: #FFFFFF;
+    border-radius: 6px;
+    width: 45%;
+    font-size: 26px;
+    border-color: #1F4ED1;
+    float:left;
+    margin-right: 24px;
+}
+
+.change-color
+{
+    background-color:gray;
+}
+
 
 .btn-custom:hover {
     background-color: #1B60C8;
