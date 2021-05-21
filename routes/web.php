@@ -28,3 +28,8 @@ require __DIR__.'/auth.php';
 Route::get('/{email}', [ProfilController::class, 'profil'])
                 ->middleware('auth')
                 ->name('profil');
+                
+Route::put('/{email}', [ProfilController::class, 'update'])
+                ->middleware('auth')
+                ->name('update');
+               

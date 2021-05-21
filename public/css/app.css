@@ -752,6 +752,11 @@ select {
   width: 100%;
 }
 
+.container2 {
+  width: 100%;
+  float:left;
+}
+
 @media (min-width: 640px) {
   .container {
     max-width: 640px;
@@ -11675,6 +11680,10 @@ select {
 
 .h-screen {
   height: 100vh;
+}
+.text-bold{
+  font-weight:800;
+  color:#a5a5a5;
 }
 
 .text-xs {
@@ -24445,6 +24454,7 @@ select {
   --tw-text-opacity: 1;
   color: rgba(255, 255, 255, var(--tw-text-opacity));
 }
+
 
 .text-gray-50 {
   --tw-text-opacity: 1;

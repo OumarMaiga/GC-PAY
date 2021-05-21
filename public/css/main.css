@@ -30,3 +30,25 @@
     color: #FFFFFF;
     text-decoration: underline;
 }
+
+.footer{
+    background-color:#042557;
+    color: #FFFFFF
+   
+}
+.vertical {
+    border-left: 6px solid white;
+    height: 175px;
+    position: absolute;
+    left: 280%;
+    margin-left: -3px;
+    top: 0;
+    border-radius: 5px;
+  }
+
+  .label-size
+  {
+      font-size:16px;
+      font-weight: 800;
+      color:#646464
+  }
