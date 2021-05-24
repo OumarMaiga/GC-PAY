@@ -15,14 +15,20 @@ body {
     border-radius: 6px;
     border-width: 0px;
     box-shadow: 0px 1px 1.7px 1px #00000049;
+  
 }
-.input-custom2 {
-    width: 100%;
-    border-radius: 6px;
-    border-width: 0px;
-    box-shadow: 0px 1px 1.7px 1px #00000049;
-    float:left;
+.input-white
+{
+    background:transparent;
+     border:0;
 }
+.input-white:focus
+{
+
+    box-shadow: 0px 1px 3.5px 1.5px white;
+}
+
+
 .input-custom:focus {
     box-shadow: 0px 1px 3.5px 1.5px #00000049;
 }
@@ -78,4 +84,9 @@ body {
 
 .autre-lien a {
     text-decoration: underline;
+}
+
+.link-profil{
+    font-size:30px;
+    font-weight: 900;
 }

@@ -9,6 +9,7 @@ use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Controller;
+use Image;
 
 
 
@@ -21,7 +22,10 @@ class ProfilController extends Controller
         $this->userRepository = $userRepository;
     }
 
-
+    public function propos($email) {
+        $user = Auth::user();
+        return view('pages.propos', compact('user'));
+    }
     public function profil($email) {
         $user = Auth::user();
         return view('pages.profil', compact('user'));
@@ -32,6 +36,15 @@ class ProfilController extends Controller
         $user = $this->userRepository->getByEmail($email);
         
         $this->userRepository->update($user->id, $request->all());
+
+        if($request->hasFile('avatar')){
+            $avatar=$request->file('avatar');
+            $filename=time().'.'.$avatar->getClientOriginalExtension();
+            Image::make($avatar)->save(public_path('upload/avatars/'.$filename));
+            $user=Auth::user();
+            $user->avatar=$filename;
+            $user->save();
+        }
 
             return redirect('/{email}')->withStatus("Votre profil a bien été mis à jour");
 

@@ -1,30 +1,5 @@
 <x-app-layout>
 
-    <script type='text/javascript'>
-    $(window).load(function(){
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                
-                reader.onload = function (e) {
-                    $('#blah').attr('src', e.target.result);
-                }
-                
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-        
-        $("#imgInp").change(function(){
-            readURL(this);
-        });
-    });
-    
-    </script>
-    
-    <div class="centre"> 
-            <img id="blah" src="#" alt="" class="image-ronde"/>
-    </div>
-
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -32,17 +7,24 @@
                 <!-- Validation Errors -->
                 <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-                <form  method="POST" action="{{ route('update', $user->email) }}">
+                <form  method="POST" action="{{ route('update', $user->email) }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
+                <!--  avatar -->
+                <div class="form-group row">
+                <div class="centre"> 
+            <input type='file' id="imgInp" name="avatar" />
+            <img src="/upload/avatars/{{$user->avatar}}" class="avatar"/>
+           
+            </div>
+            </div>
                 <!--  Nom -->
-               
                 <div class="form-group row">
                 
                 <label for="nom" class="col-sm-2 col-form-label label-size">Nom</label>
                 <div class="col-sm-10">
 
-                        <input id="nom" class="input-custom2" type="text" name="nom" value="{{ $user->nom }}" placeholder="Nom" required autofocus />
+                        <input id="nom" class="input-custom" type="text" name="nom" value="{{ $user->nom }}" placeholder="Nom" required autofocus />
                     </div>
                 </div>
 

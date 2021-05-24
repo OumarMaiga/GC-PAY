@@ -26,9 +26,17 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 // Profil
-Route::get('/{email}', [ProfilController::class, 'profil'])
+
+// Profil
+Route::get('/{email}', [ProfilController::class, 'propos'])
+                ->middleware('auth')
+                ->name('propos');
+
+Route::get('/{email}/profil', [ProfilController::class, 'profil'])
                 ->middleware('auth')
                 ->name('profil');
+
+
 
 
 // Paramètre
@@ -40,6 +48,7 @@ Route::post('/setting/password', [SettingController::class, 'update_password'])
 ->middleware('auth')
 ->name('update_password');
                 
-Route::put('/{email}', [ProfilController::class, 'update'])
+Route::put('/{email}/profil', [ProfilController::class, 'update'])
                 ->middleware('auth')
                 ->name('update');
+
