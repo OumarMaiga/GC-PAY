@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navigation">
         <!-- Logo -->
-        <a class="navbar-brand logo" href="route('dashboard')">
+        <a class="navbar-brand logo" href="{{ route('dashboard') }}">
             {{ __('GC - PAY') }}
         </a>
 
@@ -85,7 +85,7 @@
                         {{ Auth::user()->email }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('propos', Auth::user()->email) }}">
+                        <a class="dropdown-item" href="{{ route('profil', Auth::user()->email) }}">
                             Profil
                         </a>
                         <div class="dropdown-divider"></div>

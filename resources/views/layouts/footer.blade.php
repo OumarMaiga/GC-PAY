@@ -1,58 +1,52 @@
-<footer class=" text-center text-lg-start footer">
+<footer class="footer">
   <!-- Grid container -->
   <div class="container p-4">
     <!--Grid row-->
-    <div class="row">
+    <div class="row justify-content-start">
       <!--Grid column-->
-      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+      <div class="col-md-6 vertical">
       
-        <h5 class="text-uppercase text-bold">Liens</h5>
-    </br>
-        <ul class="list-unstyled mb-0">
-          <li>
-            <a href="#" class="text-white">Acceuil</a>
+        <h5 class="footer-title">LIENS</h5>
+
+        <ul class="footer-list">
+          <li class="footer-item">
+            <a href="#" class="footer-link">Acceuil</a>
           </li>
-          <li>
-            <a href="#" class="text-white">A propos</a>
+          <li class="footer-item">
+            <a href="#" class="footer-link">A propos</a>
           </li>
-          <li>
-            <a href="#" class="text-white">Contact</a>
+          <li class="footer-item">
+            <a href="#" class="footer-link">Contact</a>
           </li>
         </ul>
       </div>
-    
-      <!--Grid column-->
-      <div class="col-lg-1 col-md-6 mb-4 mb-md-0">
-      <div class="vertical"></div>
-      </div>
-      <!--Grid column-->
 
       <!--Grid column-->
-      <div class="col-lg-5 col-md-6 mb-4 mb-md-0">
-        <h5 class="text-uppercase text-bold">A PROPOS</h5>
-        </br>
-        <ul class="list-unstyled mb-0">
-          <li>
-            <a href="#" class="text-white">Condition d'utilisation</a>
-          </li>
-          <li>
-            <a href="#" class="text-white">Qui sommes nous?</a>
-          </li>
-          <li>
-            <a href="#" class="text-white">Helps</a>
-          </li>
-         
-        </ul>
-      </div>
-      <!--Grid column-->
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col">
+            <h5 class="footer-title">A PROPOS</h5>
 
-      <!--Grid column-->
-      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/2/26/Armoiries_Mali.png" width="154" height="86" alt=""\>
+            <ul class="footer-list">
+              <li class="footer-item">
+                <a href="#" class="footer-link">Condition d'utilisation</a>
+              </li>
+              <li class="footer-item">
+                <a href="#" class="footer-link">Qui sommes nous?</a>
+              </li>
+              <li class="footer-item">
+                <a href="#" class="footer-link">Helps</a>
+              </li>
+            
+            </ul>
+          </div>
+
+          <div class="col">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/26/Armoiries_Mali.png" class="ml-auto img-embleme" alt=""\>
+          </div>
+        </div>
       </div>
-      <!--Grid column-->
     </div>
-    <!--Grid row-->
   </div>
   <!-- Grid container -->
 

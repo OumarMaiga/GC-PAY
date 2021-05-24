@@ -17,11 +17,6 @@
     height: 25px;
 }
 
-.img-social-media2 {
-    width: 45px;
-    height: 45px;
-}
-
 .nav-link:hover {
     color:#FFFFFF;
     text-decoration: underline;
@@ -29,11 +24,6 @@
 .nav-link{
     font-size: 22px;
 }
-
-.nav-link{
-    font-size: 22px;
-}
-
 
 
 .logo:hover {
@@ -43,24 +33,37 @@
 
 .footer{
     background-color:#042557;
-    color: #FFFFFF;
-   
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    
+    color: #FFFFFF;    
 }
 
+.footer-title {
+    color: #BCBCBC;
+    font-size: 28px;
+    margin-bottom: 22px;
+    font-family: 'Cambria';
+} 
+
+.footer-list {
+    margin-left: 20px;
+} 
+
+.footer-item {
+    line-height: 26px;
+    margin-top: 15px;
+} 
+
+.footer-link {
+    font-size: 22px;
+}
+
+.img-embleme {
+    width: 176px; 
+    height: 176px;
+}
 
 .vertical {
-    border-left: 6px solid white;
-    height: 175px;
-    position: absolute;
-    left: 280%;
-    margin-left: -3px;
-    top: 0;
-    border-radius: 5px;
+    border-right: 3px solid white;
+    border-radius: 2px;
   }
 
   .label-size
@@ -70,6 +73,7 @@
       color:#646464;
      
   }
+
   .image-ronde{
     width : 200px; height : 100px;
     border: none;
@@ -78,28 +82,34 @@
     border-radius : 75px;
     margin-bottom:30px;
   }
-  .centre
-  {
-      
-       margin-left:250px;
-       width: 100px; 
-  
-  
+
+  .image-container{
+      margin: 20px;
   }
 
-  .centre2
+  .centre
   {
-      
-       margin-left:100px;
+       margin-left:250px;
        width: 100px; 
-  
   
   }
 
 .avatar
-{   width:150px; 
-    height:150px; 
-    float:left;
+{   width:250px; 
+    height:250px; 
     border-radius:50%;
-    margin-bottom:30px;
+}
+
+.profil-title {
+    font-size:36px;
+    font-weight: 900;
+}
+
+.icon-edit {
+    width: 35px;
+    height: 35px;
+}
+
+.icon-edit:hover {
+    color: #ffc107;
 }

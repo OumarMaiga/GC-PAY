@@ -28,13 +28,13 @@ require __DIR__.'/auth.php';
 // Profil
 
 // Profil
-Route::get('/{email}', [ProfilController::class, 'propos'])
-                ->middleware('auth')
-                ->name('propos');
-
-Route::get('/{email}/profil', [ProfilController::class, 'profil'])
+Route::get('/{email}', [ProfilController::class, 'profil'])
                 ->middleware('auth')
                 ->name('profil');
+
+Route::get('/{email}/edit', [ProfilController::class, 'edit'])
+                ->middleware('auth')
+                ->name('profil.edit');
 
 
 
@@ -50,5 +50,5 @@ Route::post('/setting/password', [SettingController::class, 'update_password'])
                 
 Route::put('/{email}/profil', [ProfilController::class, 'update'])
                 ->middleware('auth')
-                ->name('update');
+                ->name('profil.update');
 

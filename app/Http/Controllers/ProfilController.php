@@ -22,13 +22,13 @@ class ProfilController extends Controller
         $this->userRepository = $userRepository;
     }
 
-    public function propos($email) {
-        $user = Auth::user();
-        return view('pages.propos', compact('user'));
-    }
     public function profil($email) {
         $user = Auth::user();
         return view('pages.profil', compact('user'));
+    }
+    public function edit($email) {
+        $user = Auth::user();
+        return view('pages.edit', compact('user'));
     }
     
     public function update($email, UpdateProfilRequest $request)
@@ -37,7 +37,7 @@ class ProfilController extends Controller
         
         $this->userRepository->update($user->id, $request->all());
 
-        if($request->hasFile('avatar')){
+        if($request->hasFile('avatar')) {
             $avatar=$request->file('avatar');
             $filename=time().'.'.$avatar->getClientOriginalExtension();
             Image::make($avatar)->save(public_path('upload/avatars/'.$filename));
@@ -46,7 +46,7 @@ class ProfilController extends Controller
             $user->save();
         }
 
-            return redirect('/{email}')->withStatus("Votre profil a bien été mis à jour");
+            return redirect('/'.$email)->withStatus("Votre profil a bien été mis à jour");
 
     }
 }
