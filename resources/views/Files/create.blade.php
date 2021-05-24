@@ -34,7 +34,7 @@
         @csrf
     <div class="form-group">
         <label>File name Name</label>
-        <input type="text" class="form-control" name="name" required>
+        <input type="text" class="form-control" name="libelle" required>
     </div>
     <div class="form-group">
         <input type="file" name="file" required>

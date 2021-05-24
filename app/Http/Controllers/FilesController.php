@@ -44,7 +44,7 @@ class FilesController extends Controller
     {
        // Validate the inputs
        $request->validate([
-        'name' => 'required',
+        'libelle' => 'required',
     ]);
 
     // ensure the request has a file before we attempt anything else.
@@ -59,7 +59,7 @@ class FilesController extends Controller
 
         // Store the record, using the new file hashname which will be it's new filename identity.
         $product = new Files([
-            "name" => $request->get('name'),
+            "libelle" => $request->get('libelle'),
             "file_path" => $request->file->hashName()
         ]);
         $product->save(); // Finally, save the record.

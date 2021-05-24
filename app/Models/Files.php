@@ -14,5 +14,6 @@ class Files extends Model
      * @var array
      */
 
-    protected $fillable = ["name", "file_path", "created_at", "updated_at"];
+    protected $fillable = ["libelle", "file_path", "utilisateur_id","entreprise_id","created_at", "updated_at"];
+    
 }

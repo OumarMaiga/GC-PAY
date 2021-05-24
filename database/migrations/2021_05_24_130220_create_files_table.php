@@ -16,8 +16,11 @@ class CreateFilesTable extends Migration
         Schema::create('files', function (Blueprint $table) {
           
             $table->id();
-            $table->string('name');
+            $table->string('libelle');
             $table->string('file_path');
+            $table->unsignedInteger('utilisateur_id')->default('1');
+            //auth()->user()->id,
+            $table->unsignedInteger('entreprise_id')->default('0');
             $table->timestamps();
         });
     }
