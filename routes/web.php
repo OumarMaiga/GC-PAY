@@ -36,7 +36,9 @@ Route::get('/{email}/edit', [ProfilController::class, 'edit'])
                 ->middleware('auth')
                 ->name('profil.edit');
 
-
+Route::put('/{email}/profil', [ProfilController::class, 'update'])
+                ->middleware('auth')
+                ->name('update');
 
 
 // Paramètre
@@ -48,7 +50,12 @@ Route::post('/setting/password', [SettingController::class, 'update_password'])
 ->middleware('auth')
 ->name('update_password');
                 
+
 Route::put('/{email}/profil', [ProfilController::class, 'update'])
                 ->middleware('auth')
                 ->name('profil.update');
+
+//test image
+Route::resource('files', 'App\Http\Controllers\FilesController'); // Laravel 8
+
 
