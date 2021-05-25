@@ -14,7 +14,7 @@
                 <div class="form-group row">
                 <div class="centre"> 
             <input type='file' id="imgInp" name="avatar" />
-            <img src="/upload/avatars/{{$user->avatar}}" class="avatar"/>
+            <img src="/storage/profil_pictures/picture_user_{{$user->id}}.jpg" class="avatar"/> 
            
             </div>
             </div>

@@ -8,7 +8,7 @@
             <div class="form-group row">
                 <div class="centre2"> 
            
-            <img src="/upload/avatars/{{$user->avatar}}" class="avatar"/>
+            <img src="/storage/profil_pictures/picture_user_{{$user->id}}.jpg" class="avatar"/>
            
             </div>
             </div>
