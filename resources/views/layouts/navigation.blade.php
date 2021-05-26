@@ -81,7 +81,22 @@
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="position:relative; padding-left:50px">
-                        <img src="/storage/profil_pictures/{{ photo_profil() }}" style="width:32px;height:32px;position:absolute; top:10px;left:10px; border-radius:50%">
+                        @if (photo_profil())
+                            <img src="/storage/profil_pictures/{{ photo_profil() }}" style="width:32px;height:32px;position:absolute; top:10px;left:10px; border-radius:50%">
+                        @else
+                            <img src='/storage/profil_pictures/default.jpg' style='width:32px;height:32px;position:absolute; top:10px;left:10px; border-radius:50%'/>
+                        @endif
+                    <?php 
+                        /*$filename=$_SERVER['DOCUMENT_ROOT']."/storage/profil_pictures/picture_user_1.jpg";
+                        if(file_exists($filename))
+                        {
+                            echo" <img src='/storage/profil_pictures/picture_user_1.jpg' style='width:32px;height:32px;position:absolute; top:10px;left:10px; border-radius:50%'/> ";
+                        }
+                        else
+                        {
+                            echo" <img src='/storage/profil_pictures/default.jpg' style='width:32px;height:32px;position:absolute; top:10px;left:10px; border-radius:50%'/> ";
+                        }*/
+                    ?>
                         {{ Auth::user()->email }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
