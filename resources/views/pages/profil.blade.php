@@ -4,7 +4,8 @@
         <!--  avatar -->
         <div class="col-12 d-flex justify-content-center"> 
             <div class="image-container">
-                <img src="/upload/avatars/{{$user->avatar}}" class="avatar"/>
+                <img src="/storage/profil_pictures/{{ photo_profil() }}" class="avatar"/>
+                <!--<img src="/upload/avatars/$user->avatar }}" class="avatar"/>-->
             </div>
         </div>
 

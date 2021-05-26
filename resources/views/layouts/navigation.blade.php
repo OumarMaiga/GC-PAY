@@ -76,12 +76,12 @@
                 <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
                 </form>
 
-            @if (Auth::check())
+                @if (Auth::check())
                 <!-- Settings Dropdown -->
-                
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="position:relative; padding-left:50px">
-                        <img src="/storage/profil_pictures/picture_user_{{Auth::user()->id}}.jpg" style="width:32px;height:32px;position:absolute; top:10px;left:10px; border-radius:50%">
+                        <img src="/storage/profil_pictures/{{ photo_profil() }}" style="width:32px;height:32px;position:absolute; top:10px;left:10px; border-radius:50%">
                         {{ Auth::user()->email }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">

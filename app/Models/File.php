@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Files extends Model
+class File extends Model
 {
     use HasFactory;
     /**
@@ -16,4 +16,7 @@ class Files extends Model
 
     protected $fillable = ["libelle", "file_path", "utilisateur_id","entreprise_id","created_at", "updated_at"];
     
+    public function user() {
+        return $this->belongsTo('App\Models\User');
+    }
 }

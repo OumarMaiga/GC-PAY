@@ -10,7 +10,7 @@
             <div class="form-group row">
                 <div class="col-12 d-flex justify-content-center"> 
                     <div class="image-container">
-                        <img src="/upload/avatars/{{$user->avatar}}" class="avatar"/>
+                        <img src="/storage/profil_pictures/{{ photo_profil() }}" class="avatar"/>
                         <input type='file' id="imgInp" name="avatar" />
                     </div>
                 </div>
