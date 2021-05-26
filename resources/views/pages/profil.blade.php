@@ -4,7 +4,17 @@
         <!--  avatar -->
         <div class="col-12 d-flex justify-content-center"> 
             <div class="image-container">
-                <img src="/upload/avatars/{{$user->avatar}}" class="avatar"/>
+            <?php 
+                $filename=$_SERVER['DOCUMENT_ROOT']."/storage/profil_pictures/picture_user_1.jpg";
+                if(file_exists($filename))
+                {
+                    echo" <img src='/storage/profil_pictures/picture_user_1.jpg' class='avatar'/> ";
+                }
+                else
+                {
+                    echo" <img src='/storage/profil_pictures/default.jpg' class='avatar'/> ";
+                }
+            ?>
             </div>
         </div>
 
