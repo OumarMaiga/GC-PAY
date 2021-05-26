@@ -1,5 +1,6 @@
 <x-app-layout>
     <div class="container">
+        
         <!--  avatar -->
         <div class="col-12 d-flex justify-content-center"> 
             <div class="image-container">

@@ -7,6 +7,7 @@ use Illuminate\Http\Requests;
 use App\Providers\RouteServiceProvider;
 use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Files;
 
 use App\Http\Controllers\Controller;
 use Image;
@@ -37,12 +38,15 @@ class ProfilController extends Controller
         
         $this->userRepository->update($user->id, $request->all());
 
-        if($request->hasFile('avatar')) {
-            $avatar=$request->file('avatar');
-            $filename=time().'.'.$avatar->getClientOriginalExtension();
-            Image::make($avatar)->save(public_path('upload/avatars/'.$filename));
+        if($request->hasFile('avatar')){
+            $avatar = new Files;
+            $filename='picture_user_'.$user->id.'.'.$request->file('avatar')->getClientOriginalExtension();
+            $avatar->libelle='profil_picture_user_'.$user->id;
+            $avatar->file_path='/storage/app/public/profil_pictures/'.$filename;
+            $avatar->utilisateur_id = $user->id;
+            $request->file('avatar')->storeAs('public/profil_pictures',$filename);
+            $avatar->save();
             $user=Auth::user();
-            $user->avatar=$filename;
             $user->save();
         }
 

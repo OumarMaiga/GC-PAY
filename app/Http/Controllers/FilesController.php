@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Files;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Auth;
 
 
 class FilesController extends Controller
@@ -25,8 +27,10 @@ class FilesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+
     {
-        return view('Files.create');
+        //la vue qui devra être retourné sera adapté en circonstance avec la page voulu
+        return view('dashboard');
     }
 
     /**
@@ -54,18 +58,23 @@ class FilesController extends Controller
             'image' => 'mimes:jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
         ]);
 
-        // Save the file locally in the storage/public/ folder under a new folder named /product
-        $request->file->store('files', 'public');
+        
+        //Enregistrer le fichier localement dans un dossier document sous /storage/app/public
+        $filemane=$request->get('libelle');
+        $request->file->storeAs('public/Documents', $filemane);
 
-        // Store the record, using the new file hashname which will be it's new filename identity.
+        // Store the record, using the time which will be it's new filename identity.
         $product = new Files([
             "libelle" => $request->get('libelle'),
-            "file_path" => $request->file->hashName()
+            "file_path" =>time().'.'.$request->file->getClientOriginalExtension(),
+            "utilisateurid"=>Auth::user()->id,
+            
+           
         ]);
         $product->save(); // Finally, save the record.
     }
 
-    return view('Files.create');
+    return view('dasboard');
     }
 
 
