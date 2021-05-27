@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\StructureController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -67,3 +68,5 @@ Route::get('/dashboard', [PageController::class, 'dashboard'])
 
 //STRUCTURE
 Route::resource('/dashboard/structure', StructureController::class);
+//ADMIN
+Route::resource('/dashboard/admin',AdminController::class);

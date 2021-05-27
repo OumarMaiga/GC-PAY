@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navigation">
         <!-- Logo -->
-        <a class="navbar-brand logo" href="{{ route('dashboard') }}">
+        <a class="navbar-brand logo" href="{{ route('dashboard.index') }}">
             {{ __('GC - PAY') }}
         </a>
 
