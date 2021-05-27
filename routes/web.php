@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\StructureController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,3 +65,5 @@ Route::get('/dashboard', [PageController::class, 'dashboard'])
             ->middleware('auth')
             ->name('dashboard.index');
 
+//STRUCTURE
+Route::resource('/dashboard/structure', StructureController::class);

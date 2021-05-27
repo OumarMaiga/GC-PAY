@@ -7,7 +7,7 @@
     </div>
     <ul class="sidebar-list">
         <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
+            <a href="{{ route('structure.index') }}" class="sidebar-link">
                 STRUCTURE
             </a>
         </li>
