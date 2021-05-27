@@ -1,11 +1,18 @@
 <?php
 
+use App\Models\File;
+
 function photo_profil() {
     $user = Auth::user();
-    $file = $user->file()->associate($user->id)->file;
-    if ($file) {
-        $file = $file->libelle;
-    } {
+    $file = new File;
+    $file = $file->where('user_id', $user->id)->first();
+
+    if ($file == null) {
         $file = false;
+    } else {
+        $file = $file->libelle;
     }
+
+    return $file;
+
 }

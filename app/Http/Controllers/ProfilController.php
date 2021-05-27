@@ -46,7 +46,7 @@ class ProfilController extends Controller
             $filename='profil_picture_user_'.$user->id.'.'.$request->file('avatar')->getClientOriginalExtension();
             $avatar->libelle=$filename;
             $avatar->file_path='/storage/app/public/profil_pictures/'.$filename;
-            $avatar->utilisateur_id = $user->id;
+            $avatar->user_id = $user->id;
             $request->file('avatar')->storeAs('public/profil_pictures',$filename);
             $avatar->save();
             $user=Auth::user();

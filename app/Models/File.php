@@ -16,5 +16,7 @@ class File extends Model
 
     protected $fillable = ["libelle", "file_path", "utilisateur_id","entreprise_id","created_at", "updated_at"];
     
-    
+    public function user() {
+        return $this->belongsTo('App\Models\User');
+    }
 }
