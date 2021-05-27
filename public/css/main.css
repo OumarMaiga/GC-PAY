@@ -4,7 +4,7 @@
 }
 
 .logo {
-    font-size: 2rem;
+    font-size: 1.6rem;
 }
 
 .nav-number {
@@ -32,6 +32,8 @@
 }
 
 .footer{
+    position: relative;
+    margin-top: 30px;
     background-color:#042557;
     color: #FFFFFF;    
 }
