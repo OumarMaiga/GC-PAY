@@ -12,7 +12,7 @@
             </a>
         </li>
         <li class="sidebar-item dropdown-btn">
-            <a href="#" class="sidebar-link">
+            <a href="{{ route('admin.index') }}" class="sidebar-link">
                 ADMINISTRATEUR
             </a>
         </li>
