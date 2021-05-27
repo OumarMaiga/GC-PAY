@@ -48,14 +48,11 @@ body {
     background-color: #1E6BDF;
     color: #FFFFFF;
     border-radius: 6px;
-    width: 100%;
-    font-size: 26px;
     border-color: #1F4ED1;
 }
 
 .btn-custom-secondary{
     color: #FFFFFF;
-    font-size: 26px;
     border-radius: 6px;
     background-color: #6c757d;
     border-color: #6c757d;

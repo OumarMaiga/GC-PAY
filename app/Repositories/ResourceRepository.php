@@ -5,6 +5,10 @@
     abstract class ResourceRepository {
         protected $model;
         
+        public function get() {
+            return $this->model->get();
+        }
+
         public function getByEmail($email) {
             return $this->model->where('email', $email)->first();
         }

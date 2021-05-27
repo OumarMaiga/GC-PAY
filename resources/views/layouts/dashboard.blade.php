@@ -22,24 +22,25 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
         <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased">
-        <div class="row">
-            <div class="col-md-2">
-                @include('layouts.sidebar')
+            <div class="row">
+                <div class="col-md-2">
+                    @include('layouts.sidebar')
+                </div>
+                <div class="col-md-10">
+                    @include('layouts.navdashboard')
+                    <!-- Page Content -->
+                    <main>
+                        {{ $slot }}
+                    </main>
+                </div>
             </div>
-            <div class="col-md-10">
-                @include('layouts.navdashboard')
-                <!-- Page Content -->
-                <main>
-                    {{ $slot }}
-                </main>
-            </div>
-        </div>
             
             
 
