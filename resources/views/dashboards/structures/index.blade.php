@@ -23,14 +23,15 @@
             </thead>
             <tbody>
                 @foreach ($structures as $structure)
+                    <?php $admin = App\Models\User::where('structure_id', $structure->id)->select('nom', 'prenom')->first() ?> 
                     <tr>
                         <th scope="row">1</th>
                         <td>{{ $structure->libelle }}</td>
                         <td>{{ $structure->type }}</td>
-                        <td>Ousmane Toure</td>
+                        <td>{{ $admin->prenom." ".$admin->nom }}</td>
                         <td>{{ $structure->telephone }}</td>
                         <td class="justify-content-between icon-content">
-                            <a href="" class="col icon-action detail">
+                            <a href="{{ route('structure.show', $structure->slug) }}" class="col icon-action detail">
                                 <span class="fas fa-info">
                                 </span>
                             </a>

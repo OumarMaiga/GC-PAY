@@ -34,7 +34,6 @@
 
 .dashboard-content {
     margin: 20px;
-    
 }
 
 
@@ -57,7 +56,8 @@
     font-weight: 600
 }
 
-.profil-email {
+.profil-type {
+    text-transform: uppercase;
     font-family: 'Sylfaen';
     margin-top: -10px;
     font-size: 1.25rem;
@@ -67,7 +67,8 @@
 
 .profil-description {
     font-size: 1rem;
-    color: #5D5D5D
+    color: #5D5D5D;
+    line-height: 2;
 }
 
 .number {

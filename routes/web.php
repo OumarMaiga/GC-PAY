@@ -67,6 +67,6 @@ Route::get('/dashboard', [PageController::class, 'dashboard'])
             ->name('dashboard.index');
 
 //STRUCTURE
-Route::resource('/dashboard/structure', StructureController::class);
+Route::resource('/dashboard/structure', StructureController::class)->middleware('auth');
 //ADMIN
-Route::resource('/dashboard/admin',AdminController::class);
+Route::resource('/dashboard/admin',AdminController::class)->middleware('auth');

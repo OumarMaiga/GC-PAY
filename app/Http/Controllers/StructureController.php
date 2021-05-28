@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Repositories\StructureRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use App\Models\User;
 
 class StructureController extends Controller
 {
@@ -42,6 +43,11 @@ class StructureController extends Controller
     
     }
 
+    public function show($slug) {
+        $structure = $this->structureRepository->getBySlug($slug);
+        $admin = User::where('structure_id', $structure->id)->select('email', 'nom', 'prenom')->first();
+        return view('dashboards.structures.show', compact('structure', 'admin'));
+    }
     
     public function edit($slug) {
 		$structure = $this->structureRepository->getBySlug($slug);
