@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('username')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->default('12345678');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -41,3 +41,5 @@ class CreateUsersTable extends Migration
         Schema::dropIfExists('users');
     }
 }
+?>
+
