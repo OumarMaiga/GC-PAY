@@ -22,13 +22,14 @@
                             <label for="type">Type de structure</label>
                             <select name="type" id="type" class="input-custom">
                                 <option value="">-- CHOISISSEZ ICI --</option>
-                                <option value="maire">MAIRIE</option>
-                                <option value="hopital">HOPITAL</option>
-                                <option value="impot">IMPÔT</option>
-                                <option value="autre">AUTRE</option>
+                                <option <?= ($structure->type == "mairie") ? "selected=selected" : "" ?> value="mairie">MAIRIE</option>
+                                <option <?= ($structure->type == "hopital") ? "selected=selected" : "" ?> value="hopital">HOPITAL</option>
+                                <option <?= ($structure->type == "impot") ? "selected=selected" : "" ?> value="impot">IMPÔT</option>
+                                <option <?= ($structure->type == "autre") ? "selected=selected" : "" ?> value="autre">AUTRE</option>
                             </select>
                         </div>
                     </div>
+
                     <!-- Email Address -->
                     <div class="row mt-2">
                         <div class="col-md-6 form-group">
