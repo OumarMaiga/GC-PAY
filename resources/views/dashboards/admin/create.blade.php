@@ -25,6 +25,23 @@
                         </div>
                     </div>
 
+                   <!-- Structure et type -->
+                    <div class="row mt-2">
+                        <div class="col-md-6 form-group">
+                                <label for="structure">Structure</label>
+                                <select name="structure" id="strucutre" class="input-custom">
+                                    <option value="">-- CHOISISSEZ ICI --</option>
+                                    @foreach ($structures as $structure)
+                                        <option value="{{ $structure->id }}">{{ $structure->libelle }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                    <div class="col-md-6 form-group">
+                            <label for="email">Email</label>
+                            <input id="email" class="input-custom" type="text" name="email" value="{{ old('email') }}" placeholder="Email"></input>
+                        </div>
+                    </div>
+
                    <!-- Passport et passport confirmé -->
                     <div class="row mt-2">
                     <div class="col-md-6 form-group">
@@ -50,14 +67,6 @@
 
                     </div>
 
-
-                   <!-- Structure et type -->
-                    <div class="row mt-2">
-                    <div class="col-md-6 form-group">
-                            <label for="email">Email</label>
-                            <input id="email" class="input-custom" type="text" name="email" value="{{ old('email') }}" placeholder="Email"></input>
-                        </div>
-                    </div>
 
                      
                      <div class="row mt-2">

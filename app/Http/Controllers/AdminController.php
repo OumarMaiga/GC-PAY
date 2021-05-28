@@ -8,11 +8,20 @@ use Illuminate\Validation\Rules;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Repositories\StructureRepository;
+use App\Repositories\UserRepository;
 
 
 
 class AdminController extends Controller
 {
+    protected $structureRepository;
+    protected $userRepository;
+
+    public function __construct(StructureRepository $structureRepository, UserRepository $userRepository) {
+        $this->structureRepository = $structureRepository;
+        $this->userRepository = $userRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -32,8 +41,8 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
-        return view('dashboards.admin.create');
+        $structures = $this->structureRepository->get();
+        return view('dashboards.admin.create', compact('structures'));
     }
 
     /**
@@ -45,23 +54,19 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            
             'nom' => 'required|string|string|max:255',
             'telephone' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', 'confirmed', Rules\Password::min(8)],
         ]);
-        $user = User::create([
-            
-            'nom' => $request->nom,
-            'email'=>$request->email,
-            'prenom'=> $request->prenom,
-            'telephone' => $request->telephone,
+        
+        $request->merge([
             'type' => 'admin',
-            'adresse' => $request->adresse,
-            'password' => Hash::make($request->password),
+            'password' => Hash::make($request->get('password')),
         ]);
+
+        $user = $this->userRepository->store($request->all());
 
         event(new Registered($user));
         
