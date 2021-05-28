@@ -17,8 +17,8 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th class="text-center">Nom</th>
-                        <th class="text-center"> Prenom</th>
+                        <th class="text-center">Nom Prenom</th>
+                       
                         <th class="text-center"> email</th>
                         <th class="text-center">telephone</th>
                         <th class="text-center">Actions</th>
@@ -27,17 +27,17 @@
                 <tbody>
                 @foreach($users as $key => $value)
                     <tr>
-                        <td>{{ $value->id }}</td>
-                        <td>{{ $value->nom }}</td>
-                        <td>{{ $value->prenom }}</td>
-                        <td>{{ $value->email }}</td>
-                        <td>{{ $value->telephone }}</td>
-                        <td class="justify-content-between icon-content">
-                            <a href="" class="col icon-action detail">
+                        <td class="text-center">{{ $value->id }}</td>
+                        <td class="text-center">{{ $value->nom }}   {{ $value->prenom }}</td>
+                      
+                        <td class="text-center">{{ $value->email }}</td>
+                        <td class="text-center">{{ $value->telephone }}</td>
+                        <td class="justify-content-between icon-content text-center">
+                            <a href="{{ route('admin.show', $value->id) }}" class="col icon-action detail">
                                 <span class="fas fa-info">
                                 </span>
                             </a>
-                            <a href="" class="col icon-action icon-edit">
+                            <a href="{{ route('admin.edit', $value->id) }}" class="col icon-action icon-edit">
                                 <span class="fas fa-user-edit edit">
                                 </span>
                             </a>

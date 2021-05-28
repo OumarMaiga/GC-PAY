@@ -73,7 +73,11 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = user::find($id);
+
+        // show the view and pass the user to it
+        return view('dashboards.admin.show')->with('user',$user);
+       
     }
 
     /**
@@ -84,7 +88,10 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = user::find($id);
+
+        // show the view and pass the user to it
+        return view('dashboards.admin.edit')->with('user',$user);
     }
 
     /**
