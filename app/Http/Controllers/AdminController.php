@@ -7,6 +7,9 @@ use App\Models\User;
 use Illuminate\Validation\Rules;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+
+
 
 class AdminController extends Controller
 {
@@ -47,6 +50,7 @@ class AdminController extends Controller
             'telephone' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
+            'password' => ['required', 'confirmed', Rules\Password::min(8)],
         ]);
         $user = User::create([
             
@@ -56,6 +60,7 @@ class AdminController extends Controller
             'telephone' => $request->telephone,
             'type' => 'admin',
             'adresse' => $request->adresse,
+            'password' => Hash::make($request->password),
         ]);
 
         event(new Registered($user));

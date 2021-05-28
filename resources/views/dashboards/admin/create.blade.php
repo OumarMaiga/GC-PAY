@@ -24,14 +24,39 @@
                             <input id="prenom" class="input-custom" type="text" name="prenom" value="{{ old('prenom') }}" placeholder="Prenom"></input>
                         </div>
                     </div>
+
+                   <!-- Passport et passport confirmé -->
+                    <div class="row mt-2">
+                    <div class="col-md-6 form-group">
+                    <label for="password">Mot de passe</label>
+                        <input id="password" class="input-custom"
+                                        type="password"
+                                        name="password"
+                                        placeholder="Mot de passe"
+                                        required autocomplete="new-password"/>
+                                        
+                    </div>
+
+                    <!-- Confirm Password -->
+                   
+                    <div class="col-md-6 form-group">
+                    <label for="password_confirmation">Mot de passe confirmé</label>
+                        <input id="password_confirmation" class="input-custom"
+                                        type="password"
+                                        name="password_confirmation" 
+                                        placeholder="Mot de passe confirmé"
+                                        required />
+                    </div>
+
+                    </div>
+
+
                    <!-- Structure et type -->
                     <div class="row mt-2">
                     <div class="col-md-6 form-group">
                             <label for="email">Email</label>
                             <input id="email" class="input-custom" type="text" name="email" value="{{ old('email') }}" placeholder="Email"></input>
                         </div>
-                        
-                        
                     </div>
 
                      

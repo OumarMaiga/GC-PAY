@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
+use App\Models\Structure;
 class CreateUsersTable extends Migration
 {
     /**
@@ -25,7 +25,9 @@ class CreateUsersTable extends Migration
             $table->string('username')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password')->default('12345678');
+            $table->string('password');
+            $table-> unsignedBigInteger('structure_id')->nullable(); 
+            $table->foreign('structure_id')->references('id')->on('structures');
             $table->rememberToken();
             $table->timestamps();
         });
