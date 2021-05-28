@@ -42,6 +42,17 @@ class StructureController extends Controller
     
     }
 
+    
+    public function edit($slug) {
+		$structure = $this->structureRepository->getBySlug($slug);
+        return view('dashboards.structures.edit', compact('structure'));
+    }
+    
+    public function update($id, Request $request) {
+        $this->structureRepository->update($id, $request->all());
+        return redirect('/dashboard/structure/')->withStatus("Structure vient d'être mise à jour");
+    }
+
     public function destroy($id) {
 		$this->structureRepository->destroy($id);
         return redirect()->back();

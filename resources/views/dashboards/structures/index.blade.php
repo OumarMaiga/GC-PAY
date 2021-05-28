@@ -34,7 +34,7 @@
                                 <span class="fas fa-info">
                                 </span>
                             </a>
-                            <a href="" class="col icon-action icon-edit">
+                            <a href="{{ route('structure.edit', $structure->slug) }}" class="col icon-action icon-edit">
                                 <span class="fas fa-user-edit edit">
                                 </span>
                             </a>
@@ -43,7 +43,7 @@
                                     @csrf
                                     @method('DELETE')
 
-                                    <button type="submit" onclick="confirm('Voulez-vous supprimer la structure ?')">
+                                    <button type="submit" onclick="return confirm('Voulez-vous supprimer la structure ?')">
                                         <span class="fas fa-user-times supp"></span>
                                     </button>
                                 </form>

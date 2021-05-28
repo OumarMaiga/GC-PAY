@@ -45,7 +45,7 @@
                     </div>
 
                     <div class="mt-4">
-                        <button type="submit" class=" btn-custom">
+                        <button type="submit" class="btn btn-custom">
                             {{ __('INSCRIPTION') }}
                         </button>
                     </div>

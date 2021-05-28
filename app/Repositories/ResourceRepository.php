@@ -9,6 +9,10 @@
             return $this->model->get();
         }
 
+        public function getBySlug($slug) {
+            return $this->model->where('slug', $slug)->first();
+        }
+
         public function getByEmail($email) {
             return $this->model->where('email', $email)->first();
         }
