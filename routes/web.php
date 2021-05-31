@@ -8,6 +8,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\StructureController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RubriqueController;
+use App\Http\Controllers\ServiceController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -70,7 +71,13 @@ Route::get('/dashboard', [PageController::class, 'dashboard'])
 //STRUCTURE
 Route::resource('/dashboard/structure', StructureController::class)->middleware('auth');
 //ADMIN
+<<<<<<< HEAD
 Route::resource('/dashboard/admin', AdminController::class)->middleware('auth');
 
 //RUBRIQUE
 Route::resource('/dashboard/rubrique', RubriqueController::class)->middleware('auth');
+=======
+Route::resource('/dashboard/admin',AdminController::class)->middleware('auth');
+//SERVICE
+Route::resource('/dashboard/service',ServiceController::class)->middleware('auth');
+>>>>>>> 206eabb808d28d13c2d261532a59151a310ae529
