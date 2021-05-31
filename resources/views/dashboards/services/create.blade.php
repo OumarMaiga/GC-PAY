@@ -16,7 +16,7 @@
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label for="libelle">Libelle</label>
-                            <input id="libelle" class="input-custom" type="text" name="libelle" value="{{ old('libelle') }}" placeholder="LIBELLE" required />
+                            <input id="libelle" class="input-custom" type="text" name="libelle" value="{{ old('libelle') }}" placeholder="Libelle" required />
                         </div>
 
                         <div class="col-md-6 form-group">
