@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Repositories\StructureRepository;
 use App\Repositories\UserRepository;
+use Illuminate\Support\Str;
+use App\Models\Structure;
 
 
 
@@ -30,7 +32,7 @@ class AdminController extends Controller
     public function index()
     {
         //$users=user::all();
-       $users = user::where('type','admin')->get();
+       $users = user::where('type','Administrateur')->get();
         return view('dashboards.admin.index')->with('users',$users);
     }
 
@@ -62,7 +64,7 @@ class AdminController extends Controller
         ]);
         
         $request->merge([
-            'type' => 'admin',
+            'type' => 'Administrateur',
             'password' => Hash::make($request->get('password')),
         ]);
 
@@ -84,9 +86,10 @@ class AdminController extends Controller
     public function show($id)
     {
         $user = user::find($id);
+        $structure = structure::where('user_id', $id)->select('slug', 'libelle')->first();
 
         // show the view and pass the user to it
-        return view('dashboards.admin.show')->with('user',$user);
+        return view('dashboards.admin.show',compact('user','structure'));
        
     }
 
@@ -99,9 +102,9 @@ class AdminController extends Controller
     public function edit($id)
     {
         $user = user::find($id);
-
+        $structures = $this->structureRepository->get();
         // show the view and pass the user to it
-        return view('dashboards.admin.edit')->with('user',$user);
+        return view('dashboards.admin.edit',compact('user','structures'));
     }
 
     /**
@@ -111,12 +114,14 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id,Request $request)
     {
         //
+        $this->userRepository->update($id, $request->all());
+        return redirect('/dashboard/admin/')->withStatus("L\'Administrateur vient d'être mise à jour");
     }
 
-    /**
+    /**()
      * Remove the specified resource from storage.
      *
      * @param  int  $id
