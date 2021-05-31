@@ -9,7 +9,7 @@
                         @endif
                
                 <div class="mt-4 row justify-content-center">
-                    <a href="{{ route('admin.edit', $user->id) }}"> <button class="mr-4 btn btn-outline-warning">MODIFIER</button></a>
+                    <a href="{{ route('admin.edit', $user->email) }}"> <button class="mr-4 btn btn-outline-warning">MODIFIER</button></a>
 
                     <form  method="POST" action="{{ route('admin.destroy', $user->id) }}">
                         @csrf

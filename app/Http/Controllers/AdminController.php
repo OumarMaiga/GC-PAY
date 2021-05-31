@@ -83,10 +83,11 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($email)
     {
-        $user = user::find($id);
-        $structure = structure::where('user_id', $id)->select('slug', 'libelle')->first();
+        $user = $this->userRepository->getByEmail($email);
+        
+        $structure = structure::where('id', $user->structure_id)->select('slug', 'libelle')->first();
         // show the view and pass the user to it
         return view('dashboards.admin.show',compact('user','structure'));
        
@@ -98,9 +99,9 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($email)
     {
-        $user = user::find($id);
+        $user = $this->userRepository->getByEmail($email);
         $structures = $this->structureRepository->get();
         // show the view and pass the user to it
         return view('dashboards.admin.edit',compact('user','structures'));

@@ -33,11 +33,11 @@
                         <td class="text-center">{{ $value->email }}</td>
                         <td class="text-center">{{ $value->telephone }}</td>
                         <td class="justify-content-between icon-content text-center">
-                            <a href="{{ route('admin.show', $value->id) }}" class="col icon-action detail">
+                            <a href="{{ route('admin.show', $value->email) }}" class="col icon-action detail">
                                 <span class="fas fa-info">
                                 </span>
                             </a>
-                            <a href="{{ route('admin.edit', $value->id) }}" class="col icon-action icon-edit">
+                            <a href="{{ route('admin.edit', $value->email) }}" class="col icon-action icon-edit">
                                 <span class="fas fa-user-edit edit">
                                 </span>
                             </a>
