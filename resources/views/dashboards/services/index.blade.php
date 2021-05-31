@@ -26,12 +26,19 @@
                 </thead>
                 <tbody>
                 @foreach($services as $key => $value)
-                    <?php
-                        $strucure=Structure::where('id',$value->structure_id)->first();      
-                    ?>
-                    <tr>
+                <?php
+                    $structure=App\Models\Structure::where('id',$value->structure_id)->first();      
+                ?>
+                        <tr>
+                        <td class="text-center">{{ $value->id }}</td>
                         <td class="text-center">{{ $value->libelle }}</td>
-                        <td class='text-center'>{{ $structure->libelle }}</td>    
+                        
+                        
+                        @if($structure==NULL)
+                            <td class="text-center">Non précisée</td>
+                        @else
+                            <td class="text-center">{{ $structure->libelle }}</td>
+                        @endif
                         <td class="text-center">{{ $value->prix }}</td>
                         <td class="justify-content-between icon-content text-center">
                             <a href="{{ route('service.show', $value->slug) }}" class="col icon-action detail">

@@ -24,9 +24,13 @@ class ServiceController extends Controller
      * @return \Illuminate\Http\Response
      */
     protected $serviceRepository;
+    protected $structureRepository;
+    protected $userRepository;
 
-    public function __construct(ServiceRepository $serviceRepository) {
+    public function __construct(ServiceRepository $serviceRepository,StructureRepository $structureRepository, UserRepository $userRepository) {
         $this->serviceRepository = $serviceRepository;
+        $this->structureRepository = $structureRepository;
+        $this->userRepository = $userRepository;
     }
 
     public function index()
@@ -44,7 +48,8 @@ class ServiceController extends Controller
     public function create()
     {
         //
-        return view('dashboards.services.create');
+        $structures = $this->structureRepository->get();
+        return view('dashboards.services.create',compact('structures'));
     }
 
     /**
@@ -56,6 +61,18 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'libelle' => 'required|max:255',
+        ]);
+
+        $request->merge([
+            'slug' => Str::slug($request->get('libelle')),
+            'admin_systeme_id' => Auth::user()->id,
+        ]);
+            
+        $service = $this->serviceRepository->store($request->all());
+
+        return redirect('/dashboard/service/')->withStatus("Un nouveau service vient d'être ajouté");
     }
 
     /**

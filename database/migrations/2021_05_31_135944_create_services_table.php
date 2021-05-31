@@ -22,7 +22,7 @@ class CreateServicesTable extends Migration
             $table->string('slug')->unique();
             $table->text('description')->nullable();
             $table->string('duree')->nullable();
-            $table->decimal('prix')->nullable();
+            $table->string('prix')->nullable();
             $table->string('etat')->nullable();
             $table->foreignId('admin_systeme_id')->default('0');
             //$table->unsignedBigInteger('admin_systeme_id')->nullable();
