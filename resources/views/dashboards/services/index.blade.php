@@ -39,7 +39,7 @@
                         @else
                             <td class="text-center">{{ $structure->libelle }}</td>
                         @endif
-                        <td class="text-center">{{ $value->prix }}</td>
+                        <td class="text-center">{{ $value->prix }} FCFA</td>
                         <td class="justify-content-between icon-content text-center">
                             <a href="{{ route('service.show', $value->slug) }}" class="col icon-action detail">
                                 <span class="fas fa-info">
