@@ -87,7 +87,6 @@ class AdminController extends Controller
     {
         $user = user::find($id);
         $structure = structure::where('user_id', $id)->select('slug', 'libelle')->first();
-
         // show the view and pass the user to it
         return view('dashboards.admin.show',compact('user','structure'));
        

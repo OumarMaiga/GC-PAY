@@ -11,7 +11,7 @@
                 <!-- Validation Errors -->
                 <x-auth-validation-errors class="mb-4" :errors="$errors" />
         
-                <form method="PUT" action="{{ route('admin.update',$user->id) }}">
+                <form method="POST" action="{{ route('admin.update',$user->id) }}">
                     @csrf
                     @method('PUT')
         
@@ -35,24 +35,26 @@
                                 <select name="structure" id="strucutre" class="input-custom">
                                     <option value="">-- CHOISISSEZ ICI --</option>
                                     @foreach ($structures as $structure)
+                                        @if($structure->id==$user->structure_id)
+                                        <option value="{{ $structure->id }}" selected="selected">{{ $structure->libelle }}</option>
+                                        @else
                                         <option value="{{ $structure->id }}">{{ $structure->libelle }}</option>
+
+                                        @endif
                                     @endforeach
                                 </select>
-                            </div>
-                    <div class="col-md-6 form-group">
-                            <label for="email">Email</label>
-                            <input id="email" class="input-custom" type="text" name="email" value="{{ $user->nom }}" placeholder="Email"></input>
-                        </div>
-                    </div>             
-                     <div class="row mt-2">
-                        <div class="col-md-6 form-group">
-                            <label for="adresse">Adresse</label>
-                            <textarea id="adresse" class="input-custom" type="text" name="adresse" value="{{ $user->adresse }}" placeholder="Ville, Commune, Quartier"></textarea>
                         </div>
                         <div class="col-md-6 form-group">
                             <label for="telephone">Telephone</label>
                             <input id="telephone" class="input-custom" type="text" name="telephone" value="{{ $user->telephone }}" placeholder="N° Telephone" />
                         </div>
+                    </div>             
+                     <div class="row mt-2">
+                        <div class="col-md-6 form-group">
+                            <label for="adresse">Adresse</label>
+                            <textarea id="adresse" class="input-custom" type="text" name="adresse"  placeholder="Ville, Commune, Quartier"> {{ $user->adresse }}</textarea>
+                        </div>
+                        
                     </div>
 
                      

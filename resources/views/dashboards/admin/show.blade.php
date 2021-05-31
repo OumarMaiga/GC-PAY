@@ -37,7 +37,11 @@
                     Type: {{ $user->type }}
                 </div>
                 <div class="profil-description">
-                    Structure: <a href="{{ route('structure.show', '$structure->slug') }}">{{ $structure->libelle}}</a>
+                    @if($structure==NULL)
+                    Structure: <a href="{{ route('admin.edit', $user->id) }}" class="text-blue-700">Ajouter</a>
+                    @else
+                    Structure: <a href="{{ route('structure.show', $structure->slug) }}">{{ $structure->libelle}}</a>
+                    @endif
                 </div>
                 
             </div>
