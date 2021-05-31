@@ -2,8 +2,8 @@
     <div class="dashboard-content">
         <div class="mb-3 row align-items-center">
             <div class="col">
-                <span class="content-title">STRUCTURES</span>
-                <a href="{{ route('structure.create') }}" class="float-right"><button class="btn btn-custom">AJOUTER</button></a>
+                <span class="content-title">RUBRIQUE</span>
+                <a href="{{ route('rubrique.create') }}" class="float-right"><button class="btn btn-custom">AJOUTER</button></a>
             </div>
         </div>
 
@@ -14,41 +14,28 @@
             <thead>
                 <tr>
                 <th scope="col">#</th>
-                <th scope="col">Structure</th>
-                <th scope="col">Type</th>
-                <th scope="col">Administrateur</th>
-                <th scope="col">Telephone</th>
+                <th scope="col">Libelle</th>
                 <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
                 <?php $n = 0; ?>
-                @foreach ($structures as $structure)
+                @foreach ($rubriques as $rubrique)
                 <?php $n = $n + 1; ?>
-                    <?php $admin = App\Models\User::where('structure_id', $structure->id)->select('nom', 'prenom')->first() ?> 
                     <tr>
                         <th scope="row"><?= $n ?></th>
-                        <td>{{ $structure->libelle }}</td>
-                        <td>{{ $structure->type }}</td>
-                        <td>
-                            @if ($admin != null)
-                                {{ $admin->prenom." ".$admin->nom }}
-                            @else
-                                Pas d'administrateur
-                            @endif
-                        </td>
-                        <td>{{ $structure->telephone }}</td>
+                        <td>{{ $rubrique->libelle }}</td>
                         <td class="justify-content-between icon-content">
-                            <a href="{{ route('structure.show', $structure->slug) }}" class="col icon-action detail">
+                            <a href="{{ route('rubrique.show', $rubrique->slug) }}" class="col icon-action detail">
                                 <span class="fas fa-info">
                                 </span>
                             </a>
-                            <a href="{{ route('structure.edit', $structure->slug) }}" class="col icon-action icon-edit">
+                            <a href="{{ route('rubrique.edit', $rubrique->slug) }}" class="col icon-action icon-edit">
                                 <span class="fas fa-user-edit edit">
                                 </span>
                             </a>
                             <span class="col icon-action">
-                                <form  method="POST" action="{{ route('structure.destroy', $structure->id) }}" class="d-inline-flex">
+                                <form  method="POST" action="{{ route('rubrique.destroy', $rubrique->id) }}" class="d-inline-flex">
                                     @csrf
                                     @method('DELETE')
 

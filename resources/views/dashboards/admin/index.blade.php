@@ -25,9 +25,11 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php $n = 0; ?>
                 @foreach($users as $key => $value)
+                <?php $n = $n + 1; ?>
                     <tr>
-                        <td class="text-center">{{ $value->id }}</td>
+                        <td class="text-center"><?= $n ?></td>
                         <td class="text-center">{{ $value->nom }}   {{ $value->prenom }}</td>
                       
                         <td class="text-center">{{ $value->email }}</td>

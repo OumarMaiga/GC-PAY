@@ -116,8 +116,8 @@ class AdminController extends Controller
      */
     public function update($id,Request $request)
     {
-        //
         $this->userRepository->update($id, $request->all());
+        
         return redirect('/dashboard/admin/')->withStatus("L\'Administrateur vient d'être mise à jour");
     }
 

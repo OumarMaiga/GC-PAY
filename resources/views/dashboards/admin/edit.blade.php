@@ -32,15 +32,10 @@
                     <div class="row mt-2">
                         <div class="col-md-6 form-group">
                                 <label for="structure">Structure</label>
-                                <select name="structure" id="strucutre" class="input-custom">
+                                <select name="structure_id" id="strucutre" class="input-custom">
                                     <option value="">-- CHOISISSEZ ICI --</option>
                                     @foreach ($structures as $structure)
-                                        @if($structure->id==$user->structure_id)
-                                        <option value="{{ $structure->id }}" selected="selected">{{ $structure->libelle }}</option>
-                                        @else
-                                        <option value="{{ $structure->id }}">{{ $structure->libelle }}</option>
-
-                                        @endif
+                                        <option <?= ($user->strucure_id == $structure->id) ? "selected=selected" : "" ?> value="{{ $structure->id }}">{{ $structure->libelle }}</option>
                                     @endforeach
                                 </select>
                         </div>

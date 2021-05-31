@@ -29,7 +29,12 @@
                     Adresse: {{ $structure->adresse }}
                 </div>
                 <div class="profil-description">
-                    Administrateur: <a href="{{ route('admin.show', $admin->email) }}">{{ $admin->prenom." ".$admin->nom }}</a>
+                    Administrateur: 
+                    @if ($admin != null) 
+                        <a href="{{ route('admin.show', $admin->email) }}">{{ $admin->prenom." ".$admin->nom }}</a>
+                    @else
+                        <!--<a href="{{ route('structure.edit', $structure->slug) }}" class="text-blue-700">Ajouter</a>-->
+                    @endif
                 </div>
                 <br/>
                 <hr/>
