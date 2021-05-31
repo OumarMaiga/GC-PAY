@@ -5,10 +5,10 @@
             @if (picture_exist($user->id))
                             <img src="/storage/profil_pictures/{{ picture_exist($user->id) }}" class="avatar"/>
                         @else
-                            <img src='/storage/profil_pictures/default.jpg'  class='avatar'/>
+                            <img src='/storage/profil_pictures/default.jpg'class="profil-img"/>
                         @endif
                
-                <div class="mt-4 row ">
+                <div class="mt-4 row justify-content-center">
                     <a href="{{ route('admin.edit', $user->id) }}"> <button class="mr-4 btn btn-outline-warning">MODIFIER</button></a>
 
                     <form  method="POST" action="{{ route('admin.destroy', $user->id) }}">
@@ -20,7 +20,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col-md-8 margin_gauche">
+            <div class="col-md-8" >
                 <div class="profil-name">
                     {{ $user->prenom." ".$user->nom }}
                 </div>
