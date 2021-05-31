@@ -1,15 +1,15 @@
 <x-dashboard-layout>
     <div class="container dashboard-content">
         <div class="row">
-            <div class="title-show">
+            <div class="show-title">
                 {{ $rubrique->libelle }}
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 show-subtitle">
                 Etat
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 show-detail">
                 @if ( $rubrique->etat == true)
                     <span class="badge badge-success">Acitve</span>
                 @else
@@ -17,7 +17,7 @@
                 @endif
             </div>
         </div>
-        <div class="row">
+        <div class="row show-detail">
             Ajouter par <i><a href="">{{ $user->prenom." ".$user->nom." (".$user->email.")" }}</a></i>
         </div>
         <div class="row col-md-4">

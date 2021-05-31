@@ -98,3 +98,17 @@
 .icon-action .supp:hover {
     color: #dc3545;
 }
+
+.show-title {
+    font-size: 2rem;
+    font-family: 'Rockwell';
+}
+
+.show-subtile {
+    color: #5D5D5D;
+    font-size: 1.4rem
+}
+
+.show-detail {
+    font-size: 1rem;
+}
