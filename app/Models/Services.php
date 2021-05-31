@@ -10,6 +10,7 @@ class Services extends Model
     use HasFactory;
     protected $fillable = [
         "libelle",
+        "slug",
         "description", 
         "admin_systeme_id",
         "structure_id",

@@ -64,7 +64,7 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($lug)
     {
         //
     }
@@ -75,7 +75,7 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
         //
     }
@@ -101,5 +101,11 @@ class ServiceController extends Controller
     public function destroy($id)
     {
         //
+        // delete
+        $service = services::find($id);
+        $service->delete();
+
+        // redirect
+        return redirect('/dashboard/service/')->withStatus("Le service a bien été supprimé");
     }
 }
