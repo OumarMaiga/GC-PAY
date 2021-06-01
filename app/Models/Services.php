@@ -14,6 +14,7 @@ class Services extends Model
         "description", 
         "admin_systeme_id",
         "structure_id",
+        "rubrique_id",
         "etat",
         "duree",
         "prix",

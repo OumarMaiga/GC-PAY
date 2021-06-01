@@ -20,6 +20,7 @@
                         <th class="text-center">Libellé</th>
                        
                         <th class="text-center"> Structure</th>
+                        <th class="text-center"> Rubrique</th>
                         <th class="text-center">Prix</th>
                         <th class="text-center">Actions</th>
                     </tr>
@@ -27,7 +28,8 @@
                 <tbody>
                 @foreach($services as $key => $value)
                 <?php
-                    $structure=App\Models\Structure::where('id',$value->structure_id)->first();      
+                    $structure=App\Models\Structure::where('id',$value->structure_id)->first(); 
+                    $rubrique=App\Models\Rubrique::where('id',$value->rubrique_id)->first();     
                 ?>
                         <tr>
                         <td class="text-center">{{ $value->id }}</td>
@@ -36,6 +38,12 @@
                             <td class="text-center">Non précisée</td>
                         @else
                             <td class="text-center">{{ $structure->libelle }}</td>
+                        @endif
+
+                        @if($rubrique==NULL)
+                            <td class="text-center">Non précisée</td>
+                        @else
+                            <td class="text-center">{{ $rubrique->libelle }}</td>
                         @endif
                         <td class="text-center">{{ $value->prix }}</td>
                         <td class="justify-content-between icon-content text-center">

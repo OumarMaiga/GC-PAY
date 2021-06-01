@@ -37,9 +37,15 @@
                                 </select>
                         </div>
                         <div class="col-md-6 form-group">
-                            <label for="prix">Prix</label>
-                            <input id="prix" class="input-custom" type="text" name="prix" value="{{ old('prix') }}" placeholder="Prix" />
+                                <label for="rubrique_id">Rubrique</label>
+                                <select name="rubrique_id" id="rubrique_id" class="input-custom">
+                                    <option value="">-- CHOISISSEZ ICI --</option>
+                                    @foreach ($rubriques as $rubrique)
+                                        <option value="{{ $rubrique->id }}">{{ $rubrique->libelle }}</option>
+                                    @endforeach
+                                </select>
                         </div>
+                        
                     
                     </div>
 
@@ -48,6 +54,10 @@
                         <div class="col-md-6 form-group">
                             <label for="description">Description</label>
                             <textarea id="description" class="input-custom" type="text" name="description" value="{{ old('description') }}" placeholder="Description,details"></textarea>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="prix">Prix</label>
+                            <input id="prix" class="input-custom" type="text" name="prix" value="{{ old('prix') }}" placeholder="Prix" />
                         </div>
                         
                     </div>

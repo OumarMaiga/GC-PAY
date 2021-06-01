@@ -34,6 +34,13 @@
 
         </div>
         <div class="row">
+            @if($rubrique==NULL)
+                Rubrique: <a href="{{ route('service.edit', $service->slug) }}" class="text-blue-700">Ajouter</a>
+            @else
+                Rubrique: <a href="{{ route('rubrique.show', $rubrique->slug) }}">{{ $rubrique->libelle}}</a>
+            @endif
+        </div>
+        <div class="row">
             @if($structure==NULL)
                 Structure: <a href="{{ route('service.edit', $service->slug) }}" class="text-blue-700">Ajouter</a>
             @else
