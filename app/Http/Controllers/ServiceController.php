@@ -12,9 +12,11 @@ use Illuminate\Support\Facades\Hash;
 use App\Repositories\StructureRepository;
 use App\Repositories\UserRepository;
 use App\Repositories\ServiceRepository;
+use App\Repositories\RubriqueRepository;
 use Illuminate\Support\Str;
 use App\Models\Structure;
 use App\Models\Services;
+use App\Models\Rubrique;
 
 class ServiceController extends Controller
 {
@@ -26,11 +28,13 @@ class ServiceController extends Controller
     protected $serviceRepository;
     protected $structureRepository;
     protected $userRepository;
+    protected $rubriqueRepository;
 
-    public function __construct(ServiceRepository $serviceRepository,StructureRepository $structureRepository, UserRepository $userRepository) {
+    public function __construct(ServiceRepository $serviceRepository,StructureRepository $structureRepository, UserRepository $userRepository,RubriqueRepository $rubriqueRepository) {
         $this->serviceRepository = $serviceRepository;
         $this->structureRepository = $structureRepository;
         $this->userRepository = $userRepository;
+        $this->rubriqueRepository = $rubriqueRepository;
     }
 
     public function index()
@@ -49,7 +53,8 @@ class ServiceController extends Controller
     {
         //
         $structures = $this->structureRepository->get();
-        return view('dashboards.services.create',compact('structures'));
+        $rubriques = $this->rubriqueRepository->get();
+        return view('dashboards.services.create',compact('structures','rubriques'));
     }
 
     /**
@@ -85,9 +90,9 @@ class ServiceController extends Controller
     {
         $service = $this->serviceRepository->getBySlug($slug);
         $user = $this->userRepository->getById($service->admin_systeme_id);
-        
-        $structure = Structure::where('id', $service->structure_id)->first();
-        return view('dashboards.services.show', compact('service', 'user', 'structure'));
+        $structure = structure::where('id', $service->structure_id)->select('slug', 'libelle')->first();
+        $rubrique = Rubrique::where('id', $service->rubrique_id)->select('slug', 'libelle')->first();
+        return view('dashboards.services.show', compact('service', ('user'),('structure'),('rubrique')));
     }
 
     /**
@@ -101,8 +106,9 @@ class ServiceController extends Controller
         //
         $service= $this->serviceRepository->getBySlug($slug);
         $structures = $this->structureRepository->get();
+        $rubriques = $this->rubriqueRepository->get();
         // show the view and pass the service to it
-        return view('dashboards.services.edit',compact('service','structures'));
+        return view('dashboards.services.edit',compact('service','structures','rubriques'));
     }
 
     /**
