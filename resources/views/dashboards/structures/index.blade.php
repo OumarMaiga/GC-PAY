@@ -1,24 +1,29 @@
 <x-dashboard-layout>
-    <div class="dashboard-content">
-        <div class="mb-3 row align-items-center">
-            <div class="col">
-                <span class="content-title">STRUCTURES</span>
-                <a href="{{ route('structure.create') }}" class="float-right"><button class="btn btn-custom">AJOUTER</button></a>
-            </div>
-        </div>
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8"><h2><b>LES STRUCTURES</b></h2></div>
 
+                    <div classe="">
+                    <a href="{{route('structure.create') }}"> <input type="button" value="AJOUTER"class="btn btn-custom margin_left"></a>
+                </div>
+                    
+                </div>
+            </div>
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
-        <table class="table table-hover">
+        <table class="table table-striped table-hover table-bordered">
             <thead>
                 <tr>
-                <th scope="col">#</th>
-                <th scope="col">Structure</th>
-                <th scope="col">Type</th>
-                <th scope="col">Administrateur</th>
-                <th scope="col">Telephone</th>
-                <th scope="col">Action</th>
+                <th scope="col" class="text-center"></th>
+                <th scope="col" class="text-center">Structure</th>
+                <th scope="col" class="text-center">Type</th>
+                <th scope="col" class="text-center">Administrateur</th>
+                <th scope="col" class="text-center">Telephone</th>
+                <th scope="col" class="text-center">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,17 +33,17 @@
                     <?php $admin = App\Models\User::where('structure_id', $structure->id)->select('nom', 'prenom')->first() ?> 
                     <tr>
                         <th scope="row"><?= $n ?></th>
-                        <td>{{ $structure->libelle }}</td>
-                        <td>{{ $structure->type }}</td>
-                        <td>
+                        <td class="text-center">{{ $structure->libelle }}</td>
+                        <td class="text-center">{{ $structure->type }}</td>
+                        <td class="text-center">
                             @if ($admin != null)
                                 {{ $admin->prenom." ".$admin->nom }}
                             @else
                                 Non précisé 
                             @endif
                         </td>
-                        <td>{{ $structure->telephone }}</td>
-                        <td class="justify-content-between icon-content">
+                        <td class="text-center">{{ $structure->telephone }}</td>
+                        <td class="justify-content-between icon-content text-center">
                             <a href="{{ route('structure.show', $structure->slug) }}" class="col icon-action detail">
                                 <span class="fas fa-info">
                                 </span>
@@ -60,7 +65,9 @@
                         </td>
                     </tr>
                 @endforeach
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </div>
+</div>
 </x-dashboard-layout>

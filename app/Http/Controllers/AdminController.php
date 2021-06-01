@@ -72,7 +72,7 @@ class AdminController extends Controller
 
         event(new Registered($user));
         
-        return redirect('/dashboard/admin/')->withStatus("Un nouvel administrateur vient d\'être créé");
+        return redirect('/dashboard/admin/')->withStatus("Un nouvel administrateur vient d'être créé");
        
 
     }
@@ -118,7 +118,7 @@ class AdminController extends Controller
     {
         $this->userRepository->update($id, $request->all());
         
-        return redirect('/dashboard/admin/')->withStatus("L\'Administrateur vient d'être mise à jour");
+        return redirect('/dashboard/admin/')->withStatus("L'Administrateur vient d'être mise à jour");
     }
 
     /**()

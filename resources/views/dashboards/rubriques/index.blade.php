@@ -1,21 +1,27 @@
 <x-dashboard-layout>
-    <div class="dashboard-content">
-        <div class="mb-3 row align-items-center">
-            <div class="col">
-                <span class="content-title">RUBRIQUE</span>
-                <a href="{{ route('rubrique.create') }}" class="float-right"><button class="btn btn-custom">AJOUTER</button></a>
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8"><h2><b>LES RUBRIQUES</b></h2></div>
+
+                    <div classe="">
+                    <a href="{{route('rubrique.create') }}"> <input type="button" value="AJOUTER"class="btn btn-custom margin_left"></a>
+                </div>
+                    
+                </div>
             </div>
-        </div>
 
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
-        <table class="table table-hover">
+        <table class="table table-hover table-striped table-bordered">
             <thead>
                 <tr>
-                <th scope="col">#</th>
-                <th scope="col">Libelle</th>
-                <th scope="col">Action</th>
+                <th scope="col"></th>
+                <th scope="col" class="text-center">Libelle</th>
+                <th scope="col" class="text-center">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,8 +30,8 @@
                 <?php $n = $n + 1; ?>
                     <tr>
                         <th scope="row"><?= $n ?></th>
-                        <td>{{ $rubrique->libelle }}</td>
-                        <td class="justify-content-between icon-content">
+                        <td class="text-center">{{ $rubrique->libelle }}</td>
+                        <td class="justify-content-between icon-content text-center">
                             <a href="{{ route('rubrique.show', $rubrique->slug) }}" class="col icon-action detail">
                                 <span class="fas fa-info">
                                 </span>
@@ -46,8 +52,10 @@
                             </span>
                         </td>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
+</div>
 </x-dashboard-layout>

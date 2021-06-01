@@ -13,6 +13,9 @@
                     
                 </div>
             </div>
+            <!-- Session Status -->
+            <x-auth-session-status class="mb-4" :status="session('status')" />
+
             <table class="table table-striped table-hover table-bordered">
                 <thead>
                     <tr>
