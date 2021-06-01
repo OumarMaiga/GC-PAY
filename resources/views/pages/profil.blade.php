@@ -5,7 +5,7 @@
         <div class="col-12 d-flex justify-content-center"> 
             <div class="image-container">
                 @if (photo_profil())
-                    <img src="/storage/profil_pictures/{{ photo_profil() }}" class="avatar"/>
+                    <img src="{{ photo_profil() }}" class="avatar"/>
                 @else
                     <img src='/storage/profil_pictures/default.jpg'  class='avatar'/>
                 @endif

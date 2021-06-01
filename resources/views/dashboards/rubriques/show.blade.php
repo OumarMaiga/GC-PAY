@@ -13,12 +13,12 @@
                 @if ( $rubrique->etat == true)
                     <span class="badge badge-success">Acitve</span>
                 @else
-                    <span class="badge badge-danger">Desactive</span>
+                    <span class="badge badge-danger">Inactive</span>
                 @endif
             </div>
         </div>
         <div class="row show-detail">
-            Ajouter par <i><a href="">{{ $user->prenom." ".$user->nom." (".$user->email.")" }}</a></i>
+            Ajouter par <i><a href="{{ route('admin.show', $user->email) }}">{{ $user->prenom." ".$user->nom." (".$user->email.")" }}</a></i>
         </div>
         <div class="row col-md-4">
             <div class="mt-4 row justify-content-center">
@@ -27,7 +27,7 @@
                 <form  method="POST" action="{{ route('rubrique.destroy', $rubrique->id) }}">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="ml-4 btn btn-outline-danger" onclick="return confirm('Voulez-vous supprimer la structure ?')">
+                    <button type="submit" class="ml-4 btn btn-outline-danger" onclick="return confirm('Voulez-vous supprimer cet rubrique ?')">
                         RETIRER
                     </button>
                 </form>

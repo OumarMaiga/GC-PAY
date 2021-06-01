@@ -11,7 +11,7 @@
                 <div class="col-12 d-flex justify-content-center"> 
                     <div class="image-container">
                         @if (photo_profil())
-                            <img src="/storage/profil_pictures/{{ photo_profil() }}" class="avatar"/>
+                            <img src="{{ photo_profil() }}" class="avatar"/>
                         @else
                             <img src='/storage/profil_pictures/default.jpg'  class='avatar'/>
                         @endif
@@ -24,7 +24,7 @@
             <div class="form-group row mt-4">
                 <label for="nom" class="col-sm-2 col-form-label label-size">Nom</label>
                 <div class="col-sm-10">
-                    <input id="nom" class="input-custom" type="text" name="nom" value="{{ $user->nom }}" placeholder="Nom" required autofocus />
+                    <input id="nom" class="input-custom" type="text" name="nom" value="{{ $user->nom }}" placeholder="Nom" autofocus />
                 </div>
             </div>
             
@@ -32,7 +32,7 @@
             <div class="form-group row mt-4">
                 <label for="prenom" class="col-sm-2 col-form-label label-size">Prénom </label>
                 <div class="col-sm-10">
-                    <input id="prenom" class="input-custom" type="text" name="prenom" value="{{ $user->prenom }}" placeholder="Prenom" required/>
+                    <input id="prenom" class="input-custom" type="text" name="prenom" value="{{ $user->prenom }}" placeholder="Prenom"/>
                 </div>
             </div> 
 

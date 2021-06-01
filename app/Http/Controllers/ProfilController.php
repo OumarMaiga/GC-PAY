@@ -42,14 +42,14 @@ class ProfilController extends Controller
         $this->userRepository->update($user->id, $request->all());
 
         if($request->hasFile('avatar')){
-            $avatar = new File;
-            $filename='profil_picture_user_'.$user->id.'.'.$request->file('avatar')->getClientOriginalExtension();
-            $avatar->libelle=$filename;
-            $avatar->file_path='/storage/app/public/profil_pictures/'.$filename;
-            $avatar->user_id = $user->id;
-            $request->file('avatar')->storeAs('public/profil_pictures',$filename);
-            $avatar->save();
-            $user=Auth::user();
+            $fileModel = new File;
+            $fileName = time().'_'.$request->file('avatar')->getClientOriginalName();
+            $filePath = $request->file('avatar')->storeAs("uploads/profil_pictures/$user->id", $fileName, 'public');
+            $fileModel->libelle = $fileName;
+            $fileModel->file_path = '/storage/' . $filePath;
+            $fileModel->user_id = $user->id;
+            
+            $fileModel->save();
             $user->save();
         }
 

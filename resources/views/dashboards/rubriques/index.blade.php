@@ -45,7 +45,7 @@
                                     @csrf
                                     @method('DELETE')
 
-                                    <button type="submit" onclick="return confirm('Voulez-vous supprimer la structure ?')">
+                                    <button type="submit" onclick="return confirm('Voulez-vous supprimer cet rubrique ?')">
                                         <span class="fas fa-user-times supp"></span>
                                     </button>
                                 </form>
