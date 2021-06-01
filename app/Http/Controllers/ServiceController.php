@@ -81,9 +81,13 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($lug)
+    public function show($slug)
     {
         //
+        $service = $this->serviceRepository->getBySlug($slug);
+        $user = $this->userRepository->getById($service->admin_systeme_id);
+        $structure=$this->structureRepository->getById($service->structure_id);
+        return view('dashboards.services.show', compact('service', ('user'),('structure')));
     }
 
     /**
@@ -95,6 +99,10 @@ class ServiceController extends Controller
     public function edit($slug)
     {
         //
+        $service= $this->serviceRepository->getBySlug($slug);
+        $structures = $this->structureRepository->get();
+        // show the view and pass the service to it
+        return view('dashboards.services.edit',compact('service','structures'));
     }
 
     /**
@@ -104,9 +112,11 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update( $id, Request $request)
     {
-        //
+        $this->serviceRepository->update($id, $request->all());
+        
+        return redirect('/dashboard/service/')->withStatus("Le service vient d'être mise à jour");
     }
 
     /**
