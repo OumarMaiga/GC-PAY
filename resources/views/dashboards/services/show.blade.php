@@ -41,7 +41,7 @@
             @endif
         </div>
         <div class="row show-detail">
-            Ajouté par <i><a href="">{{ $user->prenom." ".$user->nom." (".$user->email.")" }}</a></i>
+            Ajouté par: <i><a href=""> {{ $user->prenom." ".$user->nom." (".$user->email.")" }}</a></i>
         </div>
         <div class="row col-md-4">
             <div class="mt-4 row justify-content-center">

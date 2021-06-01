@@ -32,8 +32,6 @@
                         <tr>
                         <td class="text-center">{{ $value->id }}</td>
                         <td class="text-center">{{ $value->libelle }}</td>
-                        
-                        
                         @if($structure==NULL)
                             <td class="text-center">Non précisée</td>
                         @else

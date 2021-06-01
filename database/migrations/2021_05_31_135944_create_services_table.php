@@ -5,6 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Models\Structure;
 use App\Models\User;
+use App\Models\Rubrique;
 use Illuminate\Support\Facades\Auth;
 
 class CreateServicesTable extends Migration
@@ -30,6 +31,7 @@ class CreateServicesTable extends Migration
             $table-> unsignedBigInteger('structure_id')->nullable(); 
             $table->foreign('structure_id')->references('id')->on('structures');
             $table->unsignedBigInteger('rubrique_id')->nullable();
+            $table->foreign('rubrique_id')->references('id')->on('rubriques');
             
             $table->timestamps();
         });
