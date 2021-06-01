@@ -58,7 +58,7 @@ class RubriqueController extends Controller
     
     public function update($id, Request $request) {
         $this->rubriqueRepository->update($id, $request->all());
-        return redirect('/dashboard/rubrique/')->withStatus("rubrique vient d'être mise à jour");
+        return redirect('/dashboard/rubrique/')->withStatus("Rubrique vient d'être mise à jour");
     }
 
     public function destroy($id) {

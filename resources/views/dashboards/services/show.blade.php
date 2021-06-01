@@ -13,7 +13,7 @@
                 @if ( $service->etat == true)
                     <span class="badge badge-success">Acitve</span>
                 @else
-                    <span class="badge badge-danger">Desactive</span>
+                    <span class="badge badge-danger">Inactive</span>
                 @endif
             </div>
             </div>
@@ -41,7 +41,7 @@
             @endif
         </div>
         <div class="row show-detail">
-            Ajouté par: <i><a href=""> {{ $user->prenom." ".$user->nom." (".$user->email.")" }}</a></i>
+            Ajouté par: <i><a href="{{ route('admin.show', $user->email) }}"> {{ $user->prenom." ".$user->nom." (".$user->email.")" }}</a></i>
         </div>
         <div class="row col-md-4">
             <div class="mt-4 row justify-content-center">

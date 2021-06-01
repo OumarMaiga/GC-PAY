@@ -82,7 +82,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="position:relative; padding-left:50px">
                         @if (photo_profil())
-                            <img src="/storage/profil_pictures/{{ photo_profil() }}" style="width:32px;height:32px;position:absolute; top:10px;left:10px; border-radius:50%">
+                            <img src="{{ photo_profil() }}" style="width:32px;height:32px;position:absolute; top:10px;left:10px; border-radius:50%">
                         @else
                             <img src='/storage/profil_pictures/default.jpg' style='width:32px;height:32px;position:absolute; top:10px;left:10px; border-radius:50%'/>
                         @endif

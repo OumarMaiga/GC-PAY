@@ -16,7 +16,7 @@
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label for="libelle">Nom de la rubrique</label>
-                            <input id="libelle" class="input-custom" type="text" name="libelle" value="{{ old('libelle') }}" placeholder="RUBRIQUE" required />
+                            <input id="libelle" class="input-custom" type="text" name="libelle" value="{{ $rubrique->libelle }}" placeholder="RUBRIQUE" required />
                         </div>
                     </div>
 
