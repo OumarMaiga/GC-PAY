@@ -35,7 +35,7 @@
                                 <select name="structure_id" id="strucutre" class="input-custom">
                                     <option value="">-- CHOISISSEZ ICI --</option>
                                     @foreach ($structures as $structure)
-                                        <option <?= ($user->strucure_id == $structure->id) ? "selected=selected" : "" ?> value="{{ $structure->id }}">{{ $structure->libelle }}</option>
+                                        <option <?= ($user->structure_id == $structure->id) ? "selected=selected" : "" ?> value="{{ $structure->id }}">{{ $structure->libelle }}</option>
                                     @endforeach
                                 </select>
                         </div>

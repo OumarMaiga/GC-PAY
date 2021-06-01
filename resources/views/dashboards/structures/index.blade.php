@@ -34,7 +34,7 @@
                             @if ($admin != null)
                                 {{ $admin->prenom." ".$admin->nom }}
                             @else
-                                Pas d'administrateur
+                                Non précisé 
                             @endif
                         </td>
                         <td>{{ $structure->telephone }}</td>
