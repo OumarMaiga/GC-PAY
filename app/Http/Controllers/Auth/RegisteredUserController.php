@@ -82,14 +82,24 @@ class RegisteredUserController extends Controller
 
     public function bloquer($id,Request $request)
     {
+        $user = $this->userRepository->getById($id);
+        if($user->etat==true)
+        {
+            $request->merge([
+                'etat' => false,
+            ]);
+        }
+        else
+        {
+            $request->merge([
+                'etat' => true,
+            ]);
+        }
         
-        $request->merge([
-            'etat' => 'false',
-        ]);
-
+            
         $this->userRepository->update($id, $request->all());
         
-        return redirect('/dashboard/usagers/')->withStatus("L'utilisateur vient d'être bloqué");
+        return redirect('/dashboard/usagers/')->withStatus("L'état de l'utilisateur vient d'être changer");
 
        
 

@@ -10,12 +10,19 @@
                
                 <div class="mt-4 row justify-content-center">
                     
-                    <form  method="POST" action="{{ route('usager.bloquer', $user->email) }}">
+                    <form  method="POST" action="{{ route('usager.bloquer', $user->id) }}">
                         @csrf
                         @method('PUT')
+                        @if($user->etat==true)
                         <button type="submit" class="mr-4 btn btn-outline-warning" onclick="return confirm('Voulez-vous bloquer l\'utilisateur ?')">
                             BLOQUER
                         </button>
+                        @else
+                        <button type="submit" class="mr-4 btn btn-outline-warning" onclick="return confirm('Voulez-vous debloquer l\'utilisateur ?')">
+                            DEBLOQUER
+                        </button>
+                        @endif
+
                     </form>
 
 
