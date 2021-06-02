@@ -3,12 +3,13 @@
         <div class="row">
             <div class="col-md-4">
             @if (picture_exist($user->id))
-                            <img src="/storage/profil_pictures/{{ picture_exist($user->id) }}" class="avatar"/>
+                            <img src="{{ picture_exist($user->id) }}" class="avatar"/>
+                            
                         @else
                             <img src='/storage/profil_pictures/default.jpg'class="profil-img"/>
                         @endif
                
-                <div class="mt-4 row justify-content-center">
+                <div class="mt-4 row ">
                     
                     <form  method="POST" action="{{ route('usager.bloquer', $user->id) }}">
                         @csrf

@@ -24,12 +24,13 @@ function photo_profil() {
 function picture_exist($id) {
     $user = user::find($id);
     $file = new File;
-    $file = $file->where('user_id', $user->id)->first();
+    //$file = $file->where('user_id', $user->id)->first();
+    $file = $file->where('user_id', $user->id)->orderBy('id', 'desc')->first();
 
     if ($file == null) {
         $file = false;
     } else {
-        $file = $file->libelle;
+        $file = $file->file_path;
     }
     return $file;
 
