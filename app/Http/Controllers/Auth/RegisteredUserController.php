@@ -104,16 +104,7 @@ class RegisteredUserController extends Controller
        
 
     }
-    public function destroy($id)
-    {
-     
-        // delete
-        $user = user::find($id);
-        $user->delete();
-
-        // redirect
-        return redirect('/dashboard/usagers/')->withStatus("L'utilisateur a bien été supprimé");
-    }   
+   
 }
 
 

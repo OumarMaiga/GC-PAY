@@ -92,7 +92,7 @@ Route::get('/dashboard/usagers', [RegisteredUserController::class, 'index'])
 Route::get('/dashboard/usagers/{email}', [RegisteredUserController::class, 'show'])
             ->middleware('auth')
             ->name('usager.show');
-
+//blocage des usagers
 Route::put('/dashboard/usagers/{email}', [RegisteredUserController::class, 'bloquer'])
             ->middleware('auth')
             ->name('usager.bloquer');

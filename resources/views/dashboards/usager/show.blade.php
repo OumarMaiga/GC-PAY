@@ -24,16 +24,6 @@
                         @endif
 
                     </form>
-
-
-
-                    <form  method="POST" action="{{ route('admin.destroy', $user->id) }}">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="ml-4 btn btn-outline-danger" onclick="return confirm('Voulez-vous supprimer l\'administrateur ?')">
-                            RETIRER
-                        </button>
-                    </form>
                 </div>
             </div>
             <div class="col-md-8" >
