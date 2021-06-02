@@ -40,12 +40,12 @@
                     Adresse: {{ $user->adresse }}
                 </div>
                 <div class="profil-description">
-                    @if($user->type=="usagers")
-                    Type: Utilisateur simple de la plateforme
+                    @if($user->type=="usager")
+                        Type: Utilisateur simple de la plateforme
                     @elseif($user->type=="admin-structure")
-                    Type: Adminstrateur Structure)
+                        Type: Adminstrateur Structure)
                     @else
-                    Type: Administrateur Système
+                        Type: Administrateur Système
                     @endif
                 </div>
                 <div class="profil-description">

@@ -48,7 +48,7 @@ class RegisteredUserController extends Controller
         ]);
 
         $user = User::create([
-            
+            'type' => 'usager',
             'email' => $request->email,
             'telephone' => $request->telephone,
             'password' => Hash::make($request->password),
@@ -61,11 +61,10 @@ class RegisteredUserController extends Controller
         return redirect(RouteServiceProvider::HOME);
     }
 
-
     public function index()
     {
         //$users=user::all();
-       $users = user::where('type','usagers')->get();
+       $users = user::where('type','usager')->get();
         return view('dashboards.usager.index')->with('users',$users);
     }
 
