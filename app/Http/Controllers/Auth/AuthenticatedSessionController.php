@@ -7,10 +7,18 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use App\Repositories\UserRepository;
+use App\Models\User;
 
 class AuthenticatedSessionController extends Controller
 {
+   
+    protected $userRepository;
+
+    public function __construct(UserRepository $userRepository) {
+        
+        $this->userRepository = $userRepository;
+    }
     
     /**
      * Display the login view.
@@ -30,11 +38,29 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
-        $request->authenticate();
+        $user = $this->userRepository->getByEmail($request->login);
+        //si la personne se connecte avec son numéro de téléphone
+        if($user==NULL)
+        {
+            $user=user::where('telephone',$request->login)->select('etat')->first();
 
-        $request->session()->regenerate();
+        }
+       
+        
+        if($user->etat==true)
+        {
+            $request->authenticate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+            $request->session()->regenerate();
+
+            return redirect()->intended(RouteServiceProvider::HOME);
+        }
+        else
+        {
+            return redirect('/login')->withError("Utilisateur bloqué");
+        }
+
+        
     }
 
     /**
