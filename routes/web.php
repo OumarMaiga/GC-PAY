@@ -9,6 +9,7 @@ use App\Http\Controllers\StructureController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RubriqueController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\EntrepriseController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -78,3 +79,5 @@ Route::resource('/dashboard/rubrique', RubriqueController::class)->middleware('a
 Route::resource('/dashboard/admin',AdminController::class)->middleware('auth');
 //SERVICE
 Route::resource('/dashboard/service',ServiceController::class)->middleware('auth');
+//ENTREPRISE
+Route::resource('/dashboard/entreprise',EntrepriseController::class)->middleware('auth');

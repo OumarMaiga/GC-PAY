@@ -27,7 +27,7 @@
             </a>
         </li>
         <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
+            <a href="{{ route('entreprise.index') }}" class="sidebar-link">
                 ENTREPRISE
             </a>
         </li>
