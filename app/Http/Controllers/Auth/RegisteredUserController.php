@@ -10,9 +10,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use App\Repositories\UserRepository;
 
 class RegisteredUserController extends Controller
 {
+    protected $userRepository;
+
+    public function __construct(UserRepository $userRepository) {
+        
+        $this->userRepository = $userRepository;
+    }
     /**
      * Display the registration view.
      *
@@ -53,4 +60,50 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
+
+
+    public function index()
+    {
+        //$users=user::all();
+       $users = user::where('type','usagers')->get();
+        return view('dashboards.usager.index')->with('users',$users);
+    }
+
+
+    public function show($email)
+    {
+        $user = $this->userRepository->getByEmail($email);
+        
+        
+        // show the view and pass the user to it
+        return view('dashboards.usager.show',compact('user'));
+       
+    }
+
+    public function bloquer($id,Request $request)
+    {
+        
+        $request->merge([
+            'etat' => 'false',
+        ]);
+
+        $this->userRepository->update($id, $request->all());
+        
+        return redirect('/dashboard/usagers/')->withStatus("L'utilisateur vient d'être bloqué");
+
+       
+
+    }
+    public function destroy($id)
+    {
+     
+        // delete
+        $user = user::find($id);
+        $user->delete();
+
+        // redirect
+        return redirect('/dashboard/usagers/')->withStatus("L'utilisateur a bien été supprimé");
+    }   
 }
+
+
