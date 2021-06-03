@@ -15,14 +15,12 @@ use App\Http\Controllers\SettingController;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
-/*
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-*/
+});*/
+
+Route::get('/', [PageController::class, 'home'])->name('home');
+
 require __DIR__.'/auth.php';
 require __DIR__.'/dashboard.php';
 
