@@ -15,11 +15,10 @@ use App\Http\Controllers\SettingController;
 |
 */
 
-/*Route::get('/', function () {
+Route::get('/', function () {
     return view('welcome');
-});*/
-
-Route::get('/', [PageController::class, 'home'])->name('home');
+                })
+                ->name('home');
 
 require __DIR__.'/auth.php';
 require __DIR__.'/dashboard.php';

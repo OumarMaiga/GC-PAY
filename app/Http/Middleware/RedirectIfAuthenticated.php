@@ -20,14 +20,10 @@ class RedirectIfAuthenticated
     public function handle(Request $request, Closure $next, ...$guards)
     {  
         $guards = empty($guards) ? [null] : $guards;
-        $user = $request->user();
+       
         foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()  && $user->etat === true) {
+            if (Auth::guard($guard)->check()) {
                 return redirect(RouteServiceProvider::HOME);
-            }
-            else{
-                if(Auth::guard($guard)->check() && $user->etat === false)
-                return view('auth.login');
             }
         }
 
