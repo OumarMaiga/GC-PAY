@@ -38,6 +38,8 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
+        
+        $request->authenticate();
         $user = $this->userRepository->getByEmail($request->login);
         //si la personne se connecte avec son numéro de téléphone
         if($user==NULL)
@@ -45,15 +47,21 @@ class AuthenticatedSessionController extends Controller
             $user=user::where('telephone',$request->login)->select('etat')->first();
 
         }
-       
-        
         if($user->etat==true)
         {
-            $request->authenticate();
-
+           if($user->type=='admin-systeme')
+           {
             $request->session()->regenerate();
 
             return redirect()->intended(RouteServiceProvider::HOME);
+           }
+           else{
+            $request->session()->regenerate();
+
+            return redirect("/$user->email");
+           }
+
+            
         }
         else
         {
