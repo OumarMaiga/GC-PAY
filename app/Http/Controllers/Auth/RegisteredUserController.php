@@ -17,7 +17,7 @@ class RegisteredUserController extends Controller
     protected $userRepository;
 
     public function __construct(UserRepository $userRepository) {
-        
+        $this->middleware('admin-systeme-only', ['only' => ['index']]);
         $this->userRepository = $userRepository;
     }
     /**
