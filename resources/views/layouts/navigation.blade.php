@@ -1,8 +1,21 @@
 <nav class="navbar navbar-expand-lg navigation">
-        <!-- Logo -->
+        <!-- Logo --> 
+        
+        @if(Auth::check())
+        @if(Auth::user()->type=='admin-systeme' || Auth::user()->type=='admin-structure')
         <a class="navbar-brand logo" href="{{ route('dashboard.index') }}">
             {{ __('GC - PAY') }}
         </a>
+        @else
+        <a class="navbar-brand logo" href="{{ route('home') }}">
+            {{ __('GC - PAY') }}
+        </a>
+        @endif
+        @else
+        <a class="navbar-brand logo" href="{{ route('login') }}">
+            {{ __('GC - PAY') }}
+        </a>
+        @endif
 
         <!-- Right Item -->
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
