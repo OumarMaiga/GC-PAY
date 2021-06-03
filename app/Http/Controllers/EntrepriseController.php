@@ -22,6 +22,7 @@ class EntrepriseController extends Controller
     protected $userRepository;
 
     public function __construct(EntrepriseRepository $entrepriseRepository, UserRepository $userRepository) {
+        $this->middleware('admin-systeme-only', ['only' => ['index', 'create', 'store', 'destroy']]);
         $this->entrepriseRepository = $entrepriseRepository;
         $this->userRepository = $userRepository;
     }

@@ -31,6 +31,7 @@ class ServiceController extends Controller
     protected $rubriqueRepository;
 
     public function __construct(ServiceRepository $serviceRepository,StructureRepository $structureRepository, UserRepository $userRepository,RubriqueRepository $rubriqueRepository) {
+        $this->middleware('admin-systeme-only', ['only' => ['index', 'create', 'store', 'destroy']]);
         $this->serviceRepository = $serviceRepository;
         $this->structureRepository = $structureRepository;
         $this->userRepository = $userRepository;

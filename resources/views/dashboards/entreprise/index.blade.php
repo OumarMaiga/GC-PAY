@@ -6,7 +6,7 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-8"><h2><b>LES ENTREPRISES</b></h2></div>
-
+                    <a href="{{route('entreprise.create')}}" class="btn btn-custom"></a>
                     
                     
                 </div>

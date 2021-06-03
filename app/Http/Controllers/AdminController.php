@@ -21,6 +21,7 @@ class AdminController extends Controller
     protected $userRepository;
 
     public function __construct(StructureRepository $structureRepository, UserRepository $userRepository) {
+        $this->middleware('admin-systeme-only', ['only' => ['index', 'create', 'store', 'destroy']]);
         $this->structureRepository = $structureRepository;
         $this->userRepository = $userRepository;
     }

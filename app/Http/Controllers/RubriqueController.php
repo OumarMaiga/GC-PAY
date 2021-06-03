@@ -15,6 +15,7 @@ class RubriqueController extends Controller
     protected $userRepository;
 
     public function __construct(RubriqueRepository $rubriqueRepository, UserRepository $userRepository) {
+        $this->middleware('admin-systeme-only', ['only' => ['index', 'create', 'store', 'destroy']]);
         $this->rubriqueRepository = $rubriqueRepository;
         $this->userRepository = $userRepository;
     }

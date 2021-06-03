@@ -1,6 +1,8 @@
 <x-app-layout>
     <div class="container">
         
+        <x-auth-access-denied class="mb-4" :denied="session('denied')" />
+        
         <!--  avatar -->
         <div class="col-12 d-flex justify-content-center"> 
             <div class="image-container">

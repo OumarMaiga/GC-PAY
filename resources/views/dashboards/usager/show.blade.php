@@ -19,7 +19,7 @@
                             BLOQUER
                         </button>
                         @else
-                        <button type="submit" class="mr-4 btn btn-outline-warning" onclick="return confirm('Voulez-vous debloquer l\'utilisateur ?')">
+                        <button type="submit" class="mr-4 btn btn-outline-success" onclick="return confirm('Voulez-vous debloquer l\'utilisateur ?')">
                             DEBLOQUER
                         </button>
                         @endif

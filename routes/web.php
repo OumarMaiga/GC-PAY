@@ -4,13 +4,6 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\SettingController;
-use App\Http\Controllers\PageController;
-use App\Http\Controllers\StructureController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\RubriqueController;
-use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\EntrepriseController;
-use App\Http\Controllers\Auth\RegisteredUserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,12 +18,13 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 Route::get('/', function () {
     return view('welcome');
 });
-
+/*
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
-
+*/
 require __DIR__.'/auth.php';
+require __DIR__.'/dashboard.php';
 
 // Profil
 
@@ -64,36 +58,4 @@ Route::put('/{email}/profil', [ProfilController::class, 'update'])
 
 //test image
 Route::resource('files', 'App\Http\Controllers\FilesController'); // Laravel 8
-
-//DASHBOARD
-Route::get('/dashboard', [PageController::class, 'dashboard'])
-            ->middleware('auth')
-            ->name('dashboard.index');
-
-//STRUCTURE
-Route::resource('/dashboard/structure', StructureController::class)->middleware('auth');
-//ADMIN
-Route::resource('/dashboard/admin', AdminController::class)->middleware('auth');
-
-//RUBRIQUE
-Route::resource('/dashboard/rubrique', RubriqueController::class)->middleware('auth');
-Route::resource('/dashboard/admin',AdminController::class)->middleware('auth');
-//SERVICE
-Route::resource('/dashboard/service',ServiceController::class)->middleware('auth');
-//ENTREPRISE
-Route::resource('/dashboard/entreprise',EntrepriseController::class)->middleware('auth');
-
-//Affichage des usagers
-Route::get('/dashboard/usagers', [RegisteredUserController::class, 'index'])
-            ->middleware('auth')
-            ->name('usager.index');
-
-//Show des usagers
-Route::get('/dashboard/usagers/{email}', [RegisteredUserController::class, 'show'])
-            ->middleware('auth')
-            ->name('usager.show');
-//blocage des usagers
-Route::put('/dashboard/usagers/{email}', [RegisteredUserController::class, 'bloquer'])
-            ->middleware('auth')
-            ->name('usager.bloquer');
 

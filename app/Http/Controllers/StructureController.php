@@ -13,6 +13,7 @@ class StructureController extends Controller
     protected $structureRepository;
 
     public function __construct(StructureRepository $structureRepository) {
+        $this->middleware('admin-systeme-only', ['only' => ['index', 'create', 'store', 'destroy']]);
         $this->structureRepository = $structureRepository;
     }
 
