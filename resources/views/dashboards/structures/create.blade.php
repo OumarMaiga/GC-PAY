@@ -21,7 +21,7 @@
                             <label for="type">Type de structure</label>
                             <select name="type" id="type" class="input-custom">
                                 <option value="">-- CHOISISSEZ ICI --</option>
-                                <option value="maire">MAIRIE</option>
+                                <option value="mairie">MAIRIE</option>
                                 <option value="hopital">HOPITAL</option>
                                 <option value="impot">IMPÔT</option>
                                 <option value="autre">AUTRE</option>

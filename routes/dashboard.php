@@ -12,7 +12,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 
 //DASHBOARD
 Route::get('/dashboard', [PageController::class, 'dashboard'])
-            ->middleware(['auth', 'admin-systeme'])
+            ->middleware(['auth'])
             ->name('dashboard.index');
 
 //STRUCTURE
