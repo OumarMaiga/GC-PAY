@@ -6,7 +6,9 @@
                 <div class="auth-title">
                     CONNEXION
                 </div>
-
+                <!-- Accès Interdite -->
+                <x-auth-access-denied class="mb-4" :denied="session('denied')" />
+                
                 <!-- Session Status -->
                 <x-auth-session-error class="mb-4" :error="session('error')" />
 

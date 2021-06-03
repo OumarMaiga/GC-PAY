@@ -16,7 +16,6 @@ class AuthenticatedSessionController extends Controller
     protected $userRepository;
 
     public function __construct(UserRepository $userRepository) {
-        
         $this->userRepository = $userRepository;
     }
     
@@ -38,28 +37,12 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
-        $user = $this->userRepository->getByEmail($request->login);
-        //si la personne se connecte avec son numéro de téléphone
-        if($user==NULL)
-        {
-            $user=user::where('telephone',$request->login)->select('etat')->first();
-
-        }
        
-        
-        if($user->etat==true)
-        {
-            $request->authenticate();
+        $request->authenticate();
 
-            $request->session()->regenerate();
+        $request->session()->regenerate();
 
-            return redirect()->intended(RouteServiceProvider::HOME);
-        }
-        else
-        {
-            return redirect('/login')->withError("Utilisateur bloqué");
-        }
-
+        return redirect()->intended(RouteServiceProvider::HOME);
         
     }
 
