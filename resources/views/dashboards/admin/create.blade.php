@@ -36,9 +36,24 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="col-md-6 form-group">
+                            <label for="type">Type d'administrateur</label>
+                            <select name="type" id="type" class="input-custom">
+                                <option value="">-- CHOISISSEZ ICI --</option>
+                                <option value="admin-systeme">Administrateur Système</option>
+                                <option value="admin-structure">Administrateur Structure</option>
+                            </select>
+                        </div>
+                    
+                    </div>
+                    <div class="row mt-2">
                     <div class="col-md-6 form-group">
                             <label for="email">Email</label>
                             <input id="email" class="input-custom" type="text" name="email" value="{{ old('email') }}" placeholder="Email"></input>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="telephone">Telephone</label>
+                            <input id="telephone" class="input-custom" type="text" name="telephone" value="{{ old('telephone') }}" placeholder="N° Telephone" />
                         </div>
                     </div>
 
@@ -74,10 +89,7 @@
                             <label for="adresse">Adresse</label>
                             <textarea id="adresse" class="input-custom" type="text" name="adresse" value="{{ old('adresse') }}" placeholder="Ville, Commune, Quartier"></textarea>
                         </div>
-                        <div class="col-md-6 form-group">
-                            <label for="telephone">Telephone</label>
-                            <input id="telephone" class="input-custom" type="text" name="telephone" value="{{ old('telephone') }}" placeholder="N° Telephone" />
-                        </div>
+                        
                     </div>
 
                      

@@ -40,14 +40,23 @@
                                 </select>
                         </div>
                         <div class="col-md-6 form-group">
-                            <label for="telephone">Telephone</label>
-                            <input id="telephone" class="input-custom" type="text" name="telephone" value="{{ $user->telephone }}" placeholder="N° Telephone" />
+                            <label for="type">Type d'administrateur</label>
+                            <select name="type" id="type" class="input-custom">
+                                <option value="">-- CHOISISSEZ ICI --</option>
+                                <option <?= ($user->type == "admin-systeme") ? "selected=selected" : "" ?> value="admin-systeme">Administrateur Système</option>
+                                <option <?= ($user->type == "admin-structure") ? "selected=selected" : "" ?> value="admin-structure">Administrateur Structure</option>                   
+                            </select>
                         </div>
+                       
                     </div>             
                      <div class="row mt-2">
                         <div class="col-md-6 form-group">
                             <label for="adresse">Adresse</label>
                             <textarea id="adresse" class="input-custom" type="text" name="adresse"  placeholder="Ville, Commune, Quartier"> {{ $user->adresse }}</textarea>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="telephone">Telephone</label>
+                            <input id="telephone" class="input-custom" type="text" name="telephone" value="{{ $user->telephone }}" placeholder="N° Telephone" />
                         </div>
                         
                     </div>

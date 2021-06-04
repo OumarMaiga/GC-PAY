@@ -46,7 +46,8 @@ class EntrepriseController extends Controller
     public function create()
     {
         //
-        return view('dashboards.entreprise.create');
+        $users = $this->userRepository->get();
+        return view('dashboards.entreprise.create',compact('users'));
     }
 
     /**
@@ -109,7 +110,8 @@ class EntrepriseController extends Controller
         //
         $entreprise= $this->entrepriseRepository->getBySlug($slug);
         // show the view and pass the service to it
-        return view('dashboards.entreprise.edit',compact('entreprise'));
+        $users = $this->userRepository->get();
+        return view('dashboards.entreprise.edit',compact('entreprise','users'));
     }
 
     /**

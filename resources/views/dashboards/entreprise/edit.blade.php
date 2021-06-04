@@ -33,9 +33,16 @@
                             <input id="date_creation" class="input-custom" type="text" name="date_creation" value="{{ $entreprise->date_creation }}" placeholder="Mois Année" />
                         </div>
                         <div class="col-md-6 form-group">
-                            <label for="telephone">Telephone</label>
-                            <input id="telephone" class="input-custom" type="text" name="telephone" value="{{ $entreprise->telephone }}" placeholder="N° Telephone" />
+                                <label for="utilisateur_id">Administrateur</label>
+                                <select name="utilisateur_id" id="ustilisateur_id" class="input-custom">
+                                    <option value="">-- CHOISISSEZ ICI --</option>
+                                    @foreach ($users as $user)
+                                     
+                                        <option <?= ($entreprise->utilisateur_id == $user->id) ? "selected=selected" : "" ?> value="{{ $user->id }}">{{ $user->prenom.' '.$user->nom }}</option>
+                                    @endforeach
+                                </select>
                         </div>
+                        
                     </div>
 
                      
@@ -43,6 +50,10 @@
                         <div class="col-md-6 form-group">
                             <label for="adresse">Adresse</label>
                             <textarea id="adresse" class="input-custom" type="text" name="adresse" placeholder="Ville, Commune, Quartier">{{ $entreprise->adresse}}</textarea>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="telephone">Telephone</label>
+                            <input id="telephone" class="input-custom" type="text" name="telephone" value="{{ $entreprise->telephone }}" placeholder="N° Telephone" />
                         </div>
                         
                         
