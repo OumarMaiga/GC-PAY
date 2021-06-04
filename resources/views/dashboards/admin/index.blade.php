@@ -5,7 +5,7 @@
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
-                    <div class="col-sm-8"><h2><b>LES ADMINISTRATEURS DES STRUCTURES</b></h2></div>
+                    <div class="col-sm-8"><h2><b>LES ADMINISTRATEURS</b></h2></div>
 
                     <div classe="">
                     <a href="{{route('admin.create') }}"> <input type="button" value="AJOUTER"class="btn btn-custom margin_left"></a>
@@ -21,7 +21,7 @@
                     <tr>
                         <th></th>
                         <th class="text-center">Nom Prenom</th>
-                       
+                        <th class="text-center">Type</th>
                         <th class="text-center"> email</th>
                         <th class="text-center">telephone</th>
                         <th class="text-center">Actions</th>
@@ -34,7 +34,11 @@
                     <tr>
                         <td class="text-center"><?= $n ?></td>
                         <td class="text-center">{{ $value->nom }}   {{ $value->prenom }}</td>
-                      
+                        @if($value->type=="admin-structure")
+                            <td class="text-center">Adminstrateur Structure</td>
+                        @elseif($value->type=="admin-systeme")
+                        <td class="text-center">Adminstrateur Système</td>
+                        @endif
                         <td class="text-center">{{ $value->email }}</td>
                         <td class="text-center">{{ $value->telephone }}</td>
                         <td class="justify-content-between icon-content text-center">

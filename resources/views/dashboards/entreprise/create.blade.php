@@ -21,7 +21,7 @@
 
                         <div class="col-md-6 form-group">
                             <label for="nif">NIF</label>
-                            <input id="nif" class="input-custom" type="text" name="nif" value="{{ old('nif') }}" placeholder="Numéro d'identification fiscale"></input>
+                            <input id="nif" class="input-custom" type="text" name="nif" value="{{ old('nif') }}" placeholder="Numéro d'identification fiscale" required></input>
                         </div>
                     </div>
 
@@ -32,9 +32,15 @@
                             <input id="date_creation" class="input-custom" type="text" name="date_creation" value="{{ old('date_creation') }}" placeholder="Mois Année" />
                         </div>
                         <div class="col-md-6 form-group">
-                            <label for="telephone">Telephone</label>
-                            <input id="telephone" class="input-custom" type="text" name="telephone" value="{{ old('telephone') }}" placeholder="N° Telephone" />
+                                <label for="utilisateur_id">Administrateur</label>
+                                <select name="utilisateur_id" id="ustilisateur_id" class="input-custom">
+                                    <option value="">-- CHOISISSEZ ICI --</option>
+                                    @foreach ($users as $user)
+                                        <option value="{{ $user->id }}">{{ $user->prenom.' '.$user->nom }}</option>
+                                    @endforeach
+                                </select>
                         </div>
+                        
                     </div>
 
                      
@@ -42,6 +48,10 @@
                         <div class="col-md-6 form-group">
                             <label for="adresse">Adresse</label>
                             <textarea id="adresse" class="input-custom" type="text" name="adresse" value="{{ old('adresse') }}" placeholder="Ville, Commune, Quartier"></textarea>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="telephone">Telephone</label>
+                            <input id="telephone" class="input-custom" type="text" name="telephone" value="{{ old('telephone') }}" placeholder="N° Telephone" />
                         </div>
                         
                         

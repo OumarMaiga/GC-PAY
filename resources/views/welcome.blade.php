@@ -18,6 +18,10 @@
             body {
                 font-family: 'Nunito', sans-serif;
             }
+            .text-blue-800 {
+                --tw-text-opacity: 1;
+                color: rgba(30, 64, 175, var(--tw-text-opacity));
+            }
         </style>
     </head>
     <body class="antialiased">
@@ -40,7 +44,7 @@
                 </div>
             @endif
 
-
+            @if(!Auth::check())
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
                     <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20">
@@ -49,7 +53,13 @@
                         </g>
                     </svg>
                 </div>
-
+                @else
+                <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+                <div class="flex justify-center ">
+                    <h1 class="text-blue-800">BONJOUR {{Auth::user()->prenom.' '.Auth::user()->nom}}!</h1>
+                   
+                </div>
+                @endif
 
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">

@@ -2,7 +2,7 @@
     <div class="container dashboard-content">
         <div class="row">
             <div class="col-md-4">
-                <img alt="profil" src="" class="profil-img"/>
+                <img  src="" class="profil-img"/>
                 <div class="mt-4 row justify-content-center">
                     <a href="{{ route('structure.edit', $structure->slug) }}"> <button class="mr-4 btn btn-outline-warning">MODIFIER</button></a>
 

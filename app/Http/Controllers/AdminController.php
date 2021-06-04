@@ -33,7 +33,9 @@ class AdminController extends Controller
     public function index()
     {
         //$users=user::all();
-       $users = user::where('type','admin-structure')->get();
+       $users = user::where('type','admin-structure')
+                    ->orwhere('type','admin-systeme' )
+                    ->get();
         return view('dashboards.admin.index')->with('users',$users);
     }
 
@@ -65,7 +67,7 @@ class AdminController extends Controller
         ]);
         
         $request->merge([
-            'type' => 'admin-structure',
+            
             'password' => Hash::make($request->get('password')),
         ]);
 

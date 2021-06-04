@@ -6,9 +6,11 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-8"><h2><b>LES ENTREPRISES</b></h2></div>
-                    <a href="{{route('entreprise.create')}}" class="btn btn-custom"></a>
+                   <!-- <a href="{{route('entreprise.create')}}" class="btn btn-custom"></a> -->
                     
-                    
+                <div classe="">
+                    <a href="{{route('entreprise.create') }}"> <input type="button" value="AJOUTER"class="btn btn-custom margin_left"></a>
+                </div>
                 </div>
             </div>
             <!-- Session Status -->
@@ -49,6 +51,20 @@
                                 <span class="fas fa-info">
                                 </span>
                             </a>
+                            <a href="{{ route('entreprise.edit', $value->slug) }}" class="col icon-action icon-edit">
+                                <span class="fas fa-user-edit edit">
+                                </span>
+                            </a>
+                            <span class="col icon-action">
+                                <form  method="POST" action="{{ route('entreprise.destroy', $value->id) }}" class="d-inline-flex">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button type="submit" onclick="return confirm('Voulez-vous supprimer l\'administrateur ?')">
+                                        <span class="fas fa-user-times supp"></span>
+                                    </button>
+                                </form>
+                            </span>
                             
                         </td>
                     </tr>

@@ -47,7 +47,8 @@ class EntrepriseController extends Controller
     public function create()
     {
         //
-        return view('dashboards.entreprise.create');
+        $users = $this->userRepository->get();
+        return view('dashboards.entreprise.create',compact('users'));
     }
 
     /**
@@ -66,7 +67,7 @@ class EntrepriseController extends Controller
 
         $request->merge([
             'slug' => Str::slug($request->get('nom')),
-            'utilisateur_id' => Auth::user()->id,
+            
         ]);
             
         $entreprise = $this->entrepriseRepository->store($request->all());
@@ -101,7 +102,8 @@ class EntrepriseController extends Controller
         //
         $entreprise= $this->entrepriseRepository->getBySlug($slug);
         // show the view and pass the service to it
-        return view('dashboards.entreprise.edit',compact('entreprise'));
+        $users = $this->userRepository->get();
+        return view('dashboards.entreprise.edit',compact('entreprise','users'));
     }
 
     /**
