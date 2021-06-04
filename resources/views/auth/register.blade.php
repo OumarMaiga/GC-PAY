@@ -15,14 +15,24 @@
 
                 <!--  Email Address -->
                     <div class="form-group">
-                        <input id="email" class="input-custom" type="email" name="email" :value="old('email')" placeholder="Email" required autofocus />
+                        <input id="nom" class="input-custom" type="text" name="nom" value="{{ old('nom') }}" placeholder="Nom" required autofocus />
+                    </div>
+
+                <!--  Email Address -->
+                    <div class="form-group">
+                        <input id="prenom" class="input-custom" type="text" name="prenom" value="{{ old('prenom') }}" placeholder="Prenom" required />
+                    </div>
+
+                <!--  Email Address -->
+                    <div class="form-group">
+                        <input id="email" class="input-custom" type="email" name="email" value="{{ old('email') }}" placeholder="Email" required />
                     </div>
 
                     <!-- Phone number -->
                     <div class="form-group mt-4">
                         <input  type="tel" id="telephone"
                         class="input-custom" 
-                        placeholder="Téléphone" name="telephone" :value="old('telephone')" required />
+                        placeholder="Téléphone" name="telephone" value="{{ old('telephone') }}" required />
                     </div>
                     <!-- Password -->
                     <div class="mt-4">
