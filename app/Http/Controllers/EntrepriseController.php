@@ -4,16 +4,15 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
-use App\Models\User;
 use Illuminate\Validation\Rules;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
-
-use App\Repositories\UserRepository;
-
-use App\Repositories\EntrepriseRepository;
 use Illuminate\Support\Str;
 
+use App\Repositories\UserRepository;
+use App\Repositories\EntrepriseRepository;
+
+use App\Models\User;
 use App\Models\Entreprise;
 
 class EntrepriseController extends Controller
@@ -64,8 +63,17 @@ class EntrepriseController extends Controller
             'nom' => 'required|max:255',
         ]);
 
+        $nbreLibelle = Entreprise::where('nom', $request->nom)->count();
+        
+        if ($nbreLibelle != '0') {
+            $slug = Str::slug($request->get('nom'))."-".$nbreLibelle;
+        }
+        else {
+            $slug = Str::slug($request->get('nom'));
+        }
+        
         $request->merge([
-            'slug' => Str::slug($request->get('nom')),
+            'slug' => $slug,
             'utilisateur_id' => Auth::user()->id,
         ]);
             

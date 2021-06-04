@@ -7,6 +7,7 @@ use App\Repositories\StructureRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Models\User;
+use App\Models\Structure;
 
 class StructureController extends Controller
 {
@@ -33,8 +34,17 @@ class StructureController extends Controller
             'type' => 'required|max:255',
         ]);
 
+        $nbreLibelle = Structure::where('libelle', $request->libelle)->count();
+        
+        if ($nbreLibelle != '0') {
+            $slug = Str::slug($request->get('libelle'))."-".$nbreLibelle;
+        }
+        else {
+            $slug = Str::slug($request->get('libelle'));
+        }
+        
         $request->merge([
-            'slug' => Str::slug($request->get('libelle')),
+            'slug' => $slug,
             'user_id' => Auth::user()->id,
         ]);
             

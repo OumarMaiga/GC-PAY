@@ -8,6 +8,7 @@ use App\Repositories\RubriqueRepository;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Structure;
+use App\Models\Rubrique;
 
 class RubriqueController extends Controller
 {
@@ -35,8 +36,17 @@ class RubriqueController extends Controller
             'libelle' => 'required|max:255',
         ]);
 
+        $nbreLibelle = Rubrique::where('libelle', $request->libelle)->count();
+        
+        if ($nbreLibelle != '0') {
+            $slug = Str::slug($request->get('libelle'))."-".$nbreLibelle;
+        }
+        else {
+            $slug = Str::slug($request->get('libelle'));
+        }
+
         $request->merge([
-            'slug' => Str::slug($request->get('libelle')),
+            'slug' => $slug,
             'admin_systeme_id' => Auth::user()->id,
         ]);
             

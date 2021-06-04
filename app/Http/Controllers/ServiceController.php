@@ -15,7 +15,7 @@ use App\Repositories\ServiceRepository;
 use App\Repositories\RubriqueRepository;
 use Illuminate\Support\Str;
 use App\Models\Structure;
-use App\Models\Services;
+use App\Models\Service;
 use App\Models\Rubrique;
 
 class ServiceController extends Controller
@@ -71,8 +71,17 @@ class ServiceController extends Controller
             'libelle' => 'required|max:255',
         ]);
 
+        $nbreLibelle = Service::where('libelle', $request->libelle)->count();
+        
+        if ($nbreLibelle != '0') {
+            $slug = Str::slug($request->get('libelle'))."-".$nbreLibelle;
+        }
+        else {
+            $slug = Str::slug($request->get('libelle'));
+        }
+
         $request->merge([
-            'slug' => Str::slug($request->get('libelle')),
+            'slug' => $slug,
             'admin_systeme_id' => Auth::user()->id,
         ]);
             
@@ -136,7 +145,7 @@ class ServiceController extends Controller
     {
         //
         // delete
-        $service = services::find($id);
+        $service = Service::find($id);
         $service->delete();
 
         // redirect
