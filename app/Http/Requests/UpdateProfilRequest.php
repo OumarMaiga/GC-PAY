@@ -26,8 +26,6 @@ class UpdateProfilRequest extends FormRequest
     public function rules()
     {
         return [
-            'nom'=> 'string',
-            'prenom'=> 'string',
             'email'=> 'required|string',
             'telephone'=> 'required|string'
         ];

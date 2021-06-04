@@ -62,7 +62,9 @@
                 </div>
                 &nbsp;&nbsp;&nbsp;
                 <div classe="">
-                    <a href="{{ route('profil', $user->email) }}"> <input type="button" value="ANNULER"class="btn btn-custom-secondary"></a>
+                    <a href="{{ route('profil', $user->email) }}"> 
+                        <input type="button" value="ANNULER"class="btn btn-custom-secondary">
+                    </a>
                 </div>
         </form>
     </div>
