@@ -20,7 +20,7 @@ class CreateStructuresTable extends Migration
             $table->string('type')->nullable();
             $table->text('adresse')->nullable();
             $table->string('telephone')->nullable();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->nullable();
             $table->timestamps();
         });
     }

@@ -58,10 +58,9 @@ class EntrepriseController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        //
         $request->validate([
             'nom' => 'required|max:255',
+            'nif' => 'required|unique:entreprises|alpha_num|size:10',
         ]);
 
         $nbreLibelle = Entreprise::where('nom', $request->nom)->count();
@@ -75,7 +74,7 @@ class EntrepriseController extends Controller
         
         $request->merge([
             'slug' => $slug,
-            'utilisateur_id' => Auth::user()->id,
+            'user_id' => Auth::user()->id,
         ]);
             
         $entreprise = $this->entrepriseRepository->store($request->all());

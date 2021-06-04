@@ -26,12 +26,8 @@ class CreateServicesTable extends Migration
             $table->string('prix')->nullable();
             $table->boolean('etat')->default(true);
             $table->foreignId('admin_systeme_id')->default('0');
-            //$table->unsignedBigInteger('admin_systeme_id')->nullable();
-            //$table->foreign('admin_systeme_id')->references('id')->on('user');
-            $table-> unsignedBigInteger('structure_id')->nullable(); 
-            $table->foreign('structure_id')->references('id')->on('structures');
-            $table->unsignedBigInteger('rubrique_id')->nullable();
-            $table->foreign('rubrique_id')->references('id')->on('rubriques');
+            $table->foreignId('structure_id')->nullable();
+            $table->foreignId('rubrique_id')->nullable();
             
             $table->timestamps();
         });

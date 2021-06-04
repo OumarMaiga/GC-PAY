@@ -21,7 +21,7 @@
 
                         <div class="col-md-6 form-group">
                             <label for="nif">NIF</label>
-                            <input id="nif" class="input-custom" type="text" name="nif" value="{{ old('nif') }}" placeholder="Numéro d'identification fiscale" required></input>
+                            <input id="nif" class="input-custom" type="text" name="nif" value="{{ old('nif') }}" placeholder="Numéro d'identification fiscale" required/>
                         </div>
                     </div>
 
@@ -32,13 +32,8 @@
                             <input id="date_creation" class="input-custom" type="text" name="date_creation" value="{{ old('date_creation') }}" placeholder="Mois Année" />
                         </div>
                         <div class="col-md-6 form-group">
-                                <label for="utilisateur_id">Administrateur</label>
-                                <select name="utilisateur_id" id="ustilisateur_id" class="input-custom">
-                                    <option value="">-- CHOISISSEZ ICI --</option>
-                                    @foreach ($users as $user)
-                                        <option value="{{ $user->id }}">{{ $user->prenom.' '.$user->nom }}</option>
-                                    @endforeach
-                                </select>
+                            <label for="utilisateur_id">Responsable</label>
+                            <input id="responsable" class="input-custom" type="text" name="responsable" value="{{ old('responsable') }}" placeholder="Prenom et Nom" required/>
                         </div>
                         
                     </div>

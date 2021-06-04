@@ -11,7 +11,7 @@ class Entreprise extends Model
     protected $fillable = [
         "nom",
         "slug",
-        "utilisateur_id", 
+        "user_id", 
         "nif",
         "telephone",
         "adresse",

@@ -16,14 +16,13 @@ class CreateEntreprisesTable extends Migration
     {
         Schema::create('entreprises', function (Blueprint $table) {
             $table->id();
-            $table-> unsignedBigInteger('utilisateur_id')->nullable(); 
-            $table->foreign('utilisatuer_id')->references('id')->on('users');
-            
+            $table->foreignId('user_id');
             $table->string('slug')->unique();
             $table->string('nom')->nullable();
-            $table->string('nif')->nullable();
+            $table->string('nif')->unique();
             $table->string('telephone')->nullable();
             $table->text('adresse')->nullable();
+            $table->text('responsable')->nullable();
             $table->string('date_creation')->nullable();
             $table->timestamps();
         });
