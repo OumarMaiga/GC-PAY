@@ -26,7 +26,7 @@ class User extends Authenticatable
         'type',
         'etat',
         'adresse',
-        'structure_id'
+        'structure_id',
     ];
 
     /**

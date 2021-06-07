@@ -67,7 +67,6 @@ class AdminController extends Controller
         ]);
         
         $request->merge([
-            
             'password' => Hash::make($request->get('password')),
         ]);
 
