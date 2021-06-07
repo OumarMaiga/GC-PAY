@@ -9,6 +9,7 @@ use App\Http\Controllers\RubriqueController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\EntrepriseController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\AgentController;
 
 //DASHBOARD
 Route::get('/dashboard', [PageController::class, 'dashboard'])
@@ -27,6 +28,9 @@ Route::resource('/dashboard/admin',AdminController::class)->middleware('auth');
 Route::resource('/dashboard/service',ServiceController::class)->middleware('auth');
 //ENTREPRISE
 Route::resource('/dashboard/entreprise',EntrepriseController::class)->middleware('auth');
+
+//AGENT
+Route::resource('/dashboard/agent', AgentController::class)->middleware('auth');
 
 //Affichage des usagers
 Route::get('/dashboard/usagers', [RegisteredUserController::class, 'index'])
