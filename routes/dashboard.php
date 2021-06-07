@@ -9,6 +9,7 @@ use App\Http\Controllers\RubriqueController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\EntrepriseController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\RequeteController;
 use App\Http\Controllers\AgentController;
 
 //DASHBOARD
@@ -31,6 +32,13 @@ Route::resource('/dashboard/entreprise',EntrepriseController::class)->middleware
 
 //AGENT
 Route::resource('/dashboard/agent', AgentController::class)->middleware('auth');
+
+//REQUETE
+Route::resource('/dashboard/requetes', RequeteController::class)->middleware('auth');
+Route::get('/{email}/requetes/', [RequeteController::class, 'create'])
+            ->middleware('auth')
+            ->name('create.requete');
+
 
 //Affichage des usagers
 Route::get('/dashboard/usagers', [RegisteredUserController::class, 'index'])

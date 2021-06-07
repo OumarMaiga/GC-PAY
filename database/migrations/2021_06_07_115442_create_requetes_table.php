@@ -18,7 +18,7 @@ class CreateRequetesTable extends Migration
             $table->string('slug')->unique();
             $table->foreignId('usager_id');
             $table->boolean('paye')->default(false);
-            $table->string('etat')->default("En cours de traitement");
+            $table->string('etat')->default("En cours");
             $table->string('code')->nullable();
             $table->foreignId('structure_id')->nullable();
             $table->foreignId('service_id')->nullable();

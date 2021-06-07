@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\SettingController;
-use App\Http\Controllers\RequeteController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,6 +57,4 @@ Route::put('/{email}/profil', [ProfilController::class, 'update'])
 //test image
 Route::resource('files', 'App\Http\Controllers\FilesController'); // Laravel 8
 
-//Requêtes
-Route::resource('/{email}/requetes', RequeteController::class)->middleware('auth');
 

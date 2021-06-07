@@ -11,7 +11,7 @@ class Requete extends Model
     protected $fillable = [
         "usager_id",
         "slug",
-        "paye"
+        "paye",
         "structure_id",
         "service_id",
         "etat",
