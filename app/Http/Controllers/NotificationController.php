@@ -70,9 +70,12 @@ class NotificationController extends Controller
         $structure = Structure::where('id', $requete->structure_id)->first();
         $service = Service::where('id', $requete->service_id)->first();
 
-        Notification::where('id', $notification->id)->update([
-            'vue' => true
-        ]);
+        if ($notification->vue == false) {
+            Notification::where('id', $notification->id)->update([
+                'vue' => true
+            ]);
+        }
+        
 
         return view('pages.requetes.show', compact('service', 'user','structure','requete'));
     }
