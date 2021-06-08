@@ -43,13 +43,7 @@
             <div class="mt-4 row justify-content-center">
                 <a href="{#"> <button class="mr-4 btn btn-outline-warning">TRAITER</button></a>
 
-                <form  method="POST" action="{{ route('requetes.destroy', $requete->id) }}">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="ml-4 btn btn-outline-danger" onclick="return confirm('Voulez-vous supprimer la structure ?')">
-                        RETIRER
-                    </button>
-                </form>
+                
             </div>
         </div>
     </div>
