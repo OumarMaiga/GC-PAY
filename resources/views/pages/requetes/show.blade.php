@@ -9,7 +9,7 @@
             <div class="col-md-4 show-detail souligne">
                 Code: 
             </div>
-            <div class="col-md-8 show-detail closer">
+            <div class="col-md-8 show-detail">
             {{$requete->code}}
             </div>
         </div>
@@ -17,7 +17,7 @@
             <div class="col-md-4 show-detail souligne">
                 Etat:
             </div>
-            <div class="col-md-8 show-detail closer">
+            <div class="col-md-8 show-detail">
                 @if ( $requete->etat == 'Terminé')
                     <span class="badge badge-success padding">{{$requete->etat}}</span>
                 @else
@@ -30,14 +30,14 @@
             <div class="col-md-4 show-detail souligne">
                 Structure: 
             </div>   
-            <div class="col-md-8 show-detail closer">
+            <div class="col-md-8 show-detail">
                 Non pécisé
             </div>
             @else
             <div class="col-md-4 show-detail souligne">
                 Structure: 
             </div> 
-            <div class="col-md-8 show-detail closer">
+            <div class="col-md-8 show-detail">
                 <a href="{{ route('structure.show', $structure->slug) }}">{{ $structure->libelle}}</a>
             </div>
             @endif
@@ -46,7 +46,7 @@
             <div class="col-md-4 show-detail souligne">
                 Prix: 
             </div>
-            <div class="col-md-8 show-detail closer">
+            <div class="col-md-8 show-detail">
             {{ $service->prix }}
             </div>
         </div>
@@ -55,14 +55,14 @@
             <div class="col-md-4 show-detail souligne">
                 Service: 
             </div>   
-            <div class="col-md-8 show-detail closer">
+            <div class="col-md-8 show-detail">
                 Non pécisé
             </div>
             @else
             <div class="col-md-4 show-detail souligne">
                 Service: 
             </div> 
-            <div class="col-md-8 show-detail closer">
+            <div class="col-md-8 show-detail">
                 <a href="{{ route('service.show', $service->slug) }}">{{ $service->libelle}}</a>
             </div>
             @endif
@@ -77,7 +77,7 @@
             <div class="col-md-4 show-detail souligne">
                 Prix: 
             </div>
-            <div class="col-md-8 show-detail closer">
+            <div class="col-md-8 show-detail">
             {{ $service->prix }}
             </div>
         </div>

@@ -17,4 +17,8 @@ class Notification extends Model
         "requete_id",
         "user_id",     
     ];
+    
+    public function requete() {
+        return $this->belongsTo('App\Models\Requete');
+    }
 }
