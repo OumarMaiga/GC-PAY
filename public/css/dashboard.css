@@ -105,10 +105,28 @@
 }
 
 .show-subtile {
-    color: #5D5D5D;
-    font-size: 1.4rem
+    color: #524f4f;
+    font-size: 1.6rem
 }
 
 .show-detail {
-    font-size: 1rem;
+    font-size: 1.5rem;
+    color: #524f4f;
+   
+}
+
+.souligne
+{
+    text-decoration: underline;
+}
+
+.closer
+{   
+    margin-left:-300px;
+}
+
+.padding
+{
+    padding-left:3%;
+    padding-right:3%;
 }
