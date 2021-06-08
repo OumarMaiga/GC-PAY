@@ -6,6 +6,7 @@ use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\Repositories\RequeteRepository;
 use App\Repositories\NotificationRepository;
+use Illuminate\Support\Facades\Auth;
 
 class NotificationController extends Controller
 {
@@ -24,8 +25,8 @@ class NotificationController extends Controller
      */
     public function index()
     {
-        $notifications = $this->notificationRepository->getForeignId('structure_id', Auth::user()->structure_id);
-        return view('dashboards.notifications.index',compact('notifications'));
+        $notifications = $this->notificationRepository->getByForeignId('structure_id', Auth::user()->structure_id);
+        return view('dashboards.notification.index',compact('notifications'));
     }
 
     /**

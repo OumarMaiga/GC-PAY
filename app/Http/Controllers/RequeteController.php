@@ -16,6 +16,7 @@ use Illuminate\Support\Str;
 use App\Models\Structure;
 use App\Models\Service;
 use App\Models\Requete;
+use App\Models\Notification;
 
 
 class RequeteController extends Controller
@@ -67,7 +68,7 @@ class RequeteController extends Controller
     public function store(Request $request)
     {
         
-        $slug='Requete_'.Auth::user()->id.'_'.time();
+        $slug='requete_'.Auth::user()->id.'_'.time();
         $request->merge([
             'slug' => $slug,
             'usager_id' => Auth::user()->id,
@@ -75,7 +76,25 @@ class RequeteController extends Controller
             
         $requete = $this->requeteRepository->store($request->all());
         //Generation de notification
-        //$this->notificationRepository->store();
+        $service = $requete->service()->associate($requete->service_id)->service;
+        $user = $requete->user()->associate($requete->usager_id)->user;
+        
+        if($service->type == "demande") {
+            $description = $user->prenom." ".$user->nom." (".$user->email.") a fait une demande de ".$service->libelle." le ".$requete->created_at;
+        }elseif ($service->type == "paiement") {
+            $description = $user->prenom." ".$user->nom." (".$user->email.") a fait effectué le paiement de ".$service->libelle." le ".$requete->created_at;
+        }else{
+            $description = $service->libelle;
+        }
+        $slug2 = 'notification_'.Auth::user()->id.'_'.time();
+        Notification::create([
+            'vue' => false,
+            'slug' => $slug2,
+            'description' => $description,
+            'requete_id' => $requete->id,
+            'structure_id' => $requete->structure_id,
+            'user_id' => $requete->usager_id,
+        ]);
         return redirect('/home')->withStatus("La nouvelle requête a bien été créée");
     }
 

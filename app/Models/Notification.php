@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Notification extends Model
 {
     use HasFactory;
+    
+    protected $fillable = [
+        "vue",
+        "slug",
+        "description",
+        "structure_id",
+        "requete_id",
+        "user_id",     
+    ];
 }
