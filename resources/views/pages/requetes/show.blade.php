@@ -41,23 +41,22 @@
            
         </div>
         <div class="row show-detail">
-           
-            Test Code: {{$requete->code}}
+            Code: {{$requete->code}}
         </div>
-        
-        <div class="row col-md-4">
-            <div class="mt-4 row justify-content-center">
-                <form  method="POST" action="{{ route('requetes.update', $requete->id) }}">
+        @if ($requete->code == NULL)
+            <div class="row col-md-4">
+                <div class="mt-4 row justify-content-center">
+                    <form  method="POST" action="{{ route('requetes.update', $requete->id) }}">
                         @csrf
                         @method('PUT')
                         <button type="submit" class="mr-4 btn btn-outline-warning" onclick="return confirm('Confirmer la fin du traitement de la demande?')">
                             TERMINER
                         </button>
-                    </form>
-
-                
+                    </form>               
+                </div>
             </div>
-        </div>
+        @endif
+        
         
     </div>
 </x-dashboard-layout>

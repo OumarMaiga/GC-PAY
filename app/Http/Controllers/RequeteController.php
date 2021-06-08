@@ -116,24 +116,22 @@ class RequeteController extends Controller
      * 
      */
     
-    public function genererChaineAleatoire($longueur, $listeCar = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
+    public function genereCode($longueur)
     {
+        $listeCar = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $chaine = '';
         $max = mb_strlen($listeCar, '8bit') - 1;
         for ($i = 0; $i < $longueur; ++$i) {
-        $chaine .= $listeCar[random_int(0, $max)];
-    }
-    return $chaine;
+            $chaine .= $listeCar[random_int(0, $max)];
+        }
+        return $chaine;
     }
 
     public function update( $id,Request $request)
     {
-        //
-       
-
         $request->merge([
             'etat' => 'Terminé',
-            'code'=>  $this->genererChaineAleatoire(6, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'),
+            'code'=>  $this->genereCode(6),
         ]);
         $this->requeteRepository->update($id, $request->all());
         
