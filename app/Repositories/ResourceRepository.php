@@ -17,6 +17,10 @@
             return $this->model->where('email', $email)->first();
         }
 
+        public function getByForeignId($name, $id) {
+            return $this->model->where($name, $id)->get();
+        }
+        
         public function store(Array $inputs) {
             return $this->model->create($inputs);
         }

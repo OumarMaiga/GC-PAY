@@ -64,7 +64,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                    <a href="{{route('notification.index')}}" class="sidebar-link">
                         NOTIFICATION
                     </a>
                 </li>

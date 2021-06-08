@@ -11,6 +11,7 @@ use App\Http\Controllers\EntrepriseController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\RequeteController;
 use App\Http\Controllers\AgentController;
+use App\Http\Controllers\NotificationController;
 
 //DASHBOARD
 Route::get('/dashboard', [PageController::class, 'dashboard'])
@@ -54,3 +55,5 @@ Route::put('/dashboard/usagers/{email}', [RegisteredUserController::class, 'bloq
             ->middleware('auth')
             ->name('usager.bloquer');
 
+// NOTIFICATION
+Route::resource('dashboard/notification', NotificationController::class)->only(['index', 'show'])->middleware('auth');

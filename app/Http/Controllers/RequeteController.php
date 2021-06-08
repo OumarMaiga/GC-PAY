@@ -39,7 +39,6 @@ class RequeteController extends Controller
      */
     public function index()
     {
-        //
         $requetes = requete::where('structure_id',Auth::user()->structure_id)
         ->get();
         return view('pages.requetes.index',compact('requetes'));
@@ -75,7 +74,8 @@ class RequeteController extends Controller
         ]);
             
         $requete = $this->requeteRepository->store($request->all());
-
+        //Generation de notification
+        //$this->notificationRepository->store();
         return redirect('/home')->withStatus("La nouvelle requête a bien été créée");
     }
 
