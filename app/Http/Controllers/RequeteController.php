@@ -109,8 +109,8 @@ class RequeteController extends Controller
         
         $requete = $this->requeteRepository->getBySlug($slug);
         $user = $this->userRepository->getById($requete->usager_id);
-        $structure = structure::where('id', $requete->structure_id)->select('slug', 'libelle')->first();
-        $service = service::where('id', $requete->service_id)->select('slug', 'libelle')->first();
+        $structure = structure::where('id', $requete->structure_id)->first();
+        $service = service::where('id', $requete->service_id)->first();
         return view('pages.requetes.show', compact('service', 'user','structure','requete'));
     }
 
