@@ -41,7 +41,15 @@
         </div>
         <div class="row col-md-4">
             <div class="mt-4 row justify-content-center">
-                <a href="{#"> <button class="mr-4 btn btn-outline-warning">TRAITER</button></a>
+              
+
+                <form  method="POST" action="{{ route('requetes.update', $requete->id) }}">
+                        @csrf
+                        @method('PUT')
+                        <button type="submit" class="mr-4 btn btn-outline-warning" onclick="return confirm('Confirmer la fin du traitement de la demande?')">
+                            TERMINER
+                        </button>
+                    </form>
 
                 
             </div>

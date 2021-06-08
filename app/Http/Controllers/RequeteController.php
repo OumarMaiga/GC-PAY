@@ -113,9 +113,15 @@ class RequeteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update( $id,Request $request)
     {
         //
+        $request->merge([
+            'etat' => 'Terminé',
+        ]);
+        $this->requeteRepository->update($id, $request->all());
+        
+        return redirect('/dashboard/requetes/')->withStatus("La demande a bien été cloturée");
     }
 
     /**
