@@ -58,7 +58,7 @@
                             <select name="type" id="type" class="input-custom">
                                 <option value="">-- CHOISISSEZ ICI --</option>
                                 <option <?= ($service->type == "paiement") ? "selected=selected" : "" ?> value="paiement">Paiement</option>
-                                <optio <?= ($service->type == "demande") ? "selected=selected" : "" ?> value="demande">Demande</option>
+                                <option <?= ($service->type == "demande") ? "selected=selected" : "" ?> value="demande">Demande</option>
                             </select>
                         </div>
                         <div class="col-md-6 form-group">
