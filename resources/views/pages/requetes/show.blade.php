@@ -38,11 +38,15 @@
         </div>
         <div class="row show-detail">
             Effectué par: <i><a href="{{ route('admin.show', $user->email) }}"> {{ $user->prenom." ".$user->nom." (".$user->email.")" }}</a></i>
+           
         </div>
+        <div class="row show-detail">
+           
+            Test Code: {{$requete->code}}
+        </div>
+        
         <div class="row col-md-4">
             <div class="mt-4 row justify-content-center">
-              
-
                 <form  method="POST" action="{{ route('requetes.update', $requete->id) }}">
                         @csrf
                         @method('PUT')
@@ -54,5 +58,6 @@
                 
             </div>
         </div>
+        
     </div>
 </x-dashboard-layout>
