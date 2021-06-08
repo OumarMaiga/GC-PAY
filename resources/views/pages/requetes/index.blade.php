@@ -15,10 +15,9 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th class="text-center">Libellé</th>
+                        <th class="text-center"> Service</th>
                         <th class="text-center">Usager</th>
                         <th class="text-center"> Structure</th>
-                        <th class="text-center"> Service</th>
                         <th class="text-center">Etat</th>
                         <th class="text-center">Paiement</th>
                         <th class="text-center">Actions</th>
@@ -33,7 +32,13 @@
                 ?>
                         <tr>
                         <td class="text-center">{{ $value->id }}</td>
-                        <td class="text-center">{{ $value->slug }}</td>
+                        @if($service==NULL)
+                            <td class="text-center">Non précisée</td>
+                        @else
+                            <td class="text-center">{{ $service->libelle }}</td>
+                        @endif
+
+
                         @if($usager==NULL)
                             <td class="text-center">Non précisée</td>
                         @else
@@ -47,11 +52,7 @@
                             <td class="text-center">{{ $structure->libelle }}</td>
                         @endif
 
-                        @if($service==NULL)
-                            <td class="text-center">Non précisée</td>
-                        @else
-                            <td class="text-center">{{ $service->libelle }}</td>
-                        @endif
+                        
                         <td class="text-center">{{ $value->etat }}</td>
                         @if($value->paye==true)
                             <td class="text-center">Effectué</td>
@@ -64,16 +65,7 @@
                                 </span>
                             </a>
                             
-                            <span class="col icon-action">
-                                <form  method="POST" action="{{ route('requetes.destroy', $value->id) }}" class="d-inline-flex">
-                                    @csrf
-                                    @method('DELETE')
-
-                                    <button type="submit" onclick="return confirm('Voulez-vous supprimer la requête ?')">
-                                        <span class="fas fa-user-times supp"></span>
-                                    </button>
-                                </form>
-                            </span>
+                            
                         </td>
                     </tr>
                     @endforeach
