@@ -112,10 +112,32 @@ class RequeteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * 
+     * 
      */
-    public function update(Request $request, $id)
+    
+    public function genererChaineAleatoire($longueur, $listeCar = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
+    {
+        $chaine = '';
+        $max = mb_strlen($listeCar, '8bit') - 1;
+        for ($i = 0; $i < $longueur; ++$i) {
+        $chaine .= $listeCar[random_int(0, $max)];
+    }
+    return $chaine;
+    }
+
+    public function update( $id,Request $request)
     {
         //
+       
+
+        $request->merge([
+            'etat' => 'Terminé',
+            'code'=>  $this->genererChaineAleatoire(6, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'),
+        ]);
+        $this->requeteRepository->update($id, $request->all());
+        
+        return redirect('/dashboard/requetes/')->withStatus("La demande a bien été cloturée");
     }
 
     /**

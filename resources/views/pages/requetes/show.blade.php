@@ -38,13 +38,26 @@
         </div>
         <div class="row show-detail">
             Effectué par: <i><a href="{{ route('admin.show', $user->email) }}"> {{ $user->prenom." ".$user->nom." (".$user->email.")" }}</a></i>
+           
         </div>
+        <div class="row show-detail">
+           
+            Test Code: {{$requete->code}}
+        </div>
+        
         <div class="row col-md-4">
             <div class="mt-4 row justify-content-center">
-                <a href="{#"> <button class="mr-4 btn btn-outline-warning">TRAITER</button></a>
+                <form  method="POST" action="{{ route('requetes.update', $requete->id) }}">
+                        @csrf
+                        @method('PUT')
+                        <button type="submit" class="mr-4 btn btn-outline-warning" onclick="return confirm('Confirmer la fin du traitement de la demande?')">
+                            TERMINER
+                        </button>
+                    </form>
 
                 
             </div>
         </div>
+        
     </div>
 </x-dashboard-layout>
