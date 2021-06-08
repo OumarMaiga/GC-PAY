@@ -17,6 +17,7 @@ class Service extends Model
         "rubrique_id",
         "etat",
         "duree",
+        "type",
         "prix",
     ];
 }

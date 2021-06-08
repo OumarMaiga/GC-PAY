@@ -14,7 +14,7 @@
                     <form  method="POST" action="{{ route('agent.destroy', $user->id) }}">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="ml-4 btn btn-outline-danger" onclick="return confirm('Voulez-vous supprimer l\'administrateur ?')">
+                        <button type="submit" class="ml-4 btn btn-outline-danger" onclick="return confirm('Voulez-vous supprimer l\'agent ?')">
                             RETIRER
                         </button>
                     </form>

@@ -54,17 +54,25 @@
                      
                      <div class="row mt-2">
                         <div class="col-md-6 form-group">
-                            <label for="description">Description</label>
-                            <textarea id="description" class="input-custom" type="text" name="description" placeholder="Description,details">{{$service->description}}</textarea>
+                            <label for="type">Type</label>
+                            <select name="type" id="type" class="input-custom">
+                                <option value="">-- CHOISISSEZ ICI --</option>
+                                <option <?= ($service->type == "paiement") ? "selected=selected" : "" ?> value="paiement">Paiement</option>
+                                <optio <?= ($service->type == "demande") ? "selected=selected" : "" ?> value="demande">Demande</option>
+                            </select>
                         </div>
-
                         <div class="col-md-6 form-group">
                             <label for="prix">Prix</label>
                             <input id="prix" class="input-custom" type="text" name="prix" value="{{ $service->prix }}" placeholder="Prix" />
                         </div>
-                        
                     </div>
 
+                    <div class="row mt-2">
+                        <div class="col-md-12 form-group">
+                            <label for="description">Description</label>
+                            <textarea id="description" class="input-custom" type="text" name="description" placeholder="Description,details">{{$service->description}}</textarea>
+                        </div>
+                    </div>
                      
                     <div class="col-md-6 mt-4">
                         <button type="submit" class="btn btn-custom">

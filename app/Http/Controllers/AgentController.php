@@ -131,6 +131,6 @@ class AgentController extends Controller
     public function destroy($id)
     {
 		$this->userRepository->destroy($id);
-        return redirect()->back()->withStatus("L\'agent a bien été supprimé");
+        return redirect()->back()->withStatus("L'agent a bien été supprimé");
     }
 }

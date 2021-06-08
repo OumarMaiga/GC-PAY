@@ -25,6 +25,7 @@
                         </div>
                     </div>
 
+                    <!-- Libelle -->
                    <!-- Structure et type -->
                     <div class="row mt-2">
                         <div class="col-md-6 form-group">
@@ -45,21 +46,28 @@
                                     @endforeach
                                 </select>
                         </div>
-                        
-                    
                     </div>
 
-                     
-                     <div class="row mt-2">
+                    <div class="row mt-2">
                         <div class="col-md-6 form-group">
-                            <label for="description">Description</label>
-                            <textarea id="description" class="input-custom" type="text" name="description" value="{{ old('description') }}" placeholder="Description,details"></textarea>
+                            <label for="type">Type</label>
+                            <select name="type" id="type" class="input-custom">
+                                <option value="">-- CHOISISSEZ ICI --</option>
+                                <option value="paiement">Paiement</option>
+                                <option value="demande">Demande</option>
+                            </select>
                         </div>
                         <div class="col-md-6 form-group">
                             <label for="prix">Prix</label>
                             <input id="prix" class="input-custom" type="text" name="prix" value="{{ old('prix') }}" placeholder="Prix" />
                         </div>
-                        
+                    </div>
+                     
+                     <div class="row mt-2">
+                        <div class="col-md-12 form-group">
+                            <label for="description">Description</label>
+                            <textarea id="description" class="input-custom" type="text" name="description" value="{{ old('description') }}" placeholder="Description,details"></textarea>
+                        </div>
                     </div>
 
                      
