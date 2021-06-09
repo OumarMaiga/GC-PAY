@@ -19,6 +19,7 @@
                         <th class="text-center">Usager</th>
                         <th class="text-center"> Structure</th>
                         <th class="text-center">Etat</th>
+                        <th class="text-center">Code</th>
                         <th class="text-center">Paiement</th>
                         <th class="text-center">Actions</th>
                     </tr>
@@ -54,6 +55,7 @@
 
                         
                         <td class="text-center">{{ $value->etat }}</td>
+                        <td class="text-center">{{ $value->code }}</td>
                         @if($value->paye==true)
                             <td class="text-center">Effectué</td>
                         @else
@@ -64,8 +66,16 @@
                                 <span class="fas fa-info">
                                 </span>
                             </a>
-                            
-                            
+
+                            <span class="col icon-action">
+                                <form  method="POST" action="{{ route('requetes.update', $value->id) }}">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" onclick="return confirm('Confirmer la remise du document ?')">
+                                        <span class="fas fa-user-check check"></span>
+                                    </button>
+                                </form>      
+                            </span>                           
                         </td>
                     </tr>
                     @endforeach

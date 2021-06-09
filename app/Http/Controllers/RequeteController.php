@@ -148,8 +148,17 @@ class RequeteController extends Controller
 
     public function update( $id,Request $request)
     {
+        $requete =Requete::find($id);
+        if($requete->etat=='En cours')
+            {
+                $etat='Terminé';
+            }
+            else
+            {
+                $etat='Remis';
+            }
         $request->merge([
-            'etat' => 'Terminé',
+            'etat'=>$etat,
             'code'=>  $this->genereCode(6),
         ]);
         $this->requeteRepository->update($id, $request->all());

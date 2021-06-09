@@ -99,6 +99,11 @@
     color: #dc3545;
 }
 
+
+.icon-action .check:hover {
+    color: #09a54a;
+}
+
 .show-title {
     font-size: 2rem;
     font-family: 'Rockwell';
