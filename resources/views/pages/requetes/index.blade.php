@@ -65,17 +65,7 @@
                             <a href="{{ route('requetes.show', $value->slug) }}" class="col icon-action detail">
                                 <span class="fas fa-info">
                                 </span>
-                            </a>
-
-                            <span class="col icon-action">
-                                <form  method="POST" action="{{ route('requetes.update', $value->id) }}">
-                                    @csrf
-                                    @method('PUT')
-                                    <button type="submit" onclick="return confirm('Confirmer la remise du document ?')">
-                                        <span class="fas fa-user-check check"></span>
-                                    </button>
-                                </form>      
-                            </span>                           
+                            </a>                         
                         </td>
                     </tr>
                     @endforeach

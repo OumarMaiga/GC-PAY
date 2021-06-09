@@ -148,22 +148,24 @@ class RequeteController extends Controller
 
     public function update( $id,Request $request)
     {
-        $requete =Requete::find($id);
+        $requete = Requete::find($id);
         if($requete->etat=='En cours')
-            {
-                $etat='Terminé';
-            }
-            else
-            {
-                $etat='Remis';
-            }
+        {
+            $etat = 'Terminé';
+            $code = $this->genereCode(6);
+        }
+        else
+        {
+            $etat='Cloturée';
+            $code = $requete->code;
+        }
         $request->merge([
-            'etat'=>$etat,
-            'code'=>  $this->genereCode(6),
+            'etat'=> $etat,
+            'code'=>  $code,
         ]);
         $this->requeteRepository->update($id, $request->all());
         
-        return redirect('/dashboard/requetes/')->withStatus("La demande a bien été cloturée");
+        return redirect("/dashboard/requetes/$requete->slug")->withStatus("La demande a bien été mise à jour");
     }
 
     /**
