@@ -50,7 +50,7 @@
                     @endif
                 </div>
                 <div class="profil-description">
-                    Inscrit Depuis: {{ $user->created_at }}
+                    Inscrit Depuis: {{ custom_date($user->created_at) }}
                 </div>
                 
                 

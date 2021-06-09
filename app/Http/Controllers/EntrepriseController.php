@@ -93,8 +93,8 @@ class EntrepriseController extends Controller
         //
         $entreprise = $this->entrepriseRepository->getBySlug($slug);
         
-        $user = user::where('id', $entreprise->utilisateur_id)->select('nom', 'prenom')->first();
-        // show the view and pass the user to it
+        $user = User::where('id', $entreprise->user_id)->select('nom', 'prenom', 'email', 'type')->first();
+
         return view('dashboards.entreprise.show',compact('user','entreprise'));
     }
 

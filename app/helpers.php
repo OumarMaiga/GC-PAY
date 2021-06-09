@@ -35,3 +35,26 @@ function picture_exist($id) {
     return $file;
 
 }
+
+//Personnalisation du format de la date
+function custom_date($date) {
+    $today = date('Y-m-d');
+    $this_year = date('Y');
+    $this_month = date('m');
+    $hier = date('d') - 1;
+    $mois = ['', 'Jan', 'Fev', 'Mars', 'Avr', 'Mai', 'Juin', 'Juillet', 'Août', 'Sept', 'Oct', 'Nov', 'Dec'];
+
+    if ($today == $date->format('Y-m-d')) {
+        $result = $date->format('H:i');
+    } elseif($this_year == $date->format('Y')) {
+        if ($date->format('d') == $hier && $date->format('m') == $this_month) {
+            $result = "Hier";
+        }else{
+            $result = $date->format('d')." ".$mois[$date->format('n')];
+        }
+    }else {
+        $result = $date->format('d')." ".$mois[$date->format('n')]." ".$date->format('Y');
+    }
+    return $result;
+    
+}

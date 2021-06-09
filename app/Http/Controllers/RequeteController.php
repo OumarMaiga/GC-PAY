@@ -80,9 +80,9 @@ class RequeteController extends Controller
         $user = $requete->user()->associate($requete->usager_id)->user;
         
         if($service->type == "demande") {
-            $description = $user->prenom." ".$user->nom." (".$user->email.") a fait une demande de ".$service->libelle." le ".$requete->created_at;
+            $description = $user->prenom." ".$user->nom." (".$user->email.") a fait une demande de ".$service->libelle;
         }elseif ($service->type == "paiement") {
-            $description = $user->prenom." ".$user->nom." (".$user->email.") a fait effectué le paiement de ".$service->libelle." le ".$requete->created_at;
+            $description = $user->prenom." ".$user->nom." (".$user->email.") a fait effectué le paiement de ".$service->libelle;
         }else{
             $description = $service->libelle;
         }
