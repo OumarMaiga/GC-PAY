@@ -23,6 +23,10 @@ class Requete extends Model
         return $this->belongsTo('App\Models\Service');
     }
 
+    public function structure() {
+        return $this->belongsTo('App\Models\Structure');
+    }
+
     public function user() {
         return $this->belongsTo('App\Models\User');
     }

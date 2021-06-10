@@ -149,15 +149,21 @@ class RequeteController extends Controller
     public function update( $id,Request $request)
     {
         $requete = Requete::find($id);
+        $service = $requete->service()->associate($requete->service_id)->service;
+        $structure = $requete->structure()->associate($requete->structure_id)->structure;
+        $user = Auth::user();
+
         if($requete->etat=='En cours')
         {
             $etat = 'Terminé';
             $code = $this->genereCode(6);
+            $description = "Le traitement de votre demande de ".$service->libelle." est terminé. Veuillez vou rendre à la structure ".$structure->libelle." avec le code suivant: ".$code;
         }
         else
         {
             $etat='Cloturée';
             $code = $requete->code;
+            $description = "Votre ".$service->libelle." vous à été remis par ".$user->prenom." ".$user->nom." (".$user->email.") dans la structure ".$structure->libelle;
         }
         $request->merge([
             'etat'=> $etat,
@@ -165,6 +171,17 @@ class RequeteController extends Controller
         ]);
         $this->requeteRepository->update($id, $request->all());
         
+        $slug = 'notification_'.Auth::user()->id.'_'.time();
+        
+        Notification::create([
+            'vue' => false,
+            'slug' => $slug,
+            'description' => $description,
+            'requete_id' => $requete->id,
+            'structure_id' => $requete->structure_id,
+            'user_id' => $requete->usager_id,
+        ]);
+
         return redirect("/dashboard/requetes/$requete->slug")->withStatus("La demande a bien été mise à jour");
     }
 
