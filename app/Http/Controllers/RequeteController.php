@@ -149,19 +149,28 @@ class RequeteController extends Controller
     public function update( $id,Request $request)
     {
         $requete = Requete::find($id);
+        //je génère un code
+        $code = $this->genereCode(6);
+        //je compte s'il en existe d'autre identique dans la base de donnée
+        $nbrecode = Requete::where('code', $code)->count();
+        //si ce nombre est égale à 0 alors mon code est unique, sinon je génère tant que je n'ai pas un nombre égale à 0
+        while($nbrecode!='0')
+        {
+            $code = $this->genereCode(6);
+        } //je sors donc de ma boucle avec un code unique
         if($requete->etat=='En cours')
         {
             $etat = 'Terminé';
-            $code = $this->genereCode(6);
+            $codeUnique= $code;
         }
         else
         {
             $etat='Cloturée';
-            $code = $requete->code;
+            $codeUnique = $requete->code;
         }
         $request->merge([
             'etat'=> $etat,
-            'code'=>  $code,
+            'code'=>  $codeUnique,
         ]);
         $this->requeteRepository->update($id, $request->all());
         
