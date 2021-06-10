@@ -135,16 +135,6 @@ class RequeteController extends Controller
      * 
      */
     
-    public function genereCode($longueur)
-    {
-        $listeCar = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $chaine = '';
-        $max = mb_strlen($listeCar, '8bit') - 1;
-        for ($i = 0; $i < $longueur; ++$i) {
-            $chaine .= $listeCar[random_int(0, $max)];
-        }
-        return $chaine;
-    }
 
     public function update( $id,Request $request)
     {
@@ -153,14 +143,17 @@ class RequeteController extends Controller
         $structure = $requete->structure()->associate($requete->structure_id)->structure;
         $user = Auth::user();
 
-        if($requete->etat=='En cours')
-        {
-            $etat = 'Terminé';
+        //si ce nombre est égale à 0 alors mon code est unique, sinon je génère tant que je n'ai pas un nombre égale à 0
+        do {
             $code = $this->genereCode(6);
-            $description = "Le traitement de votre demande de ".$service->libelle." est terminé. Veuillez vou rendre à la structure ".$structure->libelle." avec le code suivant: ".$code;
-        }
-        else
-        {
+            $codeExit = Requete::where('code', $code)->select('code')->first();
+        }while($codeExit != NULL);
+         
+        if($requete->etat=='En cours') {
+            $etat = 'Terminé';
+            $code= $code;
+            $description = "Le traitement de votre demande de ".$service->libelle." est terminé. Veuillez vou rendre à la structure ".$structure->libelle." avec le code suivant: ".$code;                     
+        } else {
             $etat='Cloturée';
             $code = $requete->code;
             $description = "Votre ".$service->libelle." vous à été remis par ".$user->prenom." ".$user->nom." (".$user->email.") dans la structure ".$structure->libelle;
@@ -199,5 +192,16 @@ class RequeteController extends Controller
    
            // redirect
            return redirect('/dashboard/requetes')->withStatus("La requête a bien été supprimé");
+    }
+    
+    public function genereCode($longueur)
+    {
+        $listeCar = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $chaine = '';
+        $max = mb_strlen($listeCar, '8bit') - 1;
+        for ($i = 0; $i < $longueur; ++$i) {
+            $chaine .= $listeCar[random_int(0, $max)];
+        }
+        return $chaine;
     }
 }
