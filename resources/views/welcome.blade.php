@@ -33,6 +33,7 @@
                             <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
                         @else
                             <a href="{{ url("/".Auth::user()->email)}}" class="text-sm text-gray-700 underline">Profil</a>
+                            
                         @endif
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>

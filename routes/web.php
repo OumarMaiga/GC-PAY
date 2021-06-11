@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,5 +57,10 @@ Route::put('/{email}/profil', [ProfilController::class, 'update'])
 
 //test image
 Route::resource('files', 'App\Http\Controllers\FilesController'); // Laravel 8
+
+//Acceuil
+Route::get('{email}/Acceuil', [PageController::class, 'acceuil'])
+                ->middleware('auth')
+                ->name('acceuil');
 
 

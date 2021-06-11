@@ -142,6 +142,7 @@
 {
     margin-left: 10px;
 }
+<<<<<<< HEAD
 .list-link:hover {
     text-decoration: none;
 }
@@ -151,3 +152,25 @@
 .list-group-item-unseen:hover {
     background-color: #d6d8db;
 }
+=======
+
+.text-grand{
+    font-size:50px;
+}
+.accordion li
+{
+    list-style-type: none;
+    
+}
+.accordion .card-header i{
+    font-size:2.5rem;
+    position:absolute;
+    top: 15px;
+    right:1rem;
+
+}
+.accordion .card-body
+{
+    color:#666;
+}
+>>>>>>> e36f52f... Page Acceuil
