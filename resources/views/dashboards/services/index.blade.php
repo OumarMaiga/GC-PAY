@@ -6,11 +6,9 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-8"><h2><b>LES SERVICES</b></h2></div>
-
-                    <div classe="">
-                    <a href="{{route('service.create') }}"> <input type="button" value="AJOUTER"class="btn btn-custom margin_left"></a>
-                </div>
-                    
+                    @if (Auth::user()->type == "admin-systeme")
+                        <a href="{{route('service.create') }}"> <input type="button" value="AJOUTER"class="btn btn-custom margin_left"></a>
+                    @endif
                 </div>
             </div>
             <!-- Session Status -->
@@ -30,8 +28,8 @@
                 <tbody>
                 @foreach($services as $key => $value)
                 <?php
-                    $structure=App\Models\Structure::where('id',$value->structure_id)->first(); 
-                    $rubrique=App\Models\Rubrique::where('id',$value->rubrique_id)->first();     
+                    $structure = App\Models\Structure::where('id',$value->structure_id)->first(); 
+                    $rubrique = App\Models\Rubrique::where('id',$value->rubrique_id)->first();     
                 ?>
                         <tr>
                         <td class="text-center">{{ $value->id }}</td>
@@ -42,7 +40,7 @@
                             <td class="text-center">{{ $structure->libelle }}</td>
                         @endif
 
-                        @if($rubrique==NULL)
+                        @if($rubrique == NULL)
                             <td class="text-center">Non précisée</td>
                         @else
                             <td class="text-center">{{ $rubrique->libelle }}</td>
@@ -53,20 +51,22 @@
                                 <span class="fas fa-info">
                                 </span>
                             </a>
-                            <a href="{{ route('service.edit', $value->slug) }}" class="col icon-action icon-edit">
-                                <span class="fas fa-user-edit edit">
-                                </span>
-                            </a>
-                            <span class="col icon-action">
-                                <form  method="POST" action="{{ route('service.destroy', $value->id) }}" class="d-inline-flex">
-                                    @csrf
-                                    @method('DELETE')
+                            @if (Auth::user()->type == "admin-systeme")
+                                <a href="{{ route('service.edit', $value->slug) }}" class="col icon-action icon-edit">
+                                    <span class="fas fa-user-edit edit">
+                                    </span>
+                                </a>
+                                <span class="col icon-action">
+                                    <form  method="POST" action="{{ route('service.destroy', $value->id) }}" class="d-inline-flex">
+                                        @csrf
+                                        @method('DELETE')
 
-                                    <button type="submit" onclick="return confirm('Voulez-vous supprimer le service ?')">
-                                        <span class="fas fa-user-times supp"></span>
-                                    </button>
-                                </form>
-                            </span>
+                                        <button type="submit" onclick="return confirm('Voulez-vous supprimer le service ?')">
+                                            <span class="fas fa-user-times supp"></span>
+                                        </button>
+                                    </form>
+                                </span>
+                            @endif
                         </td>
                     </tr>
                     @endforeach

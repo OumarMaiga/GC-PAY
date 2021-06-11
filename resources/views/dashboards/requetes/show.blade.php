@@ -10,7 +10,7 @@
                 Code: 
             </div>
             <div class="col-md-8 show-detail">
-            {{$requete->code}}
+            {{ $requete->code == NULL ? "Non assigné" : $requete->code }}
             </div>
         </div>
         <div class="row">

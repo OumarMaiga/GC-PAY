@@ -16,6 +16,7 @@ class CreateNotificationsTable extends Migration
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
             $table->string('description')->nullable();
+            $table->string('destinateur')->nullable();
             $table->string('slug')->unique();
             $table->boolean('vue')->default(false);
             $table->foreignId('requete_id')->nullable();

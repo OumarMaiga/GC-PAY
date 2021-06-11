@@ -13,6 +13,7 @@ class Notification extends Model
         "vue",
         "slug",
         "description",
+        'destinateur',
         "structure_id",
         "requete_id",
         "user_id",     

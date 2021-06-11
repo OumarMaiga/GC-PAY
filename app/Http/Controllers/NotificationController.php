@@ -18,7 +18,7 @@ class NotificationController extends Controller
     protected $userRepository;
 
     public function __construct(UserRepository $userRepository, NotificationRepository $notificationRepository, RequeteRepository $requeteRepository) {
-        
+        $this->middleware('admin-structure-and-agent-only', ['only' => ['index', 'show']]);
         $this->notificationRepository = $notificationRepository;
         $this->requeteRepository = $requeteRepository;
         $this->userRepository = $userRepository;
@@ -30,7 +30,7 @@ class NotificationController extends Controller
      */
     public function index()
     {
-        $notifications = $this->notificationRepository->getByForeignId('structure_id', Auth::user()->structure_id);
+        $notifications = Notification::where('structure_id', Auth::user()->structure_id)->where('destinateur', 'structure')->get();
         return view('dashboards.notification.index',compact('notifications'));
     }
 
@@ -77,7 +77,7 @@ class NotificationController extends Controller
         }
         
 
-        return view('pages.requetes.show', compact('service', 'user','structure','requete'));
+        return view('dashboards.requetes.show', compact('service', 'user','structure','requete'));
     }
 
     /**

@@ -142,3 +142,12 @@
 {
     margin-left: 10px;
 }
+.list-link:hover {
+    text-decoration: none;
+}
+.list-group-item-unseen {
+    background-color: #EEEEEE;
+}
+.list-group-item-unseen:hover {
+    background-color: #d6d8db;
+}

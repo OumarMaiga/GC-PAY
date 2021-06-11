@@ -50,18 +50,21 @@
         <div class="row show-detail">
             Ajouté par: <i><a href="{{ route('admin.show', $user->email) }}"> {{ $user->prenom." ".$user->nom." (".$user->email.")" }}</a></i>
         </div>
-        <div class="row col-md-4">
-            <div class="mt-4 row justify-content-center">
-                <a href="{{ route('service.edit', $service->slug) }}"> <button class="mr-4 btn btn-outline-warning">MODIFIER</button></a>
+        @if (Auth::user()->type == "admin-systeme")
+            <div class="row col-md-4">
+                <div class="mt-4 row justify-content-center">
 
-                <form  method="POST" action="{{ route('service.destroy', $service->id) }}">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="ml-4 btn btn-outline-danger" onclick="return confirm('Voulez-vous supprimer la structure ?')">
-                        RETIRER
-                    </button>
-                </form>
-            </div>
-        </div>
+                    <a href="{{ route('service.edit', $service->slug) }}"> <button class="mr-4 btn btn-outline-warning">MODIFIER</button></a>
+
+                    <form  method="POST" action="{{ route('service.destroy', $service->id) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="ml-4 btn btn-outline-danger" onclick="return confirm('Voulez-vous supprimer la structure ?')">
+                            RETIRER
+                        </button>
+                    </form>
+                </div>
+            </div>             
+        @endif
     </div>
 </x-dashboard-layout>

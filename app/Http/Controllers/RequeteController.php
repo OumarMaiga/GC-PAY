@@ -27,7 +27,7 @@ class RequeteController extends Controller
     protected $requeteRepository;
 
     public function __construct(ServiceRepository $serviceRepository,StructureRepository $structureRepository, UserRepository $userRepository,RequeteRepository $requeteRepository) {
-        
+        $this->middleware('admin-structure-and-agent-only', ['only' => ['index', 'create', 'show', 'update', 'destroy']]);
         $this->serviceRepository = $serviceRepository;
         $this->structureRepository = $structureRepository;
         $this->userRepository = $userRepository;
@@ -42,7 +42,7 @@ class RequeteController extends Controller
     {
         $requetes = requete::where('structure_id',Auth::user()->structure_id)
         ->get();
-        return view('pages.requetes.index',compact('requetes'));
+        return view('dashboards.requetes.index',compact('requetes'));
     }
 
     /**
@@ -52,11 +52,9 @@ class RequeteController extends Controller
      */
     public function create()
     {
-        //
         $structures = $this->structureRepository->get();
         $services = $this->serviceRepository->get();
-       
-        return view('pages.requetes.create',compact('structures','services'));
+        return view('dashboards.requetes.create',compact('structures','services'));
     }
 
     /**
@@ -91,6 +89,7 @@ class RequeteController extends Controller
             'vue' => false,
             'slug' => $slug2,
             'description' => $description,
+            'destinateur' => 'structure',
             'requete_id' => $requete->id,
             'structure_id' => $requete->structure_id,
             'user_id' => $requete->usager_id,
@@ -111,7 +110,7 @@ class RequeteController extends Controller
         $user = $this->userRepository->getById($requete->usager_id);
         $structure = structure::where('id', $requete->structure_id)->first();
         $service = service::where('id', $requete->service_id)->first();
-        return view('pages.requetes.show', compact('service', 'user','structure','requete'));
+        return view('dashboards.requetes.show', compact('service', 'user','structure','requete'));
     }
 
     /**
@@ -170,6 +169,7 @@ class RequeteController extends Controller
             'vue' => false,
             'slug' => $slug,
             'description' => $description,
+            'destinateur' => 'usager',
             'requete_id' => $requete->id,
             'structure_id' => $requete->structure_id,
             'user_id' => $requete->usager_id,

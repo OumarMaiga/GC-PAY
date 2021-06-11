@@ -19,6 +19,7 @@ class AgentController extends Controller
     protected $userRepository;
 
     public function __construct(StructureRepository $structureRepository, UserRepository $userRepository) {
+        $this->middleware('admin-structure-only', ['only' => ['create', 'store', 'destroy']]);
         $this->structureRepository = $structureRepository;
         $this->userRepository = $userRepository;
     }
