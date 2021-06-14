@@ -24,7 +24,7 @@
                 <div class="profil-name">
                     {{ $user->prenom." ".$user->nom }}
                 </div>
-                <div class="profil-type">
+                <div class="profil-email">
                     {{ $user->email }}
                 </div>
                 <div class="profil-description">

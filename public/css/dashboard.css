@@ -64,6 +64,13 @@
     color: #5BA8E4;
     margin-bottom: 20px
 }
+.profil-email {
+    font-family: 'Sylfaen';
+    margin-top: -10px;
+    font-size: 1.25rem;
+    color: #5BA8E4;
+    margin-bottom: 20px
+}
 
 .profil-description {
     font-size: 1rem;

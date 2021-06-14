@@ -25,7 +25,10 @@ Route::get('/', function () {
 require __DIR__.'/auth.php';
 require __DIR__.'/dashboard.php';
 
-// Profil
+//Acceuil
+Route::get('/accueil', [PageController::class, 'accueil'])
+                ->middleware('auth')
+                ->name('accueil');
 
 // Profil
 Route::get('/{email}', [ProfilController::class, 'profil'])
@@ -58,9 +61,5 @@ Route::put('/{email}/profil', [ProfilController::class, 'update'])
 //test image
 Route::resource('files', 'App\Http\Controllers\FilesController'); // Laravel 8
 
-//Acceuil
-Route::get('{email}/Acceuil', [PageController::class, 'acceuil'])
-                ->middleware('auth')
-                ->name('acceuil');
 
 

@@ -9,22 +9,25 @@
                 @endif
                
                 <div class="mt-4 row justify-content-center">
-                    <a href="{{ route('agent.edit', $user->email) }}"> <button class="mr-4 btn btn-outline-warning">MODIFIER</button></a>
+                    @if (Auth::user()->type == "admin-systeme" || Auth::user()->type == "admin-structure")
+                        
+                        <a href="{{ route('agent.edit', $user->email) }}"> <button class="mr-4 btn btn-outline-warning">MODIFIER</button></a>
 
-                    <form  method="POST" action="{{ route('agent.destroy', $user->id) }}">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="ml-4 btn btn-outline-danger" onclick="return confirm('Voulez-vous supprimer l\'agent ?')">
-                            RETIRER
-                        </button>
-                    </form>
+                        <form  method="POST" action="{{ route('agent.destroy', $user->id) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="ml-4 btn btn-outline-danger" onclick="return confirm('Voulez-vous supprimer l\'agent ?')">
+                                RETIRER
+                            </button>
+                        </form>
+                    @endif
                 </div>
             </div>
             <div class="col-md-8" >
                 <div class="profil-name">
                     {{ $user->prenom." ".$user->nom }}
                 </div>
-                <div class="profil-type">
+                <div class="profil-email">
                     {{ $user->email }}
                 </div>
                 <div class="profil-description">

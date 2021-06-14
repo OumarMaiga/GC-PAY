@@ -30,11 +30,15 @@ class AgentController extends Controller
      */
     public function index()
     {
-        $admin = Auth::user();
-        $agents = User::where('type','agent')
-                    ->where('structure_id', $admin->structure_id)
-                    ->get();
-        return view('dashboards.agent.index')->with('users',$agents);
+        $user = Auth::user();
+        if ($user->type == "admin-systeme") {
+            $agents = $this->userRepository->getByForeignId('type', 'agent');
+        } elseif ($user->type == "admin-structure" || $user->type == "agent") {
+            $agents = User::where('type', 'agent')->where('structure_id', $user->structure_id)->get();
+        } else {
+            $agents = [];
+        }
+        return view('dashboards.agent.index')->with('users', $agents);
     }
 
     /**

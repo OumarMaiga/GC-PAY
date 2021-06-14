@@ -40,8 +40,14 @@ class ServiceController extends Controller
 
     public function index()
     {
-        //
-        $services = $this->serviceRepository->get();
+        if (Auth::user()->type == "admin-systeme") {
+            $services = $this->serviceRepository->get();
+        } elseif (Auth::user()->type == "admin-structure" || Auth::user()->type == "agent") {
+            $services = $this->serviceRepository->getByForeignId('structure_id', Auth::user()->structure_id);
+        } else {
+            $services = [];
+        }
+        
         return view('dashboards.services.index', compact('services'));
     }
 

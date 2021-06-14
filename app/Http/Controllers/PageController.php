@@ -19,8 +19,8 @@ class PageController extends Controller
         return view('dashboards.index');
     }
 
-    public function acceuil() {
+    public function accueil() {
         $rubriques = $this->rubriqueRepository->get();
-        return view('pages.acceuil',compact('rubriques'));
+        return view('pages.accueil',compact('rubriques'));
     }
 }

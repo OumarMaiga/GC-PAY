@@ -40,20 +40,22 @@
                                 <span class="fas fa-info">
                                 </span>
                             </a>
-                            <a href="{{ route('agent.edit', $value->email) }}" class="col icon-action icon-edit">
-                                <span class="fas fa-user-edit edit">
-                                </span>
-                            </a>
-                            <span class="col icon-action">
-                                <form  method="POST" action="{{ route('agent.destroy', $value->id) }}" class="d-inline-flex">
-                                    @csrf
-                                    @method('DELETE')
+                            @if (Auth::user()->type == "admin-systeme" || Auth::user()->type == "admin-structure")
+                                <a href="{{ route('agent.edit', $value->email) }}" class="col icon-action icon-edit">
+                                    <span class="fas fa-user-edit edit">
+                                    </span>
+                                </a>
+                                <span class="col icon-action">
+                                    <form  method="POST" action="{{ route('agent.destroy', $value->id) }}" class="d-inline-flex">
+                                        @csrf
+                                        @method('DELETE')
 
-                                    <button type="submit" onclick="return confirm('Voulez-vous supprimer l\'agent ?')">
-                                        <span class="fas fa-user-times supp"></span>
-                                    </button>
-                                </form>
-                            </span>
+                                        <button type="submit" onclick="return confirm('Voulez-vous supprimer l\'agent ?')">
+                                            <span class="fas fa-user-times supp"></span>
+                                        </button>
+                                    </form>
+                                </span>
+                            @endif
                         </td>
                     </tr>
                     @endforeach
