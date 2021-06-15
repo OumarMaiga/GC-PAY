@@ -23,7 +23,9 @@
                     <div class="card-body">
                         <ul class="list">
                             @foreach($services as $key => $value)
+                            <a href="{{ route('detail',$value->slug) }}" class="text-sm text-gray-700 underline">
                             <li>{{$value->libelle}}</li>
+                            </a>
                         </ul>
                             @endforeach
                     </div>
