@@ -1,6 +1,7 @@
 <x-app-layout>
-    <div class="bg-image" style="background-image: url('https://koulouba.ml/wp-content/uploads/2021/02/MALI_Koulouba.jpg'); height: 400px; background-size:contain ;">
-        <div class="mask rgba-blue-light" style="background-color:  rgb(37, 150, 190,0.6) ; height: 400px">
+    <div class="bg-image" style="background-image: url('https://koulouba.ml/wp-content/uploads/2021/02/MALI_Koulouba.jpg'); height:700px ; background-size:100% 100%; margin:0;
+  padding:0;">
+        <div class="mask rgba-blue-light" style="background-color:  rgb(37, 150, 190,0.6) ; height: 700px">
             <div class="d-flex justify-content-center align-items-center h-100">
                 <h1 class="text-white mb-0 text-grand text-center">DESORMAIS EN LIGNE,PAYER VOS <br> RECETTES FISCALES</h1>
             </div>
