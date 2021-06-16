@@ -31,6 +31,16 @@ Route::get('/accueil', [PageController::class, 'accueil'])
                 ->name('accueil');
 Route::get('/test', [PageController::class, 'test'])->name('test');
 
+//Detail
+Route::get('/{slug}/detail', [PageController::class, 'detail'])
+                ->middleware('auth')
+                ->name('detail');
+//store
+Route::put('/detail', [PageController::class, 'store'])
+                ->middleware('auth')
+                ->name('detail.store');
+
+
 // Profil
 Route::get('/{email}', [ProfilController::class, 'profil'])
                 ->middleware('auth')
