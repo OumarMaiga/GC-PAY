@@ -26,18 +26,24 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php $n = 0; ?>
                 @foreach($services as $key => $value)
                 <?php
-                    $structure = App\Models\Structure::where('id',$value->structure_id)->first(); 
-                    $rubrique = App\Models\Rubrique::where('id',$value->rubrique_id)->first();     
+                    $n = $n + 1;
+                    $structures = $value->structures()->get(); 
+                    $rubrique = $value->rubrique()->associate($value->rubrique_id)->rubrique
                 ?>
                         <tr>
-                        <td class="text-center">{{ $value->id }}</td>
-                        <td class="text-center">{{ $value->libelle }}</td>
-                        @if($structure==NULL)
+                        <td class="text-center">{{ $n }}</td>
+                        <td class="text-center">{!! $value->libelle !!}</td>
+                        @if($structures==NULL)
                             <td class="text-center">Non précisée</td>
                         @else
-                            <td class="text-center">{{ $structure->libelle }}</td>
+                            <td class="text-center">
+                                @foreach ($structures as $structure)
+                                    {{ " - ".$structure->libelle }}    
+                                @endforeach
+                            </td>
                         @endif
 
                         @if($rubrique == NULL)

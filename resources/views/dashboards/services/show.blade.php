@@ -2,7 +2,7 @@
     <div class="container dashboard-content">
         <div class="row">
             <div class="show-title">
-                {{ $service->libelle }}
+                {!! $service->libelle !!}
             </div>
         </div>
         <div class="row">

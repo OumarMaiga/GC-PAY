@@ -44,7 +44,7 @@ class RubriqueController extends Controller
         else {
             $slug = Str::slug($request->get('libelle'));
         }
-
+        
         $request->merge([
             'slug' => $slug,
             'admin_systeme_id' => Auth::user()->id,

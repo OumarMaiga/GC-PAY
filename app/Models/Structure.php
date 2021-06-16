@@ -18,5 +18,9 @@ class Structure extends Model
         "telephone",
         "type",
     ];
+
+    public function services() {
+        return $this->belongsToMany('App\Models\Service');
+    }
     
 }

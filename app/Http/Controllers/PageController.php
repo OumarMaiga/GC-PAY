@@ -23,4 +23,8 @@ class PageController extends Controller
         $rubriques = $this->rubriqueRepository->get();
         return view('pages.accueil',compact('rubriques'));
     }
+
+    public function test() {
+        return view('pages.test');
+    }
 }

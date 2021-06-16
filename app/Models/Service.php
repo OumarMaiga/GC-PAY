@@ -13,11 +13,18 @@ class Service extends Model
         "slug",
         "description", 
         "admin_systeme_id",
-        "structure_id",
         "rubrique_id",
         "etat",
         "duree",
         "type",
         "prix",
     ];
+
+    public function structures() {
+        return $this->belongsToMany('App\Models\Structure');
+    }
+
+    public function rubrique() {
+        return $this->belongsTo('App\Models\Rubrique');
+    }
 }

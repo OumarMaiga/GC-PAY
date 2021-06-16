@@ -29,6 +29,7 @@ require __DIR__.'/dashboard.php';
 Route::get('/accueil', [PageController::class, 'accueil'])
                 ->middleware('auth')
                 ->name('accueil');
+Route::get('/test', [PageController::class, 'test'])->name('test');
 
 // Profil
 Route::get('/{email}', [ProfilController::class, 'profil'])

@@ -27,7 +27,6 @@ class CreateServicesTable extends Migration
             $table->string('type')->nullable();
             $table->boolean('etat')->default(true);
             $table->foreignId('admin_systeme_id')->default('0');
-            $table->foreignId('structure_id')->nullable();
             $table->foreignId('rubrique_id')->nullable();
             
             $table->timestamps();
