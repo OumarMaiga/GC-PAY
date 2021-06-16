@@ -2313,6 +2313,13 @@ select {
   background-color: currentColor;
 }
 
+.foot{
+  position: relative;
+  margin-top: 32.9%;
+  background-color:#042557;
+  color: #FFFFFF;    
+  
+}
 .bg-black {
   --tw-bg-opacity: 1;
   background-color: rgba(0, 0, 0, var(--tw-bg-opacity));

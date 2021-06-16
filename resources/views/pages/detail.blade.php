@@ -1,6 +1,6 @@
 <x-app-layout>
 
-        <div class="show-title-second padding-block">
+<div class="show-title-second padding-block">
             {{ $service->libelle }}
         </div>
     
