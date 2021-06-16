@@ -31,7 +31,7 @@
                         <button type="submit" class="btn btn-custom">
                             {{ __('SOUMETTRE') }}
                         </button>
-                        <a href="{{ route('accueil') }}" type="button" class="btn btn-custom-secondary">
+                        <a href="{{ route('resume',$service->slug) }}" type="button" class="btn btn-custom-secondary">
                             {{ __('ANNULER') }}
                         </a>
                     </div>

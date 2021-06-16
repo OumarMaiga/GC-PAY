@@ -40,4 +40,10 @@ class PageController extends Controller
        
         return view('pages.detail');
     }
+
+    public function resume($slug) {
+
+       $service = $this->serviceRepository->getBySlug($slug);
+        return view('pages.resume',compact('service'));
+    }
 }

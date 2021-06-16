@@ -31,12 +31,8 @@
     text-decoration: underline;
 }
 
-.footer{
-    position: relative;
-    margin-top: 30px;
-    background-color:#042557;
-    color: #FFFFFF;    
-}
+
+  
 
 .footer-title {
     color: #BCBCBC;
@@ -171,3 +167,4 @@
 {
     color:#666;
 }
+
