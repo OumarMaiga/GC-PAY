@@ -2320,6 +2320,21 @@ select {
   color: #FFFFFF;    
   
 }
+
+.infos
+{
+    text-decoration:underline; 
+    color:black;  
+    
+}
+
+
+.infos2
+{
+    text-decoration:underline; 
+    color:black;  
+    padding-left:3%;
+}
 .bg-black {
   --tw-bg-opacity: 1;
   background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
