@@ -11,12 +11,12 @@
         @foreach($rubriques as $key => $value)
             <?php $services = App\Models\Service::where('rubrique_id', $value->id)->get()?> 
             <div class="rubrique-item-container">
-                <h3 class="rubrique-item-title" type="button" data-toggle="collapse" data-target="#{{$value->slug}}" aria-expanded="true" aria-controls="collapseOne">
+                <h3 class="rubrique-item-title" type="button" data-toggle="collapse" data-target="#{{$value->slug}}" aria-expanded="true" aria-controls="{{$value->slug}}">
                         {{$value->libelle}} <i class="fas fa-angle-down rotate-icon"></i>
                     <hr>
                 </h3>
 
-                <div id="{{$value->slug}}" class="collapse show" aria-labelledby="{{$value->slug}}" data-parent="#accordionExample">
+                <div id="{{$value->slug}}" class="collapse  show" aria-labelledby="{{$value->slug}}" >
                     <div class="row">
                             @foreach($services as $key => $value)
                             <div class="col-md-4 mt-4">
