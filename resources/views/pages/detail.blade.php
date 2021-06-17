@@ -8,7 +8,7 @@
         {{$service->description}}
     </div>
     <div class="show-detail padding-block">
-    <?php $structure = App\Models\Structure::where('id', $service->structure_id)->first() ?> 
+    <?php $structure = $service->structures()->first() ?> 
     <span style="text-decoration:underline; color:black">Durée</span>:  {{$service->duree}} <span style="text-decoration:underline; color:black;  padding-left:3%">Prix:</span>  {{$service->prix}}  <span style="text-decoration:underline; color:black;  padding-left:3%">Structure:</span>  {{$structure->libelle}}
     </div>
     <div class=" padding-block">

@@ -30,22 +30,33 @@
                 @foreach($services as $key => $value)
                 <?php
                     $n = $n + 1;
-                    $structures = $value->structures()->get(); 
+                    $structures = $value->structures()->get();
                     $rubrique = $value->rubrique()->associate($value->rubrique_id)->rubrique
                 ?>
                         <tr>
                         <td class="text-center">{{ $n }}</td>
                         <td class="text-center">{!! $value->libelle !!}</td>
-                        @if($structures==NULL)
-                            <td class="text-center">Non précisée</td>
-                        @else
+                        
                             <td class="text-center">
-                                @foreach ($structures as $structure)
-                                    {{ " - ".$structure->libelle }}    
-                                @endforeach
+                                @if($structures->count() == 0)
+                                    Non précisée
+                                @elseif($structures->count() == 1)
+                                    @foreach ($structures as $structure)
+                                        {{ $structure->libelle }}
+                                    @endforeach
+                                @else
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Structures
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            @foreach ($structures as $structure)
+                                                <a class="dropdown-item" href="#">{{ $structure->libelle }}</a>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endif
                             </td>
-                        @endif
-
                         @if($rubrique == NULL)
                             <td class="text-center">Non précisée</td>
                         @else

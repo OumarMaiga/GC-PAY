@@ -92,7 +92,7 @@ class ServiceController extends Controller
         ]);
             
         $service = $this->serviceRepository->store($request->all());
-
+        $service->structures()->sync($request->get('structures'));
         return redirect('/dashboard/service/')->withStatus("Un nouveau service vient d'être ajouté");
     }
 
@@ -138,6 +138,10 @@ class ServiceController extends Controller
     {
         $this->serviceRepository->update($id, $request->all());
         
+        $service = $this->serviceRepository->getById($id);
+        
+        $service->structures()->sync($request->get('structures'));
+
         return redirect('/dashboard/service/')->withStatus("Le service vient d'être mise à jour");
     }
 

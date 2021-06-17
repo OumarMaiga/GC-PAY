@@ -30,8 +30,7 @@
                     <div class="row mt-2">
                         <div class="col-md-6 form-group">
                                 <label for="structure_id">Structure</label>
-                                <select name="structure_id" id="strucutre_id" class="input-custom">
-                                    <option value="">-- CHOISISSEZ ICI --</option>
+                                <select name="structures[]" id="strucutres" class="input-custom" multiple="">
                                     @foreach ($structures as $structure)
                                         <option value="{{ $structure->id }}">{{ $structure->libelle }}</option>
                                     @endforeach

@@ -30,10 +30,10 @@
                     <div class="row mt-2">
                         <div class="col-md-6 form-group">
                                 <label for="structure_id">Structure</label>
-                                <select name="structure_id" id="strucutre_id" class="input-custom">
-                                    <option value="">-- CHOISISSEZ ICI --</option>
+                                <select name="structures[]" id="strucutres" class="input-custom" multiple="">
                                     @foreach ($structures as $structure)
-                                        <option <?= ($service->structure_id == $structure->id) ? "selected=selected" : "" ?> value="{{ $structure->id }}">{{ $structure->libelle }}</option>
+                                        <?php $ids_structure = $service->structures()->pluck('id')->toArray() ?>
+                                        <option <?= (in_array($structure->id, $ids_structure)) ? "selected=selected" : "" ?> value="{{ $structure->id }}">{{ $structure->libelle }}</option>
                                     @endforeach
                                 </select>
                         </div>
@@ -46,9 +46,7 @@
                                         <option <?= ($service->rubrique_id == $rubrique->id) ? "selected=selected" : "" ?> value="{{ $rubrique->id }}">{{ $rubrique->libelle }}</option>
                                     @endforeach
                                 </select>
-                        </div>
-                        
-                    
+                        </div>                   
                     </div>
 
                      
