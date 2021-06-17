@@ -10,25 +10,20 @@
     <div class="accordion" id="accordionExample">
         @foreach($rubriques as $key => $value)
             <?php $services = App\Models\Service::where('rubrique_id', $value->id)->get()?> 
-            <div class="card">
-                <div class="card-header bg-white" id="headingOne">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#{{$value->slug}}" aria-expanded="true" aria-controls="collapseOne">
-                            {{$value->libelle}} <i class="fas fa-angle-down rotate-icon"></i>
-                        </button>
-                    </h5>
-                </div>
+            <div class="rubrique-item-container">
+                <h3 class="rubrique-item-title" type="button" data-toggle="collapse" data-target="#{{$value->slug}}" aria-expanded="true" aria-controls="collapseOne">
+                        {{$value->libelle}} <i class="fas fa-angle-down rotate-icon"></i>
+                    <hr>
+                </h3>
 
                 <div id="{{$value->slug}}" class="collapse show" aria-labelledby="{{$value->slug}}" data-parent="#accordionExample">
-                    <div class="card-body">
-                        <ul class="list">
+                    <div class="row">
                             @foreach($services as $key => $value)
-                            
-                            <a href="{{ route('detail',$value->slug) }}" class="text-sm text-gray-700 underline">
-                            <li>{{$value->libelle}}</li>
-                            </a>
-                           
-                        </ul>
+                            <div class="col-md-4 mt-4">
+                                <a href="{{ route('detail',$value->slug) }}" class="service-item-link">
+                                    {!! $value->libelle !!}
+                                </a>
+                            </div>
                             @endforeach
                     </div>
                 </div>
