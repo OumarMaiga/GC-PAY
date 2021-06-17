@@ -154,6 +154,7 @@
 .accordion li
 {
     list-style-type: none;
+    display:inline-block;
     
 }
 .accordion .card-header i{

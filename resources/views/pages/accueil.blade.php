@@ -19,13 +19,15 @@
                     </h5>
                 </div>
 
-                <div id="{{$value->slug}}" class="collapse" aria-labelledby="{{$value->slug}}" data-parent="#accordionExample">
+                <div id="{{$value->slug}}" class="collapse show" aria-labelledby="{{$value->slug}}" data-parent="#accordionExample">
                     <div class="card-body">
                         <ul class="list">
                             @foreach($services as $key => $value)
+                            
                             <a href="{{ route('detail',$value->slug) }}" class="text-sm text-gray-700 underline">
                             <li>{{$value->libelle}}</li>
                             </a>
+                           
                         </ul>
                             @endforeach
                     </div>
