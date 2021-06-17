@@ -40,6 +40,11 @@ Route::put('/detail', [PageController::class, 'store'])
                 ->middleware('auth')
                 ->name('detail.store');
 
+//Detail
+Route::get('/{slug}/resume', [PageController::class, 'resume'])
+                ->middleware('auth')
+                ->name('resume');
+
 
 // Profil
 Route::get('/{email}', [ProfilController::class, 'profil'])

@@ -1,6 +1,6 @@
 <x-app-layout>
 
-        <div class="show-title-second padding-block">
+<div class="show-title-second padding-block">
             {{ $service->libelle }}
         </div>
     
@@ -8,8 +8,8 @@
         {{$service->description}}
     </div>
     <div class="show-detail padding-block">
-    <?php $structure = $service->structures()->first() ?> 
-    <span style="text-decoration:underline; color:black">Durée</span>:  {{$service->duree}} <span style="text-decoration:underline; color:black;  padding-left:3%">Prix:</span>  {{$service->prix}}  <span style="text-decoration:underline; color:black;  padding-left:3%">Structure:</span>  {{$structure->libelle}}
+    <?php $structure = $service->structures()->first() ?>
+    <span class="infos">Durée</span>:  {{$service->duree}} <span class="infos2">Prix:</span>  {{$service->prix}}  <span class="infos2">Structure:</span>  {{$structure->libelle}}
     </div>
     <div class=" padding-block">
             <h1 class=" text-blue-800 size">Formulaire à remplir</h1>
@@ -31,7 +31,7 @@
                         <button type="submit" class="btn btn-custom">
                             {{ __('SOUMETTRE') }}
                         </button>
-                        <a href="{{ route('accueil') }}" type="button" class="btn btn-custom-secondary">
+                        <a href="{{ route('resume',$service->slug) }}" type="button" class="btn btn-custom-secondary">
                             {{ __('ANNULER') }}
                         </a>
                     </div>

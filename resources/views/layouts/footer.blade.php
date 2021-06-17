@@ -1,4 +1,4 @@
-<footer class="footer">
+<footer class="foot">
   <!-- Grid container -->
   <div class="container p-4">
     <!--Grid row-->
