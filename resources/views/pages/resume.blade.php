@@ -36,4 +36,5 @@ $structure = $service->structures()->first() ?>
                             {{ __('PAIEMENT') }}
                         </a>
         </div>
+        
 </x-app-layout>
