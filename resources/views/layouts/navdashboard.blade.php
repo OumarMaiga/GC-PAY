@@ -30,6 +30,12 @@
                         Parametre
                     </a>
                     <div class="dropdown-divider"></div>
+                    @if (Auth::user()->type == "admin-systeme" || Auth::user()->type == "admin-structure")
+                        <a class="dropdown-item" href="{{ route('dashboard.index') }}">
+                            Dashboard
+                        </a>
+                        <div class="dropdown-divider"></div>
+                    @endif
 
                     <!-- Authentication -->
                     <form method="POST" action="{{ route('logout') }}">

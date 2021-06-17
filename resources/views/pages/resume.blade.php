@@ -1,8 +1,10 @@
 <x-app-layout>
-<?php $rubrique = App\Models\Rubrique::where('id', $service->rubrique_id)->first();
-$structure = $service->structures()->first() ?> 
+<?php   
+    $rubrique = App\Models\Rubrique::where('id', $service->rubrique_id)->first();
+    $structure = $service->structures()->first() 
+?> 
         <div class="show-title-second padding-block">
-            <span class="uppercase">  {{$service->libelle}}</span>
+            <span class="uppercase">  {!! $service->libelle !!}</span>
         </div>
 
         <div class="show-detail padding-block row">

@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <div class="show-title-second padding-block">
-        {{ $service->libelle }}
+        {!! $service->libelle !!}
     </div>
     
     <div class="show-detail padding-block descript">
@@ -12,10 +12,10 @@
         <?php $structure = $service->structures()->first() ?>
         <span class="infos">Durée</span>:  {{$service->duree}} <span class="infos2">Prix:</span>  {{$service->prix}}  <span class="infos2">Structure:</span>  {{ ($structure != null) ? $structure->libelle : ""}}
     </div>
-    
+
     <div class=" padding-block">
         <h1 class=" text-blue-800 size">Formulaire à remplir</h1>
-        <form method="POST" action="{{ route('detail.store') }}">
+        <form method="POST" action="{{ route('service.verification', $service->slug) }}">
             @csrf
             <div class="row padding-top">
                 <div class="col-md-6 form-group">

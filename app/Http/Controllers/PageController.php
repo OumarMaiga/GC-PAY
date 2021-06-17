@@ -25,21 +25,17 @@ class PageController extends Controller
 
     public function accueil() {
         $rubriques = $this->rubriqueRepository->get();
-        return view('pages.accueil',compact('rubriques'));
+        return view('pages.accueil', compact('rubriques'));
     }
 
     public function detail($slug) {
         $service = $this->serviceRepository->getBySlug($slug);
-        return view('pages.detail',compact('service'));
-    }
-    public function store(Request $request) {
-       
-        return view('pages.detail');
+        return view('pages.detail', compact('service'));
     }
 
-    public function resume($slug) {
-
-       $service = $this->serviceRepository->getBySlug($slug);
-        return view('pages.resume',compact('service'));
+    public function verification($slug, Request $request) {
+        $service = $this->serviceRepository->getBySlug($slug);
+        return view('pages.resume', compact('service'));
     }
+
 }

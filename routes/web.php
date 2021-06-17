@@ -31,13 +31,13 @@ Route::get('/accueil', [PageController::class, 'accueil'])
                 ->name('accueil');
 
 //Detail
-Route::get('service/{slug}', [PageController::class, 'detail'])
+Route::get('/service/{slug}', [PageController::class, 'detail'])
                 ->middleware('auth')
                 ->name('detail');
-//store
-Route::put('/detail', [PageController::class, 'store'])
+//Verification
+Route::post('/verification/{service}', [PageController::class, 'verification'])
                 ->middleware('auth')
-                ->name('detail.store');
+                ->name('service.verification');
 
 //Detail
 Route::get('/{slug}/resume', [PageController::class, 'resume'])
