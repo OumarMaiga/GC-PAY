@@ -50,7 +50,7 @@
 
             @if (Auth::check())
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('accueil',Auth::user()->email)}}">
+                    <a class="nav-link" href="{{ route('accueil') }}">
                         Accueil
                     </a>
                 </li>

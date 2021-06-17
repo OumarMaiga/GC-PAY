@@ -28,10 +28,6 @@ class PageController extends Controller
         return view('pages.accueil',compact('rubriques'));
     }
 
-    public function test() {
-        return view('pages.test');
-    }
-    
     public function detail($slug) {
         $service = $this->serviceRepository->getBySlug($slug);
         return view('pages.detail',compact('service'));

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navigation">
     <!-- Logo -->
-    <a class="navbar-brand logo" href="">
+    <a class="navbar-brand logo" href="{{route('accueil')}}">
         {{ __('GC - PAY') }}
     </a>
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">

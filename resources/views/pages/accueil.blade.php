@@ -14,7 +14,7 @@
                 <div class="card-header bg-white" id="headingOne">
                     <h5 class="mb-0">
                         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#{{$value->slug}}" aria-expanded="true" aria-controls="collapseOne">
-                        {{$value->libelle}} <i class="fas fa-angle-down rotate-icon"></i>
+                            {{$value->libelle}} <i class="fas fa-angle-down rotate-icon"></i>
                         </button>
                     </h5>
                 </div>

@@ -9,7 +9,7 @@
     </div>
     <div class="show-detail padding-block">
     <?php $structure = $service->structures()->first() ?>
-    <span class="infos">Durée</span>:  {{$service->duree}} <span class="infos2">Prix:</span>  {{$service->prix}}  <span class="infos2">Structure:</span>  {{$structure->libelle}}
+    <span class="infos">Durée</span>:  {{$service->duree}} <span class="infos2">Prix:</span>  {{$service->prix}}  <span class="infos2">Structure:</span>  {{ ($structure != null) ? $structure->libelle : ""}}
     </div>
     <div class=" padding-block">
             <h1 class=" text-blue-800 size">Formulaire à remplir</h1>

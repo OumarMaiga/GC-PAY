@@ -25,14 +25,13 @@ Route::get('/', function () {
 require __DIR__.'/auth.php';
 require __DIR__.'/dashboard.php';
 
-//Acceuil
+//Accueil
 Route::get('/accueil', [PageController::class, 'accueil'])
                 ->middleware('auth')
                 ->name('accueil');
-Route::get('/test', [PageController::class, 'test'])->name('test');
 
 //Detail
-Route::get('/{slug}/detail', [PageController::class, 'detail'])
+Route::get('service/{slug}', [PageController::class, 'detail'])
                 ->middleware('auth')
                 ->name('detail');
 //store
