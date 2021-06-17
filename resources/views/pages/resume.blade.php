@@ -2,7 +2,7 @@
 <?php $rubrique = App\Models\Rubrique::where('id', $service->rubrique_id)->first();
 $structure = $service->structures()->first() ?> 
         <div class="show-title-second padding-block">
-            <span class="uppercase">{{ $rubrique->libelle }}</span>
+            <span class="uppercase">  {{$service->libelle}}</span>
         </div>
 
         <div class="show-detail padding-block row">
@@ -16,8 +16,8 @@ $structure = $service->structures()->first() ?>
         </div>
 
         <div class="show-detail padding-block row">
-        <div class="col-md-1"> <b><u>Service:</u></b></div> 
-        {{$service->libelle}}
+        <div class="col-md-1"> <b><u>Rubrique:</u></b></div> 
+        {{ $rubrique->libelle }}
         </div>
 
         <div class="show-title-second padding-block">
