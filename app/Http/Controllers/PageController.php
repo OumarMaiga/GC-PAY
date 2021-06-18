@@ -8,15 +8,19 @@ use App\Models\Rubrique;
 use App\Repositories\RubriqueRepository;
 use App\Models\Service;
 use App\Repositories\ServiceRepository;
+use App\Models\Entreprise;
+use App\Repositories\EntrepriseRepository;
 
 class PageController extends Controller
 {
     protected $rubriqueRepository;
     protected $serviceRepository;
+    protected $entrepriseRepository;
    
-    public function __construct(RubriqueRepository $rubriqueRepository,ServiceRepository $serviceRepository){
+    public function __construct(RubriqueRepository $rubriqueRepository,ServiceRepository $serviceRepository,EntrepriseRepository $entrepriseRepository){
         $this->rubriqueRepository = $rubriqueRepository;
         $this->serviceRepository = $serviceRepository;
+        $this->entrepriseRepository = $entrepriseRepository;
         
     }
     public function dashboard() {
@@ -30,7 +34,10 @@ class PageController extends Controller
 
     public function detail($slug) {
         $service = $this->serviceRepository->getBySlug($slug);
-        return view('pages.detail', compact('service'));
+        $rubrique=$this->rubriqueRepository->getById($service->rubrique_id);
+        $entreprises= $this->entrepriseRepository->get();
+        
+        return view('pages.detail', compact('service','rubrique','entreprises'));
     }
 
     public function verification($slug, Request $request) {
