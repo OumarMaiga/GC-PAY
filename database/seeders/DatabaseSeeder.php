@@ -72,8 +72,8 @@ class DatabaseSeeder extends Seeder
         
         //Création des rubriques
         Rubrique::create([
-            'libelle' => 'Business',
-            'slug' => 'business',
+            'libelle' => 'Impôts et Taxes',
+            'slug' => 'impots-et-taxes',
             'admin_systeme_id' => 1,
             'etat' => 1,
         ])->save();
@@ -171,7 +171,7 @@ class DatabaseSeeder extends Seeder
             'duree' => 'Immediate',
             'prix' => '6.000f',
             'type' => 'demande',
-            'rubrique_id' => 3,
+            'rubrique_id' => 2,
             'admin_systeme_id' => 1,
             'etat' => 1,
         ]);
