@@ -4,14 +4,14 @@
             
             
                 <div class="col-md-6 form-group">
-                    
+                    <label for="numero_chassis">Numero de chassis</label>
                     <input id="numero_chassis" class="input-custom" type="text" name="numero_chassis" value="{{ old('numero_chassis') }}" placeholder="Numéro de chassis" />
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 form-group">
-                    
-                    <input id="numero_immatriculation" class="input-custom" type="text" name="numero_immatriculation" value="{{ old('numero_immatriculation') }}" placeholder="Numéro immatriculation du véhicule" />
+                    <label for="numero_immatriculation">Numero d'immatriculation du véhicule</label>
+                    <input id="numero_immatriculation" class="input-custom" type="text" name="numero_immatriculation" value="{{ old('numero_immatriculation') }}" placeholder="Numéro immatriculation" />
                 </div>
             </div>
             <div class="col-md-6 mt-4">

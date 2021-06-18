@@ -4,13 +4,13 @@
             
             
                 <div class="col-md-6 form-group">
-                    
-                    <input id="num-facture" class="input-custom" type="text" name="num-facture" value="{{ old('num-facture') }}" placeholder="Numéro de facture" required />
+                <label for="numero_facture">Numéro de Facture</label>
+                    <input id="numero_facture" class="input-custom" type="text" name="numeo_rfacture" value="{{ old('num-facture') }}" placeholder="Numéro de facture" required />
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 form-group">
-                    
+                <label for="montant">Montant</label>
                     <input id="montant" class="input-custom" type="text" name="montant" value="{{ old('montant') }}" placeholder="Montant" required />
                 </div>
             </div>
