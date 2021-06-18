@@ -1,7 +1,7 @@
 <x-dashboard-layout>
     <div class="container dashboard-content">
         <div class="show-title-second">
-            {{ $service->libelle }}
+            {!! $service->libelle !!}
         </div>
         
         <div class="show-detail descript">
