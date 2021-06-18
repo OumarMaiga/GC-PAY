@@ -22,10 +22,11 @@ class CreateCarteIdentitesTable extends Migration
             $table->string('nom_mere');
             $table->string('adresse');
             $table->string('profession');
-            $table->string('date_naissance');
+            $table->dateTime('date_naissance');
             $table->string('lieu_naissance');
-            $table->string('prenom_pere');
-            $table->string('prenom_pere');
+            $table->string('taille');
+            $table->string('teint');
+            $table->string('cheveux');
             $table->timestamps();
         });
     }
