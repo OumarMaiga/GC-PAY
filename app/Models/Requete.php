@@ -16,6 +16,7 @@ class Requete extends Model
         "service_id",
         "etat",
         "code",
+        "montant",
       
     ];
 

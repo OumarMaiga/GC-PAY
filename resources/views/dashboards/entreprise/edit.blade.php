@@ -1,5 +1,5 @@
 
-<x-dashboard-layout>
+<x-app-layout>
     <div class="container dashboard-content">
             <div class="content-title">{{ __('MODIFICATION D\'UNE ENTREPRISE') }}</div>
     
@@ -70,4 +70,4 @@
                     </div>
                 </form>
     </div>
-</x-dashboard-layout>
+</x-app-layout>

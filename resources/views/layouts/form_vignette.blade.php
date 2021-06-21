@@ -22,4 +22,4 @@
                     {{ __('ANNULER') }}
                 </a>
             </div>
-        </form>
+</form>

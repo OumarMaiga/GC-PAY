@@ -753,7 +753,7 @@ select {
 }
 
 .container2 {
-  width: 100%;
+  width: 70%;
   float:left;
 }
 
@@ -2315,7 +2315,7 @@ select {
 
 .foot{
   position: relative;
-  margin-top: 12.9%;
+  margin-top: 23.9%;
   background-color:#042557;
   color: #FFFFFF;    
   

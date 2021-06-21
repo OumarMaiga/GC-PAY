@@ -64,6 +64,11 @@
                         Historique
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('entreprise.index')}}">
+                        Entreprise
+                    </a>
+                </li>
             @else
                 <li class="nav-item">
                     <a class="nav-link" href="#">

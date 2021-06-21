@@ -15,15 +15,20 @@ use App\Repositories\EntrepriseRepository;
 use App\Models\User;
 use App\Models\Entreprise;
 
+use App\Repositories\RequeteRepository;
+use App\Models\Requete;
+
 class EntrepriseController extends Controller
 {
     protected $entrepriseRepository;
     protected $userRepository;
+    protected $requeteRepository;
 
-    public function __construct(EntrepriseRepository $entrepriseRepository, UserRepository $userRepository) {
-        $this->middleware('admin-systeme-only', ['only' => ['index', 'create', 'store', 'destroy']]);
+    public function __construct(EntrepriseRepository $entrepriseRepository, RequeteRepository $requeteRepository,UserRepository $userRepository) {
+        
         $this->entrepriseRepository = $entrepriseRepository;
         $this->userRepository = $userRepository;
+        $this->requeteRepository = $requeteRepository;
     }
     
     /**
@@ -94,6 +99,7 @@ class EntrepriseController extends Controller
         $entreprise = $this->entrepriseRepository->getBySlug($slug);
         
         $user = User::where('id', $entreprise->user_id)->select('nom', 'prenom', 'email', 'type')->first();
+       
 
         return view('dashboards.entreprise.show',compact('user','entreprise'));
     }
