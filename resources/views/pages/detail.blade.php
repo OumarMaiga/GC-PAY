@@ -5,7 +5,7 @@
     </div>
     
     <div class="show-detail padding-block descript">
-        {{$service->description}}
+        {!! $service->description !!}
     </div>
 
     <div class="show-detail padding-block">

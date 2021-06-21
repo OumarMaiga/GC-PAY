@@ -5,7 +5,7 @@
         </div>
         
         <div class="show-detail descript">
-            {{$service->description}}
+            {!! $service->description !!}
         </div>
     
         <div class="show-detail">
@@ -14,10 +14,10 @@
         </div>
     
         @if (Auth::user()->type == "admin-systeme")
-            <div class="show-detail mt-4">
+            <div class="show-detail mt-2">
                 <span class="infos">Ajouté par:</span> <i><a href="{{ route('admin.show', $user->email) }}"> {{ $user->prenom." ".$user->nom." (".$user->email.")" }}</a></i>
             </div>
-            <div class="mt-4">
+            <div class="mt-2">
                 <a href="{{ route('service.edit', $service->slug) }}"> <button class="mr-4 btn btn-outline-warning">MODIFIER</button></a>
 
                 <form  method="POST" action="{{ route('service.destroy', $service->id) }}" class="d-inline">
