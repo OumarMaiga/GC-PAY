@@ -168,3 +168,17 @@
     font-size: 1.2rem;
     color: #2B2B2B;
 }
+
+/* Verification */
+.verification {
+    font-size: 1.8rem
+}
+.verification-title {
+    font-size: 2.4rem;
+    font-family: 'Segoe UI';
+    font-weight: 400;
+    text-transform: uppercase;
+}
+.verification-subtitle {
+    text-decoration: underline;
+}

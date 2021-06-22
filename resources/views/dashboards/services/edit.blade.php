@@ -82,4 +82,11 @@
                     </div>
                 </form>
     </div>
+    
+    <script>
+        tinymce.init({
+          selector: '#description',
+          fix_list_elements : true
+        });
+    </script>
 </x-dashboard-layout>

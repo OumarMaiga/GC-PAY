@@ -3,7 +3,7 @@
         
         @if(Auth::check())
         @if(Auth::user()->type=='admin-systeme' || Auth::user()->type=='admin-structure')
-        <a class="navbar-brand logo" href="{{ route('dashboard.index') }}">
+        <a class="navbar-brand logo" href="{{ route('accueil') }}">
             {{ __('GC - PAY') }}
         </a>
         @else

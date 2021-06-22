@@ -18,30 +18,29 @@
 
         <!--Formulaire pour la rubrique eau et electricité -->
         @if($rubrique->slug=="eau-et-electricité")
-        @include('layouts.form_eau-electricite')
+            @include('layouts.form_eau_electricite')
         @endif
 
 
         <!--Formulaire pour la rubrique impôts et taxes -->
         @if($rubrique->slug=="impots-et-taxes")
-        @include('layouts.form_impot')
+            @include('layouts.form_impot')
         @endif  
 
 
         <!--Formulaire pour la rubrique automobile -->
         @if($rubrique->slug=="automobile")
-        @include('layouts.form_vignette')
+            @include('layouts.form_vignette')
         @endif
 
         <!--Formulaire pour le service carte d'identité -->
         @if($service->slug=="carte-national-didentite")
-        @include('layouts.form_carte-identite')
-       
+            @include('layouts.form_carte_didentite')
         @endif
 
         <!--Formulaire pour le service passport -->
         @if($service->slug=="passport")
-        @include('layouts.form_passport')
+            @include('layouts.form_passport')
         @endif
 
     </div>

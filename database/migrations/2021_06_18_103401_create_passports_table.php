@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePasseportsTable extends Migration
+class CreatePassportsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePasseportsTable extends Migration
      */
     public function up()
     {
-        Schema::create('passeports', function (Blueprint $table) {
+        Schema::create('passports', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
             $table->string('prenom');

@@ -5,7 +5,7 @@
             
                 <div class="col-md-6 form-group">
                 <label for="numero_facture">Numéro de Facture</label>
-                    <input id="numero_facture" class="input-custom" type="text" name="numeo_rfacture" value="{{ old('num-facture') }}" placeholder="Numéro de facture" required />
+                    <input id="numero_facture" class="input-custom" type="text" name="numero_facture" value="{{ old('num-facture') }}" placeholder="Numéro de facture" required />
                 </div>
             </div>
             <div class="row">
