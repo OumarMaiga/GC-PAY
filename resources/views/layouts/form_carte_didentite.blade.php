@@ -55,9 +55,7 @@
             <label for="Cheveux">Cheveux</label>
             <input id="cheveux" class="input-custom" type="text" name="cheveux" value="{{ old('cheveux') }}" placeholder=" Couleur de cheveux Noir, marron" />
         </div>
-    </div>
-    <div class="row ">
-    </div>       
+    </div>     
     <div class="col-md-6 mt-4">
         <button type="submit" class="btn btn-custom">
             {{ __('SOUMETTRE') }}

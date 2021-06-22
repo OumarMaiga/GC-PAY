@@ -63,6 +63,9 @@
                 <a href="#" type="button" class="btn btn-custom">
                     {{ __('PAIEMENT') }}
                 </a>
+                <a href="javascript:history.back()" type="button" class="btn btn-warning">
+                    {{ __('Modifier') }}
+                </a>
             </div>
         </div>
     </div>

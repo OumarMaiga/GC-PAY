@@ -31,7 +31,7 @@
 <div class="row">
     <div class="col-md-4 verification-subtitle">Prenom et nom de la mère:</div>
     <div class="col-md-8 show-detail">
-        {{ $data['prenom_mere']." ".$data['nom_mere'] }}
+        {{ $data['prenom_nom_mere'] }}
     </div> 
 </div>
 <div class="row">
