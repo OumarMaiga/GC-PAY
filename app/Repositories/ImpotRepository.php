@@ -2,7 +2,7 @@
 
     namespace App\Repositories;
 
-    use App\Models\Notification;
+    use App\Models\Impot;
 
     class ImpotRepository extends ResourceRepository {
 

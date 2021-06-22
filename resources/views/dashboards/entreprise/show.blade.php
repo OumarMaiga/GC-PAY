@@ -39,43 +39,26 @@
                         <th class="text-center">Service</th>
                         <th class="text-center"> Montant</th>
                         <th class="text-center">Réalisé par</th>
-                        <th class="text-center">Actions</th>
+                       
                     </tr>
                 </thead>
                 <tbody>
                     <?php $n = 0; ?>
-                <?php $n = $n + 1; ?>
-               
+                    @foreach($impots as $key => $value)
+                    <?php $n = $n + 1; ?>
+                    <?php  $requete=App\Models\Requete::where('id',$value->requete_id)->first();   
+                     $usager=App\Models\User::where('id',$requete->usager_id)->first();       ?>
+                    
                     <tr>
                         <td class="text-center"><?= $n ?></td>
-                        <td class="text-center"></td>
+                        <td class="text-center">{{$value->libelle}}</td>
                       
-                        <td class="text-center"></td>
+                        <td class="text-center">{{$value->montant_payer}}</td>
                         <td class="text-center">
+                        {{$usager->prenom.' '.$usager->nom}}
                      
-                        <td class="justify-content-between icon-content text-center">
-                            <a href="#" class="col icon-action detail">
-                                <span class="fas fa-info">
-                                </span>
-                            </a>
-                            <a href="#" class="col icon-action icon-edit">
-                                <span class="fas fa-user-edit edit">
-                                </span>
-                            </a>
-                            <span class="col icon-action">
-                                <form  method="POST" action="#" class="d-inline-flex">
-                                    @csrf
-                                    @method('DELETE')
-
-                                    <button type="submit" onclick="return confirm('Voulez-vous supprimer l\'administrateur ?')">
-                                        <span class="fas fa-user-times supp"></span>
-                                    </button>
-                                </form>
-                            </span>
-                            
-                        </td>
                     </tr>
-                 
+                 @endforeach
                 </tbody>
             </table>
            

@@ -109,7 +109,7 @@ class EntrepriseController extends Controller
         
         $impots=Impot::where('entreprise_id',$entreprise->id)->get();
 
-        return view('dashboards.entreprise.show',compact('user','entreprise'));
+        return view('dashboards.entreprise.show',compact('user','entreprise','impots'));
     }
 
     /**
