@@ -18,17 +18,24 @@ use App\Models\Entreprise;
 use App\Repositories\RequeteRepository;
 use App\Models\Requete;
 
+
+use App\Repositories\ImpotRepository;
+use App\Models\Impot;
+
 class EntrepriseController extends Controller
 {
     protected $entrepriseRepository;
     protected $userRepository;
     protected $requeteRepository;
+    protected $impotRepository;
 
-    public function __construct(EntrepriseRepository $entrepriseRepository, RequeteRepository $requeteRepository,UserRepository $userRepository) {
+    public function __construct(EntrepriseRepository $entrepriseRepository, RequeteRepository $requeteRepository,UserRepository $userRepository,ImpotRepository $impotRepository) {
         
         $this->entrepriseRepository = $entrepriseRepository;
         $this->userRepository = $userRepository;
         $this->requeteRepository = $requeteRepository;
+        $this->impotRepository = $impotRepository;
+
     }
     
     /**
@@ -99,7 +106,8 @@ class EntrepriseController extends Controller
         $entreprise = $this->entrepriseRepository->getBySlug($slug);
         
         $user = User::where('id', $entreprise->user_id)->select('nom', 'prenom', 'email', 'type')->first();
-       
+        
+        $impots=Impot::where('entreprise_id',$entreprise->id)->get();
 
         return view('dashboards.entreprise.show',compact('user','entreprise'));
     }
