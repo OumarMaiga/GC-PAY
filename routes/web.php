@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\EntrepriseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +47,7 @@ Route::get('/{slug}/resume', [PageController::class, 'resume'])
 
 
 // Profil
-Route::get('/{email}', [ProfilController::class, 'profil'])
+Route::get('/{email}/profil', [ProfilController::class, 'profil'])
                 ->middleware('auth')
                 ->name('profil');
 
@@ -58,6 +59,7 @@ Route::put('/{email}/profil', [ProfilController::class, 'update'])
                 ->middleware('auth')
                 ->name('update');
 
+Route::get('/entreprise', [EntrepriseController::class, 'list'])->name('usager.entreprise')->middleware('auth');
 
 // Paramètre
 Route::get('/setting/password', [SettingController::class, 'edit_password'])

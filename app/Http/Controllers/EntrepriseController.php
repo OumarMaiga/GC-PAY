@@ -45,7 +45,6 @@ class EntrepriseController extends Controller
      */
     public function index()
     {
-        //
         $entreprises = $this->entrepriseRepository->get();
         return view('dashboards.entreprise.index', compact('entreprises'));
     }
@@ -157,5 +156,11 @@ class EntrepriseController extends Controller
 
         // redirect
         return redirect('/dashboard/entreprise/')->withStatus("L'entreprise a bien été supprimé");
+    }
+    
+    public function list()
+    {
+        $entreprises = Entreprise::where('user_id', Auth::user()->id)->get();
+        return view('dashboards.entreprise.entreprise_usager', compact('entreprises'));
     }
 }
