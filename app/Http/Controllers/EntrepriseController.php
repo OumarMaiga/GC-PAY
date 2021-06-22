@@ -124,7 +124,8 @@ class EntrepriseController extends Controller
         $entreprise= $this->entrepriseRepository->getBySlug($slug);
         // show the view and pass the service to it
         $users = $this->userRepository->get();
-        return view('dashboards.entreprise.edit',compact('entreprise','users'));
+        $impots=Impot::where('entreprise_id',$entreprise->id)->get();
+        return view('dashboards.entreprise.edit',compact('entreprise','users','impots'));
     }
 
     /**
