@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Passport extends Model
 {
     use HasFactory;
+    
+    protected $fillable = [
+        "nom",
+        "prenom",
+        "date_naissance", 
+        "lieu_naissance",
+        "adresse",
+    ];
 }

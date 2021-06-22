@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Edm extends Model
 {
     use HasFactory;
+    
+    protected $fillable = [
+        "numero_facture",
+        "montant",
+    ];
 }

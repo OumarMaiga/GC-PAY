@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Vignettes extends Model
 {
     use HasFactory;
+    
+    protected $fillable = [
+        "numero_chassis",
+        "numero_immatriculation",
+    ];
 }

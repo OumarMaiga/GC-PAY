@@ -18,8 +18,7 @@ class CreateCarteIdentitesTable extends Migration
             $table->string('nom');
             $table->string('prenom');
             $table->string('prenom_pere');
-            $table->string('prenom_mere');
-            $table->string('nom_mere');
+            $table->string('prenom_nom_mere');
             $table->string('adresse');
             $table->string('profession');
             $table->dateTime('date_naissance');
