@@ -16,5 +16,6 @@ class Entreprise extends Model
         "telephone",
         "adresse",
         "date_creation",
+        "responsable"
     ];
 }

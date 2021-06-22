@@ -124,8 +124,10 @@
 
 .show-subtile {
     color: #524f4f;
-    font-size: 1.6rem
+    font-size: 2rem
 }
+
+
 
 .show-detail {
     font-size: 1.5rem;
@@ -147,6 +149,16 @@
 {
     padding-left:3%;
     padding-right:3%;
+}
+
+.padding-right{
+    padding-left:70%;
+    
+}
+
+.padding-left
+{
+    padding-left:0%;
 }
 
 .padding-block

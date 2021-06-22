@@ -1,5 +1,5 @@
 
-<x-dashboard-layout>
+<x-app-layout>
     <div class="container dashboard-content">
             <div class="content-title">{{ __('CREATION D\'UNE ENTREPRISE') }}</div>
     
@@ -32,7 +32,7 @@
                             <input id="date_creation" class="input-custom" type="text" name="date_creation" value="{{ old('date_creation') }}" placeholder="Mois Année" />
                         </div>
                         <div class="col-md-6 form-group">
-                            <label for="utilisateur_id">Responsable</label>
+                            <label for="responsable">Responsable</label>
                             <input id="responsable" class="input-custom" type="text" name="responsable" value="{{ old('responsable') }}" placeholder="Prenom et Nom" required/>
                         </div>
                         
@@ -63,4 +63,4 @@
                     </div>
                 </form>
     </div>
-</x-dashboard-layout>
+</x-app-layout>

@@ -39,7 +39,7 @@ Route::post('/verification/{service}', [PageController::class, 'verification'])
                 ->middleware('auth')
                 ->name('service.verification');
 
-//Detail
+//resume
 Route::get('/{slug}/resume', [PageController::class, 'resume'])
                 ->middleware('auth')
                 ->name('resume');

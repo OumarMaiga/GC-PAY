@@ -20,6 +20,7 @@ class CreateRequetesTable extends Migration
             $table->boolean('paye')->default(false);
             $table->string('etat')->default("En cours");
             $table->string('code')->nullable();
+            $table->string('montant')->nullable();
             $table->foreignId('structure_id')->nullable();
             $table->foreignId('service_id')->nullable();
             $table->timestamps();

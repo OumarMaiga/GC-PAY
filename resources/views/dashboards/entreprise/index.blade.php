@@ -1,4 +1,4 @@
-<x-dashboard-layout>
+<x-app-layout>
 
 <div class="container-xl">
     <div class="table-responsive">
@@ -20,11 +20,9 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th class="text-center">Nom</th>
-                       
+                        <th class="text-center">Raison Social</th>
                         <th class="text-center"> Nif</th>
                         <th class="text-center">Responsable</th>
-                        <th class="text-center">Date de création</th>
                         <th class="text-center">Actions</th>
                     </tr>
                 </thead>
@@ -32,20 +30,19 @@
                     <?php $n = 0; ?>
                 @foreach($entreprises as $key => $value)
                 <?php $n = $n + 1; ?>
-                <?php $admin = App\Models\User::where('id', $value->utilisateur_id)->select('nom', 'prenom')->first() ?> 
+               
                     <tr>
                         <td class="text-center"><?= $n ?></td>
                         <td class="text-center">{{ $value->nom }}</td>
                       
                         <td class="text-center">{{ $value->nif }}</td>
                         <td class="text-center">
-                        @if ($admin != null)
-                                {{ $admin->prenom." ".$admin->nom }}
+                        @if ($value->responsable != null)
+                                {{ $value->responsable }}
                             @else
                                 Non précisé 
                             @endif
                         </td>
-                        <td class="text-center">{{ $value->date_creation}}</td>
                         <td class="justify-content-between icon-content text-center">
                             <a href="{{ route('entreprise.show', $value->slug) }}" class="col icon-action detail">
                                 <span class="fas fa-info">
@@ -76,4 +73,4 @@
     </div>  
 </div>   
 
-</x-dashboard-layout>
+</x-app-layout>
