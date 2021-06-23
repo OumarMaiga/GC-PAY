@@ -173,6 +173,11 @@
     
     padding-top:1%;
 }
+
+.padding-top-second{
+    padding-top:3%;
+}
+
 .descript{
     text-align: justify;
     width: 70%;

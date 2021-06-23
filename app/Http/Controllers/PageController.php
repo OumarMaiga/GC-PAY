@@ -51,4 +51,9 @@ class PageController extends Controller
         return view('pages.resume', compact('service', 'data', 'entreprise'));
     }
 
+    public function paiement($slug) {
+        
+        return view('pages.paiement');
+    }
+
 }
