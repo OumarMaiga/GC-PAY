@@ -8,30 +8,51 @@ use Illuminate\Validation\Rules;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+
 use App\Repositories\StructureRepository;
 use App\Repositories\UserRepository;
 use App\Repositories\ServiceRepository;
 use App\Repositories\RequeteRepository;
-use Illuminate\Support\Str;
+use App\Repositories\ImpotRepository;
+use App\Repositories\VignetteRepository;
+use App\Repositories\PassportRepository;
+use App\Repositories\CarteIdentiteRepository;
+use App\Repositories\EdmRepository;
+use App\Repositories\SomagepRepository;
+
 use App\Models\Structure;
 use App\Models\Service;
 use App\Models\Requete;
 use App\Models\Notification;
-
-
 class RequeteController extends Controller
 {
     protected $serviceRepository;
     protected $structureRepository;
     protected $userRepository;
     protected $requeteRepository;
+    protected $impotRepository;
+    protected $vignetteRepository;
+    protected $passportRepository;
+    protected $carteIdentiteRepository;
+    protected $edmRepository;
+    protected $somagepRepository;
 
-    public function __construct(ServiceRepository $serviceRepository,StructureRepository $structureRepository, UserRepository $userRepository,RequeteRepository $requeteRepository) {
+    public function __construct(ServiceRepository $serviceRepository,StructureRepository $structureRepository, UserRepository $userRepository,RequeteRepository $requeteRepository,
+    ImpotRepository $impotRepository, VignetteRepository $vignetteRepository, PassportRepository $passportRepository, CarteIdentiteRepository $carteIdentiteRepository, EdmRepository $edmRepository, SomagepRepository $somagepRepository) {
         $this->middleware('admin-structure-and-agent-only', ['only' => ['index', 'create', 'show', 'update', 'destroy']]);
         $this->serviceRepository = $serviceRepository;
         $this->structureRepository = $structureRepository;
         $this->userRepository = $userRepository;
         $this->requeteRepository = $requeteRepository;
+        $this->impotRepository = $impotRepository;
+        $this->vignetteRepository = $vignetteRepository;
+        $this->passportRepository = $passportRepository;
+        $this->carteIdentiteRepository = $carteIdentiteRepository;
+        $this->edmRepository = $edmRepository;
+        $this->somagepRepository = $somagepRepository;
     }
     /**
      * Display a listing of the resource.
@@ -65,36 +86,77 @@ class RequeteController extends Controller
      */
     public function store(Request $request)
     {
+        $data = Session::get('data');
+        $structure = $this->structureRepository->getBySlug($request->structure);
+        $service = $this->serviceRepository->getBySlug($request->service);
+        $rubrique = $service->rubrique()->associate($service->rubrique_id)->rubrique;
         
-        $slug='requete_'.Auth::user()->id.'_'.time();
-        $request->merge([
-            'slug' => $slug,
-            'usager_id' => Auth::user()->id,
-        ]);
-            
-        $requete = $this->requeteRepository->store($request->all());
-        //Generation de notification
-        $service = $requete->service()->associate($requete->service_id)->service;
-        $user = $requete->user()->associate($requete->usager_id)->user;
-        
-        if($service->type == "demande") {
-            $description = $user->prenom." ".$user->nom." (".$user->email.") a fait une demande de ".$service->libelle;
-        }elseif ($service->type == "paiement") {
-            $description = $user->prenom." ".$user->nom." (".$user->email.") a fait effectué le paiement de ".$service->libelle;
+        //Verification si le service et la structure ont un lien dans notre base de données
+        if($structure && $service){
+            $lien = DB::select('select * from service_structure where service_id = ? && structure_id = ?', [$service->id, $structure->id]);
+            if ($lien == null) {
+                return redirect("/service/$service->slug")->withErrors("La structure ou le service est mal sélectionné");
+            }
         }else{
+            return redirect("/service/$service->slug")->withErrors("La structure ou le service est mal sélectionné");
+        }
+        $slug = 'requete_'.Auth::user()->id.'_'.time();
+        $data['slug'] = $slug;
+        $data['usager_id'] = Auth::user()->id;
+        $data['service_id'] = $service->id;
+        $data['structure_id'] = $structure->id;
+        $requete = $this->requeteRepository->store($data);
+        $data['requete_id'] = $requete->id;
+
+        // Enregistrement dans le table du service en question            
+
+            //Données pour la rubrique impot et taxe
+            if($rubrique->slug == "impots-et-taxes"){
+                $data['libelle'] = $service->libelle;
+                $this->impotRepository->store($data);
+            }   
+            //Données pour la rubrique automobile
+            if($rubrique->slug == "automobile"){
+                $this->vignetteRepository->store($data);
+            }   
+            //Données pour electricité
+            if($service->slug == "energie-du-mali"){
+                $this->edmRepository->store($data);
+            }
+            //Données pour eau
+            if($service->slug == "somagep"){
+                $this->somagepRepository->store($data);
+            }
+
+            //Données pour le service carte d'identité
+            if($service->slug == "carte-national-didentite"){
+                $this->carteIdentiteRepository->store($data);
+            }   
+
+            //Données pour le service passport
+            if($service->slug == "passport"){
+                $this->passportRepository->store($data);
+            }   
+
+        //Generation de notification        
+        if($service->type == "demande") {
+            $description = Auth::user()->prenom." ".Auth::user()->nom." (".Auth::user()->email.") a fait une demande de ".$service->libelle;
+        } elseif ($service->type == "paiement") {
+            $description = Auth::user()->prenom." ".Auth::user()->nom." (".Auth::user()->email.") a fait effectué le paiement de ".$service->libelle;
+        } else {
             $description = $service->libelle;
         }
-        $slug2 = 'notification_'.Auth::user()->id.'_'.time();
+        $slug_notification = 'notification_'.Auth::user()->id.'_'.time();
         Notification::create([
             'vue' => false,
-            'slug' => $slug2,
+            'slug' => $slug_notification,
             'description' => $description,
             'destinateur' => 'structure',
             'requete_id' => $requete->id,
             'structure_id' => $requete->structure_id,
             'user_id' => $requete->usager_id,
         ]);
-        return redirect('/home')->withStatus("La nouvelle requête a bien été créée");
+        return redirect("usagers/requetes/$requete->slug")->withStatus("La nouvelle requête a bien été créée");
     }
 
     /**
@@ -192,6 +254,15 @@ class RequeteController extends Controller
    
            // redirect
            return redirect('/dashboard/requetes')->withStatus("La requête a bien été supprimé");
+    }
+    
+    public function detail($slug)
+    {
+        $requete = $this->requeteRepository->getBySlug($slug);
+        $user = $this->userRepository->getById($requete->usager_id);
+        $structure = structure::where('id', $requete->structure_id)->first();
+        $service = service::where('id', $requete->service_id)->first();
+        return view('pages.requetes.detail', compact('service', 'user','structure','requete'));
     }
     
     public function genereCode($longueur)

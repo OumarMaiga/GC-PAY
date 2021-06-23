@@ -21,6 +21,7 @@ class CreatePassportsTable extends Migration
             $table->string('date_naissance');
             $table->string('lieu_naissance');
             $table->string('numero_nina');
+            $table->foreignId('requete_id')->references('id')->on('requetes');
             $table->timestamps();
         });
     }

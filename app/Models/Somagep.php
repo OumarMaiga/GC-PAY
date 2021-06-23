@@ -12,5 +12,6 @@ class Somagep extends Model
     protected $fillable = [
         "numero_facture",
         "montant",
+        "requete_id",
     ];
 }

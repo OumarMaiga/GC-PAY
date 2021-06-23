@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Carte_Identite extends Model
+class CarteIdentite extends Model
 {
     use HasFactory;
     
@@ -21,5 +21,6 @@ class Carte_Identite extends Model
         "taille",
         "teint",
         "cheveux",
+        "requete_id",
     ];
 }

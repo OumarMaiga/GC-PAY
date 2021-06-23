@@ -15,5 +15,6 @@ class Passport extends Model
         "date_naissance", 
         "lieu_naissance",
         "adresse",
+        "requete_id",
     ];
 }

@@ -12,5 +12,6 @@ class Edm extends Model
     protected $fillable = [
         "numero_facture",
         "montant",
+        "requete_id",
     ];
 }

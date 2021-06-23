@@ -17,6 +17,7 @@ class CreateVignettesTable extends Migration
             $table->id();
             $table->string('numero_chassis');
             $table->string('numero_immatriculation');
+            $table->foreignId('requete_id')->references('id')->on('requetes');
             $table->timestamps();
         });
     }

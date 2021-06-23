@@ -14,5 +14,6 @@ class Impot extends Model
         "montant_payer", 
         "periode",
         "libelle",
+        "requete_id",
     ];
 }

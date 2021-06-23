@@ -26,6 +26,7 @@ class CreateCarteIdentitesTable extends Migration
             $table->string('taille');
             $table->string('teint');
             $table->string('cheveux');
+            $table->foreignId('requete_id')->references('id')->on('requetes');
             $table->timestamps();
         });
     }

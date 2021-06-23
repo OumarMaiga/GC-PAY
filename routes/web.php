@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\EntrepriseController;
+use App\Http\Controllers\RequeteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +21,7 @@ use App\Http\Controllers\EntrepriseController;
 
 Route::get('/', function () {
     return view('welcome');
-                })
-                ->name('home');
+})->name('home');
 
 require __DIR__.'/auth.php';
 require __DIR__.'/dashboard.php';
@@ -61,6 +61,8 @@ Route::put('/{email}/profil', [ProfilController::class, 'update'])
 
 Route::get('/entreprise', [EntrepriseController::class, 'list'])->name('usager.entreprise')->middleware('auth');
 
+//Requete
+Route::get('/usagers/requetes/{requete}', [RequeteController::class, 'detail'])->middleware('auth')->name('detail.requete');
 // Paramètre
 Route::get('/setting/password', [SettingController::class, 'edit_password'])
 ->middleware('auth')
