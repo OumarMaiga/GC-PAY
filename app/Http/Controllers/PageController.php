@@ -34,15 +34,19 @@ class PageController extends Controller
 
     public function detail($slug) {
         $service = $this->serviceRepository->getBySlug($slug);
+        $structures = $service->structures()->get();
         $rubrique=$this->rubriqueRepository->getById($service->rubrique_id);
         $entreprises= $this->entrepriseRepository->getByForeignId('user_id', Auth::user()->id);
         
-        return view('pages.detail', compact('service','rubrique','entreprises'));
+        return view('pages.detail', compact('service','rubrique','entreprises', 'structures'));
     }
 
     public function verification($slug, Request $request) {
-        $request->session()->put('data', $request->all());
         $service = $this->serviceRepository->getBySlug($slug);
+        $request->merge([
+            'service_id' => $service->id
+        ]);
+        $request->session()->put('data', $request->all());
         $data = $request->session()->get("data");
         $entreprise = "";
         if ($request->has('entreprise_id')) {

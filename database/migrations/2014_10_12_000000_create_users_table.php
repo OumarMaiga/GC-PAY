@@ -26,8 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table-> unsignedBigInteger('structure_id')->nullable(); 
-            $table->foreign('structure_id')->references('id')->on('structures');
+            $table->foreignId('structure_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -20,10 +20,25 @@
             <input id="lieu_naissance" class="input-custom" type="text" name="lieu_naissance" value="{{ old('lieu_naissance') }}" placeholder="Lieu de naissance" />
         </div>
     </div>
-    <div class="row">
+    <div class="row ">
+        <div class="col-md-6 form-group">
+            <label for="numero_nina">Numero NINA</label>
+            <input id="numero_nina" class="input-custom" type="text" name="numero_nina" value="{{ old('numero_nina') }}" placeholder="Numero NINA" />
+        </div>
         <div class="col-md-6 form-group">
             <label for="adresse">Adresse</label>
             <textarea id="adresse" class="input-custom" type="text" name="adresse" value="" placeholder="Adresse">{{ old('adresse') }}</textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <label for="adresse">Structure</label>
+            <select name="structure_id" id="structure_id" class="input-custom">
+                <option value="">-- CHOISISSEZ ICI --</option>
+                @foreach ($structures as $structure)
+                    <option value="{{ $structure->id }}">{{ $structure->libelle }}</option>
+                @endforeach
+            </select>
         </div>
     </div>
     <div class="col-md-6 mt-4">

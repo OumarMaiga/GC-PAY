@@ -19,7 +19,7 @@ class CreateFilesTable extends Migration
             $table->id();
             $table->string('libelle')->default('profil_picture');
             $table->string('file_path');
-            $table->foreignId('user_id')->default('0');
+            $table->foreignId('user_id')->references('id')->on('users')->default('0');
             $table->foreignId('entreprise_id')->default('0');
             $table->timestamps();
         });

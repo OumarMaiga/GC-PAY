@@ -56,6 +56,17 @@
             <input id="cheveux" class="input-custom" type="text" name="cheveux" value="{{ old('cheveux') }}" placeholder=" Couleur de cheveux Noir, marron" />
         </div>
     </div>     
+    <div class="row ">
+        <div class="col-md-6 form-group">
+            <label for="adresse">Structure</label>
+            <select name="structure_id" id="structure_id" class="input-custom">
+                <option value="">-- CHOISISSEZ ICI --</option>
+                @foreach ($structures as $structure)
+                    <option value="{{ $structure->id }}">{{ $structure->libelle }}</option>
+                @endforeach
+            </select>
+        </div>
+    </div>
     <div class="col-md-6 mt-4">
         <button type="submit" class="btn btn-custom">
             {{ __('SOUMETTRE') }}

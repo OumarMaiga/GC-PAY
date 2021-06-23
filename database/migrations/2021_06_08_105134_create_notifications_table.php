@@ -19,9 +19,9 @@ class CreateNotificationsTable extends Migration
             $table->string('destinateur')->nullable();
             $table->string('slug')->unique();
             $table->boolean('vue')->default(false);
-            $table->foreignId('requete_id')->nullable();
-            $table->foreignId('structure_id')->nullable();
-            $table->foreignId('user_id')->nullable();
+            $table->foreignId('requete_id')->references('id')->on('requetes')->nullable();
+            $table->foreignId('structure_id')->references('id')->on('structures')->nullable();
+            $table->foreignId('user_id')->references('id')->on('users')->nullable();
             $table->timestamps();
         });
     }

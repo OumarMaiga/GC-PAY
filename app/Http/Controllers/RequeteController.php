@@ -87,8 +87,8 @@ class RequeteController extends Controller
     public function store(Request $request)
     {
         $data = Session::get('data');
-        $structure = $this->structureRepository->getBySlug($request->structure);
-        $service = $this->serviceRepository->getBySlug($request->service);
+        $structure = $this->structureRepository->getById($data['structure_id']);
+        $service = $this->serviceRepository->getById($data['service_id']);
         $rubrique = $service->rubrique()->associate($service->rubrique_id)->rubrique;
         
         //Verification si le service et la structure ont un lien dans notre base de données

@@ -16,5 +16,6 @@ class Passport extends Model
         "lieu_naissance",
         "adresse",
         "requete_id",
+        "numero_nina",
     ];
 }

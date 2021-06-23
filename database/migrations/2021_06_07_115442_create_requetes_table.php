@@ -16,13 +16,13 @@ class CreateRequetesTable extends Migration
         Schema::create('requetes', function (Blueprint $table) {
             $table->id();
             $table->string('slug')->unique();
-            $table->foreignId('usager_id');
+            $table->foreignId('usager_id')->references('id')->on('users');
             $table->boolean('paye')->default(false);
             $table->string('etat')->default("En cours");
             $table->string('code')->nullable();
             $table->string('montant')->nullable();
-            $table->foreignId('structure_id')->nullable();
-            $table->foreignId('service_id')->nullable();
+            $table->foreignId('structure_id')->references('id')->on('structures')->nullable();
+            $table->foreignId('service_id')->references('id')->on('services')->nullable();
             $table->timestamps();
             
         });

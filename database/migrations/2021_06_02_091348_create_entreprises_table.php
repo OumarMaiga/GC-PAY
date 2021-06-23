@@ -16,7 +16,7 @@ class CreateEntreprisesTable extends Migration
     {
         Schema::create('entreprises', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->references('id')->on('users');
             $table->string('slug')->unique();
             $table->string('nom')->nullable();
             $table->string('nif')->unique();
