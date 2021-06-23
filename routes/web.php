@@ -45,6 +45,11 @@ Route::get('/{slug}/resume', [PageController::class, 'resume'])
                 ->middleware('auth')
                 ->name('resume');
 
+//paiement
+Route::get('/{slug}/paiement', [PageController::class, 'paiement'])
+->middleware('auth')
+->name('paiement');
+
 
 // Profil
 Route::get('/{email}/profil', [ProfilController::class, 'profil'])

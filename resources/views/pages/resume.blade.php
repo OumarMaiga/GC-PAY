@@ -61,16 +61,17 @@
             @if($service->slug == "passport")
                 @include('layouts.data_passport')
             @endif
-                <div class="row">
-                    <div class="col-md-6 mt-4">
-                        <button type="submit" class="btn btn-custom">
-                            {{ __('PAIEMENT') }}
-                        </button>
-                        <a href="javascript:history.back()" type="button" class="btn btn-warning">
-                            {{ __('Modifier') }}
-                        </a>
-                    </div>
+
+            <div class="row">
+                <div class="col-md-6 mt-4">
+                    <button type="submit" class="btn btn-custom">
+                        {{ __('PAIEMENT') }}
+                    </button>
+                    <a href="javascript:history.back()" type="button" class="btn btn-warning">
+                        {{ __('Modifier') }}
+                    </a>
                 </div>
+            </div>
         </div>
     </form>
         

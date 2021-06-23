@@ -17,6 +17,12 @@
     height: 25px;
 }
 
+.img-paie-media {
+    width: 100px;
+    height: 50px;
+}
+
+
 .nav-link:hover {
     color:#FFFFFF;
     text-decoration: underline;
@@ -182,3 +188,4 @@
 .verification-subtitle {
     text-decoration: underline;
 }
+
