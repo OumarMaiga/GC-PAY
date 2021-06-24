@@ -16,6 +16,7 @@ use App\Repositories\StructureRepository;
 use App\Repositories\UserRepository;
 use App\Repositories\ServiceRepository;
 use App\Repositories\RequeteRepository;
+
 use App\Repositories\ImpotRepository;
 use App\Repositories\VignetteRepository;
 use App\Repositories\PassportRepository;
@@ -35,6 +36,7 @@ class RequeteController extends Controller
     protected $structureRepository;
     protected $userRepository;
     protected $requeteRepository;
+
     protected $impotRepository;
     protected $vignetteRepository;
     protected $passportRepository;
@@ -49,6 +51,7 @@ class RequeteController extends Controller
         $this->structureRepository = $structureRepository;
         $this->userRepository = $userRepository;
         $this->requeteRepository = $requeteRepository;
+        
         $this->impotRepository = $impotRepository;
         $this->vignetteRepository = $vignetteRepository;
         $this->passportRepository = $passportRepository;
@@ -177,35 +180,33 @@ class RequeteController extends Controller
         $rubrique = Rubrique::where('id', $service->rubrique_id)->first();
 
         $entreprise = "";
-
-        // Enregistrement dans le table du service en question            
-
-        //Données pour la rubrique impot et taxe
+        // Recuperation des données dans le table du service en question            
+        // Données pour la rubrique impot et taxe
         if($rubrique->slug == "impots-et-taxes"){
             $data = $this->impotRepository->getByForeignId('requete_id', $requete->id)->first()->toArray();
             $entreprise = Entreprise::where('id', $data['entreprise_id'])->first();
         }   
-        //Données pour la rubrique automobile
+        // Données pour la rubrique automobile
         if($rubrique->slug == "automobile"){
             $data = $this->vignetteRepository->getByForeignId('requete_id', $requete->id)->first()->toArray();
         }   
-        //Données pour electricité
+        // Données pour electricité
         if($service->slug == "energie-du-mali"){
             $data = $this->edmRepository->getByForeignId('requete_id', $requete->id)->first()->toArray();
         }
-        //Données pour eau
+        // Données pour eau
         if($service->slug == "somagep"){
             $data = $this->somagepRepository->getByForeignId('requete_id', $requete->id)->first()->toArray();
         }
-        //Données pour le service carte d'identité
+        // Données pour le service carte d'identité
         if($service->slug == "carte-national-didentite"){
             $data = $this->carteIdentiteRepository->getByForeignId('requete_id', $requete->id)->first()->toArray();
         }
-        //Données pour le service passport
+        // Données pour le service passport
         if($service->slug == "passport"){
             $data = $this->passportRepository->getByForeignId('requete_id', $requete->id)->first()->toArray();
         }    
-        return view('dashboards.requetes.show', compact('service', 'user','structure','requete', 'rubrique'));
+        return view('dashboards.requetes.show', compact('service', 'user','structure','requete', 'rubrique', 'entreprise', 'data'));
     }
 
     /**

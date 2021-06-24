@@ -37,8 +37,6 @@
                         </div>
                         
                     </div>
-
-                     
                      <div class="row mt-2">
                         <div class="col-md-6 form-group">
                             <label for="adresse">Adresse</label>

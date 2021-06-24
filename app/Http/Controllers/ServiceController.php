@@ -43,7 +43,8 @@ class ServiceController extends Controller
         if (Auth::user()->type == "admin-systeme") {
             $services = $this->serviceRepository->get();
         } elseif (Auth::user()->type == "admin-structure" || Auth::user()->type == "agent") {
-            $services = $this->serviceRepository->getByForeignId('structure_id', Auth::user()->structure_id);
+            $structure = $this->structureRepository->getById(Auth::user()->structure_id);
+            $services = $structure->services()->get();
         } else {
             $services = [];
         }

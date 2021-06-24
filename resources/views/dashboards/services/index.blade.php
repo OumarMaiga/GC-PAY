@@ -18,8 +18,9 @@
                     <tr>
                         <th></th>
                         <th class="text-center">Libellé</th>
-                       
-                        <th class="text-center"> Structure</th>
+                       @if (Auth::user()->type == "admin-systeme")
+                            <th class="text-center"> Structure</th>
+                       @endif
                         <th class="text-center"> Rubrique</th>
                         <th class="text-center">Prix</th>
                         <th class="text-center">Actions</th>
@@ -27,16 +28,18 @@
                 </thead>
                 <tbody>
                     <?php $n = 0; ?>
-                @foreach($services as $key => $value)
+                @foreach($services as $service)
                 <?php
                     $n = $n + 1;
-                    $structures = $value->structures()->get();
-                    $rubrique = $value->rubrique()->associate($value->rubrique_id)->rubrique
+                    $structures = $service->structures()->get();
+
+                    $rubrique = $service->rubrique()->associate($service->rubrique_id)->rubrique
                 ?>
                         <tr>
                         <td class="text-center">{{ $n }}</td>
-                        <td class="text-center">{!! $value->libelle !!}</td>
+                        <td class="text-center">{!! $service->libelle !!}</td>
                         
+                       @if (Auth::user()->type == "admin-systeme")
                             <td class="text-center">
                                 @if($structures->count() == 0)
                                     Non précisée
@@ -57,24 +60,25 @@
                                     </div>
                                 @endif
                             </td>
+                        @endif
                         @if($rubrique == NULL)
                             <td class="text-center">Non précisée</td>
                         @else
                             <td class="text-center">{{ $rubrique->libelle }}</td>
                         @endif
-                        <td class="text-center">{{ $value->prix }}</td>
+                        <td class="text-center">{{ $service->prix }}</td>
                         <td class="justify-content-between icon-content text-center">
-                            <a href="{{ route('service.show', $value->slug) }}" class="col icon-action detail">
+                            <a href="{{ route('service.show', $service->slug) }}" class="col icon-action detail">
                                 <span class="fas fa-info">
                                 </span>
                             </a>
                             @if (Auth::user()->type == "admin-systeme")
-                                <a href="{{ route('service.edit', $value->slug) }}" class="col icon-action icon-edit">
+                                <a href="{{ route('service.edit', $service->slug) }}" class="col icon-action icon-edit">
                                     <span class="fas fa-user-edit edit">
                                     </span>
                                 </a>
                                 <span class="col icon-action">
-                                    <form  method="POST" action="{{ route('service.destroy', $value->id) }}" class="d-inline-flex">
+                                    <form  method="POST" action="{{ route('service.destroy', $service->id) }}" class="d-inline-flex">
                                         @csrf
                                         @method('DELETE')
 

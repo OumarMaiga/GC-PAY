@@ -18,9 +18,7 @@ class AdminSystemeOnly
     public function handle(Request $request, Closure $next)
     {
         if (Auth::user()->type != 'admin-systeme') {
-            //return redirect()->back()->withErrors('Accès Interdit');
-            $email = Auth::user()->email;
-            return redirect("/$email")->withDenied('Accès Interdit');
+            return redirect()->back()->withErrors('Accès Interdit');
         }
         return $next($request);
     }
