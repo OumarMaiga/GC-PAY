@@ -27,6 +27,8 @@ use App\Models\Structure;
 use App\Models\Service;
 use App\Models\Requete;
 use App\Models\Notification;
+use App\Models\Rubrique;
+use App\Models\Entreprise;
 class RequeteController extends Controller
 {
     protected $serviceRepository;
@@ -101,6 +103,7 @@ class RequeteController extends Controller
             return redirect("/service/$service->slug")->withErrors("La structure ou le service est mal sélectionné");
         }
         $slug = 'requete_'.Auth::user()->id.'_'.time();
+        //$data['montant'] = $request->montant_payer;
         $data['slug'] = $slug;
         $data['usager_id'] = Auth::user()->id;
         $data['service_id'] = $service->id;
@@ -167,12 +170,42 @@ class RequeteController extends Controller
      */
     public function show($slug)
     {
-        
         $requete = $this->requeteRepository->getBySlug($slug);
         $user = $this->userRepository->getById($requete->usager_id);
-        $structure = structure::where('id', $requete->structure_id)->first();
-        $service = service::where('id', $requete->service_id)->first();
-        return view('dashboards.requetes.show', compact('service', 'user','structure','requete'));
+        $structure = Structure::where('id', $requete->structure_id)->first();
+        $service = Service::where('id', $requete->service_id)->first();
+        $rubrique = Rubrique::where('id', $service->rubrique_id)->first();
+
+        $entreprise = "";
+
+        // Enregistrement dans le table du service en question            
+
+        //Données pour la rubrique impot et taxe
+        if($rubrique->slug == "impots-et-taxes"){
+            $data = $this->impotRepository->getByForeignId('requete_id', $requete->id)->first()->toArray();
+            $entreprise = Entreprise::where('id', $data['entreprise_id'])->first();
+        }   
+        //Données pour la rubrique automobile
+        if($rubrique->slug == "automobile"){
+            $data = $this->vignetteRepository->getByForeignId('requete_id', $requete->id)->first()->toArray();
+        }   
+        //Données pour electricité
+        if($service->slug == "energie-du-mali"){
+            $data = $this->edmRepository->getByForeignId('requete_id', $requete->id)->first()->toArray();
+        }
+        //Données pour eau
+        if($service->slug == "somagep"){
+            $data = $this->somagepRepository->getByForeignId('requete_id', $requete->id)->first()->toArray();
+        }
+        //Données pour le service carte d'identité
+        if($service->slug == "carte-national-didentite"){
+            $data = $this->carteIdentiteRepository->getByForeignId('requete_id', $requete->id)->first()->toArray();
+        }
+        //Données pour le service passport
+        if($service->slug == "passport"){
+            $data = $this->passportRepository->getByForeignId('requete_id', $requete->id)->first()->toArray();
+        }    
+        return view('dashboards.requetes.show', compact('service', 'user','structure','requete', 'rubrique'));
     }
 
     /**
@@ -249,7 +282,7 @@ class RequeteController extends Controller
     public function destroy($id)
     {
            // delete
-           $requete =Requete::find($id);
+           $requete = Requete::find($id);
            $requete->delete();
    
            // redirect
@@ -260,9 +293,40 @@ class RequeteController extends Controller
     {
         $requete = $this->requeteRepository->getBySlug($slug);
         $user = $this->userRepository->getById($requete->usager_id);
-        $structure = structure::where('id', $requete->structure_id)->first();
-        $service = service::where('id', $requete->service_id)->first();
-        return view('pages.requetes.detail', compact('service', 'user','structure','requete'));
+        $structure = Structure::where('id', $requete->structure_id)->first();
+        $service = Service::where('id', $requete->service_id)->first();
+        $rubrique = Rubrique::where('id', $service->rubrique_id)->first();
+
+        $entreprise = "";
+
+        // Enregistrement dans le table du service en question            
+
+        //Données pour la rubrique impot et taxe
+        if($rubrique->slug == "impots-et-taxes"){
+            $data = $this->impotRepository->getByForeignId('requete_id', $requete->id)->first()->toArray();
+            $entreprise = Entreprise::where('id', $data['entreprise_id'])->first();
+        }   
+        //Données pour la rubrique automobile
+        if($rubrique->slug == "automobile"){
+            $data = $this->vignetteRepository->getByForeignId('requete_id', $requete->id)->first()->toArray();
+        }   
+        //Données pour electricité
+        if($service->slug == "energie-du-mali"){
+            $data = $this->edmRepository->getByForeignId('requete_id', $requete->id)->first()->toArray();
+        }
+        //Données pour eau
+        if($service->slug == "somagep"){
+            $data = $this->somagepRepository->getByForeignId('requete_id', $requete->id)->first()->toArray();
+        }
+        //Données pour le service carte d'identité
+        if($service->slug == "carte-national-didentite"){
+            $data = $this->carteIdentiteRepository->getByForeignId('requete_id', $requete->id)->first()->toArray();
+        }
+        //Données pour le service passport
+        if($service->slug == "passport"){
+            $data = $this->passportRepository->getByForeignId('requete_id', $requete->id)->first()->toArray();
+        }   
+        return view('pages.requetes.detail', compact('service', 'user','structure','requete', 'rubrique', 'entreprise', 'data'));
     }
     
     public function genereCode($longueur)
@@ -275,4 +339,5 @@ class RequeteController extends Controller
         }
         return $chaine;
     }
+
 }

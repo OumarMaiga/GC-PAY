@@ -5,7 +5,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4 show-detail souligne">
+        <div class="col-md-4 verification-subtitle">
             Code: 
         </div>
         <div class="col-md-8 show-detail">
@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4 show-detail souligne">
+        <div class="col-md-4 verification-subtitle">
             Etat:
         </div>
         <div class="col-md-8 show-detail">
@@ -28,14 +28,14 @@
         </div>
         <div class="row">
         @if($structure == NULL)
-        <div class="col-md-4 show-detail souligne">
+        <div class="col-md-4 verification-subtitle">
             Structure: 
         </div>   
         <div class="col-md-8 show-detail">
             Non pécisé
         </div>
         @else
-        <div class="col-md-4 show-detail souligne">
+        <div class="col-md-4 verification-subtitle">
             Structure: 
         </div> 
         <div class="col-md-8 show-detail">
@@ -48,7 +48,7 @@
         @endif
     </div>
     <div class="row">
-        <div class="col-md-4 show-detail souligne">
+        <div class="col-md-4 verification-subtitle">
             Prix: 
         </div>
         <div class="col-md-8 show-detail">
@@ -60,14 +60,32 @@
             Résumé
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-4 show-detail souligne">
-            Prix: 
-        </div>
-        <div class="col-md-8 show-detail">
-        {{ $service->prix }}
-        </div>
-    </div>
+    
+    <!--Données pour la rubrique eau et electricité -->
+    @if($rubrique->slug == "eau-et-electricité")
+        @include('layouts.data_eau_electricite')
+    @endif
+
+    <!--Données pour la rubrique impot et taxe -->
+    @if($rubrique->slug == "impots-et-taxes")
+        @include('layouts.data_impot')
+    @endif
+
+    <!--Données pour la rubrique automobile -->
+    @if($rubrique->slug == "automobile")
+        @include('layouts.data_automobile')
+    @endif
+
+    <!--Données pour le service carte d'identité -->
+    @if($service->slug == "carte-national-didentite")
+        @include('layouts.data_carte_didentite')
+    @endif
+
+    <!--Données pour le service passport -->
+    @if($service->slug == "passport")
+        @include('layouts.data_passport')
+    @endif
+        
     @if(Auth::user()->type == "admin-systeme" || Auth::user()->type == "admin-structure")
         <div class="row col-md-4">
             <div class="mt-4 row justify-content-center">

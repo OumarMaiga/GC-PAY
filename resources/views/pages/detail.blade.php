@@ -16,6 +16,9 @@
     <div class=" padding-block">
         <h1 class=" text-blue-800 size">Formulaire à remplir</h1>
 
+        <!-- Validation Errors -->
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+
         <!--Formulaire pour la rubrique eau et electricité -->
         @if($rubrique->slug=="eau-et-electricité")
             @include('layouts.form_eau_electricite')

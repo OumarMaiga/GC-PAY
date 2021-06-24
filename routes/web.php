@@ -64,7 +64,7 @@ Route::put('/{email}/profil', [ProfilController::class, 'update'])
                 ->middleware('auth')
                 ->name('update');
 
-Route::get('/entreprise', [EntrepriseController::class, 'list'])->name('usager.entreprise')->middleware('auth');
+Route::get('/usagers/entreprise', [EntrepriseController::class, 'list'])->name('usager.entreprise')->middleware('auth');
 
 //Requete
 Route::get('/usagers/requetes/{requete}', [RequeteController::class, 'detail'])->middleware('auth')->name('detail.requete');

@@ -37,11 +37,13 @@ class PageController extends Controller
         $structures = $service->structures()->get();
         $rubrique=$this->rubriqueRepository->getById($service->rubrique_id);
         $entreprises= $this->entrepriseRepository->getByForeignId('user_id', Auth::user()->id);
-        
         return view('pages.detail', compact('service','rubrique','entreprises', 'structures'));
     }
 
     public function verification($slug, Request $request) {
+        $request->validate([
+            'structure_id' => ['required', 'numeric'],
+        ]);
         $service = $this->serviceRepository->getBySlug($slug);
         $request->merge([
             'service_id' => $service->id
@@ -55,8 +57,7 @@ class PageController extends Controller
         return view('pages.resume', compact('service', 'data', 'entreprise'));
     }
 
-    public function paiement($slug) {
-        
+    public function paiement($slug) {        
         return view('pages.paiement');
     }
 

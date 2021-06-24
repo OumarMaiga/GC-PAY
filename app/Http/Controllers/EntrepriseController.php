@@ -89,9 +89,12 @@ class EntrepriseController extends Controller
         ]);
             
         $entreprise = $this->entrepriseRepository->store($request->all());
-
-        return redirect('/dashboard/entreprise/')->withStatus("Une nouvelle entreprise vient d'être ajouté");
-    }
+        if(Auth::user()->type == "usager"){
+            return redirect('/usagers/entreprise/')->withStatus("Une nouvelle entreprise vient d'être ajouté");
+        } else {
+            return redirect('/dashboard/entreprise/')->withStatus("Une nouvelle entreprise vient d'être ajouté");
+        }
+        }
 
     /**
      * Display the specified resource.
