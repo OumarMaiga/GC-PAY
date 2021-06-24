@@ -17,7 +17,6 @@
                         <th></th>
                         <th class="text-center"> Service</th>
                         <th class="text-center">Usager</th>
-                        <th class="text-center"> Structure</th>
                         <th class="text-center">Etat</th>
                         <th class="text-center">Code</th>
                         <th class="text-center">Paiement</th>
@@ -33,26 +32,17 @@
                 ?>
                         <tr>
                         <td class="text-center">{{ $value->id }}</td>
-                        @if($service==NULL)
+                        @if($service == NULL)
                             <td class="text-center">Non précisée</td>
                         @else
                             <td class="text-center">{{ $service->libelle }}</td>
                         @endif
 
-
-                        @if($usager==NULL)
+                        @if($usager == NULL)
                             <td class="text-center">Non précisée</td>
                         @else
                             <td class="text-center">{{ $usager->prenom.' '.$usager->nom }}</td>
                         @endif
-
-
-                        @if($structure==NULL)
-                            <td class="text-center">Non précisée</td>
-                        @else
-                            <td class="text-center">{{ $structure->libelle }}</td>
-                        @endif
-
                         
                         <td class="text-center">{{ $value->etat }}</td>
                         <td class="text-center">{{ $value->code }}</td>

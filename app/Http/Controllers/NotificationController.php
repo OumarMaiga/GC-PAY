@@ -91,7 +91,7 @@ class NotificationController extends Controller
     {
         
         $notification = $this->notificationRepository->getBySlug($slug);
-        $requete = $notification->requete()->associate($notification->user_id)->requete;
+        $requete = $notification->requete()->associate($notification->requete_id)->requete;
         $user = $this->userRepository->getById($requete->usager_id);
         $structure = Structure::where('id', $requete->structure_id)->first();
         $service = Service::where('id', $requete->service_id)->first();

@@ -53,7 +53,7 @@ class ProfilController extends Controller
             $user->save();
         }
 
-            return redirect('/'.$email)->withStatus("Votre profil a bien été mis à jour");
+            return redirect("/$email/profil")->withStatus("Votre profil a bien été mis à jour");
 
     }
 }

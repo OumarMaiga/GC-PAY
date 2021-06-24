@@ -2,19 +2,13 @@
         <!-- Logo --> 
         
         @if(Auth::check())
-        @if(Auth::user()->type=='admin-systeme' || Auth::user()->type=='admin-structure')
-        <a class="navbar-brand logo" href="{{ route('accueil') }}">
-            {{ __('GC - PAY') }}
-        </a>
+            <a class="navbar-brand logo" href="{{ route('accueil') }}">
+                {{ __('GC - PAY') }}
+            </a>
         @else
-        <a class="navbar-brand logo" href="{{ route('home') }}">
-            {{ __('GC - PAY') }}
-        </a>
-        @endif
-        @else
-        <a class="navbar-brand logo" href="{{ route('login') }}">
-            {{ __('GC - PAY') }}
-        </a>
+            <a class="navbar-brand logo" href="{{ route('login') }}">
+                {{ __('GC - PAY') }}
+            </a>
         @endif
 
         <!-- Right Item -->
@@ -115,7 +109,7 @@
                             Parametre
                         </a>
                         <div class="dropdown-divider"></div>
-                        @if (Auth::user()->type == "admin-systeme" || Auth::user()->type == "admin-structure")
+                        @if (Auth::user()->type == "admin-systeme" || Auth::user()->type == "admin-structure" || Auth::user()->type == "agent")
                             <a class="dropdown-item" href="{{ route('dashboard.index') }}">
                                 Dashboard
                             </a>
