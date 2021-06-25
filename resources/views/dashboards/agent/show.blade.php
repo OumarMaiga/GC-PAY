@@ -2,8 +2,8 @@
     <div class="container dashboard-content">
         <div class="row">
             <div class="col-md-4">
-                @if (picture_exist($user->id))
-                    <img src="/storage/profil_pictures/{{ picture_exist($user->id) }}" class="avatar"/>
+                @if (photo_profil())
+                    <img src="{{ (photo_profil()) }}" class="avatar"/>
                 @else
                     <img src='/storage/profil_pictures/default.jpg'class="profil-img"/>
                 @endif
