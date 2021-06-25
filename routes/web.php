@@ -19,9 +19,8 @@ use App\Http\Controllers\RequeteController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [PageController::class, 'accueil'])
+    ->name('home');
 
 require __DIR__.'/auth.php';
 require __DIR__.'/dashboard.php';
@@ -33,7 +32,7 @@ Route::get('/accueil', [PageController::class, 'accueil'])
 
 //Detail
 Route::get('/service/{slug}', [PageController::class, 'detail'])
-                ->middleware('auth')
+               
                 ->name('detail');
 //Verification
 Route::post('/verification/{service}', [PageController::class, 'verification'])

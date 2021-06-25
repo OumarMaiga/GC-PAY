@@ -36,8 +36,15 @@ class PageController extends Controller
         $service = $this->serviceRepository->getBySlug($slug);
         $structures = $service->structures()->get();
         $rubrique=$this->rubriqueRepository->getById($service->rubrique_id);
-        $entreprises= $this->entrepriseRepository->getByForeignId('user_id', Auth::user()->id);
-        return view('pages.detail', compact('service','rubrique','entreprises', 'structures'));
+        
+        if(Auth::check())
+           {$entreprises= $this->entrepriseRepository->getByForeignId('user_id', Auth::user()->id);
+        }
+        else{
+            $entreprises=NULL;
+        }
+       
+       return view('pages.detail', compact('service','rubrique','entreprises', 'structures'));
     }
 
     public function verification($slug, Request $request) {

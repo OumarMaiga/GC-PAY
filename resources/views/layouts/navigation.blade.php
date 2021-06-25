@@ -6,7 +6,7 @@
                 {{ __('GC - PAY') }}
             </a>
         @else
-            <a class="navbar-brand logo" href="{{ route('login') }}">
+            <a class="navbar-brand logo" href="{{ route('home') }}">
                 {{ __('GC - PAY') }}
             </a>
         @endif
@@ -65,7 +65,7 @@
                 </li>
             @else
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('home') }}">
                         Accueil
                     </a>
                 </li>

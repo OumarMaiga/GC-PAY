@@ -12,7 +12,7 @@
         <?php $structure = $service->structures()->first() ?>
         <span class="infos">Durée</span>:  {{$service->duree}} <span class="infos2">Prix:</span>  {{$service->prix}}  <span class="infos2">Structure:</span>  {{ ($structure != null) ? $structure->libelle : ""}}
     </div>
-    
+    @if(Auth::check())
     <div class=" padding-block">
         <h1 class=" text-blue-800 size">Formulaire à remplir</h1>
 
@@ -47,4 +47,11 @@
         @endif
 
     </div>
+    @else
+    <div class="padding-block">
+                    <a href="{{ route('login') }}"> 
+                        <input type="button" value="DEMANDER LE SERVICE"class="btn btn-custom">
+                    </a>
+        </div>
+    @endif
 </x-app-layout>
