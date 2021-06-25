@@ -18,9 +18,9 @@
                 Etat:
             </div>
             <div class="col-md-8 show-detail">
-                @if ( $requete->etat == 'Terminé')
+                @if ( $requete->etat == 'Traitée')
                     <span class="badge badge-info padding">{{$requete->etat}}</span>
-                @elseif ($requete->etat == 'Cloturée')
+                @elseif ($requete->etat == 'Remis')
                     <span class="badge badge-success padding">{{$requete->etat}}</span>
                 @else
                     <span class="badge badge-warning padding">{{$requete->etat}}</span>
@@ -97,11 +97,11 @@
                         @method('PUT')
                         @if ($requete->etat == "En cours")
                             <button type="submit" class="mr-4 btn btn-outline-warning" onclick="return confirm('Confirmer la fin du traitement de la demande?')">
-                                TERMINER
+                                TRAITER
                             </button>
-                        @elseif ($requete->etat == "Terminé") 
+                        @elseif ($requete->etat == "Traitée") 
                             <button type="submit" class="mr-4 btn btn-outline-info text-uppercase" onclick="return confirm('Confirmer la remise du document')">
-                                Cloturée
+                                REMETTRE
                             </button>
                         @else
                         
