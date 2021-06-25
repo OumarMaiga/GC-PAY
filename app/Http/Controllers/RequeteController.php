@@ -66,9 +66,13 @@ class RequeteController extends Controller
      */
     public function index()
     {
-        $requetes = requete::where('structure_id',Auth::user()->structure_id)
-        ->get();
-        return view('dashboards.requetes.index',compact('requetes'));
+        $requetes = requete::where('structure_id', Auth::user()->structure_id)->where('etat', '<>', 'Cloturée')->get();
+        return view('dashboards.requetes.index', compact('requetes'));
+    }
+    public function archives()
+    {
+        $requetes = requete::where('structure_id', Auth::user()->structure_id)->where('etat', 'Cloturée')->get();
+        return view('dashboards.requetes.archives', compact('requetes'));
     }
 
     /**
@@ -80,7 +84,7 @@ class RequeteController extends Controller
     {
         $structures = $this->structureRepository->get();
         $services = $this->serviceRepository->get();
-        return view('dashboards.requetes.create',compact('structures','services'));
+        return view('dashboards.requetes.create', compact('structures','services'));
     }
 
     /**

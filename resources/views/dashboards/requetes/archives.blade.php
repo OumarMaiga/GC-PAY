@@ -5,7 +5,7 @@
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
-                    <div class="col-sm-8"><h2><b>LES REQUÊTES</b></h2></div>
+                    <div class="col-sm-8"><h2><b>LES REQUÊTES ARCHIVES</b></h2></div>
                     
                 </div>
             </div>
@@ -14,7 +14,7 @@
             <table class="table table-striped table-hover table-bordered">
                 <thead>
                     <tr>
-                        <th></th>
+                        <th>#</th>
                         <th class="text-center"> Service</th>
                         <th class="text-center">Usager</th>
                         <th class="text-center">Etat</th>
@@ -24,10 +24,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $n = 0 ?>
-                    @foreach($requetes as $value)
-                    <?php
-                        $n = $n + 1;
+                <?php $n = 0 ?>
+                @foreach($requetes as $value)
+                <?php
+                    $n = $n + 1;
                     $structure=App\Models\Structure::where('id',$value->structure_id)->first(); 
                     $service=App\Models\Service::where('id',$value->service_id)->first();    
                     $usager=App\Models\User::where('id',$value->usager_id)->first();     

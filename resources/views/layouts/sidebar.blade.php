@@ -40,7 +40,7 @@
             </ul>
         </div>
         @break
-    @case("admin-structure")
+    @case("admin-structure" || "agent")
         <div class="sidebar">
             <div class="sidebar-title">
                 <a href="{{ route('dashboard.index') }}" class="sidebar-link">
@@ -68,35 +68,9 @@
                         NOTIFICATION
                     </a>
                 </li>
-            </ul>
-        </div>
-        @break
-    @case("agent")
-        <div class="sidebar">
-            <div class="sidebar-title">
-                <a href="{{ route('dashboard.index') }}" class="sidebar-link">
-                    TABLEAU DE BORD
-                </a>
-            </div>
-            <ul class="sidebar-list">
                 <li class="sidebar-item">
-                    <a href="{{ route('service.index') }}" class="sidebar-link">
-                        SERVICE
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="{{ route('agent.index') }}" class="sidebar-link">
-                        AGENT
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="{{route('requetes.index')}}" class="sidebar-link">
-                        DEMANDE
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="{{route('notification.index')}}" class="sidebar-link">
-                        NOTIFICATION
+                    <a href="{{route('requetes.archives')}}" class="sidebar-link">
+                        ARCHIVE
                     </a>
                 </li>
             </ul>
