@@ -26,14 +26,11 @@ require __DIR__.'/auth.php';
 require __DIR__.'/dashboard.php';
 
 //Accueil
-Route::get('/accueil', [PageController::class, 'accueil'])
-                ->middleware('auth')
-                ->name('accueil');
+Route::get('/accueil', [PageController::class, 'accueil'])->middleware('auth')->name('accueil');
 
 //Detail
-Route::get('/service/{slug}', [PageController::class, 'detail'])
-               
-                ->name('detail');
+Route::get('/service/{slug}', [PageController::class, 'detail'])->name('detail');
+
 //Verification
 Route::post('/verification/{service}', [PageController::class, 'verification'])
                 ->middleware('auth')
@@ -66,7 +63,7 @@ Route::put('/{email}/profil', [ProfilController::class, 'update'])
 Route::get('/usagers/entreprise', [EntrepriseController::class, 'list'])->name('usager.entreprise')->middleware('auth');
 
 //Requete
-Route::get('/usagers/requetes/{requete}', [RequeteController::class, 'detail'])->middleware('auth')->name('detail.requete');
+Route::get('/usagers/requete/{requete}', [RequeteController::class, 'detail'])->middleware('auth')->name('detail.requete');
 // Paramètre
 Route::get('/setting/password', [SettingController::class, 'edit_password'])
 ->middleware('auth')

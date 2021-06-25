@@ -35,10 +35,9 @@ Route::resource('/dashboard/entreprise',EntrepriseController::class)->middleware
 Route::resource('/dashboard/agent', AgentController::class)->middleware('auth');
 
 //REQUETE
-Route::get('/dashboard/requetes/archives', [RequeteController::class, 'archives'])->middleware('auth')->name('requetes.archives');
-Route::resource('/dashboard/requetes', RequeteController::class)->except(['store'])->middleware('auth');
-Route::post('/dashboard/requetes', [RequeteController::class, 'store'])->name('requetes.store')->middleware('auth');
-Route::get('/{email}/requetes/', [RequeteController::class, 'create'])
+Route::get('/dashboard/requete/archives', [RequeteController::class, 'archives'])->middleware('auth')->name('requete.archives');
+Route::resource('/dashboard/requete', RequeteController::class)->middleware('auth');
+Route::get('/{email}/requete/', [RequeteController::class, 'create'])
             ->middleware('auth')
             ->name('create.requete');
 

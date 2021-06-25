@@ -75,7 +75,7 @@
                             </div>
                         </div>
                     </div>
-                <form method="POST" action="{{ route('requetes.store') }}">
+                <form method="POST" action="{{ route('requete.store') }}">
                 @csrf
                     <div class="mt-4 justify-content-center">
                         <button type="submit" class="btn btn-custom full">

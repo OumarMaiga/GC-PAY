@@ -166,7 +166,7 @@ class RequeteController extends Controller
             'structure_id' => $requete->structure_id,
             'user_id' => $requete->usager_id,
         ]);
-        return redirect("usagers/requetes/$requete->slug")->withStatus("La nouvelle requête a bien été créée");
+        return redirect("usagers/requete/$requete->slug")->withStatus("La nouvelle requête a bien été créée");
     }
 
     /**
@@ -275,7 +275,7 @@ class RequeteController extends Controller
             'user_id' => $requete->usager_id,
         ]);
 
-        return redirect("/dashboard/requetes/$requete->slug")->withStatus("La demande a bien été mise à jour");
+        return redirect("/dashboard/requete/$requete->slug")->withStatus("La demande a bien été mise à jour");
     }
 
     /**
@@ -291,7 +291,7 @@ class RequeteController extends Controller
            $requete->delete();
    
            // redirect
-           return redirect('/dashboard/requetes')->withStatus("La requête a bien été supprimé");
+           return redirect('/dashboard/requete')->withStatus("La requête a bien été supprimé");
     }
     
     public function detail($slug)

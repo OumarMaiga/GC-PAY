@@ -59,7 +59,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="{{route('requetes.index')}}" class="sidebar-link">
+                    <a href="{{route('requete.index')}}" class="sidebar-link">
                         DEMANDE
                     </a>
                 </li>
@@ -69,7 +69,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="{{route('requetes.archives')}}" class="sidebar-link">
+                    <a href="{{route('requete.archives')}}" class="sidebar-link">
                         ARCHIVE
                     </a>
                 </li>

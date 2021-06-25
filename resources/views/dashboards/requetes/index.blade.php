@@ -37,7 +37,7 @@
                         @if($service == NULL)
                             <td class="text-center">Non précisée</td>
                         @else
-                            <td class="text-center">{{ $service->libelle }}</td>
+                            <td class="text-center">{!! $service->libelle !!}</td>
                         @endif
 
                         @if($usager == NULL)
@@ -54,7 +54,7 @@
                             <td class="text-center">Non effectué</td>
                         @endif
                         <td class="justify-content-between icon-content text-center">
-                            <a href="{{ route('requetes.show', $value->slug) }}" class="col icon-action detail">
+                            <a href="{{ route('requete.show', $value->slug) }}" class="col icon-action detail">
                                 <span class="fas fa-info">
                                 </span>
                             </a>                         

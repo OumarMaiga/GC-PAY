@@ -92,7 +92,7 @@
         @if($service->type=="demande")
             <div class="row col-md-4">
                 <div class="mt-4 row justify-content-center">
-                    <form  method="POST" action="{{ route('requetes.update', $requete->id) }}">
+                    <form  method="POST" action="{{ route('requete.update', $requete->id) }}">
                         @csrf
                         @method('PUT')
                         @if ($requete->etat == "En cours")

@@ -49,9 +49,10 @@
     </div>
     @else
     <div class="padding-block">
-                    <a href="{{ route('login') }}"> 
-                        <input type="button" value="DEMANDER LE SERVICE"class="btn btn-custom">
-                    </a>
-        </div>
+        <form action="{{ route('requete.store') }}" method="post">
+            @csrf
+            <input type="submit" value="DEMANDER LE SERVICE"class="btn btn-custom">
+        </form>
+    </div>
     @endif
 </x-app-layout>
