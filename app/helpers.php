@@ -62,5 +62,5 @@ function custom_date($date) {
 }
 
 function number_notification () {
-    return Notification::where('user_id', Auth::user()->id)->where('vue', false)->count();
+    return Notification::where('user_id', Auth::user()->id)->where('destinateur', 'usager')->where('vue', false)->count();
 }
