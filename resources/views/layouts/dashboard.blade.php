@@ -34,7 +34,7 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased" id="page">
             <div class="row">
                 <div class="col-md-2">
                     @include('layouts.sidebar')
@@ -42,7 +42,7 @@
                 <div class="col-md-10">
                     @include('layouts.navdashboard')
                     <!-- Page Content -->
-                    <main>
+                    <main id="content">
                         {{ $slot }}
                     </main>
                 </div>

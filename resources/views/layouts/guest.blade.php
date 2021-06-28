@@ -21,10 +21,10 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
-    <body>
+    <body id="page">
         @include('layouts.navigation')
         
-        <main>
+        <main id="content">
             {{ $slot }}
         </main>
 

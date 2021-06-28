@@ -28,12 +28,12 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased" id="page">
             @include('layouts.navigation')
 
             <!-- Page Content -->
          
-            <main>
+            <main id="content">
                 {{ $slot }}
             </main>
            
