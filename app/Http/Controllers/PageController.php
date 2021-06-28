@@ -78,17 +78,18 @@ class PageController extends Controller
         $services = Service::query()
             ->where('libelle', 'LIKE', "%{$search}%")
             ->get();
-        if($rubriques==NULL)
+            
+        if($rubriques->isEmpty())
         {
             $first = Service::query()
             ->where('libelle', 'LIKE', "%{$search}%")
             ->first();
             
-            $rubriques=$this->rubriqueRepository->getById($services->rubrique_id);
+            $rubrique = $this->rubriqueRepository->getById($services->first()->rubrique_id);
         }
      
     
         // Return the search view with the resluts compacted
-        return view('pages.recherche', compact('services','search','rubriques'));
+        return view('pages.recherche', compact('services','search', 'rubrique'));
     }
 }
