@@ -36,6 +36,11 @@ Route::get('/notifications/{notification}', [NotificationController::class, 'det
 //Detail
 Route::get('/service/{slug}', [PageController::class, 'detail'])->name('detail');
 
+//Recherche
+//Detail
+Route::get('/recherche', [PageController::class, 'search'])->name('search');
+
+
 //Verification
 Route::post('/verification/{service}', [PageController::class, 'verification'])
                 ->middleware('auth')

@@ -68,4 +68,27 @@ class PageController extends Controller
         return view('pages.paiement');
     }
 
+    public function search(Request $request){
+        // Get the search value from the request
+        $search = $request->input('search');
+        $rubriques = Rubrique::where('libelle', 'LIKE', "%{$search}%")
+           ->get();
+    
+        // Search in the title and body columns from the posts table
+        $services = Service::query()
+            ->where('libelle', 'LIKE', "%{$search}%")
+            ->get();
+        if($rubriques==NULL)
+        {
+            $first = Service::query()
+            ->where('libelle', 'LIKE', "%{$search}%")
+            ->first();
+            
+            $rubriques=$this->rubriqueRepository->getById($services->rubrique_id);
+        }
+     
+    
+        // Return the search view with the resluts compacted
+        return view('pages.recherche', compact('services','search','rubriques'));
+    }
 }
