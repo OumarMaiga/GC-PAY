@@ -56,13 +56,13 @@ class NotificationController extends Controller
      */
     public function index()
     {
-        $notifications = Notification::where('structure_id', Auth::user()->structure_id)->where('destinateur', 'structure')->get();
+        $notifications = Notification::where('structure_id', Auth::user()->structure_id)->where('destinateur', 'structure')->orderBy('created_at', 'desc')->get();
         return view('dashboards.notification.index',compact('notifications'));
     }
     
     public function list()
     {
-        $notifications = Notification::where('user_id', Auth::user()->id)->where('destinateur', 'usager')->get();
+        $notifications = Notification::where('user_id', Auth::user()->id)->where('destinateur', 'usager')->orderBy('created_at', 'desc')->get();
         return view('pages.notifications',compact('notifications'));
     }
 

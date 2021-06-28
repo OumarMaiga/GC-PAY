@@ -163,7 +163,7 @@ class EntrepriseController extends Controller
     
     public function list()
     {
-        $entreprises = Entreprise::where('user_id', Auth::user()->id)->get();
+        $entreprises = Entreprise::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
         return view('dashboards.entreprise.entreprise_usager', compact('entreprises'));
     }
 }
