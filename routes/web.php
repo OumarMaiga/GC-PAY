@@ -7,6 +7,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\EntrepriseController;
 use App\Http\Controllers\RequeteController;
+use App\Http\Controllers\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,9 @@ require __DIR__.'/dashboard.php';
 
 //Accueil
 Route::get('/accueil', [PageController::class, 'accueil'])->middleware('auth')->name('accueil');
+
+//Notification
+Route::get('/notifications', [NotificationController::class, 'list'])->middleware('auth')->name('notification.list');
 
 //Detail
 Route::get('/service/{slug}', [PageController::class, 'detail'])->name('detail');

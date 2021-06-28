@@ -49,7 +49,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('notification.list') }}">
                         Notification <?= (number_notification()) ? "<span class='badge badge-danger badge-notif'>".number_notification()."</span>" : "" ?>
                     </a>
                 </li>
