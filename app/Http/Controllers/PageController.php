@@ -71,15 +71,15 @@ class PageController extends Controller
     public function search(Request $request){
         // Get the search value from the request
         $search = $request->input('search');
-        $rubriques = Rubrique::where('libelle', 'LIKE', "%{$search}%")
-           ->get();
+        $rubrique = Rubrique::where('libelle', 'LIKE', "%{$search}%")
+           ->first();
     
         // Search in the title and body columns from the posts table
         $services = Service::query()
             ->where('libelle', 'LIKE', "%{$search}%")
             ->get();
             
-        if($rubriques->isEmpty())
+        if($rubrique == NULL)
         {
             $first = Service::query()
             ->where('libelle', 'LIKE', "%{$search}%")
