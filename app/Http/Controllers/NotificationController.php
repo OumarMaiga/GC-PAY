@@ -138,6 +138,52 @@ class NotificationController extends Controller
 
         return view('dashboards.requetes.show', compact('service', 'user','structure','requete', 'rubrique', 'entreprise', 'data'));
     }
+    
+    public function detail($slug)
+    {
+        
+        $notification = $this->notificationRepository->getBySlug($slug);
+        $requete = $notification->requete()->associate($notification->requete_id)->requete;
+        $user = $this->userRepository->getById($requete->usager_id);
+        $structure = Structure::where('id', $requete->structure_id)->first();
+        $service = Service::where('id', $requete->service_id)->first();
+        $rubrique = Rubrique::where('id', $service->rubrique_id)->first();
+
+        if ($notification->vue == false) {
+            Notification::where('id', $notification->id)->update([
+                'vue' => true
+            ]);
+        }
+        $entreprise = "";
+        // Recuperation des données dans le table du service en question            
+        // Données pour la rubrique impot et taxe
+        if($rubrique->slug == "impots-et-taxes"){
+            $data = $this->impotRepository->getByForeignId('requete_id', $requete->id)->first()->toArray();
+            $entreprise = Entreprise::where('id', $data['entreprise_id'])->first();
+        }   
+        // Données pour la rubrique automobile
+        if($rubrique->slug == "automobile"){
+            $data = $this->vignetteRepository->getByForeignId('requete_id', $requete->id)->first()->toArray();
+        }   
+        // Données pour electricité
+        if($service->slug == "energie-du-mali"){
+            $data = $this->edmRepository->getByForeignId('requete_id', $requete->id)->first()->toArray();
+        }
+        // Données pour eau
+        if($service->slug == "somagep"){
+            $data = $this->somagepRepository->getByForeignId('requete_id', $requete->id)->first()->toArray();
+        }
+        // Données pour le service carte d'identité
+        if($service->slug == "carte-national-didentite"){
+            $data = $this->carteIdentiteRepository->getByForeignId('requete_id', $requete->id)->first()->toArray();
+        }
+        // Données pour le service passport
+        if($service->slug == "passport"){
+            $data = $this->passportRepository->getByForeignId('requete_id', $requete->id)->first()->toArray();
+        }   
+
+        return view('pages.requetes.detail', compact('service', 'user','structure','requete', 'rubrique', 'entreprise', 'data'));
+    }
 
     /**
      * Show the form for editing the specified resource.

@@ -31,6 +31,7 @@ Route::get('/accueil', [PageController::class, 'accueil'])->middleware('auth')->
 
 //Notification
 Route::get('/notifications', [NotificationController::class, 'list'])->middleware('auth')->name('notification.list');
+Route::get('/notifications/{notification}', [NotificationController::class, 'detail'])->middleware('auth')->name('notification.detail');
 
 //Detail
 Route::get('/service/{slug}', [PageController::class, 'detail'])->name('detail');
@@ -68,6 +69,7 @@ Route::get('/usagers/entreprise', [EntrepriseController::class, 'list'])->name('
 
 //Requete
 Route::get('/usagers/requete/{requete}', [RequeteController::class, 'detail'])->middleware('auth')->name('detail.requete');
+
 // Paramètre
 Route::get('/setting/password', [SettingController::class, 'edit_password'])
 ->middleware('auth')
