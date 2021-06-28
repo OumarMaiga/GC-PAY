@@ -50,7 +50,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        Notification 
+                        Notification <?= (number_notification()) ? "<span class='badge badge-danger badge-notif'>".number_notification()."</span>" : "" ?>
                     </a>
                 </li>
                 <li class="nav-item">

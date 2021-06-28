@@ -2,6 +2,8 @@
 
 use App\Models\File;
 use App\Models\User;
+use App\Models\Notification;
+
 function photo_profil() {
     if (Auth::check() == false) {
         return false;
@@ -57,4 +59,8 @@ function custom_date($date) {
     }
     return $result;
     
+}
+
+function number_notification () {
+    return Notification::where('user_id', Auth::user()->id)->where('vue', false)->count();
 }

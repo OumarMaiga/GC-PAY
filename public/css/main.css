@@ -2,7 +2,6 @@
     background-color: #1C5EC2;
     color: #FFFFFF
 }
-
 .logo {
     font-size: 1.6rem;
 }
@@ -31,14 +30,18 @@
     font-size: 22px;
 }
 
+.badge-notif {
+    position: absolute;
+    top: 5px;
+    margin-left: -10px;
+    border-radius: 50%;
+    font-size: .75rem
+}
 
 .logo:hover {
     color: #FFFFFF;
     text-decoration: underline;
 }
-
-
-  
 
 .footer-title {
     color: #BCBCBC;

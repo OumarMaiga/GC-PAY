@@ -242,7 +242,7 @@ class RequeteController extends Controller
         $structure = $requete->structure()->associate($requete->structure_id)->structure;
         $user = Auth::user();
 
-        //si ce nombre est égale à 0 alors mon code est unique, sinon je génère tant que je n'ai pas un nombre égale à 0
+        //Genere un code unique dans la base de données
         do {
             $code = $this->genereCode(6);
             $codeExit = Requete::where('code', $code)->select('code')->first();
