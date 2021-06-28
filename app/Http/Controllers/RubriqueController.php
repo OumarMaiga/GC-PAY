@@ -22,7 +22,7 @@ class RubriqueController extends Controller
     }
 
     public function index() {
-        $rubriques = $this->rubriqueRepository->get();
+        $rubriques = $this->rubriqueRepository->get()->sortBy('libelle');
         return view('dashboards.rubriques.index', compact('rubriques'));
     }
     

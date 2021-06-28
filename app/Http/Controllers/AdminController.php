@@ -35,7 +35,10 @@ class AdminController extends Controller
         //$users=user::all();
        $users = user::where('type','admin-structure')
                     ->orwhere('type','admin-systeme' )
-                    ->get();
+                    ->get()->sortBy([
+                        ['type', 'desc'],
+                        ['nom', 'asc']
+                    ]);
         return view('dashboards.admin.index')->with('users',$users);
     }
 

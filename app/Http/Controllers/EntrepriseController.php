@@ -45,7 +45,7 @@ class EntrepriseController extends Controller
      */
     public function index()
     {
-        $entreprises = $this->entrepriseRepository->get();
+        $entreprises = $this->entrepriseRepository->get()->sortBy('nom');
         return view('dashboards.entreprise.index', compact('entreprises'));
     }
 
@@ -153,17 +153,14 @@ class EntrepriseController extends Controller
      */
     public function destroy($id)
     {
-        //
         $entreprise = entreprise::find($id);
         $entreprise->delete();
-
-        // redirect
         return redirect('/dashboard/entreprise/')->withStatus("L'entreprise a bien été supprimé");
     }
     
     public function list()
     {
-        $entreprises = Entreprise::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
+        $entreprises = Entreprise::where('user_id', Auth::user()->id)->get()->sortBy('nom');
         return view('dashboards.entreprise.entreprise_usager', compact('entreprises'));
     }
 }

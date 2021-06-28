@@ -19,7 +19,7 @@ class StructureController extends Controller
     }
 
     public function index() {
-        $structures = $this->structureRepository->get();
+        $structures = $this->structureRepository->get()->sortByDesc('id');
         return view('dashboards.structures.index', compact('structures'));
     }
 

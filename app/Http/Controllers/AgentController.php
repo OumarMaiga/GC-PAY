@@ -32,9 +32,9 @@ class AgentController extends Controller
     {
         $user = Auth::user();
         if ($user->type == "admin-systeme") {
-            $agents = $this->userRepository->getByForeignId('type', 'agent');
+            $agents = $this->userRepository->getByForeignId('type', 'agent')->sortBy('nom');
         } elseif ($user->type == "admin-structure" || $user->type == "agent") {
-            $agents = User::where('type', 'agent')->where('structure_id', $user->structure_id)->get();
+            $agents = User::where('type', 'agent')->where('structure_id', $user->structure_id)->get()->sortBy('nom');
         } else {
             $agents = [];
         }

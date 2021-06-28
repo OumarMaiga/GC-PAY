@@ -64,8 +64,7 @@ class RegisteredUserController extends Controller
 
     public function index()
     {
-        //$users=user::all();
-       $users = user::where('type','usager')->get();
+       $users = user::where('type','usager')->get()->sortBy('nom');
         return view('dashboards.usager.index')->with('users',$users);
     }
 

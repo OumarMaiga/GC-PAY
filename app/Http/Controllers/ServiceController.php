@@ -41,10 +41,10 @@ class ServiceController extends Controller
     public function index()
     {
         if (Auth::user()->type == "admin-systeme") {
-            $services = $this->serviceRepository->get();
+            $services = $this->serviceRepository->get()->sortBy('libelle');
         } elseif (Auth::user()->type == "admin-structure" || Auth::user()->type == "agent") {
             $structure = $this->structureRepository->getById(Auth::user()->structure_id);
-            $services = $structure->services()->get();
+            $services = $structure->services()->get()->sortBy('libelle');
         } else {
             $services = [];
         }
