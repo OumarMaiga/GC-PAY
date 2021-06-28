@@ -2314,8 +2314,7 @@ select {
 }
 
 .foot{
-  position: relative;
-  margin-top: 23.9%;
+  margin-top:60px;
   background-color:#042557;
   color: #FFFFFF;    
   
