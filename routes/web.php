@@ -37,7 +37,7 @@ Route::get('/notifications/{notification}', [NotificationController::class, 'det
 Route::get('/service/{slug}', [PageController::class, 'detail'])->name('detail');
 
 //Recherche
-//Detail
+
 Route::get('/recherche', [PageController::class, 'search'])->name('search');
 
 

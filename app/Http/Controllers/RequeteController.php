@@ -345,4 +345,17 @@ class RequeteController extends Controller
         return $chaine;
     }
 
+    public function search(Request $request){
+        // Get the search value from the request
+        $search = $request->input('search');
+        
+        $requetes = Requete::query()
+            ->where('code', 'LIKE', "%{$search}%")
+           ->get();
+        dd($requetes);
+        die();
+        // Return the search view with the resluts compacted
+        return view('requetes.recherche', compact('requetes'));
+    }
+
 }
