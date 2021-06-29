@@ -41,6 +41,10 @@ Route::get('/{email}/requete/', [RequeteController::class, 'create'])
             ->middleware('auth')
             ->name('create.requete');
 
+//Recherche
+
+Route::get('/dashboard/requete/recherche', [RequeteController::class, 'search'])->name('search-code');
+
 
 //Affichage des usagers
 Route::get('/dashboard/usagers', [RegisteredUserController::class, 'index'])

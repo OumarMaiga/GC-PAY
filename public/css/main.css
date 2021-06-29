@@ -158,6 +158,11 @@
 {
     margin-left: 10px;
 }
+
+.left-second
+{
+    margin-left: 100px;
+}
 .list-link:hover {
     text-decoration: none;
 }

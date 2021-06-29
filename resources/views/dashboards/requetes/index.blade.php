@@ -6,7 +6,12 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-8"><h2><b>LES REQUÊTES</b></h2></div>
-                    
+                
+                    <div class="float-left left-second">
+                    <form class="form-inline my-2 my-lg-0" method="GET" action="{{ route('search-code') }}">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Recherche par code" name="search">
+                    </form>
+                    </div>
                 </div>
             </div>
             <!-- Session Status -->
