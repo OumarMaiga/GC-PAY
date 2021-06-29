@@ -3,10 +3,16 @@
     <div class="padding-top-second container ">
         <h2 class="text-center text-gray-500">Montant à payer</h2>
         <div class="show-title-second text-center">
-            10.000
+            @if (in_array('montant_payer', $data))
+                {{ $data['montant_payer'] }}
+            @elseif (in_array('montant', $data))
+                {{ $data['montant'] }}
+            @else
+                <?= App\Models\Service::where('id', $data['service_id'])->prix ?>
+            @endif
         </div>
 
-        <div class="row  justify-content-center ">
+        <div class="row  justify-content-center">
             <div class="accordion padding-top-second col-md-4 " id="accordionExample">
                 <!--Ouverture du formulaire depuis ce niveau mais les champs seront mis dans les card-body -->
 
@@ -23,9 +29,8 @@
                             <div class="card-body ">
                             <!-- champs du formulaire -->
                             <div class="form-group">      
-                                <label for="numero_carte"> Numéro de la carte</label>
+                                <label for="numero_carte">Numéro de la carte</label>
                                 <input id="numero_carte" class="input-custom" type="text" name="numero_carte" value="{{ old('numero_carte')}}" placeholder="Numéro de la carte" required />
-                                        
                             </div>
                             <div class="row">
                                 <div class="col-md-6 form-group">

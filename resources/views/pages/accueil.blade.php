@@ -3,7 +3,7 @@
   padding:0;">
         <div class="mask rgba-blue-light" style="background-color:  rgb(37, 150, 190,0.6) ; height: 700px">
             <div class="d-flex justify-content-center align-items-center h-100">
-                <h1 class="text-white mb-0 text-grand text-center">DESORMAIS EN LIGNE,PAYER VOS <br> RECETTES FISCALES</h1>
+                <h1 class="text-white mb-0 text-grand text-center">DESORMAIS EN LIGNE, PAYER VOS <br> RECETTES FISCALES</h1>
             </div>
         </div>
     </div>

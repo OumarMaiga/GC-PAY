@@ -64,8 +64,9 @@ class PageController extends Controller
         return view('pages.resume', compact('service', 'data', 'entreprise'));
     }
 
-    public function paiement($slug) {        
-        return view('pages.paiement');
+    public function paiement($slug) { 
+        $data = session()->get("data");
+        return view('pages.paiement', compact('data'));
     }
 
     public function search(Request $request){
