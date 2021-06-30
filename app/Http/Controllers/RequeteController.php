@@ -351,11 +351,10 @@ class RequeteController extends Controller
         
         $requetes = Requete::query()
             ->where('code', 'LIKE', "%{$search}%")
-           ->get();
-        dd($requetes);
-        die();
+            ->where('structure_id', Auth::user()->structure_id)->get();
+           
         // Return the search view with the resluts compacted
-        return view('requetes.recherche', compact('requetes'));
+        return view('dashboards.requetes.index', compact('requetes'));
     }
 
 }

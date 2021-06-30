@@ -34,6 +34,8 @@ Route::resource('/dashboard/entreprise',EntrepriseController::class)->middleware
 //AGENT
 Route::resource('/dashboard/agent', AgentController::class)->middleware('auth');
 
+//Recherche
+Route::get('/dashboard/requete/recherche', [RequeteController::class, 'search'])->name('search-code');
 //REQUETE
 Route::get('/dashboard/requete/archives', [RequeteController::class, 'archives'])->middleware('auth')->name('requete.archives');
 Route::resource('/dashboard/requete', RequeteController::class)->middleware('auth');
@@ -41,9 +43,6 @@ Route::get('/{email}/requete/', [RequeteController::class, 'create'])
             ->middleware('auth')
             ->name('create.requete');
 
-//Recherche
-
-Route::get('/dashboard/requete/recherche', [RequeteController::class, 'search'])->name('search-code');
 
 
 //Affichage des usagers
