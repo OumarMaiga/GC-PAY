@@ -250,7 +250,7 @@ class RequeteController extends Controller
         if($requete->etat=='En cours') {
             $etat = 'Traitée';
             $code= $code;
-            $description = "Le traitement de votre demande de ".$service->libelle." est terminé. Veuillez vou rendre à la structure ".$structure->libelle." avec le code suivant: ".$code;                     
+            $description = "Le traitement de votre demande de ".$service->libelle." est terminé. Veuillez vous rendre à la structure ".$structure->libelle." avec le code suivant: ".$code;                     
         } else {
             $etat='Remis';
             $code = $requete->code;
