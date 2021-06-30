@@ -350,7 +350,7 @@ class RequeteController extends Controller
         $search = $request->input('search');
         
         $requetes = Requete::query()
-            ->where('code', 'LIKE', "%{$search}%")
+            ->where('code', $search)
             ->where('structure_id', Auth::user()->structure_id)->get();
            
         // Return the search view with the resluts compacted
