@@ -48,10 +48,76 @@ class PageController extends Controller
     }
 
     public function verification($slug, Request $request) {
-        $request->validate([
-            'structure_id' => ['required', 'numeric'],
-        ]);
         $service = $this->serviceRepository->getBySlug($slug);
+        $rubrique = $service->rubrique()->associate($service->rubrique_id)->rubrique;
+
+        // Validation par type de service
+            //Données pour la rubrique impot et taxe
+            if($rubrique->slug == "impots-et-taxes"){
+                $request->validate([
+                    'entreprise_id' => ['required', 'numeric'],
+                    'montant_declarer' => ['required', 'numeric'],
+                    'montant_payer' => ['required', 'numeric'],
+                    'periode' => ['required', 'date_format:Y-m'],
+                    'structure_id' => ['required', 'numeric'],
+                ]);
+            }   
+            //Données pour la rubrique automobile
+            if($rubrique->slug == "automobile"){
+                $request->validate([
+                    'numero_chassis' => ['required', 'alpha_num', 'min:10'],
+                    'structure_id' => ['required', 'numeric'],
+                ]);
+            }   
+            //Données pour electricité
+            if($service->slug == "energie-du-mali"){
+                $request->validate([
+                    'numero_facture' => ['required', 'alpha_num'],
+                    'montant' => ['required', 'numeric'],
+                    'structure_id' => ['required', 'numeric'],
+                ]);
+            }
+            //Données pour eau
+            if($service->slug == "somagep"){
+                $request->validate([
+                    'numero_facture' => ['required', 'alpha_num'],
+                    'montant' => ['required', 'numeric'],
+                    'structure_id' => ['required', 'numeric'],
+                ]);
+            }
+
+            //Données pour le service carte d'identité
+            if($service->slug == "carte-national-didentite"){
+                $today = date('Y-m-d');
+                $request->validate([
+                    'nom' => ['required'],
+                    'prenom' => ['required'],
+                    'date_naissance' => ['required', 'date_format:Y-m-d', 'before:'.$today],
+                    'lieu_naissance' => ['required'],
+                    'prenom_pere' => ['required'],
+                    'prenom_nom_mere' => ['required'],
+                    'adresse' => ['required'],
+                    'profession' => ['required'],
+                    'taille' => ['required'],
+                    'teint' => ['required'],
+                    'cheveux' => ['required'],
+                    'structure_id' => ['required', 'numeric'],
+                ]);
+            }   
+
+            //Données pour le service passport
+            if($service->slug == "passport"){
+                $request->validate([
+                    'nom' => ['required'],
+                    'prenom' => ['required'],
+                    'date_naissance' => ['required', 'date_format:Y-m-d', 'before:'.$today],
+                    'lieu_naissance' => ['required'],
+                    'numero_nina' => ['required'],
+                    'adresse' => ['required'],
+                    'structure_id' => ['required', 'numeric'],
+                ]);
+            }
+
         $request->merge([
             'service_id' => $service->id
         ]);

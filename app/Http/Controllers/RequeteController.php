@@ -119,7 +119,6 @@ class RequeteController extends Controller
         $data['requete_id'] = $requete->id;
 
         // Enregistrement dans le table du service en question            
-
             //Données pour la rubrique impot et taxe
             if($rubrique->slug == "impots-et-taxes"){
                 $data['libelle'] = $service->libelle;

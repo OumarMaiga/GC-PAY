@@ -73,7 +73,6 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $request->validate([
             'libelle' => 'required|max:255',
         ]);
