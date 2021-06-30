@@ -30,6 +30,8 @@ use App\Models\Requete;
 use App\Models\Notification;
 use App\Models\Rubrique;
 use App\Models\Entreprise;
+use App\Models\Paiement;
+
 class RequeteController extends Controller
 {
     protected $serviceRepository;
@@ -110,7 +112,6 @@ class RequeteController extends Controller
             return redirect("/service/$service->slug")->withErrors("La structure ou le service est mal sélectionné");
         }
         $slug = 'requete_'.Auth::user()->id.'_'.time();
-        //$data['montant'] = $request->montant_payer;
         $data['slug'] = $slug;
         $data['usager_id'] = Auth::user()->id;
         $data['service_id'] = $service->id;
@@ -123,28 +124,40 @@ class RequeteController extends Controller
             if($rubrique->slug == "impots-et-taxes"){
                 $data['libelle'] = $service->libelle;
                 $this->impotRepository->store($data);
+                $montant = $data['montant_payer'];
+                $entreprise_id = $data['entreprise_id'];
             }   
             //Données pour la rubrique automobile
             if($rubrique->slug == "automobile"){
                 $this->vignetteRepository->store($data);
+                $montant = $service->prix;
+                $entreprise_id = Null;
             }   
             //Données pour electricité
             if($service->slug == "energie-du-mali"){
                 $this->edmRepository->store($data);
+                $montant = $data['montant'];
+                $entreprise_id = Null;
             }
             //Données pour eau
             if($service->slug == "somagep"){
                 $this->somagepRepository->store($data);
+                $montant = $data['montant'];
+                $entreprise_id = Null;
             }
 
             //Données pour le service carte d'identité
             if($service->slug == "carte-national-didentite"){
                 $this->carteIdentiteRepository->store($data);
+                $montant = $service->prix;
+                $entreprise_id = Null;
             }   
 
             //Données pour le service passport
             if($service->slug == "passport"){
                 $this->passportRepository->store($data);
+                $montant = $service->prix;
+                $entreprise_id = Null;
             }   
 
         //Generation de notification        
@@ -156,15 +169,26 @@ class RequeteController extends Controller
             $description = $service->libelle;
         }
         $slug_notification = 'notification_'.Auth::user()->id.'_'.time();
-        Notification::create([
-            'vue' => false,
-            'slug' => $slug_notification,
-            'description' => $description,
-            'destinateur' => 'structure',
-            'requete_id' => $requete->id,
-            'structure_id' => $requete->structure_id,
-            'user_id' => $requete->usager_id,
-        ]);
+        if ($requete) {
+            Notification::create([
+                'vue' => false,
+                'slug' => $slug_notification,
+                'description' => $description,
+                'destinateur' => 'structure',
+                'requete_id' => $requete->id,
+                'structure_id' => $structure->id,
+                'user_id' => Auth::user()->id,
+            ]);
+
+            Paiement::create([
+                'structure_id' => $structure->id,
+                'service_id' => $service->id,
+                'usager_id' => Auth::user()->id,
+                'entreprise_id' => $entreprise_id,
+                'requete_id' => $requete->id,
+                'montant' => $montant,
+            ]);
+        }
         return redirect("usagers/requete/$requete->slug")->withStatus("La nouvelle requête a bien été créée");
     }
 

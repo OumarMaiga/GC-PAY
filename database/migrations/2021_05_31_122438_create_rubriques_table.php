@@ -17,7 +17,7 @@ class CreateRubriquesTable extends Migration
             $table->id();
             $table->string('libelle');
             $table->string('slug');
-            $table->foreignId('admin_systeme_id')->references('id')->on('users')->default('0');
+            $table->foreignId('admin_systeme_id')->references('id')->on('users');
             $table->boolean('etat')->default(true);
             $table->timestamps();
         });

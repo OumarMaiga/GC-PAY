@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRequetesTable extends Migration
+class CreatePaiementsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,15 @@ class CreateRequetesTable extends Migration
      */
     public function up()
     {
-        Schema::create('requetes', function (Blueprint $table) {
+        Schema::create('paiements', function (Blueprint $table) {
             $table->id();
-            $table->string('slug')->unique();
-            $table->foreignId('usager_id')->references('id')->on('users');
-            $table->boolean('paye')->default(false);
-            $table->string('etat')->default("En cours");
-            $table->string('code')->nullable();
-            $table->string('montant')->nullable();
+            $table->integer('montant');
             $table->foreignId('structure_id')->references('id')->on('structures');
+            $table->foreignId('usager_id')->references('id')->on('users');
             $table->foreignId('service_id')->references('id')->on('services');
+            $table->foreignId('entreprise_id')->nullable()->references('id')->on('entreprises');
+            $table->foreignId('requete_id')->references('id')->on('requetes');
             $table->timestamps();
-            
         });
     }
 
@@ -35,6 +32,6 @@ class CreateRequetesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('requetes');
+        Schema::dropIfExists('paiements');
     }
 }

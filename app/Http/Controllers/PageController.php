@@ -107,6 +107,7 @@ class PageController extends Controller
 
             //Données pour le service passport
             if($service->slug == "passport"){
+                $today = date('Y-m-d');
                 $request->validate([
                     'nom' => ['required'],
                     'prenom' => ['required'],

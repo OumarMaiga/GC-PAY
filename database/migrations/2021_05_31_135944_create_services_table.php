@@ -26,8 +26,8 @@ class CreateServicesTable extends Migration
             $table->string('prix')->nullable();
             $table->string('type')->nullable();
             $table->boolean('etat')->default(true);
-            $table->foreignId('admin_systeme_id')->references('id')->on('users')->nullable();
-            $table->foreignId('rubrique_id')->references('id')->on('rubriques')->nullable();
+            $table->foreignId('admin_systeme_id')->references('id')->on('users');
+            $table->foreignId('rubrique_id')->references('id')->on('rubriques');
             
             $table->timestamps();
         });

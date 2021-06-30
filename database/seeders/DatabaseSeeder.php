@@ -145,7 +145,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Tout propriétaire d\'automobile ou d\'engins à deux ou 
                             trois roues est assujetti à la taxe sur véhicules automobile.',
             'duree' => 'Immediate',
-            'prix' => '12.000F',
+            'prix' => '12.000',
             'type' => 'demande',
             'rubrique_id' => 2,
             'admin_systeme_id' => 1,
@@ -157,7 +157,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Tout propriétaire d\'automobile ou d\'engins à deux ou 
             trois roues est assujetti à la taxe sur véhicules automobile.',
             'duree' => 'Immediate',
-            'prix' => '7.000F',
+            'prix' => '7.000',
             'type' => 'demande',
             'rubrique_id' => 2,
             'admin_systeme_id' => 1,
@@ -169,7 +169,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Tout propriétaire d\'automobile ou d\'engins à deux ou 
             trois roues est assujetti à la taxe sur véhicules automobile.',
             'duree' => 'Immediate',
-            'prix' => '6.000f',
+            'prix' => '6.000',
             'type' => 'demande',
             'rubrique_id' => 2,
             'admin_systeme_id' => 1,
@@ -184,7 +184,7 @@ class DatabaseSeeder extends Seeder
                         le gouvernement à ses citoyens, pièce d\'identité 
                         permettant à son porteur de voyager à l\'​étranger.',
             'duree' => '2 semaines',
-            'prix' => '50.000F',
+            'prix' => '50.000',
             'type' => 'demande',
             'rubrique_id' => 3,
             'admin_systeme_id' => 1,
@@ -197,7 +197,7 @@ class DatabaseSeeder extends Seeder
                         officiel qui permet à une personne physique de prouver 
                         son identité.',
             'duree' => '24h',
-            'prix' => '1.000F',
+            'prix' => '1.000',
             'type' => 'demande',
             'rubrique_id' => 3,
             'admin_systeme_id' => 1,
