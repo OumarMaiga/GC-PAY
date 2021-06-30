@@ -8,7 +8,7 @@
             @elseif (in_array('montant', $data))
                 {{ $data['montant'] }}
             @else
-                <?= App\Models\Service::where('id', $data['service_id'])->prix ?>
+                <?= App\Models\Service::where('id', $data['service_id'])->first()->prix ?>
             @endif
         </div>
 
