@@ -169,6 +169,7 @@ class RequeteController extends Controller
             $description = $service->libelle;
         }
         $slug_notification = 'notification_'.Auth::user()->id.'_'.time();
+        $slug_paiement = 'paiement_'.Auth::user()->id.'_'.time();
         if ($requete) {
             Notification::create([
                 'vue' => false,
@@ -181,6 +182,7 @@ class RequeteController extends Controller
             ]);
 
             Paiement::create([
+                'slug' => $slug_paiement,
                 'structure_id' => $structure->id,
                 'service_id' => $service->id,
                 'usager_id' => Auth::user()->id,

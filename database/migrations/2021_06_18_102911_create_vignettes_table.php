@@ -15,8 +15,8 @@ class CreateVignettesTable extends Migration
     {
         Schema::create('vignettes', function (Blueprint $table) {
             $table->id();
-            $table->string('numero_chassis');
-            $table->string('numero_immatriculation');
+            $table->string('numero_chassis')->nullable();
+            $table->string('numero_immatriculation')->nullable();
             $table->foreignId('requete_id')->references('id')->on('requetes');
             $table->timestamps();
         });

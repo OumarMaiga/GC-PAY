@@ -16,6 +16,10 @@ class PaiementController extends Controller
         //
     }
 
+    public function list() {
+        $historiques = Paiement::where('usager_id', Auth::user()->id);
+        return view('pages.historiques', compact('historiques'));
+    }
     /**
      * Show the form for creating a new resource.
      *

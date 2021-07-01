@@ -58,17 +58,11 @@ Route::get('/{slug}/paiement', [PageController::class, 'paiement'])
 
 
 // Profil
-Route::get('/{email}/profil', [ProfilController::class, 'profil'])
-                ->middleware('auth')
-                ->name('profil');
+Route::get('/{email}/profil', [ProfilController::class, 'profil'])->middleware('auth')->name('profil');
 
-Route::get('/{email}/edit', [ProfilController::class, 'edit'])
-                ->middleware('auth')
-                ->name('profil.edit');
+Route::get('/{email}/edit', [ProfilController::class, 'edit'])->middleware('auth')->name('profil.edit');
 
-Route::put('/{email}/profil', [ProfilController::class, 'update'])
-                ->middleware('auth')
-                ->name('update');
+Route::put('/{email}/profil', [ProfilController::class, 'update'])->middleware('auth')->name('update');
 
 Route::get('/usagers/entreprise', [EntrepriseController::class, 'list'])->name('usager.entreprise')->middleware('auth');
 
@@ -76,18 +70,13 @@ Route::get('/usagers/entreprise', [EntrepriseController::class, 'list'])->name('
 Route::get('/usagers/requete/{requete}', [RequeteController::class, 'detail'])->middleware('auth')->name('detail.requete');
 
 // Paramètre
-Route::get('/setting/password', [SettingController::class, 'edit_password'])
-->middleware('auth')
-->name('edit_password');
+Route::get('/setting/password', [SettingController::class, 'edit_password'])->middleware('auth')->name('edit_password');
 
-Route::post('/setting/password', [SettingController::class, 'update_password'])
-->middleware('auth')
-->name('update_password');
-                
+Route::post('/setting/password', [SettingController::class, 'update_password'])->middleware('auth')->name('update_password'); 
 
-Route::put('/{email}/profil', [ProfilController::class, 'update'])
-                ->middleware('auth')
-                ->name('profil.update');
+Route::put('/{email}/profil', [ProfilController::class, 'update'])->middleware('auth')->name('profil.update');
+
+Route::get('/historiques', [PaiementController::class, 'list'])->middleware('auth')->name('historique.list');
 
 //test image
 Route::resource('files', 'App\Http\Controllers\FilesController'); // Laravel 8

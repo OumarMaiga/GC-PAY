@@ -10,6 +10,7 @@ class Paiement extends Model
     use HasFactory;
     
     protected $fillable = [
+        'slug',
         "structure_id",
         "usager_id",
         "service_id",

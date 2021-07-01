@@ -43,6 +43,8 @@ Route::get('/{email}/requete/', [RequeteController::class, 'create'])
             ->middleware('auth')
             ->name('create.requete');
 
+//Historique
+Route::resource('/dashboard/historique', PaiementController::class)->middleware('auth');
 
 
 //Affichage des usagers
