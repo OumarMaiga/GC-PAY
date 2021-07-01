@@ -34,12 +34,22 @@
 
     <div class="row">
         <div class="col-md-6 form-group">
+            <label for="profession">Profession</label>
+            <input id="profession" class="input-custom" type="text" name="profession" value="{{ old('profession') }}" placeholder="Profession" required/>
+        </div>
+        <div class="col-md-6 form-group">
             <label for="adresse">Adresse</label>
             <textarea id="adresse" class="input-custom" type="text" name="adresse" value="" placeholder="Adresse" required>{{ old('adresse') }}</textarea>
         </div>
+    </div>
+    <div class="row">
         <div class="col-md-6 form-group">
-            <label for="profession">Profession</label>
-            <input id="profession" class="input-custom" type="text" name="profession" value="{{ old('profession') }}" placeholder="Profession" required/>
+            <label for="identite">Justificatif d'identité</label>
+            <input id="identite" class="input-custom" type="file" name="identite" value=""  required/>
+        </div>
+        <div class="col-md-6 form-group">
+            <label for="photo-identite">Photo d'identité</label>
+            <input id="photo-identite" class="input-custom" type="file" name="photo-identite" value="" />
         </div>
     </div>
     <div class="row ">
@@ -57,6 +67,7 @@
         </div>
     </div>     
     <div class="row ">
+    
         <div class="col-md-6 form-group">
             <label for="structure_id">Structure</label>
             <select name="structure_id" id="structure_id" class="input-custom">
