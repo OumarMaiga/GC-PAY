@@ -18,6 +18,7 @@ class Service extends Model
         "duree",
         "type",
         "prix",
+        "document",
     ];
 
     public function structures() {

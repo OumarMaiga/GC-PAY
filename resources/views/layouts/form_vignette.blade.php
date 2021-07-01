@@ -14,6 +14,12 @@
             </div>
             <div class="row">
                 <div class="col-md-6 form-group">
+                    <label for="justificatif-vignette">Certificat d'achat ou ancienne vignette  </label>
+                    <input id="justificatif-vignette" class="input-custom" type="file" name="justificatif-vignette" value="" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
                     <label for="adresse">Structure</label>
                     <select name="structure_id" id="structure_id" class="input-custom">
                         <option value="">-- CHOISISSEZ ICI --</option>
