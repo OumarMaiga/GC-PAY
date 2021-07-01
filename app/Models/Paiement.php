@@ -18,4 +18,16 @@ class Paiement extends Model
         "requete_id",
         "montant",     
     ];
+
+    public function service() {
+        return $this->belongsTo('App\Models\Service');
+    }
+
+    public function structure() {
+        return $this->belongsTo('App\Models\Structure');
+    }
+
+    public function requete() {
+        return $this->belongsTo('App\Models\Requete');
+    }
 }

@@ -12,6 +12,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\RequeteController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\PaiementController;
 
 //DASHBOARD
 Route::get('/dashboard', [PageController::class, 'dashboard'])

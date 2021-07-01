@@ -8,6 +8,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\EntrepriseController;
 use App\Http\Controllers\RequeteController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\PaiementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,11 +21,12 @@ use App\Http\Controllers\NotificationController;
 |
 */
 
+require __DIR__.'/auth.php';
+require __DIR__.'/dashboard.php';
+
 Route::get('/', [PageController::class, 'accueil'])
     ->name('home');
 
-require __DIR__.'/auth.php';
-require __DIR__.'/dashboard.php';
 
 //Accueil
 Route::get('/accueil', [PageController::class, 'accueil'])->middleware('auth')->name('accueil');

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+use App\Models\Paiement;
 
 class PaiementController extends Controller
 {
@@ -17,9 +20,10 @@ class PaiementController extends Controller
     }
 
     public function list() {
-        $historiques = Paiement::where('usager_id', Auth::user()->id);
+        $historiques = Paiement::where('usager_id', Auth::user()->id)->get();
         return view('pages.historiques', compact('historiques'));
     }
+
     /**
      * Show the form for creating a new resource.
      *

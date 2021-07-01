@@ -208,4 +208,21 @@
     text-decoration: underline;
     font-size: 1.5rem;
 }
-
+/* Historique */
+.day {
+    font-size: 2.4rem;
+}
+.service {
+    font-size: 1.4rem;
+}
+.heure {
+    color: gray;
+}
+.prix {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    font-size: 2rem;
+    color: #1C5EC2;
+    font-weight: bold;
+}
