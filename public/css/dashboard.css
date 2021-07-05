@@ -188,7 +188,25 @@
 .descript{
     text-align: justify;
     width: 70%;
+
 }
+.descript ol 
+{
+    padding-left:3%;
+  
+}
+
+.descript ul
+{
+    padding-left:3%;
+  
+}
+.descript li
+{
+    padding-top:1%;
+  
+}
+
 .size{
     font-size: 2rem;
 }
