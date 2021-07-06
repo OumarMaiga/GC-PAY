@@ -64,7 +64,7 @@
             <div class="row mt-2">
                 <div class="col-md-12 form-group">
                     <label for="description">Description</label>
-                    <textarea id="description" class="input-custom" type="text" name="description" value="{{ old('description') }}" placeholder="Description,details"></textarea>
+                    <textarea id="description" class="input-custom" type="text" name="description" value="{{ old('description') }}" placeholder="Description, details, liste des documents à fournir"></textarea>
                 </div>
             </div>
 
@@ -79,10 +79,19 @@
             </div>
         </form>
     </div>
-    <script>
-        tinymce.init({
-          selector: '#description',
-          fix_list_elements : true
-        });
-    </script>
+    
+
+<script>
+    tinymce.init({
+      selector: '#description',
+      
+      plugins: [
+        "advlist autolink lists link code"
+    ],
+    
+    advlist_bullet_styles: 'square',
+    toolbar: 'undo redo styleselect bold italic alignleft aligncenter alignright alignjustify | bullist numlist outdent indent'
+
+   });
+  </script>
 </x-dashboard-layout>

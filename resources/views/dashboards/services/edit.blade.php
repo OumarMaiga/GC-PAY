@@ -86,7 +86,11 @@
     <script>
         tinymce.init({
           selector: '#description',
-          fix_list_elements : true
-        });
+         
+          plugins: [
+            "code advlist  autolink lists link "
+            ],
+          toolbar: 'code |undo redo styleselect bold italic alignleft aligncenter alignright alignjustify | bullist numlist outdent indent'
+            });
     </script>
 </x-dashboard-layout>

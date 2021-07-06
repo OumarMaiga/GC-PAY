@@ -67,7 +67,7 @@
                             <td class="text-center">{{ $rubrique->libelle }}</td>
                         @endif
                         <td class="text-center">{{ $service->prix }}</td>
-                        <td class="justify-content-between icon-content text-center">
+                        <td class="justify-content-between icon-content text-center col-md-3">
                             <a href="{{ route('service.show', $service->slug) }}" class="col icon-action detail">
                                 <span class="fas fa-info">
                                 </span>

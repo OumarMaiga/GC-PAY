@@ -1,13 +1,18 @@
 <nav class="navbar navbar-expand-lg navigation">
         <!-- Logo --> 
         
+      
+
         @if(Auth::check())
-            <a class="navbar-brand logo" href="{{ route('accueil') }}">
-                {{ __('GC - PAY') }}
-            </a>
+       
+       <a class="navbar-brand logo" href="{{ route('home') }}">
+
+        <img src="{{ asset('images/logo_small.png') }}" style=" width: 200px;height: 100px;" >
+       </a>
+
         @else
-            <a class="navbar-brand logo" href="{{ route('home') }}">
-                {{ __('GC - PAY') }}
+                <a class="navbar-brand logo" href="{{ route('home') }}" style=" width: 200px;height: 100px;">
+                <img src="{{ asset('images/logo_small.png') }}"  >
             </a>
         @endif
 

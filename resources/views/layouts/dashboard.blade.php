@@ -20,7 +20,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
         <!-- TINY -->
-        <script src="https://cdn.tiny.cloud/1/omdjpqfhd17dsn9me2xxarz1g3og7awzo2r3coi81zk6tn8j/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+        <script src="https://cdn.tiny.cloud/1/h21m12wk6qnpvxbbx9q9j4yktqva7cspuim4royztr89xkon/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">

@@ -142,8 +142,11 @@ class DatabaseSeeder extends Seeder
         $vignette1 = Service::create([
             'libelle' => 'Vignette pour plus de 125 cm<sup>3</sup> de cylindrée',
             'slug' => 'vignette-pour-plus-de-125-cmsup3sup-de-cylindree',
-            'description' => 'Tout propriétaire d\'automobile ou d\'engins à deux ou 
-                            trois roues est assujetti à la taxe sur véhicules automobile.',
+            'description' => '<p>Tout propri&eacute;taire d\'automobile ou d\'engins &agrave; deux ou trois roues est assujetti &agrave; la taxe sur v&eacute;hicules automobile.</p>
+            <h2><strong>Documents &agrave; fournir:</strong></h2>
+            <ul style="list-style-type: square;">
+            <li>Certificat d\'achat ou ancienne vignette</li>
+            </ul>',
             'duree' => 'Immediate',
             'prix' => '12.000',
             'type' => 'demande',
@@ -154,8 +157,11 @@ class DatabaseSeeder extends Seeder
         $vignette2 = Service::create([
             'libelle' => 'Vignette pour 51cm<sup>3</sup> à 125 cm<sup>3</sup> de cylindrée',
             'slug' => 'vignette-pour-51cmsup3sup-a-125-cmsup3sup-de-cylindree',
-            'description' => 'Tout propriétaire d\'automobile ou d\'engins à deux ou 
-            trois roues est assujetti à la taxe sur véhicules automobile.',
+            'description' => '<p>Tout propri&eacute;taire d\'automobile ou d\'engins &agrave; deux ou trois roues est assujetti &agrave; la taxe sur v&eacute;hicules automobile.</p>
+            <h2><strong>Documents &agrave; fournir:</strong></h2>
+            <ul style="list-style-type: square;">
+            <li>Certificat d\'achat ou ancienne vignette</li>
+            </ul>',
             'duree' => 'Immediate',
             'prix' => '7.000',
             'type' => 'demande',
@@ -166,8 +172,11 @@ class DatabaseSeeder extends Seeder
         $vignette3 = Service::create([
             'libelle' => 'Vignette pour moins de 50cm<sup>3</sup> de cylindrée',
             'slug' => 'vignette-pour-moins-de-50cmsup3sup-de-cylindree',
-            'description' => 'Tout propriétaire d\'automobile ou d\'engins à deux ou 
-            trois roues est assujetti à la taxe sur véhicules automobile.',
+            'description' => '<p>Tout propri&eacute;taire d\'automobile ou d\'engins &agrave; deux ou trois roues est assujetti &agrave; la taxe sur v&eacute;hicules automobile.</p>
+            <h2><strong>Documents &agrave; fournir:</strong></h2>
+            <ul style="list-style-type: square;">
+            <li>Certificat d\'achat ou ancienne vignette</li>
+            </ul>',
             'duree' => 'Immediate',
             'prix' => '6.000',
             'type' => 'demande',
@@ -180,9 +189,14 @@ class DatabaseSeeder extends Seeder
         $passport = Service::create([
             'libelle' => 'Passport',
             'slug' => 'passport',
-            'description' => 'Un passeport le document de circulation délivré par 
-                        le gouvernement à ses citoyens, pièce d\'identité 
-                        permettant à son porteur de voyager à l\'​étranger.',
+            'description' => '<p>Un passeport le document de circulation d&eacute;livr&eacute; par le gouvernement &agrave; ses citoyens, pi&egrave;ce d\'identit&eacute; permettant &agrave; son porteur de voyager &agrave; l\'​&eacute;tranger.</p>
+            <h2><strong>Document &agrave; fournir:</strong></h2>
+            <ul style="list-style-type: square;">
+            <li>Justificatif d\'identité: Carte nationale d&rsquo;Identit&eacute; en cours de validit&eacute;, ou la copie de l&rsquo;extrait d&rsquo;acte de naissance (volet III) ou encore l&rsquo;ancien passeport.</li>
+            <li>2 photos d&rsquo;identit&eacute; en couleurs.</li>
+            <li>Pour les enfants mineurs : 2 photos d&rsquo;identit&eacute; en couleurs, l&rsquo;autorisation parentale l&eacute;galis&eacute;e et la photocopie du passeport ou de la CI du Tuteur.</li>
+            <li>Pour les op&eacute;rateurs &eacute;conomiques: la photocopie de la patente ou de la vignette synth&eacute;tique.</li>
+            </ul>',
             'duree' => '2 semaines',
             'prix' => '50.000',
             'type' => 'demande',
@@ -193,9 +207,13 @@ class DatabaseSeeder extends Seeder
         $carteIdentite = Service::create([
             'libelle' => 'Carte national d\'identité',
             'slug' => 'carte-national-didentite',
-            'description' => 'La carte national d\'identité est un document 
-                        officiel qui permet à une personne physique de prouver 
-                        son identité.',
+            'description' => '<p>La carte national d\'identité est un document officiel qui permet à une personne physique de prouver son identité.</p>
+            <h2><strong>Documents à fournir:</strong></h2>
+            <ul style="list-style-type: square;">
+            <li>3 photos d\'identité</li>
+            <li>Justificatif d\'identité: Carte d\'identité en fin de validité (ou une copie de l\'extrait d\'acte de naissance, ou le carnet de famille, ou l\'acte de mariage ou encore 2 témoins connus du quartier munis de leur pièce d\'identité; en cour de validité)</li>
+            <li>Timbres fiscaux (500 + 200 francs FCFA)</li>
+            </ul>',
             'duree' => '24h',
             'prix' => '1.000',
             'type' => 'demande',
