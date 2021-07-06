@@ -1,20 +1,8 @@
 <nav class="navbar navbar-expand-lg navigation">
         <!-- Logo --> 
-        
-      
-
-        @if(Auth::check())
-       
-       <a class="navbar-brand logo" href="{{ route('home') }}">
-
-        <img src="{{ asset('images/logo_small.png') }}" style=" width: 200px;height: 100px;" >
-       </a>
-
-        @else
-                <a class="navbar-brand logo" href="{{ route('home') }}" style=" width: 200px;height: 100px;">
-                <img src="{{ asset('images/logo_small.png') }}"  >
+            <a class="navbar-brand logo" href="{{ route('home') }}">
+                <img src="{{ asset('images/logo_small.png') }}" style=" width: 150px;" >
             </a>
-        @endif
 
         <!-- Right Item -->
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
