@@ -1,6 +1,6 @@
 <x-app-layout>
 <h1 class="text-gray-500 mb-0 text-grand text-center">RESULTATS DE VOS RECHERCHES </h1>
-@if($rubrique==Null || services==Null)
+@if($rubrique == Null || $services == Null)
 <div class="show-detail padding-block "> Aucun service correspondant, <a href="{{route('home')}}" class="text-blue-800" >retourner à la page d'accueil</a> </div>
 @else
 <div class="show-detail padding-block "> Les services correspondant sont: 

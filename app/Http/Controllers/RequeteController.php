@@ -175,6 +175,7 @@ class RequeteController extends Controller
                 $fileIdentite->file_path = '/storage/' . $destination;
                 $fileIdentite->type = "identite";
                 $fileIdentite->user_id = Auth::user()->id;
+                $fileIdentite->requete_id = $requete->id;
                 
                 $fileIdentite->save();
             }
@@ -188,6 +189,7 @@ class RequeteController extends Controller
                 $filePhotoIdentite->file_path = '/storage/' . $destination;
                 $filePhotoIdentite->user_id = Auth::user()->id;
                 $filePhotoIdentite->type = "photo-identite";
+                $filePhotoIdentite->requete_id = $requete->id;
                 
                 $filePhotoIdentite->save();
             }
@@ -201,6 +203,7 @@ class RequeteController extends Controller
                 $fileIdentiteTuteur->file_path = '/storage/' . $destination;
                 $fileIdentiteTuteur->user_id = Auth::user()->id;
                 $fileIdentiteTuteur->type = "identite-tuteur";
+                $fileIdentiteTuteur->requete_id = $requete->id;
                 
                 $fileIdentiteTuteur->save();
             }
@@ -214,6 +217,7 @@ class RequeteController extends Controller
                 $fileAutorisation->file_path = '/storage/' . $destination;
                 $fileAutorisation->user_id = Auth::user()->id;
                 $fileAutorisation->type = "autorisation-parentale";
+                $fileAutorisation->requete_id = $requete->id;
                 
                 $fileAutorisation->save();
             }
@@ -227,6 +231,7 @@ class RequeteController extends Controller
                 $filePatente->file_path = '/storage/' . $destination;
                 $filePatente->user_id = Auth::user()->id;
                 $filePatente->type = "patente";
+                $filePatente->requete_id = $requete->id;
                 
                 $filePatente->save();
             }
@@ -242,11 +247,12 @@ class RequeteController extends Controller
                 $fileJustificatifVignette->file_path = '/storage/' . $destination;
                 $fileJustificatifVignette->user_id = Auth::user()->id;
                 $fileJustificatifVignette->type = "justificatif-vignette";
+                $fileJustificatifVignette->requete_id = $requete->id;
                 
                 $fileJustificatifVignette->save();
             }
 
-        //Generation de notification        
+        //Generation de notification
         if($service->type == "demande") {
             $description = Auth::user()->prenom." ".Auth::user()->nom." (".Auth::user()->email.") a fait une demande de ".$service->libelle;
         } elseif ($service->type == "paiement") {
