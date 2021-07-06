@@ -211,7 +211,7 @@ class PageController extends Controller
             $first = Service::query()
             ->where('libelle', 'LIKE', "%{$search}%")
             ->first();
-            
+            if($first !=NULL)
             $rubrique = $this->rubriqueRepository->getById($services->first()->rubrique_id);
         }
     
