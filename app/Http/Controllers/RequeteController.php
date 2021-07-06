@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 use App\Repositories\StructureRepository;
 use App\Repositories\UserRepository;
@@ -31,6 +32,7 @@ use App\Models\Notification;
 use App\Models\Rubrique;
 use App\Models\Entreprise;
 use App\Models\Paiement;
+use App\Models\File;
 
 class RequeteController extends Controller
 {
@@ -151,14 +153,98 @@ class RequeteController extends Controller
                 $this->carteIdentiteRepository->store($data);
                 $montant = $service->prix;
                 $entreprise_id = Null;
-            }   
+            }
 
             //Données pour le service passport
             if($service->slug == "passport"){
                 $this->passportRepository->store($data);
                 $montant = $service->prix;
                 $entreprise_id = Null;
-            }   
+               
+            } 
+            
+            //Deplacer les fichiers du dossier temporaire
+            //Fichiers pour passport
+            if(array_key_exists('identitePath', $data)){
+                $fileIdentite = new File;
+                $identiteName = $data['identiteName'];
+                $source = $data['identitePath'];
+                $destination = "/uploads/documents/identite/".Auth::user()->id."/".$identiteName;
+                Storage::disk('public')->move($source, $destination);
+                $fileIdentite->libelle = $identiteName;
+                $fileIdentite->file_path = '/storage/' . $destination;
+                $fileIdentite->type = "identite";
+                $fileIdentite->user_id = Auth::user()->id;
+                
+                $fileIdentite->save();
+            }
+            if(array_key_exists('photoIdentitePath', $data)){
+                $filePhotoIdentite = new File;
+                $photoIdentiteName = $data['photoIdentiteName'];
+                $source = $data['photoIdentitePath'];
+                $destination = "/uploads/documents/photo_identite/".Auth::user()->id."/".$photoIdentiteName;
+                Storage::disk('public')->move($source, $destination);
+                $filePhotoIdentite->libelle = $photoIdentiteName;
+                $filePhotoIdentite->file_path = '/storage/' . $destination;
+                $filePhotoIdentite->user_id = Auth::user()->id;
+                $filePhotoIdentite->type = "photo-identite";
+                
+                $filePhotoIdentite->save();
+            }
+            if(array_key_exists('identiteTuteurPath', $data)){
+                $fileIdentiteTuteur = new File;
+                $identiteTuteurName = $data['identiteTuteurName'];
+                $source = $data['identiteTuteurPath'];
+                $destination = "/uploads/documents/identite_tuteur/".Auth::user()->id."/".$identiteTuteurName;
+                Storage::disk('public')->move($source, $destination);
+                $fileIdentiteTuteur->libelle = $identiteTuteurName;
+                $fileIdentiteTuteur->file_path = '/storage/' . $destination;
+                $fileIdentiteTuteur->user_id = Auth::user()->id;
+                $fileIdentiteTuteur->type = "identite-tuteur";
+                
+                $fileIdentiteTuteur->save();
+            }
+            if(array_key_exists('autorisationParentalePath', $data)){
+                $fileAutorisation = new File;
+                $autorisationParentaleName = $data['autorisationParentaleName'];
+                $source = $data['autorisationParentalePath'];
+                $destination = "/uploads/documents/autorisation_parentale/".Auth::user()->id."/".$autorisationParentaleName;
+                Storage::disk('public')->move($source, $destination);
+                $fileAutorisation->libelle = $autorisationParentaleName;
+                $fileAutorisation->file_path = '/storage/' . $destination;
+                $fileAutorisation->user_id = Auth::user()->id;
+                $fileAutorisation->type = "autorisation-parentale";
+                
+                $fileAutorisation->save();
+            }
+            if(array_key_exists('patentePath', $data)){
+                $filePatente = new File;
+                $patenteName = $data['patenteName'];
+                $source = $data['patentePath'];
+                $destination = "/uploads/documents/photo_identite/".Auth::user()->id."/".$patenteName;
+                Storage::disk('public')->move($source, $destination);
+                $filePatente->libelle = $patenteName;
+                $filePatente->file_path = '/storage/' . $destination;
+                $filePatente->user_id = Auth::user()->id;
+                $filePatente->type = "patente";
+                
+                $filePatente->save();
+            }
+
+            //Fichier pour vignette
+            if(array_key_exists('justificatifVignettePath', $data)){
+                $fileJustificatifVignette = new File;
+                $justificatifVignetteName = $data['justificatifVignetteName'];
+                $source = $data['justificatifVignettePath'];
+                $destination = "/uploads/documents/justificatif_vignette/".Auth::user()->id."/".$justificatifVignetteName;
+                Storage::disk('public')->move($source, $destination);
+                $fileJustificatifVignette->libelle = $justificatifVignetteName;
+                $fileJustificatifVignette->file_path = '/storage/' . $destination;
+                $fileJustificatifVignette->user_id = Auth::user()->id;
+                $fileJustificatifVignette->type = "justificatif-vignette";
+                
+                $fileJustificatifVignette->save();
+            }
 
         //Generation de notification        
         if($service->type == "demande") {

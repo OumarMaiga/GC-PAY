@@ -1,4 +1,4 @@
- <form method="POST" action="{{ route('service.verification', $service->slug) }}">
+ <form method="POST" action="{{ route('service.verification', $service->slug) }}" enctype="multipart/form-data">
     @csrf
     <div class="row padding-top">
         <div class="col-md-6 form-group">
@@ -41,17 +41,6 @@
         </div>
 
     </div>
-    <div class="row">
-        <div class="col-md-6 form-group">
-            <label for="adresse">Structure</label>
-            <select name="structure_id" id="structure_id" class="input-custom">
-                <option value="">-- CHOISISSEZ ICI --</option>
-                @foreach ($structures as $structure)
-                    <option value="{{ $structure->id }}">{{ $structure->libelle }}</option>
-                @endforeach
-            </select>
-        </div>
-    </div>
     <div class="show-detail padding-top padding-bottom">
         Pour les enfants mineurs:
     </div>
@@ -72,6 +61,15 @@
         <div class="col-md-6 form-group">
             <label for="patente">Patente ou de la vignette synthétique si opérateurs économiques</label>
             <input id="patente" class="input-custom" type="file" name="patente" value=""/>
+        </div>
+        <div class="col-md-6 form-group">
+            <label for="adresse">Structure</label>
+            <select name="structure_id" id="structure_id" class="input-custom">
+                <option value="">-- CHOISISSEZ ICI --</option>
+                @foreach ($structures as $structure)
+                    <option value="{{ $structure->id }}">{{ $structure->libelle }}</option>
+                @endforeach
+            </select>
         </div>
     </div>
     <div class="col-md-6 mt-4">

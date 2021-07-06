@@ -48,6 +48,7 @@ class ProfilController extends Controller
             $fileModel->libelle = $fileName;
             $fileModel->file_path = '/storage/' . $filePath;
             $fileModel->user_id = $user->id;
+            $fileModel->type = 'photo-profil';
             
             $fileModel->save();
             $user->save();

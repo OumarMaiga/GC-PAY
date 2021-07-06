@@ -3,9 +3,9 @@
     <div class="padding-top-second container ">
         <h2 class="text-center text-gray-500">Montant à payer</h2>
     <div class="show-title-second text-center">
-        @if (in_array('montant_payer', $data))
+        @if (array_key_exists('montant_payer', $data))
             {{ $data['montant_payer'] }}
-        @elseif (in_array('montant', $data))
+        @elseif (array_key_exists('montant', $data))
             {{ $data['montant'] }}
         @else
             <?= App\Models\Service::findOrFail($data['service_id'])->prix ?>

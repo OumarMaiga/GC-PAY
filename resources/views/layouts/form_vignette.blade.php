@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route('service.verification', $service->slug) }}">
+<form method="POST" action="{{ route('service.verification', $service->slug) }}" enctype="multipart/form-data">
             @csrf
             <div class="row padding-top">
                 <div class="col-md-6 form-group">

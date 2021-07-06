@@ -116,14 +116,73 @@ class PageController extends Controller
                     'numero_nina' => ['required'],
                     'adresse' => ['required'],
                     'structure_id' => ['required', 'numeric'],
-                ]);
+                ]);                
+            }
+
+            // Mettre les fichiers dans un dossier temporaire
+            
+            if ($request->has('identite')) {
+                $identiteName = time().'_'.$request->file('identite')->getClientOriginalName();
+                $identitePath = $request->file('identite')->storeAs("uploads/temps/identite/".Auth::user()->id, $identiteName, 'public');
+            }
+            if ($request->has('photo-identite')) {
+                $photoIdentiteName = time().'_'.$request->file('photo-identite')->getClientOriginalName();
+                $photoIdentitePath = $request->file('photo-identite')->storeAs("uploads/temps/photo_identite/".Auth::user()->id, $photoIdentiteName, 'public');
+            }
+            if ($request->has('identite-tuteur')) {
+                $identiteTuteurName = time().'_'.$request->file('identite-tuteur')->getClientOriginalName();
+                $identiteTuteurPath = $request->file('identite-tuteur')->storeAs("uploads/temps/identite_tuteur/".Auth::user()->id, $identiteTuteurName, 'public');
+            }
+            if ($request->has('autorisation-parentale')) {
+                $autorisationParentaleName = time().'_'.$request->file('autorisation-parentale')->getClientOriginalName();
+                $autorisationParentalePath = $request->file('autorisation-parentale')->storeAs("uploads/temps/autorisation_parentale/".Auth::user()->id, $autorisationParentaleName, 'public');
+            }
+            if ($request->has('patente')) {
+                $patenteName = time().'_'.$request->file('patente')->getClientOriginalName();
+                $patentePath = $request->file('patente')->storeAs("uploads/temps/patente/".Auth::user()->id, $patenteName, 'public');
+            }
+            if ($request->has('justificatif-vignette')) {
+                $justificatifVignetteName = time().'_'.$request->file('justificatif-vignette')->getClientOriginalName();
+                $justificatifVignettePath = $request->file('justificatif-vignette')->storeAs("uploads/temps/justificatif_vignette/".Auth::user()->id, $justificatifVignetteName, 'public');
             }
 
         $request->merge([
             'service_id' => $service->id
         ]);
-        $request->session()->put('data', $request->all());
+
+        $inputs = $request->except('identite', 'photo-identite', 'identite-tuteur', 'autorisation-parentale', 'patente', 'justificatif-vignette');
+
+        //Transformer les files en string pour que ça passe par url
+        //Passport
+        if (isset($identitePath)) {
+            $inputs['identitePath'] = $identitePath;
+            $inputs['identiteName'] = $identiteName;
+        } 
+        if (isset($photoIdentitePath)) {
+            $inputs['photoIdentitePath'] = $photoIdentitePath;
+            $inputs['photoIdentiteName'] = $photoIdentiteName;
+        } 
+        if (isset($identiteTuteurPath)) {
+            $inputs['identiteTuteurPath'] = $identiteTuteurPath;
+            $inputs['identiteTuteurName'] = $identiteTuteurName;
+        } 
+        if (isset($autorisationParentalePath)) {
+            $inputs['autorisationParentalePath'] = $autorisationParentalePath;
+            $inputs['autorisationParentaleName'] = $autorisationParentaleName;
+        }
+        if (isset($patentePath)) {
+            $inputs['patentePath'] = $patentePath;
+            $inputs['patenteName'] = $patenteName;
+        }
+        //Vignette
+        if (isset($justificatifVignettePath)) {
+            $inputs['justificatifVignettePath'] = $justificatifVignettePath;
+            $inputs['justificatifVignetteName'] = $justificatifVignetteName;
+        } 
+        
+        $request->session()->put('data', $inputs);
         $data = $request->session()->get("data");
+        
         $entreprise = "";
         if ($request->has('entreprise_id')) {
             $entreprise = $this->entrepriseRepository->getById($request->entreprise_id);
