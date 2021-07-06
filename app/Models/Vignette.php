@@ -14,4 +14,8 @@ class Vignette extends Model
         "numero_immatriculation",
         "requete_id",
     ];
+
+    public function file() {
+        return belongsTo('App\Models\File');
+    }
 }
