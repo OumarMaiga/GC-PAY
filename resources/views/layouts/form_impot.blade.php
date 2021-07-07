@@ -24,7 +24,8 @@
         </div>
         <div class="col-md-6 form-group">
             <label for="periode">Période pour laquelle l'impôt ou la taxe est payé (Mois et année)</label>
-            <input id="periode" class="input-custom" type="month" name="periode" value="{{ old('periode') }}" placeholder="Ex: Janvier 2021" required />
+            <input id="periode" class="input-custom" maxlength='7' name="periode" value="{{ old('periode') }}" placeholder="MM/YYYY" type="text" onkeyup="formatString(event); required ">
+            
         </div>
     </div>
     
@@ -48,3 +49,29 @@
         </a>
     </div>
 </form>
+<script>
+function formatString(e) {
+  var inputChar = String.fromCharCode(event.keyCode);
+  var code = event.keyCode;
+  var allowedKeys = [8];
+  if (allowedKeys.indexOf(code) !== -1) {
+    return;
+  }
+
+  event.target.value = event.target.value.replace(
+    /^([1-9]\/|[2-9])$/g, '0$1/' // 3 > 03/
+  ).replace(
+    /^(0[1-9]|1[0-2])$/g, '$1/' // 11 > 11/
+  ).replace(
+    /^([0-1])([3-9])$/g, '0$1/$2' // 13 > 01/3
+  ).replace(
+    /^(0?[1-9]|1[0-2])([0-9]{2})$/g, '$1/$2' // 141 > 01/41
+  ).replace(
+    /^([0]+)\/|[0]+$/g, '0' // 0/ > 0 and 00 > 0
+  ).replace(
+    /[^\d\/]|^[\/]*$/g, '' // To allow only digits and `/`
+  ).replace(
+    /\/\//g, '/' // Prevent entering more than 1 `/`
+  );
+}
+</script>

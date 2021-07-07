@@ -58,7 +58,7 @@ class PageController extends Controller
                     'entreprise_id' => ['required', 'numeric'],
                     'montant_declarer' => ['required', 'numeric'],
                     'montant_payer' => ['required', 'numeric'],
-                    'periode' => ['required', 'date_format:Y-m'],
+                    'periode' => ['required'],
                     'structure_id' => ['required', 'numeric'],
                 ]);
             }   
