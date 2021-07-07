@@ -8,7 +8,7 @@
             {!! $service->description !!}
         </div>
     
-        <div class="show-detail">
+        <div class="show-detail mt-3">
             <?php $structure = $service->structures()->first() ?>
             <span class="infos">Durée</span>:  {{$service->duree}} <span class="infos2">Prix:</span>  {{$service->prix}}  <span class="infos2">Structure:</span><a href="{{ route('service.edit', $service->slug) }}">  {{ ($structure != null) ? $structure->libelle : ""}} </a>
         </div>

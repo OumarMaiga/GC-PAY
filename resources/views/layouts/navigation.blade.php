@@ -46,17 +46,17 @@
                         Notification <?= (number_notification()) ? "<span class='badge badge-danger badge-notif'>".number_notification()."</span>" : "" ?>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('historique.list') }}">
-                        Historique
-                    </a>
-                </li>
                 @if(Auth::user()->type=='usager')
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('usager.entreprise')}}">
-                        Entreprise
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('historique.list') }}">
+                            Historique
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('usager.entreprise')}}">
+                            Entreprise
+                        </a>
+                    </li>
                 @endif
             @else
                 <li class="nav-item">

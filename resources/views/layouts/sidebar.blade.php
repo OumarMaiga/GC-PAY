@@ -65,7 +65,7 @@
                 </li>
                 <li class="sidebar-item">
                     <a href="{{route('notification.index')}}" class="sidebar-link">
-                        NOTIFICATION
+                        NOTIFICATION <?= (number_notification_structure()) ? "<span class='badge badge-danger badge-notif-dashboard'>".number_notification_structure()."</span>" : "" ?>
                     </a>
                 </li>
                 <li class="sidebar-item">

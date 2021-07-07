@@ -40,7 +40,7 @@
                     @include('layouts.sidebar')
                 </div>
                 <div class="col-md-10">
-                    @include('layouts.navdashboard')
+                    @include('layouts.nav_dashboard')
                     <!-- Page Content -->
                     <main id="content">
                         {{ $slot }}

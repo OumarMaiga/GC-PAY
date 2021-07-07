@@ -32,6 +32,14 @@
     color: white;
 }
 
+.badge-notif-dashboard {
+    position: absolute;
+    margin-top: 1px;
+    margin-left: 5px;
+    border-radius: 50%;
+    font-size: .85rem
+}
+
 .dashboard-content {
     margin: 20px;
 }
@@ -186,8 +194,7 @@
 }
 
 .descript{
-    text-align: justify;
-    width: 70%;
+    width: 95%;
 
 }
 .descript ol 

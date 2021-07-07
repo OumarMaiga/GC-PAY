@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
 use Illuminate\Validation\Rules;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
@@ -12,6 +11,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
 
 use App\Repositories\StructureRepository;
 use App\Repositories\UserRepository;
@@ -25,6 +25,7 @@ use App\Repositories\CarteIdentiteRepository;
 use App\Repositories\EdmRepository;
 use App\Repositories\SomagepRepository;
 
+use App\Models\User;
 use App\Models\Structure;
 use App\Models\Service;
 use App\Models\Requete;
@@ -33,6 +34,7 @@ use App\Models\Rubrique;
 use App\Models\Entreprise;
 use App\Models\Paiement;
 use App\Models\File;
+
 
 class RequeteController extends Controller
 {
@@ -120,6 +122,7 @@ class RequeteController extends Controller
         $data['structure_id'] = $structure->id;
         $requete = $this->requeteRepository->store($data);
         $data['requete_id'] = $requete->id;
+        
 
         // Enregistrement dans le table du service en question            
             //Données pour la rubrique impot et taxe
@@ -260,6 +263,7 @@ class RequeteController extends Controller
         } else {
             $description = $service->libelle;
         }
+
         $slug_notification = 'notification_'.Auth::user()->id.'_'.time();
         $slug_paiement = 'paiement_'.Auth::user()->id.'_'.time();
         if ($requete) {
@@ -282,6 +286,32 @@ class RequeteController extends Controller
                 'requete_id' => $requete->id,
                 'montant' => $montant,
             ]);
+            
+            //Envoie de mail
+            $service = $requete->service()->associate($requete->service_id)->service;
+            if($service->type == "demande") {
+                $description = "Votre demande de $service->libelle a bien été soumis, vous aurez un retour dans $service->duree";
+                $subject = "Demande";
+            } elseif ($service->type == "paiement") {
+                $description = "Votre paiement de $service->libelle a bien été effectuée";
+                $subject = "Paiement";
+            } else {
+                $description = $service->libelle;
+                $subject = "";
+            }
+            $data = [
+                'email' => Auth::user()->email,
+                'nom' => Auth::user()->nom,
+                'prenom' => Auth::user()->prenom,
+                'subject' => $subject,
+            ];
+            Mail::send('emails.demande', ['user' => Auth::user(), 'description' => $description], function ($message) use($data) {
+                $message->from('info@gc-pay.com', 'GC PAY');
+                $message->sender('info@gc-pay.com', 'GC PAY');
+                $message->to($data['email'], $data['nom']." ".$data['prenom']);
+                $message->replyTo('info@gc-pay.com', 'GC PAY');
+                $message->subject($data['subject']);
+            });
         }
         return redirect("usagers/requete/$requete->slug")->withStatus("La nouvelle requête a bien été créée");
     }
@@ -368,17 +398,34 @@ class RequeteController extends Controller
         if($requete->etat=='En cours') {
             $etat = 'Traitée';
             $code= $code;
-            $description = "Le traitement de votre demande de ".$service->libelle." est terminé. Veuillez vous rendre à la structure ".$structure->libelle." avec le code suivant: ".$code;                     
+            $description = "Le traitement de votre demande de ".$service->libelle." est terminé. Veuillez vous rendre à la structure ".$structure->libelle." avec le code suivant: ".$code;
+            $subject = "Traitement";
         } else {
             $etat='Remis';
             $code = $requete->code;
             $description = "Votre ".$service->libelle." vous à été remis par ".$user->prenom." ".$user->nom." (".$user->email.") dans la structure ".$structure->libelle;
+            $subject = "Accusé de reception";
         }
         $request->merge([
             'etat'=> $etat,
             'code'=>  $code,
         ]);
         $this->requeteRepository->update($id, $request->all());
+
+        //Envoie de mail
+        $data = [
+            'email' => Auth::user()->email,
+            'nom' => Auth::user()->nom,
+            'prenom' => Auth::user()->prenom,
+            'subject' => $subject,
+        ];
+        Mail::send('emails.demande', ['user' => Auth::user(), 'description' => $description], function ($message) use($data) {
+            $message->from('info@gc-pay.com', 'GC PAY');
+            $message->sender('info@gc-pay.com', 'GC PAY');
+            $message->to($data['email'], $data['nom']." ".$data['prenom']);
+            $message->replyTo('info@gc-pay.com', 'GC PAY');
+            $message->subject($data['subject']);
+        });
         
         $slug = 'notification_'.Auth::user()->id.'_'.time();
         

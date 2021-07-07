@@ -14,7 +14,6 @@
         <div class="col-md-6 form-group">
             <label for="adresse">Structure</label>
             <select name="structure_id" id="structure_id" class="input-custom">
-                <option value="">-- CHOISISSEZ ICI --</option>
                 @foreach ($structures as $structure)
                     <option value="{{ $structure->id }}">{{ $structure->libelle }}</option>
                 @endforeach

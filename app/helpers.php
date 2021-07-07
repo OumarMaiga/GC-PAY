@@ -65,6 +65,10 @@ function number_notification () {
     return Notification::where('user_id', Auth::user()->id)->where('destinateur', 'usager')->where('vue', false)->count();
 }
 
+function number_notification_structure () {
+    return Notification::where('structure_id', Auth::user()->structure_id)->where('destinateur', 'structure')->where('vue', false)->count();
+}
+
 function custom_day($date) {
     $today = date('Y-m-d');
     $this_year = date('Y');
