@@ -59,11 +59,22 @@
         </div>
         <div class="col-md-4 form-group">
             <label for="teint">Teint</label>
-            <input id="teint" class="input-custom" type="text" name="teint" value="{{ old('teint') }}" placeholder="Couleur de teint Noir, clair" />
+            <select name="teint" id="teint" class="input-custom">
+                    <option value="">-- CHOISISSEZ ICI --</option>
+                    <option value="noir">Noir</option>
+                    <option value="clair">Clair</option>
+              
+            </select>
         </div>
         <div class="col-md-4 form-group">
             <label for="Cheveux">Cheveux</label>
-            <input id="cheveux" class="input-custom" type="text" name="cheveux" value="{{ old('cheveux') }}" placeholder=" Couleur de cheveux Noir, marron" />
+            <select name="cheveux" id="cheveux" class="input-custom">
+                    <option value="">-- CHOISISSEZ ICI --</option>
+                    <option value="noir">Noir</option>
+                    <option value="marron">Marron</option>
+                    <option value="gris">Gris</option>
+              
+            </select>
         </div>
     </div>     
     <div class="row ">
