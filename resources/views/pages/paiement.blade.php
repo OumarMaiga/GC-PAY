@@ -17,10 +17,11 @@
                 <!--Ouverture du formulaire depuis ce niveau mais les champs seront mis dans les card-body -->
                     <div class="card border-transparent">
                         <div class="card-header " id="headingOne">
-                            <h5 class="mb-0">
+                            <h5>
                             <input class="btn btn-link" type="radio" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"  name="paye"/>
-                                <span class="show-detail padding-block">Carte de Crédit </span>
-                                <img src="https://img2.freepng.fr/20180523/wqt/kisspng-mastercard-credit-card-american-express-visa-debit-mbna-5b0525b571e990.8787905215270639894666.jpg" class="img-paie-media float-right" alt=""/>
+                                <span class="show-detail padding-block ">Carte de Crédit </span>
+                            
+                                <img src="https://img2.freepng.fr/20180523/wqt/kisspng-mastercard-credit-card-american-express-visa-debit-mbna-5b0525b571e990.8787905215270639894666.jpg" class="img-paie float-right "  alt=""/>
                             </h5>
                         </div>
 
@@ -48,7 +49,7 @@
                             <h5 class="mb-0"> 
                             <input class="btn btn-link collapsed" type="radio" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" name="paye"/>
                                 <span class="show-detail padding-block"> Orange Money </span>
-                                <img src="https://www.widjam.com/imgs/244.png" class="img-paie-media float-right" alt=""/>
+                                <img src="https://www.widjam.com/imgs/244.png" class="img-paie float-right" alt=""/>
                             </h5>
                         </div>
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" >
@@ -66,7 +67,7 @@
                             <h5 class="mb-0">
                             <input class="btn btn-link collapsed" type="radio" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"  name="paye"/>
                                 <span class="show-detail padding-block">  Mobicash </span>
-                                <img src="https://www.rocketremit.com/wp-content/uploads/2020/04/mc_ml.png" class="img-paie-media float-right" alt=""/>
+                                <img src="https://pbs.twimg.com/profile_images/1344795632112988160/-4P5-m8B_400x400.jpg" class="img-paie float-right" alt=""/>
                             </h5>
                         </div>
                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" >
