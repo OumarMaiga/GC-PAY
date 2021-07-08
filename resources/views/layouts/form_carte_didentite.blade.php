@@ -55,7 +55,7 @@
     <div class="row ">
         <div class="col-md-4 form-group">
             <label for="taille">Taille de la personne</label>
-            <input id="taille" class="input-custom" type="text" name="taille" value="{{ old('taille') }}" placeholder="Taille de la personne" />
+            <input id="taille" class="input-custom" type="number" step="0.01" name="taille" value="{{ old('taille') }}" placeholder="Ex: 1.75" />
         </div>
         <div class="col-md-4 form-group">
             <label for="teint">Teint</label>
