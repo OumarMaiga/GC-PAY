@@ -28,8 +28,9 @@
                    <!-- creation et telephone -->
                     <div class="row mt-2">
                         <div class="col-md-6 form-group">
-                            <label for="date_creation">Date de création</label>
-                            <input id="date_creation" class="input-custom" type="text" name="date_creation" value="{{ old('date_creation') }}" placeholder="Mois Année" />
+                            <label for="date_creation">Date de création (Mois et année)</label>
+                            
+                            <input id="date_creation" class="input-custom" maxlength='7' name="date_creation" value="{{ old('date_creation') }}" placeholder="MM/YYYY" type="text" onkeyup="formatString(event);">
                         </div>
                         <div class="col-md-6 form-group">
                             <label for="responsable">Responsable</label>
@@ -61,4 +62,30 @@
                     </div>
                 </form>
     </div>
+    <script>
+function formatString(e) {
+  var inputChar = String.fromCharCode(event.keyCode);
+  var code = event.keyCode;
+  var allowedKeys = [8];
+  if (allowedKeys.indexOf(code) !== -1) {
+    return;
+  }
+
+  event.target.value = event.target.value.replace(
+    /^([1-9]\/|[2-9])$/g, '0$1/' // 3 > 03/
+  ).replace(
+    /^(0[1-9]|1[0-2])$/g, '$1/' // 11 > 11/
+  ).replace(
+    /^([0-1])([3-9])$/g, '0$1/$2' // 13 > 01/3
+  ).replace(
+    /^(0?[1-9]|1[0-2])([0-9]{2})$/g, '$1/$2' // 141 > 01/41
+  ).replace(
+    /^([0]+)\/|[0]+$/g, '0' // 0/ > 0 and 00 > 0
+  ).replace(
+    /[^\d\/]|^[\/]*$/g, '' // To allow only digits and `/`
+  ).replace(
+    /\/\//g, '/' // Prevent entering more than 1 `/`
+  );
+}
+</script>
 </x-app-layout>
