@@ -84,5 +84,5 @@ Route::get('/historiques', [PaiementController::class, 'list'])->middleware('aut
 Route::resource('files', 'App\Http\Controllers\FilesController'); // Laravel 8
 
 Route::get('/test', function() {
-    return view('emails.demande');
+    return view('layouts.test');
 });

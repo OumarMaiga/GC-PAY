@@ -8,6 +8,6 @@
 <div class="row">
     <div class="col-md-4 verification-subtitle">Montant:</div>
     <div class="col-md-8 show-detail">
-        {{ $data['montant'] }}
+        {{ $data['montant'] }} F
     </div> 
 </div>

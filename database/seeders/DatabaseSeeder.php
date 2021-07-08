@@ -148,7 +148,7 @@ class DatabaseSeeder extends Seeder
             <li>Certificat d\'achat ou ancienne vignette</li>
             </ul>',
             'duree' => 'Immediate',
-            'prix' => '12.000',
+            'prix' => '12000',
             'type' => 'demande',
             'rubrique_id' => 2,
             'admin_systeme_id' => 1,
@@ -163,7 +163,7 @@ class DatabaseSeeder extends Seeder
             <li>Certificat d\'achat ou ancienne vignette</li>
             </ul>',
             'duree' => 'Immediate',
-            'prix' => '7.000',
+            'prix' => '7000',
             'type' => 'demande',
             'rubrique_id' => 2,
             'admin_systeme_id' => 1,
@@ -178,7 +178,7 @@ class DatabaseSeeder extends Seeder
             <li>Certificat d\'achat ou ancienne vignette</li>
             </ul>',
             'duree' => 'Immediate',
-            'prix' => '6.000',
+            'prix' => '6000',
             'type' => 'demande',
             'rubrique_id' => 2,
             'admin_systeme_id' => 1,
@@ -198,7 +198,7 @@ class DatabaseSeeder extends Seeder
             <li>Pour les op&eacute;rateurs &eacute;conomiques: la photocopie de la patente ou de la vignette synth&eacute;tique.</li>
             </ul>',
             'duree' => '2 semaines',
-            'prix' => '50.000',
+            'prix' => '50000',
             'type' => 'demande',
             'rubrique_id' => 3,
             'admin_systeme_id' => 1,
@@ -210,12 +210,12 @@ class DatabaseSeeder extends Seeder
             'description' => '<p>La carte national d\'identité est un document officiel qui permet à une personne physique de prouver son identité.</p>
             <h2><strong>Documents à fournir:</strong></h2>
             <ul style="list-style-type: square;">
-            <li>3 photos d\'identité</li>
-            <li>Justificatif d\'identité: Carte d\'identité en fin de validité (ou une copie de l\'extrait d\'acte de naissance, ou le carnet de famille, ou l\'acte de mariage ou encore 2 témoins connus du quartier munis de leur pièce d\'identité; en cour de validité)</li>
-            <li>Timbres fiscaux (500 + 200 francs FCFA)</li>
+                <li>3 photos d\'identité</li>
+                <li>Justificatif d\'identité: Carte d\'identité en fin de validité (ou une copie de l\'extrait d\'acte de naissance, ou le carnet de famille, ou l\'acte de mariage ou encore 2 témoins connus du quartier munis de leur pièce d\'identité; en cour de validité)</li>
+                <li>Timbres fiscaux (500 + 200 francs FCFA)</li>
             </ul>',
             'duree' => '24h',
-            'prix' => '1.000',
+            'prix' => '1000',
             'type' => 'demande',
             'rubrique_id' => 3,
             'admin_systeme_id' => 1,

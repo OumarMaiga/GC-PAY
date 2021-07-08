@@ -37,11 +37,11 @@ class PageController extends Controller
         $structures = $service->structures()->get();
         $rubrique=$this->rubriqueRepository->getById($service->rubrique_id);
         
-        if(Auth::check())
-           {$entreprises= $this->entrepriseRepository->getByForeignId('user_id', Auth::user()->id);
+        if(Auth::check()){
+            $entreprises = $this->entrepriseRepository->getByForeignId('user_id', Auth::user()->id);
         }
         else{
-            $entreprises=NULL;
+            $entreprises = NULL;
         }
        
        return view('pages.detail', compact('service','rubrique','entreprises', 'structures'));
@@ -182,7 +182,7 @@ class PageController extends Controller
         
         $request->session()->put('data', $inputs);
         $data = $request->session()->get("data");
-        
+
         $entreprise = "";
         if ($request->has('entreprise_id')) {
             $entreprise = $this->entrepriseRepository->getById($request->entreprise_id);
@@ -190,7 +190,7 @@ class PageController extends Controller
         return view('pages.resume', compact('service', 'data', 'entreprise'));
     }
 
-    public function paiement($slug) { 
+    public function paiement($slug) {
         $data = session()->get("data");
         return view('pages.paiement', compact('data'));
     }
