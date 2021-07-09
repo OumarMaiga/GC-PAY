@@ -4,13 +4,16 @@
     <!--Grid row-->
     <div class="row justify-content-start">
       <!--Grid column-->
+      @if(Auth::check())
+      <div class="col-md-3 vertical">
+      @else
       <div class="col-md-6 vertical">
-      
+      @endif
         <h5 class="footer-title">LIENS</h5>
 
         <ul class="footer-list">
           <li class="footer-item">
-            <a href="#" class="footer-link">Acceuil</a>
+            <a href="{{route('home')}}" class="footer-link">Acceuil</a>
           </li>
           <li class="footer-item">
             <a href="#" class="footer-link">A propos</a>
@@ -20,6 +23,27 @@
           </li>
         </ul>
       </div>
+
+      @if(Auth::check())
+      <div class="col-md-3 vertical">
+      
+        <h5 class="footer-title">NAVIGATION</h5>
+
+        <ul class="footer-list">
+          <li class="footer-item">
+            <a href="{{ route('notification.list') }}" class="footer-link">Notification</a>
+          </li>
+          <li class="footer-item">
+            <a href="{{ route('historique.list') }}" class="footer-link">Historique</a>
+          </li>
+          @if(Auth::user()->type=='usager')
+          <li class="footer-item">
+            <a href="{{route('usager.entreprise')}}" class="footer-link">Entreprise</a>
+          </li>
+          @endif
+        </ul>
+      </div>
+      @endif
 
       <!--Grid column-->
       <div class="col-md-6">
