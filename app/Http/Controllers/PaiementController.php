@@ -20,7 +20,7 @@ class PaiementController extends Controller
     }
 
     public function list() {
-        $historiques = Paiement::where('usager_id', Auth::user()->id)->get();
+        $historiques = Paiement::where('usager_id', Auth::user()->id)-> orderBy('created_at', 'desc')->get();
         return view('pages.historiques', compact('historiques'));
     }
 
