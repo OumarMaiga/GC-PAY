@@ -40,10 +40,45 @@
     font-size: .85rem
 }
 
+/* Accueil dashboard */
+.card-content{
+    margin: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 7px;
+    box-shadow: 0px 0px 1.5px 1px #00000036;
+}
+.title-card {
+    font-size: 3rem;
+    font-family: 'Rockwell';
+}
+.card-description {
+    color: #3A3939;
+}
+.card-agent {
+    color: #FFF;
+    background-color: #45D1C7;
+}
+.card-service {
+    color: #FFF;
+    background-color: #2ECB43;
+}
+.card-demande {
+    color: #FFF;
+    background-color: #E854AD;
+}
+.card-number {
+    font-size: 9rem;
+    font-weight: bold;
+}
+.card-lil-title {
+    font-size: 2rem;
+    margin-top: 2.2rem;
+}
+
+
 .dashboard-content {
     margin: 20px;
 }
-
 
 .content-title {
     font-size: 2rem;

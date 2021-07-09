@@ -10,6 +10,9 @@ use App\Models\Service;
 use App\Repositories\ServiceRepository;
 use App\Models\Entreprise;
 use App\Repositories\EntrepriseRepository;
+use App\Models\User;
+use App\Models\Structure;
+use App\Models\Requete;
 
 class PageController extends Controller
 {
@@ -24,7 +27,11 @@ class PageController extends Controller
         
     }
     public function dashboard() {
-        return view('dashboards.index');
+        $nbre_agent = User::where('type', 'agent')->where('structure_id', Auth::user()->structure_id)->get()->count();
+        $structure = Structure::where('id', Auth::user()->structure_id)->first();
+        $nbre_service = $structure->services()->count();
+        $nbre_demande = Requete::where('etat', '<>', 'Remis')->where('structure_id', Auth::user()->structure_id)->get()->count();
+        return view('dashboards.index', compact('structure', 'nbre_agent', 'nbre_service', 'nbre_demande'));
     }
 
     public function accueil() {

@@ -58,21 +58,28 @@
                         AGENT
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a href="{{route('requete.index')}}" class="sidebar-link">
-                        DEMANDE
-                    </a>
-                </li>
+                    <?php $structure = App\Models\Structure::where('id', Auth::user()->structure_id)->first() ?>
+                    <li class="sidebar-item">
+                        <a href="{{route('requete.index')}}" class="sidebar-link">
+                            @if ($structure->slug == "energie-du-mali" || $structure->slug == "somagep" || $structure->slug == "direction-general-des-impots")
+                                PAIEMENT
+                            @else
+                                DEMANDE
+                            @endif
+                        </a>
+                    </li>
                 <li class="sidebar-item">
                     <a href="{{route('notification.index')}}" class="sidebar-link">
                         NOTIFICATION <?= (number_notification_structure()) ? "<span class='badge badge-danger badge-notif-dashboard'>".number_notification_structure()."</span>" : "" ?>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a href="{{route('requete.archives')}}" class="sidebar-link">
-                        ARCHIVE
-                    </a>
-                </li>
+                @unless ($structure->slug == "energie-du-mali" || $structure->slug == "somagep" || $structure->slug == "direction-general-des-impots")
+                    <li class="sidebar-item">
+                        <a href="{{route('requete.archives')}}" class="sidebar-link">
+                            ARCHIVE
+                        </a>
+                    </li>
+                @endunless
             </ul>
         </div>
         @break

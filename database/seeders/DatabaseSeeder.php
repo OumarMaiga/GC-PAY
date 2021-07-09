@@ -46,24 +46,24 @@ class DatabaseSeeder extends Seeder
             'user_id' => 1,
         ]);
         $police = Structure::create([
-            'libelle' => ' Direction de la Police des Frontière',
-            'slug' => ' direction-de-la-police-des-frontiere',
+            'libelle' => 'Direction de la Police des Frontière',
+            'slug' => 'direction-de-la-police-des-frontiere',
             'type' => 'police',
             'adresse' => 'Bamako, commune IV, Hamdallaye ACI 2000',
             'telephone' => '+223 20 21 21 21',
             'user_id' => 1,
         ]);
         $energie = Structure::create([
-            'libelle' => ' Energie du Mali',
-            'slug' => ' energie-du-mali',
+            'libelle' => 'Energie du Mali',
+            'slug' => 'energie-du-mali',
             'type' => 'autre',
             'adresse' => 'Bamako, commune III, Quartier du fleuve, Square Patrice Lumumba',
             'telephone' => '+223 20 22 30 20',
             'user_id' => 1,
         ]);
         $somagep = Structure::create([
-            'libelle' => ' SOMAGEP',
-            'slug' => ' somagep',
+            'libelle' => 'SOMAGEP',
+            'slug' => 'somagep',
             'type' => 'autre',
             'adresse' => 'Bamako, commune IV,  Djicoroni Troukabougou ',
             'telephone' => '20 70 41 00',
