@@ -27,10 +27,17 @@ class PageController extends Controller
         
     }
     public function dashboard() {
-        $nbre_agent = User::where('type', 'agent')->where('structure_id', Auth::user()->structure_id)->get()->count();
-        $structure = Structure::where('id', Auth::user()->structure_id)->first();
-        $nbre_service = $structure->services()->count();
-        $nbre_demande = Requete::where('etat', '<>', 'Remis')->where('structure_id', Auth::user()->structure_id)->get()->count();
+        if (Auth::user()->type == "agent" || Auth::user()->type == "admin-structure") {
+            $nbre_agent = User::where('type', 'agent')->where('structure_id', Auth::user()->structure_id)->get()->count();
+            $structure = Structure::where('id', Auth::user()->structure_id)->first();
+            $nbre_service = $structure->services()->count();
+            $nbre_demande = Requete::where('etat', '<>', 'Remis')->where('structure_id', Auth::user()->structure_id)->get()->count();
+        } else {
+            $nbre_agent = "";
+            $structure = "";
+            $nbre_service = "";
+            $nbre_demande = "";
+        }
         return view('dashboards.index', compact('structure', 'nbre_agent', 'nbre_service', 'nbre_demande'));
     }
 
