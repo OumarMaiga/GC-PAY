@@ -63,8 +63,8 @@
             <a href="{{route('paiement',$service->slug)}}" type="button" class="btn btn-custom">
                 {{ __('PAIEMENT') }}
             </a>
-            <a href="javascript:history.back()" type="button" class="btn btn-warning">
-                {{ __('Modifier') }}
+            <a href="javascript:history.back()" type="button" class="btn btn-custum-warnig">
+                {{ __('MODIFIER') }}
             </a>
         </div>
     </div>

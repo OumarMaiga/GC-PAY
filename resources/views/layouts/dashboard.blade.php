@@ -19,15 +19,19 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+
+        
         <!-- TINY -->
         <script src="https://cdn.tiny.cloud/1/h21m12wk6qnpvxbbx9q9j4yktqva7cspuim4royztr89xkon/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
         <!-- Styles -->
+        <link rel="stylesheet" href="{{ asset('css/test.css') }}">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/main.css') }}">
         <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
         <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+       
+      
         
         
 
