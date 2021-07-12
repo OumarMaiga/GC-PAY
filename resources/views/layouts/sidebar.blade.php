@@ -68,11 +68,6 @@
                             @endif
                         </a>
                     </li>
-                <li class="sidebar-item">
-                    <a href="{{route('requete.index')}}" class="sidebar-link">
-                        DEMANDE
-                    </a>
-                </li>
                 @unless ($structure->slug == "energie-du-mali" || $structure->slug == "somagep" || $structure->slug == "direction-general-des-impots")
                     <li class="sidebar-item">
                         <a href="{{route('requete.archives')}}" class="sidebar-link">

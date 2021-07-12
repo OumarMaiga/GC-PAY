@@ -22,5 +22,9 @@ class Structure extends Model
     public function services() {
         return $this->belongsToMany('App\Models\Service');
     }
+
+    public function user() {
+        return $this->belongsTo('App\Models\User');
+    }
     
 }

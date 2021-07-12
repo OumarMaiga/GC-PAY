@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navigation">
         <!-- Logo --> 
             <a class="navbar-brand logo" href="{{ route('home') }}">
-                <img src="{{ asset('images/logo_small.png') }}" style=" width: 150px;" >
+                <img src="{{ asset('images/logo_small.png') }}" style=" width: 100px;" >
             </a>
 
         <!-- Right Item -->

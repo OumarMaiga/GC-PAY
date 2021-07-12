@@ -57,7 +57,9 @@ class StructureController extends Controller
     public function show($slug) {
         $structure = $this->structureRepository->getBySlug($slug);
         $admin = User::where('structure_id', $structure->id)->select('email', 'nom', 'prenom')->first();
-        return view('dashboards.structures.show', compact('structure', 'admin'));
+        $nbre_admin = User::where('structure_id', $structure->id)->where('type', 'admin-structure')->count();
+        $nbre_agent = User::where('structure_id', $structure->id)->where('type', 'agent')->count();
+        return view('dashboards.structures.show', compact('structure', 'admin', 'nbre_admin', 'nbre_agent'));
     }
     
     public function edit($slug) {

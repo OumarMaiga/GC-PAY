@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navigation dashboard-nav">
     <!-- Logo -->
     <a class="navbar-brand logo" href="{{route('accueil')}}">
-        {{ __('GC - PAY') }}
+        <img src="{{ asset('images/logo_small.png') }}" style=" width: 100px;" >
     </a>
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav align-items-center">

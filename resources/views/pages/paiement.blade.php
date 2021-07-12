@@ -10,6 +10,7 @@
         @else
             <?= App\Models\Service::findOrFail($data['service_id'])->prix ?>
         @endif
+        F
     </div>
 
         <div class="row  justify-content-center">

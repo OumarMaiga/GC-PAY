@@ -93,7 +93,6 @@ class AdminController extends Controller
         $user = $this->userRepository->getByEmail($email);
         
         $structure = structure::where('id', $user->structure_id)->select('slug', 'libelle')->first();
-        // show the view and pass the user to it
         return view('dashboards.admin.show',compact('user','structure'));
        
     }

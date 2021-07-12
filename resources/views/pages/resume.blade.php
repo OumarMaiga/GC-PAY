@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-md-4 verification-subtitle">Prix:</div> 
             <div class="col-md-8 show-detail"> 
-                {{$service->prix}}  
+                {{$service->prix}}
             </div> 
         </div>
 

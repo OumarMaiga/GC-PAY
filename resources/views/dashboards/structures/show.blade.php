@@ -42,11 +42,11 @@
                 <div class="row">
                     <div class="col text-center">
                         <h6 class="subtitle">Administrateur</h6>
-                        <p class="number">1</p>
+                        <p class="number">{{ $nbre_admin }}</p>
                     </div>
                     <div class="col text-center">
-                        <h6 class="subtitle">Agents</h6>
-                        <p class="number">0</p>
+                        <h6 class="subtitle">Agent</h6>
+                        <p class="number">{{ $nbre_agent }}</p>
                     </div>
                 </div>
             </div>

@@ -15,7 +15,7 @@
                     <!-- Nom -->
                     <div class="row">
                         <div class="col-md-6 form-group">
-                            <label for="nom">Nom</label>
+                            <label for="nom">Raison social</label>
                             <input id="nom" class="input-custom" type="text" name="nom" value="{{ old('nom') }}" placeholder="Nom" required />
                         </div>
 

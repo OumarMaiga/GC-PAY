@@ -38,10 +38,19 @@
                     <div class="col-md-4">
                         <div class="card-content card-rose">
                             <div class="card-lil-title">
-                                Demande<?= ($nbre_demande > 1) ? "s" : "" ?>
+                                @if ($structure->slug != "energie-du-mali" && $structure->slug != "somagep" && $structure->slug != "direction-general-des-impots")
+                                    Demande<?= ($nbre_demande > 1) ? "s" : "" ?>
+                                @else
+                                    Paiement<?= ($nbre_demande > 1) ? "s" : "" ?>
+                                @endif
                             </div>
                             <div class="card-number">
-                                {{ $nbre_demande }}<span class="attente">En attente ...</span>
+                                {{ $nbre_demande }}
+                                @if ($structure->slug != "energie-du-mali" && $structure->slug != "somagep" && $structure->slug != "direction-general-des-impots")
+                                    <span class="attente">
+                                        En attente ...
+                                    </span>
+                                @endif
                             </div>
                         </div>
                     </div>
