@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navigation">
+<nav class="navbar navbar-expand-lg navigation dashboard-nav">
     <!-- Logo -->
     <a class="navbar-brand logo" href="{{route('accueil')}}">
         {{ __('GC - PAY') }}

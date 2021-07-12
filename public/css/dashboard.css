@@ -3,7 +3,11 @@
     height: 100vh;
     padding: 10px 20px;
     position: absolute;
-    width: 100%;
+    position: fixed;
+    width: 229.833px;
+    top: 0;
+    left: 0;
+    bottom: 0;
 }
 
 .sidebar-title {
@@ -38,6 +42,14 @@
     margin-left: 5px;
     border-radius: 50%;
     font-size: .85rem
+}
+.dashboard-content {
+    margin-top: 4rem;
+}
+.dashboard-nav {
+    position: fixed;
+    width: 1119.17px;
+    z-index: +1;
 }
 
 /* Accueil dashboard */
@@ -78,11 +90,6 @@
 }
 .attente {
     font-size: 16px;
-}
-
-
-.dashboard-content {
-    margin: 20px;
 }
 
 .content-title {
