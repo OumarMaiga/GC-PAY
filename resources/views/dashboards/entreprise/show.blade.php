@@ -1,6 +1,6 @@
 <x-app-layout>
           
-    <div class="profil-name padding-block row">
+    <div class="profil-name padding-block row dashboard-content">
         {{ $entreprise->nom }}
                    
         <div class="col-md-6 padding-right">

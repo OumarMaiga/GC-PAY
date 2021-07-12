@@ -1,9 +1,9 @@
 
 <x-app-layout>
 <form method="POST" action="{{ route('entreprise.update',$entreprise->id) }}">
-                    @csrf
-                    @method('PUT')
-        
+    @csrf
+    @method('PUT')
+
     <div class="profil-name padding-block row">
         {{ $entreprise->nom }}
                    

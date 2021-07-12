@@ -1,3 +1,5 @@
 <x-dashboard-layout>
-    @include('pages.entreprises')
+    <div class="container-xl dashboard-content">
+        @include('pages.entreprises')
+    </div>
 </x-dashboard-layout>

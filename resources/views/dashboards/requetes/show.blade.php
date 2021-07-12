@@ -1,3 +1,5 @@
 <x-dashboard-layout>
-    @include('pages.requete')
+    <div class="container-xl dashboard-content">
+        @include('pages.requete')
+    </div>
 </x-dashboard-layout>

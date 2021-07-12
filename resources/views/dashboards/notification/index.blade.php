@@ -1,5 +1,5 @@
 <x-dashboard-layout>
-    <div class="container-fluid">
+    <div class="container-fluid dashboard-content">
         <div class="list-group mt-2">
             @foreach ($notifications as $notification)
                 <a href="{{ route('notification.show', $notification->slug) }}" class="list-link">
