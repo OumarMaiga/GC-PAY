@@ -58,7 +58,6 @@
                         AGENT
                     </a>
                 </li>
-<<<<<<< HEAD
                     <?php $structure = App\Models\Structure::where('id', Auth::user()->structure_id)->first() ?>
                     <li class="sidebar-item">
                         <a href="{{route('requete.index')}}" class="sidebar-link">
@@ -69,21 +68,11 @@
                             @endif
                         </a>
                     </li>
-=======
-                <li class="sidebar-item">
-                    <a href="{{route('notification.index')}}" class="sidebar-link">
-                        NOTIFICATION <?= (number_notification_structure()) ? "<span class='badge badge-danger badge-notif-dashboard'>".number_notification_structure()."</span>" : "" ?>
-                    </a>
-                </li>
-                <?php $structure=App\Models\Structure::where('id', Auth::user()->structure_id)->first() ?>
-                @if($structure->slug!='somagep' && $structure->slug!='energie-du-mali' && $structure->slug!='direction-general-des-impots' )
->>>>>>> 88841127c920d6e54ace480d3dfb61dac89f84e7
                 <li class="sidebar-item">
                     <a href="{{route('requete.index')}}" class="sidebar-link">
                         DEMANDE
                     </a>
                 </li>
-<<<<<<< HEAD
                 @unless ($structure->slug == "energie-du-mali" || $structure->slug == "somagep" || $structure->slug == "direction-general-des-impots")
                     <li class="sidebar-item">
                         <a href="{{route('requete.archives')}}" class="sidebar-link">
@@ -91,15 +80,6 @@
                         </a>
                     </li>
                 @endunless
-=======
-               
-                <li class="sidebar-item">
-                    <a href="{{route('requete.archives')}}" class="sidebar-link">
-                        ARCHIVE
-                    </a>
-                </li>
-                @endif
->>>>>>> 88841127c920d6e54ace480d3dfb61dac89f84e7
             </ul>
         </div>
         @break

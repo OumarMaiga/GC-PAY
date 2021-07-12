@@ -54,25 +54,30 @@
 .card-description {
     color: #3A3939;
 }
-.card-agent {
+.card-blue {
     color: #FFF;
     background-color: #45D1C7;
 }
-.card-service {
+.card-green {
     color: #FFF;
     background-color: #2ECB43;
 }
-.card-demande {
+.card-rose {
     color: #FFF;
     background-color: #E854AD;
 }
 .card-number {
     font-size: 9rem;
     font-weight: bold;
+    text-align: center;
+    margin-top: -1rem;
 }
 .card-lil-title {
     font-size: 2rem;
-    margin-top: 2.2rem;
+    text-align: center;
+}
+.attente {
+    font-size: 16px;
 }
 
 

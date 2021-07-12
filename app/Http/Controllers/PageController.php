@@ -27,18 +27,31 @@ class PageController extends Controller
         
     }
     public function dashboard() {
-        if (Auth::user()->type == "agent" || Auth::user()->type == "admin-structure") {
+        if(Auth::user()->type == "admin-structure" || Auth::user()->type == "agent") {
             $nbre_agent = User::where('type', 'agent')->where('structure_id', Auth::user()->structure_id)->get()->count();
             $structure = Structure::where('id', Auth::user()->structure_id)->first();
             $nbre_service = $structure->services()->count();
             $nbre_demande = Requete::where('etat', '<>', 'Remis')->where('structure_id', Auth::user()->structure_id)->get()->count();
-        } else {
-            $nbre_agent = "";
+            $nbre_admin = "";
+            $nbre_structure = "";
+            $nbre_usager = "";
+            $nbre_entreprise = "";
+            $nbre_rubrique = "";
+            
+        } elseif (Auth::user()->type == "admin-systeme") {
             $structure = "";
-            $nbre_service = "";
+            $nbre_agent = "";
+            $nbre_admin = User::where('type', 'admin-systeme')->orwhere('type', "admin-structure")->get()->count();
+            $nbre_structure = Structure::all()->count();
+            $nbre_service = Service::all()->count();
+            $nbre_rubrique = Rubrique::all()->count();
+            $nbre_entreprise = Entreprise::all()->count();
+            $nbre_usager = User::where('type', 'usager')->get()->count();
             $nbre_demande = "";
+        } else {
+
         }
-        return view('dashboards.index', compact('structure', 'nbre_agent', 'nbre_service', 'nbre_demande'));
+        return view('dashboards.index', compact('structure', 'nbre_agent', 'nbre_admin', 'nbre_structure', 'nbre_service', 'nbre_demande', 'nbre_rubrique', 'nbre_entreprise', 'nbre_usager'));
     }
 
     public function accueil() {
