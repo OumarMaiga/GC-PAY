@@ -97,11 +97,11 @@
                         @method('PUT')
                         @if ($requete->etat == "En cours")
                             <button type="submit" class="mr-4 btn btn-outline-warning" onclick="return confirm('Confirmer la fin du traitement de la demande?')">
-                                TRAITER
+                                Traitement finis
                             </button>
                         @elseif ($requete->etat == "Traitée") 
-                            <button type="submit" class="mr-4 btn btn-outline-info text-uppercase" onclick="return confirm('Confirmer la remise du document')">
-                                REMETTRE
+                            <button type="submit" class="mr-4 btn btn-outline-info" onclick="return confirm('Confirmer la remise du document')">
+                                Remettre à l'usager
                             </button>
                         @else
                         

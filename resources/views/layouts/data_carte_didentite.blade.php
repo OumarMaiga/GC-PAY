@@ -49,7 +49,7 @@
 <div class="row">
     <div class="col-md-4 verification-subtitle">Taille de la personne:</div>
     <div class="col-md-8 show-detail">
-        {{ $data['taille'] }}
+        {{ $data['taille'] }}m
     </div> 
 </div>
 <div class="row">

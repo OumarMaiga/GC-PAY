@@ -87,7 +87,7 @@
                      <div class="row mt-2">
                         <div class="col-md-6 form-group">
                             <label for="adresse">Adresse</label>
-                            <textarea id="adresse" class="input-custom" type="text" name="adresse" value="{{ old('adresse') }}" placeholder="Ville, Commune, Quartier"></textarea>
+                            <textarea id="adresse" class="input-custom" type="text" name="adresse" value="" placeholder="Ville, Commune, Quartier">{{ old('adresse') }}</textarea>
                         </div>
                         
                     </div>

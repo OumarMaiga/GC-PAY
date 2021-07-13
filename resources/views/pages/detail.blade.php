@@ -10,7 +10,27 @@
 
     <div class="show-detail padding-block">
         <?php $structure = $service->structures()->first() ?>
-        <span class="infos">Durée</span>:  {{$service->duree}} <span class="infos2">Prix:</span>  {{$service->prix}}  <span class="infos2">Structure:</span>  {{ ($structure != null) ? $structure->libelle : ""}}
+        <span class="infos">Durée</span>:  {{$service->duree}} 
+        <span class="infos2">Prix:</span>  {{$service->prix}}  
+        <span class="infos2">Structure:</span>  
+        @if($structures->count() == 0)
+            Non précisée
+        @elseif($structures->count() == 1)
+            @foreach ($structures as $structure)
+                {{ $structure->libelle }}
+            @endforeach
+        @else
+            <div class="dropdown d-inline">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Cliquez pour voir
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    @foreach ($structures as $structure)
+                        <a class="dropdown-item" href="#">{{ $structure->libelle }}</a>
+                    @endforeach
+                </div>
+            </div>
+        @endif
     </div>
     
     @if(Auth::check())

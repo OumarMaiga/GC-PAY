@@ -63,6 +63,7 @@ class AdminController extends Controller
     {
         $request->validate([
             'nom' => 'required|string|string|max:255',
+            'type' => 'required|alpha_dash',
             'telephone' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -78,7 +79,6 @@ class AdminController extends Controller
         event(new Registered($user));
         
         return redirect('/dashboard/admin/')->withStatus("Un nouvel administrateur vient d'être créé");
-       
 
     }
 

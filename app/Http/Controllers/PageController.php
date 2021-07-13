@@ -125,7 +125,7 @@ class PageController extends Controller
                     'prenom_nom_mere' => ['required'],
                     'adresse' => ['required'],
                     'profession' => ['required'],
-                    'taille' => ['required'],
+                    'taille' => ['required', 'numeric'],
                     'teint' => ['required'],
                     'cheveux' => ['required'],
                     'structure_id' => ['required', 'numeric'],
