@@ -15,7 +15,7 @@ class CreatePaiementsTable extends Migration
     {
         Schema::create('paiements', function (Blueprint $table) {
             $table->id();
-            $table->integer('montant');
+            $table->string('montant');
             $table->string('slug');
             $table->foreignId('structure_id')->references('id')->on('structures');
             $table->foreignId('usager_id')->references('id')->on('users');
