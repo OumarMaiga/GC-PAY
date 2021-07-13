@@ -56,7 +56,7 @@ class DatabaseSeeder extends Seeder
         $energie = Structure::create([
             'libelle' => 'Energie du Mali',
             'slug' => 'energie-du-mali',
-            'type' => 'autre',
+            'type' => 'eau_et_electricite',
             'adresse' => 'Bamako, commune III, Quartier du fleuve, Square Patrice Lumumba',
             'telephone' => '+223 20 22 30 20',
             'user_id' => 1,
@@ -64,9 +64,25 @@ class DatabaseSeeder extends Seeder
         $somagep = Structure::create([
             'libelle' => 'SOMAGEP',
             'slug' => 'somagep',
-            'type' => 'autre',
+            'type' => 'eau_et_electricite',
             'adresse' => 'Bamako, commune IV,  Djicoroni Troukabougou ',
             'telephone' => '20 70 41 00',
+            'user_id' => 1,
+        ]);
+        $quinzieme = Structure::create([
+            'libelle' => '15ème arrondissement',
+            'slug' => '15eme-arrondissement',
+            'type' => 'commissariat',
+            'adresse' => 'Bamako, commune V,  Baco-djicoroni ACI',
+            'telephone' => '20 00 40 00',
+            'user_id' => 1,
+        ]);
+        $premier = Structure::create([
+            'libelle' => '1er arrondissement',
+            'slug' => '1er-arrondissement',
+            'type' => 'commissariat',
+            'adresse' => 'Bamako, Commune II,  Quartier du fleuve',
+            'telephone' => '20 11 11 00',
             'user_id' => 1,
         ]);
         
@@ -204,6 +220,7 @@ class DatabaseSeeder extends Seeder
             'admin_systeme_id' => 1,
             'etat' => 1,
         ]);
+        $police->services()->attach([7]);
         $carteIdentite = Service::create([
             'libelle' => 'Carte national d\'identité',
             'slug' => 'carte-national-didentite',
@@ -221,7 +238,7 @@ class DatabaseSeeder extends Seeder
             'admin_systeme_id' => 1,
             'etat' => 1,
         ]);
-        $police->services()->attach([7,8]);
+        $carteIdentite->structures()->attach([6,7]);
 
         $edm = Service::create([
             'libelle' => 'Energie du Mali',

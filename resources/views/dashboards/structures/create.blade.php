@@ -24,7 +24,8 @@
                                 <option value="mairie">MAIRIE</option>
                                 <option value="hopital">HOPITAL</option>
                                 <option value="impot">IMPÔT</option>
-                                <option value="autre">AUTRE</option>
+                                <option value="commissariat">COMMISSARIAT</option>
+                                <option value="eau_et_electricite">EAU & ELECTRICITE</option>
                             </select>
                         </div>
                     </div>

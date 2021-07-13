@@ -106,9 +106,9 @@ class ServiceController extends Controller
     {
         $service = $this->serviceRepository->getBySlug($slug);
         $user = $this->userRepository->getById($service->admin_systeme_id);
-        $structure = structure::where('id', $service->structure_id)->select('slug', 'libelle')->first();
+        $structures = $service->structures()->select('slug', 'libelle')->get();
         $rubrique = Rubrique::where('id', $service->rubrique_id)->select('slug', 'libelle')->first();
-        return view('dashboards.services.show', compact('service', ('user'),('structure'),('rubrique')));
+        return view('dashboards.services.show', compact('service', 'user', 'structures', 'rubrique'));
     }
 
     /**

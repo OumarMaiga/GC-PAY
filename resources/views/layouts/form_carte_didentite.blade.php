@@ -80,7 +80,7 @@
     <div class="row ">
     
         <div class="col-md-6 form-group">
-            <label for="structure_id">Structure</label>
+            <label for="structure_id">Commissariat ou Gendarmerie</label>
             <select name="structure_id" id="structure_id" class="input-custom">
                 <option value="">-- CHOISISSEZ ICI --</option>
                 @foreach ($structures as $structure)
