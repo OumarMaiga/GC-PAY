@@ -1,6 +1,6 @@
 <x-dashboard-layout>
 
-<div class="container-xl dashboard-content">
+<div class="container dashboard-content">
     <div class="table-responsive">
         <div class="table-wrapper">
             <div class="table-title">

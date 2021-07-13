@@ -1,5 +1,5 @@
 <x-dashboard-layout>
-    <div class="container-xl dashboard-content">
+    <div class="container dashboard-content">
             @if(Auth::user()->type == "admin-structure" || Auth::user()->type == "agent")
                 
                 <div class="row">
