@@ -4,7 +4,7 @@
     padding: 10px 20px;
     position: absolute;
     position: fixed;
-    width: 229.833px;
+    width: 16.6667%;
     top: 0;
     left: 0;
     bottom: 0;
@@ -48,7 +48,7 @@
 }
 .dashboard-nav {
     position: fixed;
-    width: 1119.17px;
+    width: 83.333333%;
     z-index: +1;
 }
 
