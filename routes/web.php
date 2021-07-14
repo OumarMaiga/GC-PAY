@@ -9,6 +9,7 @@ use App\Http\Controllers\EntrepriseController;
 use App\Http\Controllers\RequeteController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PaiementController;
+use App\Http\Controllers\StripeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,3 +87,11 @@ Route::resource('files', 'App\Http\Controllers\FilesController'); // Laravel 8
 Route::get('/test', function() {
     return view('layouts.test');
 });
+
+
+//Paiement par stripe
+Route::get('/paiement', [StripeController::class, 'formulaire'])->middleware('auth')->name('formulaire_paiement');
+
+Route::post('/paiement', [StripeController::class, 'process'])->middleware('auth')->name('process');
+
+Route::get('/paiement-ok',[StripeController::class, 'paiementOK'])->middleware('auth');
