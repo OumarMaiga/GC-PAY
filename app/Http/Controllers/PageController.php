@@ -219,7 +219,28 @@ class PageController extends Controller
 
     public function paiement($slug) {
         $data = session()->get("data");
-        return view('pages.paiement', compact('data'));
+        return view('paiements.paiement_choix', compact('data'));
+    }
+
+    public function paiement_choix(Request $request) {
+        $choix = $request->choix;
+        switch ($choix) {
+            case 'credit_card':
+                return redirect('/paiement/credit_card');
+                break;
+
+            case 'orange_money':
+                dd('Orange Money');
+                break;
+
+            case 'moov_money':
+                dd('Moov Money');
+                break;
+            
+            default:
+                return back();
+                break;
+        }
     }
 
     public function search(Request $request){

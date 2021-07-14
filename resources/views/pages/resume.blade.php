@@ -60,7 +60,7 @@
 
     <div class="row">
         <div class="col-md-6 mt-4">
-            <a href="{{route('paiement',$service->slug)}}" type="button" class="btn btn-custom">
+            <a href="{{route('paiement', $service->slug)}}" type="button" class="btn btn-custom">
                 {{ __('PAIEMENT') }}
             </a>
             <a href="javascript:history.back()" type="button" class="btn btn-custum-warnig">

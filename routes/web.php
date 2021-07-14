@@ -50,14 +50,9 @@ Route::post('/verification/{service}', [PageController::class, 'verification'])
                 ->name('service.verification');
 
 //resume
-Route::get('/{slug}/resume', [PageController::class, 'resume'])
+Route::get('/resume/{slug}/', [PageController::class, 'resume'])
                 ->middleware('auth')
                 ->name('resume');
-
-//paiement
-Route::get('/{slug}/paiement', [PageController::class, 'paiement'])
-->middleware('auth')
-->name('paiement');
 
 
 // Profil
@@ -89,9 +84,16 @@ Route::get('/test', function() {
 });
 
 
+Route::post('/paiement-choix', [PageController::class, 'paiement_choix'])->middleware('auth')->name('paiement.choix');
+
 //Paiement par stripe
-Route::get('/paiement', [StripeController::class, 'formulaire'])->middleware('auth')->name('formulaire_paiement');
+Route::get('/paiement/credit_card', [StripeController::class, 'formulaire'])->middleware('auth')->name('paiement.credit_card');
 
 Route::post('/paiement', [StripeController::class, 'process'])->middleware('auth')->name('process');
 
 Route::get('/paiement-ok',[StripeController::class, 'paiementOK'])->middleware('auth');
+
+//paiement
+Route::get('/paiement/{slug}/', [PageController::class, 'paiement'])
+->middleware('auth')
+->name('paiement');

@@ -12,7 +12,7 @@ class StripeController extends Controller
 {
     //
         function formulaire() {
-            return view ('formulairePaiement');
+            return view ('paiements.credit_card');
         }
         
 
