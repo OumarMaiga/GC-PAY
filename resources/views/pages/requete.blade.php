@@ -1,7 +1,20 @@
 <div class="container dashboard-content">
+    @if (Session::has('success'))
+        <div class="row">
+            <div class="col-md-6">
+                <div class="alert alert-success">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                    <p>{{ Session::get('success') }}</p>
+                </div>
+            </div>
+        </div>
+    @endif
+
     <div class="row">
-        <div class="show-title">
-            {!! $service->libelle !!}
+        <div class="col-12">
+            <div class="show-title">
+                {!! $service->libelle !!}
+            </div>
         </div>
     </div>
     @if($service->type=="demande")
@@ -58,8 +71,10 @@
         </div>
     </div>
     <div class="row">
-        <div class="show-title">
-            Résumé
+        <div class="col-12">
+            <div class="show-title">
+                Résumé
+            </div>
         </div>
     </div>
     
