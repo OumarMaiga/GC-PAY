@@ -30,6 +30,7 @@ class StripeController extends Controller
          Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
             Stripe\Charge::create ([
                     "amount" => $montant,
+                    "amount" => 10000,
                     "currency" => "xof",
                     "source" => $request->stripeToken,
                     "description" => "Paiement reçu de GC-PAY"
