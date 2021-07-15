@@ -52,6 +52,7 @@ class StripeController extends Controller
         
         Session::flash('success', 'Paiement effectuée avec succès vous allez recevoir un mail!');
         $this->save_requete();
+        Session::forget('data');
         $requete = Requete::where('usager_id', Auth::user()->id)->orderBy('id', 'desc')->first();
         return redirect("usagers/requete/$requete->slug");
         

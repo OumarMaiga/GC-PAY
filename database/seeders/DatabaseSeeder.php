@@ -163,7 +163,7 @@ class DatabaseSeeder extends Seeder
             <ul style="list-style-type: square;">
             <li>Certificat d\'achat ou ancienne vignette</li>
             </ul>',
-            'duree' => 'Immediate',
+            'duree' => '24h',
             'prix' => '12000',
             'type' => 'demande',
             'rubrique_id' => 2,
@@ -178,7 +178,7 @@ class DatabaseSeeder extends Seeder
             <ul style="list-style-type: square;">
             <li>Certificat d\'achat ou ancienne vignette</li>
             </ul>',
-            'duree' => 'Immediate',
+            'duree' => '24h',
             'prix' => '7000',
             'type' => 'demande',
             'rubrique_id' => 2,
@@ -193,7 +193,7 @@ class DatabaseSeeder extends Seeder
             <ul style="list-style-type: square;">
             <li>Certificat d\'achat ou ancienne vignette</li>
             </ul>',
-            'duree' => 'Immediate',
+            'duree' => '24h',
             'prix' => '6000',
             'type' => 'demande',
             'rubrique_id' => 2,
@@ -213,7 +213,7 @@ class DatabaseSeeder extends Seeder
             <li>Pour les enfants mineurs : 2 photos d&rsquo;identit&eacute; en couleurs, l&rsquo;autorisation parentale l&eacute;galis&eacute;e et la photocopie du passeport ou de la CI du Tuteur.</li>
             <li>Pour les op&eacute;rateurs &eacute;conomiques: la photocopie de la patente ou de la vignette synth&eacute;tique.</li>
             </ul>',
-            'duree' => '2 semaines',
+            'duree' => '1 semaine',
             'prix' => '50000',
             'type' => 'demande',
             'rubrique_id' => 3,
