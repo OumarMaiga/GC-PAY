@@ -186,7 +186,18 @@
                         </div>
                         <div class="row">
                            <div class="col-xs-12">
-                              <button class="btn btn-primary btn-lg btn-block" type="submit">Payer maintenant</button>
+                                <button class="btn btn-primary btn-lg btn-block" type="submit">
+                                    Payer maintenant
+                                    (
+                                    @if (array_key_exists('montant_payer', $data))
+                                        {{ Session::get(['data']['montant_payer']) }}
+                                    @elseif (array_key_exists('montant', $data))
+                                        {{ $data['montant'] }}
+                                    @else
+                                        <?= App\Models\Service::findOrFail($data['service_id'])->prix ?>
+                                    @endif
+                                    F)
+                                </button>
                            </div>
                         </div>
                      </form>
