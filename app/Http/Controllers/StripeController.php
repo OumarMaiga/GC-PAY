@@ -44,10 +44,10 @@ class StripeController extends Controller
 
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
         Stripe\Charge::create ([
-                "amount" => $montant,
-                "currency" => "xof",
-                "source" => $request->stripeToken,
-                "description" => "Paiement reçu de GC-PAY"
+            "amount" => $montant,
+            "currency" => "xof",
+            "source" => $request->stripeToken,
+            "description" => "Paiement reçu de GC-PAY"
         ]);
         
         Session::flash('success', 'Paiement effectuée avec succès vous allez recevoir un mail!');
