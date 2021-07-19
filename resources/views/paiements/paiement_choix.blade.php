@@ -3,13 +3,15 @@
     <div class="padding-top-second container ">
         <h2 class="text-center text-gray-500">Montant à payer</h2>
     <div class="show-title-second text-center">
-        @if (array_key_exists('montant_payer', $data))
-            {{ $data['montant_payer'] }}
-        @elseif (array_key_exists('montant', $data))
-            {{ $data['montant'] }}
-        @else
-            <?= App\Models\Service::findOrFail($data['service_id'])->prix ?>
-        @endif
+        <span id="montant">
+            @if (array_key_exists('montant_payer', $data))
+                {{ $data['montant_payer'] }}
+            @elseif (array_key_exists('montant', $data))
+                {{ $data['montant'] }}
+            @else
+                <?= App\Models\Service::findOrFail($data['service_id'])->prix ?>
+            @endif
+        </span>
         F
     </div>
 
@@ -53,8 +55,20 @@
                             {{ __('PAIEMENT') }}
                         </button>
                     </div>  
+                    <div class="mt-4 justify-content-center">
+                        <button type="submit" class="btn btn-custom" id="pay">
+                            {{ __('TouchPay') }}
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
+<script type="text/javascript">
+    document.getElementById('pay').addEventListener("click", function (e) {
+        e.preventDefault();
+        var montant = document.getElementById('montant').textContent;
+        sendPaymentInfos ('001','INTX8220', 'Ri91Ep2B80E0lp822jiQxKJqNHJSS5YyquwrprIvtZSydCfw5Q', 'https://gc-pay.ml', 'https://gc-pay.ml/paiement/notif-success', 'https://gc-pay.ml/paiement/notif-failed', montant , 'Bamako' , 'oumarm611@gmail.com', 'Oumar', 'Maiga', '22371316544');
+    });
+</script>
 </x-app-layout>

@@ -29,6 +29,8 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+
+        <script src="https://touchpay-sandbox.appspot.com/script/touchpay_0.0.1.js"> </script>
     </head>
     <body class="font-sans antialiased" id="page">
             @include('layouts.navigation')
