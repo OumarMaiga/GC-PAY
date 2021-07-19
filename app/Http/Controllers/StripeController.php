@@ -49,9 +49,8 @@ class StripeController extends Controller
                     "description" => "Paiement reçu de GC-PAY"
             ]);
        
-            Session::flash('success', 'Payment successful!');
-               
-            return back();
+            Session::flash('success', 'Payment effectué avec succès!');
+            return $this->save_requete();
         
     }
 
@@ -271,5 +270,6 @@ class StripeController extends Controller
                 $message->subject($data['subject']);
             });
         }
+        return redirect("usagers/requete/$requete->slug")->withStatus("Votre requête a bien été soumis");
     }
 }
