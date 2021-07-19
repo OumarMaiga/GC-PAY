@@ -14,7 +14,7 @@
         </span>
         F
     </div>
-
+    
         <div class="row  justify-content-center">
             <div class="accordion padding-top-second col-md-4 " id="accordionExample">
                 <!--Ouverture du formulaire depuis ce niveau mais les champs seront mis dans les card-body -->
@@ -66,9 +66,9 @@
     </div>
 <script type="text/javascript">
     document.getElementById('pay').addEventListener("click", function (e) {
-        var montant = document.getElementById('montant').textContent;
-        sendPaymentInfos ('001','INTX8220', 'Ri91Ep2B80E0lp822jiQxKJqNHJSS5YyquwrprIvtZSydCfw5Q', 'https://gc-pay.ml', 'https://gc-pay.ml/paiement/notif-success', 'https://gc-pay.ml/paiement/notif-failed', montant , 'Bamako' , 'oumarm611@gmail.com', 'Oumar', 'Maiga', '22371316544');
         e.preventDefault();
+        var montant = document.getElementById('montant').textContent;
+        sendPaymentInfos ('001', 'INTX8220', 'VrcpL0YyCdFIq5bNQ6gCmmC1daIzJbBJ3EuCTXAMiD5WhltDkP', 'localhost:8000/paiement/', 'localhost:8000/paiement/notifsuccess', 'localhost:8000/paiement/notiffailed', montant , 'Bamako' , 'oumarm611@gmail.com', 'Oumar', 'Maiga', '22371316544');
     });
 </script>
 </x-app-layout>
