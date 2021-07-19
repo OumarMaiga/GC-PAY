@@ -66,9 +66,9 @@
     </div>
 <script type="text/javascript">
     document.getElementById('pay').addEventListener("click", function (e) {
-        e.preventDefault();
         var montant = document.getElementById('montant').textContent;
         sendPaymentInfos ('001','INTX8220', 'Ri91Ep2B80E0lp822jiQxKJqNHJSS5YyquwrprIvtZSydCfw5Q', 'https://gc-pay.ml', 'https://gc-pay.ml/paiement/notif-success', 'https://gc-pay.ml/paiement/notif-failed', montant , 'Bamako' , 'oumarm611@gmail.com', 'Oumar', 'Maiga', '22371316544');
+        e.preventDefault();
     });
 </script>
 </x-app-layout>
