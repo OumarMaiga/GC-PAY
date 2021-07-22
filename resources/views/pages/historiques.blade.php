@@ -1,9 +1,9 @@
 <x-app-layout>
     <div class="container-fluid">
         <div class="list-group mt-2">
-        <?php $jour=NULL ?>
+        <?php $jour = NULL ?>
             @foreach ($historiques as $historique)
-                @if($jour!=custom_day($historique->created_at))
+                @if($jour != custom_day($historique->created_at))
                     <div class="day">
                         {{ custom_day($historique->created_at) }}
                     </div> 
@@ -43,7 +43,7 @@
                         </div>
                     </a>
                 @endif
-                <?php $jour=custom_day($historique->created_at) ?>
+                <?php $jour = custom_day($historique->created_at) ?>
             @endforeach
         </div>
     </div>

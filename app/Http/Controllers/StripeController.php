@@ -41,17 +41,16 @@ class StripeController extends Controller
         }else{
             $montant = Service::findOrFail($data['service_id'])->prix;
         }
-         Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
             Stripe\Charge::create ([
-                    "amount" => $montant,
-                    "currency" => "xof",
-                    "source" => $request->stripeToken,
-                    "description" => "Paiement reçu de GC-PAY"
+                "amount" => $montant,
+                "currency" => "xof",
+                "source" => $request->stripeToken,
+                "description" => "Paiement reçu de GC-PAY"
             ]);
-       
-            Session::flash('success', 'Payment effectué avec succès!');
-            return $this->save_requete();
         
+        Session::flash('success', 'Payment effectué avec succès!');
+        return $this->save_requete();
     }
 
     function paiementOk() {
@@ -270,6 +269,7 @@ class StripeController extends Controller
                 $message->subject($data['subject']);
             });
         }
+        Session::forget('data');
         return redirect("usagers/requete/$requete->slug")->withStatus("Votre requête a bien été soumis");
     }
 }
