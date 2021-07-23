@@ -3,7 +3,7 @@
     <div class="">
         <h2 style="font-size: 2rem;">Bonjour {{ "$user->nom $user->prenom," }}</h2>
         <p style="font-size: 1.6rem">
-            {{ "$description" }}
+            {!! $description !!}
         </p>
     </div>
 </div>

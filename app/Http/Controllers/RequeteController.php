@@ -412,6 +412,17 @@ class RequeteController extends Controller
             'code'=>  $code,
         ]);
         $this->requeteRepository->update($id, $request->all());
+        $slug = 'notification_'.Auth::user()->id.'_'.time();
+        
+        Notification::create([
+            'vue' => false,
+            'slug' => $slug,
+            'description' => $description,
+            'destinateur' => 'usager',
+            'requete_id' => $requete->id,
+            'structure_id' => $requete->structure_id,
+            'user_id' => $requete->usager_id,
+        ]);
 
         //Envoie de mail
         $data = [
@@ -428,18 +439,6 @@ class RequeteController extends Controller
             $message->subject($data['subject']);
         });
         
-        $slug = 'notification_'.Auth::user()->id.'_'.time();
-        
-        Notification::create([
-            'vue' => false,
-            'slug' => $slug,
-            'description' => $description,
-            'destinateur' => 'usager',
-            'requete_id' => $requete->id,
-            'structure_id' => $requete->structure_id,
-            'user_id' => $requete->usager_id,
-        ]);
-
         return redirect("/dashboard/requete/$requete->slug")->withStatus("La demande a bien été mise à jour");
     }
 
