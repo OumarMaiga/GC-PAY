@@ -55,11 +55,7 @@
                             {{ __('PAIEMENT') }}
                         </button>
                     </div>  
-                    <div class="mt-4 justify-content-center">
-                        <button type="submit" class="btn btn-custom" id="pay">
-                            {{ __('TouchPay') }}
-                        </button>
-                    </div>
+                    
                 </form>
             </div>
         </div>
