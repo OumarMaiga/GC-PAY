@@ -19,7 +19,7 @@
                         <th class="text-center">Usager</th>
                         <th class="text-center">Etat</th>
                         <th class="text-center">Code</th>
-                        <th class="text-center">Paiement</th>
+                        
                         <th class="text-center">Actions</th>
                     </tr>
                 </thead>
@@ -48,11 +48,7 @@
                         
                         <td class="text-center">{{ $value->etat }}</td>
                         <td class="text-center">{{ $value->code }}</td>
-                        @if($value->paye==true)
-                            <td class="text-center">Effectué</td>
-                        @else
-                            <td class="text-center">Non effectué</td>
-                        @endif
+                        
                         <td class="justify-content-between icon-content text-center">
                             <a href="{{ route('requete.show', $value->slug) }}" class="col icon-action detail">
                                 <span class="fas fa-info">
