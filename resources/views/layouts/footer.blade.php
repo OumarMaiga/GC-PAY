@@ -59,7 +59,7 @@
                 <a href="#" class="footer-link">Qui sommes nous?</a>
               </li>
               <li class="footer-item">
-                <a href="#" class="footer-link">Helps</a>
+                <a href="#" class="footer-link">Besoin d'aide?</a>
               </li>
             
             </ul>

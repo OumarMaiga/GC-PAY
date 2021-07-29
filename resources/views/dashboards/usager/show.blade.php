@@ -41,7 +41,7 @@
                 </div>
                 <div class="profil-description">
                     @if($user->type=="usager")
-                        Type: Utilisateur simple de la plateforme
+                        Type: Usager
                     @elseif($user->type=="admin-structure")
                         Type: Adminstrateur Structure)
                     @else

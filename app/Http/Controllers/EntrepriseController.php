@@ -71,7 +71,7 @@ class EntrepriseController extends Controller
     {
         $request->validate([
             'nom' => 'required|max:255',
-            'nif' => 'required|unique:entreprises|alpha_num|size:10',
+            'nif' => 'required|unique:entreprises|alpha_num|size:10|unique:entreprises,nif',
         ]);
 
         $nbreLibelle = Entreprise::where('nom', $request->nom)->count();
@@ -94,7 +94,7 @@ class EntrepriseController extends Controller
         } else {
             return redirect('/dashboard/entreprise/')->withStatus("Une nouvelle entreprise vient d'être ajouté");
         }
-        }
+    }
 
     /**
      * Display the specified resource.
@@ -142,6 +142,11 @@ class EntrepriseController extends Controller
         //
         $this->entrepriseRepository->update($id, $request->all());
         
+        if(Auth::user()->type == "usager"){
+            return redirect('/usagers/entreprise/')->withStatus("Une nouvelle entreprise vient d'être ajouté");
+        } else {
+            return redirect('/dashboard/entreprise/')->withStatus("L'entreprise vient d'être mise à jour");
+        }
         return redirect('/dashboard/entreprise/')->withStatus("L'entreprise vient d'être mise à jour");
     }
 

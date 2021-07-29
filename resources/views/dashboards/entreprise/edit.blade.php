@@ -13,28 +13,44 @@
         NIF: {{ $entreprise->nif }}
     </div>
     <div class="show-detail padding-block row">
-        <div class="col-md-2"> Responsable: </div>
-        <div class="col-md-2"> 
+        <div class="col-md-4">
+            <label for="nom">Raison social</label>
+        </div>
+        <div class="col-md-8"> 
+            <input id="nom" class="input-custom" type="text" name="nom" value="{{ $entreprise->nom }}" placeholder="Nom" required />
+        </div>
+    </div>
+    <div class="show-detail padding-block row">
+        <div class="col-md-4">
+            <label for="responsable"> Responsable: </label>
+        </div>
+        <div class="col-md-8"> 
             <input id="responsable" class="input-custom" type="text" name="responsable" value="{{ $entreprise->responsable }}" placeholder="Responsable" />
         </div>
         
     </div>
     <div class="show-detail padding-block row">
-        <div class="col-md-2"> Téléphone: </div>
-        <div class="col-md-2">
+        <div class="col-md-4">
+            <label for="telephone"> Téléphone: </label>
+        </div>
+        <div class="col-md-8">
             <input id="telephone" class="input-custom" type="text" name="telephone" value="{{ $entreprise->telephone }}" placeholder="N° Telephone" />
         </div>
     </div>
     <div class="show-detail padding-block row">
-        <div class="col-md-2"> Adresse: </div>
-        <div class="col-md-2">
+        <div class="col-md-4">
+            <label for="adresse"> Adresse: </label>
+        </div>
+        <div class="col-md-8">
             <textarea id="adresse" class="input-custom" type="text" name="adresse" placeholder="Ville, Commune, Quartier">{{ $entreprise->adresse}}</textarea>
         </div>
         
     </div>
     <div class="show-detail padding-block row">
-            <div class="col-md-2"> Date de création: </div>
-            <div class="col-md-2">
+        <div class="col-md-4">
+            <label for="date_creation"> Date de création: </label>
+        </div>
+            <div class="col-md-8">
                 <input id="date_creation" class="input-custom" type="text" name="date_creation" value="{{ $entreprise->date_creation }}" placeholder="Mois Année" />
             </div>
             

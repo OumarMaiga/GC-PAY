@@ -74,6 +74,6 @@ class RubriqueController extends Controller
 
     public function destroy($id) {
 		$this->rubriqueRepository->destroy($id);
-        return redirect()->back();
+        return redirect('/dashboard/rubrique/')->withStatus("La rubrique a été supprimer");
     }
 }

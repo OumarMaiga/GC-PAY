@@ -20,7 +20,6 @@
                             <th class="text-center">Etat</th>
                             <th class="text-center">Code</th>
                         @endif
-                        <th class="text-center">Paiement</th>
                         <th class="text-center">Actions</th>
                     </tr>
                 </thead>
@@ -50,11 +49,6 @@
                         @if ($structure->slug != "energie-du-mali" && $structure->slug != "somagep" && $structure->slug != "direction-general-des-impots")
                             <td class="text-center">{{ $value->etat }}</td>
                             <td class="text-center">{{ $value->code }}</td>
-                        @endif
-                        @if($value->paye==true)
-                            <td class="text-center">Effectué</td>
-                        @else
-                            <td class="text-center">Non effectué</td>
                         @endif
                         <td class="justify-content-between icon-content text-center">
                             <a href="{{ route('requete.show', $value->slug) }}" class="col icon-action detail">

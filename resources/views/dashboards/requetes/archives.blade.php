@@ -19,7 +19,6 @@
                         <th class="text-center">Usager</th>
                         <th class="text-center">Etat</th>
                         <th class="text-center">Code</th>
-                        
                         <th class="text-center">Actions</th>
                     </tr>
                 </thead>
@@ -37,7 +36,7 @@
                         @if($service == NULL)
                             <td class="text-center">Non précisée</td>
                         @else
-                            <td class="text-center">{{ $service->libelle }}</td>
+                            <td class="text-center">{!! $service->libelle !!}</td>
                         @endif
 
                         @if($usager == NULL)
