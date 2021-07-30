@@ -13,5 +13,7 @@ class Somagep extends Model
         "numero_facture",
         "montant",
         "requete_id",
+        "periode",
+        
     ];
 }

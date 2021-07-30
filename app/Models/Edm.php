@@ -13,5 +13,6 @@ class Edm extends Model
         "numero_facture",
         "montant",
         "requete_id",
+        "periode",
     ];
 }

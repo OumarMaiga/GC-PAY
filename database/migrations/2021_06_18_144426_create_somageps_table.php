@@ -17,6 +17,7 @@ class CreateSomagepsTable extends Migration
             $table->id();
             $table->string('numero_facture');
             $table->string('montant');
+            $table->string('periode');
             $table->foreignId('requete_id')->references('id')->on('requetes');
             $table->timestamps();
         });
