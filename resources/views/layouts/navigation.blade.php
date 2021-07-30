@@ -93,11 +93,10 @@
                         @else
                             <img src='/storage/profil_pictures/default.jpg' style='width:32px;height:32px;position:absolute; top:10px;left:10px; border-radius:50%'/>
                         @endif
-                        {{ Auth::user()->email }}
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ route('profil', Auth::user()->email) }}">
-                            Profil
+                            {{ (Auth::user()->prenom || Auth::user()->nom) ? Auth::user()->prenom." ".Auth::user()->nom : Auth::user()->email }}
                         </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">

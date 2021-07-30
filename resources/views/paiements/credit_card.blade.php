@@ -190,7 +190,7 @@
                                     Payer maintenant
                                     (
                                     @if (array_key_exists('montant_payer', $data))
-                                        {{ Session::get(['data']['montant_payer']) }}
+                                        {{ $data['montant_payer'] }}
                                     @elseif (array_key_exists('montant', $data))
                                         {{ $data['montant'] }}
                                     @else
